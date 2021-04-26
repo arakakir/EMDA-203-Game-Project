@@ -1,3 +1,5 @@
+/* global createjs */
+
 //	Global Variables
 var myStage;
 var hero;
