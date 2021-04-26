@@ -13,7 +13,7 @@ function init(){
 function initGame(){
 //	2. Assign the bg variable a new createjs.Bitmap() and...
 //	3. Add the bg to the Stage using the .addChild() method
-	hero = new createjs.Bitmap("https://cdn.glitch.com/780f4636-e5d5-488f-97ec-19f7dfa3d0fa%2Fhero.png?v=1619381168189");
+	hero = new createjs.Bitmap("images/hero.png");
 	myStage.addChild(hero);
   
 //	4. Set the hero's registration point to be in the center of the image (vs upper left)
