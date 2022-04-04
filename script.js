@@ -23,7 +23,7 @@ myCharacter.favoriteColors = ["yellow", "green", "puce", "other"];
 
 //	Global Variables
 var myStage;
-var hero;
+// var hero;
 //	1. Add a new variable named bg
 
 function init(){
@@ -33,22 +33,34 @@ function init(){
 	initGame();	
 }
 
-function initGame(){
-//	2. Assign the bg variable a new createjs.Bitmap() and...
-//	3. Add the bg to the Stage using the .addChild() method
-	hero = new createjs.Bitmap("images/hero.png");
+function makeOneHero(){
+  var hero = new createjs.Bitmap("images/hero.png");
 	myStage.addChild(hero);
-  
-//	4. Set the hero's registration point to be in the center of the image (vs upper left)
-	// hero.regX = 64;
-	// hero.regY = 64;
   
 //	5. Adjust the hero's .x and .y position on the stage...
   var randomX = Math.random() * (1000 - 128);
   console.log(randomX);
   
+  var randomY = Math.random() * (800 - 128);
+  console.log(randomY);
+  
+  var randomRotation = Math.random() * (360);
+  console.log(randomRotation);
+  
 	 hero.x = randomX;  // half of 1000
-	// hero.y = 400;  // half of 800
+	 hero.y = randomY;  // half of 800
+   hero.rotation = randomRotation;
+}
+
+function makeHeros(minNum, maxNum){
+  // code to randomly make number of heros
+}
+
+function initGame(){
+
+	
+  
+  // make a random number of heros between 5 and 10
 }
 
 function gameLoop(){
