@@ -52,13 +52,21 @@ function makeOneHero(){
    hero.rotation = randomRotation;
 }
 
-function makeHeros(minNum, maxNum){
-  // code to randomly make number of heros
+function randomNumberInRange(min, max){
+  // let's think through making random between 5 to 10
+  
+  // make number between o and 1
+  var myNumber = Math.random() * (max - min + 1);
+  myNumber = Math.floor(myNumber);
+  console.log(myNumber);
 }
 
 function initGame(){
 
-	
+  randomNumberInRange(5,10);
+	// makeOneHero();
+	// makeOneHero();
+	// makeOneHero();
   
   // make a random number of heros between 5 and 10
 }
