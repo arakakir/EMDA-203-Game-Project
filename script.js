@@ -44,7 +44,11 @@ function initGame(){
 	// hero.regY = 64;
   
 //	5. Adjust the hero's .x and .y position on the stage...
-//	hero.x = 512;
+  var randomX = Math.random() * (1000 - 128);
+  console.log(randomX);
+  
+	 hero.x = randomX;  // half of 1000
+	// hero.y = 400;  // half of 800
 }
 
 function gameLoop(){
