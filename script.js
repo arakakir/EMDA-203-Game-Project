@@ -50,6 +50,9 @@ function makeOneHero(){
 	 hero.x = randomX;  // half of 1000
 	 hero.y = randomY;  // half of 800
    hero.rotation = randomRotation;
+   hero.scaleX = hero.scaleY = Math.random();
+  
+  
 }
 
 function randomNumberInRange(min, max){
@@ -57,13 +60,22 @@ function randomNumberInRange(min, max){
   
   // make number between o and 1
   var myNumber = Math.random() * (max - min + 1);
+  myNumber = myNumber + min
   myNumber = Math.floor(myNumber);
-  console.log(myNumber);
+  
+  return myNumber;
+  //console.log(myNumber);
 }
 
 function initGame(){
 
-  randomNumberInRange(5,10);
+  var num = randomNumberInRange(5,1000);
+  console.log(num);
+  
+  for (let i = 0; i < num; i++){
+    console.log("hmm???");
+    makeOneHero();
+  }
 	// makeOneHero();
 	// makeOneHero();
 	// makeOneHero();
