@@ -19,8 +19,8 @@ function initGame(){
 	myStage.addChild(hero);
   
 //	4. Set the hero's registration point to be in the center of the image (vs upper left)
-//	hero.regX = 64;
-// 	hero.regY = 64;
+	// hero.regX = 64;
+	// hero.regY = 64;
   
 //	5. Adjust the hero's .x and .y position on the stage...
 //	hero.x = 512;
