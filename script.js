@@ -7,13 +7,18 @@ var boolean = true; // false or true, 0 or 1
 var strings = "Yep they do!";
 var array = [1, 2, 4, 6, 3]; // list of indexed values
 var mixedArray = ["hello", 5, float];
-var arrayOfEnemies = [enemy1, enemy2, enemy3];
+// var arrayOfEnemies = [enemy1, enemy2, enemy3];
 
 var object = {};
 var myCharacter = {};
+myCharacter.name = "Super Miles";
 myCharacter.age = 10;
 myCharacter.height = 103;
 myCharacter.hitPoints = 25;
+myCharacter.gymEligible = true;
+myCharacter.favoriteColors = ["yellow", "green", "puce", "other"];
+
+// console.log(myCharacter);
 
 
 //	Global Variables
