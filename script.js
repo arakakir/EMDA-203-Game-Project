@@ -23,7 +23,7 @@ myCharacter.favoriteColors = ["yellow", "green", "puce", "other"];
 
 //	Global Variables
 var myStage;
-// var hero;
+var heroArray = [];
 //	1. Add a new variable named bg
 
 function init(){
@@ -52,7 +52,7 @@ function makeOneHero(){
    hero.rotation = randomRotation;
    hero.scaleX = hero.scaleY = Math.random();
   
-  
+  heroArray.push(hero);
 }
 
 function randomNumberInRange(min, max){
@@ -84,5 +84,9 @@ function initGame(){
 }
 
 function gameLoop(){
+  for(let i=0; i<heroArray.length; i++){
+    heroArray[i].rotation++;
+  }
+  
 	myStage.update();
 }
