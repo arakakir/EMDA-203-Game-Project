@@ -69,7 +69,7 @@ function randomNumberInRange(min, max){
 
 function initGame(){
 
-  var num = randomNumberInRange(5,1000);
+  var num = randomNumberInRange(10,500);
   console.log(num);
   
   for (let i = 0; i < num; i++){
