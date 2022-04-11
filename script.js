@@ -1,62 +1,6 @@
 /* global createjs */
+
 //	Global Variables
-
-// for loops
-
-// for(var i = 0; i < 5; i++){
-//   document.write("The number is "+ i);
-//   document.write("<br>");
-// }
-
-// for(var i = 0; i < 100; i++){
-//   document.write("All work and no play...");
-//   document.write("<br>");
-// }
-
-// for(var i = 0; i < 100; i++){
-//   document.write(i * 64);
-//   document.write("<br>");
-// }
-
-
-// if(some condition is true){
-//   //do the stuff in here
-// }
-// else{
-//   // do this stuff instead
-// }
-
-
-// if(some condition is true){
-//   //do the stuff in here
-// }
-// else if (some other condition){
-//   // do this stuff
-// }
-// else{
-//   // do this stuff instead
-// }
-
-
-var names = ["Mickie", "Miles", "Myland"];
-console.log(names);
-
-names[1] = "Super Miles";
-names[3] = "Melissa";
-
-console.log("The person on stage with me is " + names[1]);
-
-
-
-
-
-
-
-
-
-
-
-
 var myStage;
 var things = [];
 
@@ -68,7 +12,7 @@ function init(){
 }
 
 function initGame(){
-// display 8 heros in a line
+
   makeThings(10);
   console.log(things);
   
