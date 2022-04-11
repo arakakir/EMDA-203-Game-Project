@@ -34,7 +34,7 @@
 
 
 var myStage;
-var hero;
+//var hero;
 
 function init(){
 	myStage = new createjs.Stage(document.getElementById("myCanvas"));
@@ -45,9 +45,20 @@ function init(){
 
 function initGame(){
 // display 8 heros in a line
-  for(var i = 0; i < 8; i++){
+  for(var i = 0; i < 20; i++){
     // display a hero
-    hero = new createjs.bitmap("")
+    var hero = new createjs.Bitmap("/images/hero.png");
+    hero.x = i * 120;
+    //hero.y = i * 10;
+    hero.scaleX = hero.scaleY = 1;
+    myStage.addChild(hero);
+    
+    var box = new createjs.Bitmap("/images/box_128.png");
+    box.x = i * 120;
+    //hero.y = i * 10;
+    hero.scaleX = hero.scaleY = 1;
+    myStage.addChild(box);
+    
   }
 }
 
