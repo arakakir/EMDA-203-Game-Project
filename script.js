@@ -58,7 +58,7 @@ console.log("The person on stage with me is " + names[1]);
 
 
 var myStage;
-//var hero;
+var things = [];
 
 function init(){
 	myStage = new createjs.Stage(document.getElementById("myCanvas"));
@@ -69,7 +69,16 @@ function init(){
 
 function initGame(){
 // display 8 heros in a line
-  for(var i = 0; i < 20; i++){
+  makeThings(10);
+  
+}
+
+function gameLoop(){
+	myStage.update();
+}
+
+function makeThings(num){
+  for(var i = 0; i < num; i++){
 
     if(i % 2 == 0){
       var hero = new createjs.Bitmap("/images/hero.png");
@@ -77,6 +86,7 @@ function initGame(){
       //hero.y = i * 10;
       hero.scaleX = hero.scaleY = 1;
       myStage.addChild(hero);
+      
     }
     else{
       var box = new createjs.Bitmap("/images/box_128.png");
@@ -85,10 +95,5 @@ function initGame(){
       box.scaleX = box.scaleY = 1;
       myStage.addChild(box);
     }
-    
   }
-}
-
-function gameLoop(){
-	myStage.update();
 }
