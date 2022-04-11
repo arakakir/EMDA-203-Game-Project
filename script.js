@@ -70,10 +70,12 @@ function init(){
 function initGame(){
 // display 8 heros in a line
   makeThings(10);
+  console.log(things);
   
 }
 
 function gameLoop(){
+  moveThings();
 	myStage.update();
 }
 
@@ -81,19 +83,27 @@ function makeThings(num){
   for(var i = 0; i < num; i++){
 
     if(i % 2 == 0){
-      var hero = new createjs.Bitmap("/images/hero.png");
-      hero.x = i * 120;
+      var thing = new createjs.Bitmap("/images/hero.png");
+      thing.x = i * 120;
       //hero.y = i * 10;
-      hero.scaleX = hero.scaleY = 1;
-      myStage.addChild(hero);
-      
+      thing.scaleX = thing.scaleY = 1;
+      thing.characterType = "hero";
+      myStage.addChild(thing);
+      things.push(thing);
     }
     else{
-      var box = new createjs.Bitmap("/images/box_128.png");
-      box.x = i * 120;
+      var thing = new createjs.Bitmap("/images/box_128.png");
+      thing.x = i * 120;
       //hero.y = i * 10;
-      box.scaleX = box.scaleY = 1;
-      myStage.addChild(box);
+      thing.scaleX = thing.scaleY = 1;
+      thing.characterType = "box";
+      myStage.addChild(thing);
+      things.push(thing);
+      
     }
   }
+}
+
+function moveThings(){
+  // 
 }
