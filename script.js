@@ -19,12 +19,28 @@
 // }
 
 
-if(some condidtion is true){
-  do the stuff in here
-}
+// if(some condition is true){
+//   //do the stuff in here
+// }
+// else{
+//   // do this stuff instead
+// }
 
 
+// if(some condition is true){
+//   //do the stuff in here
+// }
+// else if (some other condition){
+//   // do this stuff
+// }
+// else{
+//   // do this stuff instead
+// }
 
+
+var names = ["Mickie", "Miles", "Myland"];
+console.log(names);
+console.log("The person on stage with me is " + names[1]);
 
 
 
