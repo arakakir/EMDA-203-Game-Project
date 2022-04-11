@@ -85,7 +85,8 @@ function makeThings(num){
     if(i % 2 == 0){
       var thing = new createjs.Bitmap("/images/hero.png");
       thing.x = i * 120;
-      //hero.y = i * 10;
+      thing.regX = thing.regY = 64;
+      thing.y = i * 10;
       thing.scaleX = thing.scaleY = 1;
       thing.characterType = "hero";
       myStage.addChild(thing);
@@ -94,7 +95,8 @@ function makeThings(num){
     else{
       var thing = new createjs.Bitmap("/images/box_128.png");
       thing.x = i * 120;
-      //hero.y = i * 10;
+      thing.regX = thing.regY = 64;
+      thing.y = i * 10;
       thing.scaleX = thing.scaleY = 1;
       thing.characterType = "box";
       myStage.addChild(thing);
@@ -105,5 +107,13 @@ function makeThings(num){
 }
 
 function moveThings(){
-  // 
+  // move each element in the array based on its characterType
+  for(var i = 0; i < things.length; i++){
+    if(things[i].characterType == "hero"){
+      things[i].rotation += 1;
+    }
+    else if (things[i].characterType == "box"){
+            things[i].rotation -= 3;
+    }
+  }
 }
