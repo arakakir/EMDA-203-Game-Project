@@ -19,7 +19,9 @@
 // }
 
 
-
+if(some condidtion is true){
+  do the stuff in here
+}
 
 
 
@@ -46,18 +48,21 @@ function init(){
 function initGame(){
 // display 8 heros in a line
   for(var i = 0; i < 20; i++){
-    // display a hero
-    var hero = new createjs.Bitmap("/images/hero.png");
-    hero.x = i * 120;
-    //hero.y = i * 10;
-    hero.scaleX = hero.scaleY = 1;
-    myStage.addChild(hero);
-    
-    var box = new createjs.Bitmap("/images/box_128.png");
-    box.x = i * 120;
-    //hero.y = i * 10;
-    hero.scaleX = hero.scaleY = 1;
-    myStage.addChild(box);
+
+    if(i % 2 == 0){
+      var hero = new createjs.Bitmap("/images/hero.png");
+      hero.x = i * 120;
+      //hero.y = i * 10;
+      hero.scaleX = hero.scaleY = 1;
+      myStage.addChild(hero);
+    }
+    else{
+      var box = new createjs.Bitmap("/images/box_128.png");
+      box.x = i * 120;
+      //hero.y = i * 10;
+      box.scaleX = box.scaleY = 1;
+      myStage.addChild(box);
+    }
     
   }
 }
