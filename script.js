@@ -92,8 +92,8 @@ var defaultObject = {
     quantity: 1,
     spawnRate: "instantaneous",
     transform: {
-      x: 100,
-      y: 100,
+      x: (0 + Math.random() * 1000),
+      y: (0 + Math.random() * 800),
       scaleX: 1,
       scaleY: 1,
       rotation: 0,
