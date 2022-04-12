@@ -20,6 +20,8 @@ function initGame(){
 
   makeThings(10);
   console.log(things);
+
+  createAssets();
   
 }
 
@@ -65,4 +67,34 @@ function moveThings(){
             things[i].rotation -= 3;
     }
   }
+}
+
+
+//	object classes (target, bomb, enemy, etc.)
+// 		number
+// 		spawn rate
+// 			instantaneous
+// 			one per x seconds
+// 			speeding up / slowing down
+// 	starting location options
+// 		random
+// 		on/off screen
+// 	object movement
+// 		none
+// 		random
+// 		constrain x, constrain y
+
+// 	hero.movementStyle = “constrainX"
+
+var defaultObject = {
+    name: "This", 
+    quantity: 1,
+    spawnRate: "instantaneous",
+    startingLocation: {x: 100, y: 100},
+    type: "works!"
+    
+};
+
+function createAssets(num, type){
+  
 }
