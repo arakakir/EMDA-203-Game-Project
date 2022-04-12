@@ -87,11 +87,22 @@ function moveThings(){
 // 	hero.movementStyle = “constrainX"
 
 var defaultObject = {
-    name: "This", 
+    name: "hero", 
+    imgSrc: "images/hero.png",
     quantity: 1,
     spawnRate: "instantaneous",
+    transform: {
+      x: 100,
+      y: 100,
+      scaleX: 1,
+      scaleY: 1,
+      rotation: 0,
+      regX: 0,
+      regY: 0
+    },
     startingLocation: {x: 100, y: 100},
-    type: "works!"
+    rotation: 0,
+    movement: "static"
     
 };
 
