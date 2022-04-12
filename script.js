@@ -1,5 +1,10 @@
 /* global createjs */
 
+
+// GAME SETTINGS
+var gameType = "top-down";  // other option: "side-scrolling"
+var gameName = "My Amazing Game"  // replace with your game's name
+
 //	Global Variables
 var myStage;
 var things = [];
