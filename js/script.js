@@ -60,7 +60,8 @@ function init(){
   myStage.addChild(character);
 
   collisionGnome.addCollider(character, 1.0);
-  //collisionGnome.setDebug(true);
+  collisionGnome.setStage(myStage);
+  // collisionGnome.setDebug(true);
 
   scoreDisplay = new createjs.Text("SCORE: " + score, "48px Courier");
   scoreDisplay.x = stageWidth - 50;
@@ -263,9 +264,11 @@ function handleCollisions(){
   
   
   // check to see if there are any collisions with any of the targets
+  
+  character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
+  
   for(var i=0;i<walls.length;i++){
     if(character.collidesWith(walls[i])){
-      // remove it from the array
       // if character is below wall
       if(character.y > walls[i].y){
         character.speed.up = 0;
@@ -275,9 +278,11 @@ function handleCollisions(){
       }
       else if (character.x < walls[i].x){
         character.speed.right = 0;
+        console.log("right = 0");
       }
       else if (character.x > walls[i].x){
         character.speed.left = 0;
+        console.log("left = 0");
       }
     }
 
