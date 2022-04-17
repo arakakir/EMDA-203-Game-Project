@@ -108,30 +108,44 @@ function generateStars(num){
   }
 }
 
-function level1(){
+// function level1(){
 
   // Design the level. x = wall, t = target, e = enemy.
-  var level1 = [
-      "                 ",
-      "                 ",
-      "                 ",
-      "     t           ",
-      "   e             ",
-      "   xxxxxxx       ",
-      "                 ",
-      "                t",
-      "             xxxx",
-      "                 ",
-      "    t   e    e   ",
-      "xxxxxxxxxxxxxxxxx"
-  ];  
+  // var level1 = [
+  //     "                 ",
+  //     "                 ",
+  //     "                 ",
+  //     "     t           ",
+  //     "   e             ",
+  //     "   xxxxxxx       ",
+  //     "                 ",
+  //     "                t",
+  //     "             xxxx",
+  //     "                 ",
+  //     "    t   e    e   ",
+  //     "xxxxxxxxxxxxxxxxx"
+  // ];  
+  
+    var level1 = [
+     ["x", "x", "x", "x", "x", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", "x", "x", "x", "x", "x", "x", " ", " ", " ", "x", "x", "x", "x", "x", "x"]]; 
 
   // create targets
 
   // reposition character
-  character.x = stageWidth / 2;
-  character.y = stageHeight - 64;
-}
+//   character.x = stageWidth / 2;
+//   character.y = stageHeight - 64;
+// }
 
 
 // Create the level from the level data grid in create
@@ -140,30 +154,30 @@ function loadLevel (level) {
   targets = [];
   enemies = [];
   
-    for (var i = 0; i < level.length; i = i + 1) {
-        for (var j = 0; j < level[i].length; j = j + 1) {
+    for (var i = 0; i < level.length; i++) {
+        for (var j = 0; j < level[i].length; j++) {
             if (level[i][j] === "x") { 
                 // Create a wall and add it to the 'walls' group
-                var wall = new createjs.Bitmap("iamges/box_yellow.png");
+                var wall = new createjs.Bitmap("images/box_yellow.png");
                 wall.x = 64*j;
                 wall.y = 64*i;
-                wall.addCollider();
+                collisionGnome.addCollider(wall, 1.0);
                 walls.push(wall);
 
             } else if (level[i][j] === "t") { 
                 // Create a coin and add it to the 'targets' group
-                var target = new createjs.Bitmap("iamges/box_green.png");
+                var target = new createjs.Bitmap("images/box_green.png");
                 target.x = 64*j;
                 target.y = 64*i;
-                target.addCollider();
+                collisionGnome.addCollider(target, 1.0);
                 targets.push(target);
 
             } else if (level[i][j] === "h") { 
                 // Create a enemy and add it to the 'enemies' group
-                var enemy = new createjs.Bitmap("iamges/box_orange.png");
+                var enemy = new createjs.Bitmap("images/box_orange.png");
                 enemy.x = 64*j;
                 enemy.y = 64*i;
-                enemy.addCollider();
+                collisionGnome.addCollider(enemy, 1.0);
                 enemies.push(enemy);
 
             }
@@ -178,11 +192,18 @@ function loadLevel (level) {
 }
 
 function display(object){
-  
-  for(var i=0; i<object.length; i++){
-    myStage.addChild(object[i]);
+  if(object.constructor === Array){
+    for(var i=0; i<object.length; i++){
+      myStage.addChild(object[i]);
+    }
   }
+  else{
+    myStage.addChild(object);
+  }
+  
+  console.log("displayed " + object);
 }
+
 
 function generateTargets(num){
   // create any number of targets
