@@ -16,6 +16,10 @@ function init(){
 	initGame();	
 }
 
+// preload assets
+// start screen
+// level 1, 2, 3, 4, 5, 6, 7, etc.
+
 function initGame(){
 
   makeThings(10);
