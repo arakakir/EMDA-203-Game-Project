@@ -9,6 +9,7 @@ var stageHeight;
 var myFrameRate = 24;
 var character, background, scoreDisplay, theEnd;
 var rotationSpeed = 3;
+var speed = 10;
 
 var walls = [];
 var targets = [];
@@ -55,7 +56,7 @@ function init(){
   character.x = stageWidth / 2;
   character.y = stageHeight - 64;
   character.scaleX = character.scaleY = 0.5;
-  character.speed = 10;
+  character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
   myStage.addChild(character);
 
   collisionGnome.addCollider(character, 1.0);
@@ -241,10 +242,10 @@ function targetLocator(){
 
 function handleKeyInput(){
   // allow key strokes to control movement
-  if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed; }
-  if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed; }
-  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed; }
-  if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed; }
+  if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; }
+  if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; }
+  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; }
+  if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; }
 
 }
 
@@ -252,9 +253,7 @@ function handleCollisions(){
   // check to see if there are any collisions with any of the targets
   for(var i=0;i<targets.length;i++){
     if(character.collidesWith(targets[i])){
-      // move target out of view and remove it from the array
-      //targets[i].x = 0;
-      //targets[i].y = 0;
+      // remove it from the array
       myStage.removeChild(targets[i]);
       targets.splice(i, 1);
       score++;
@@ -262,6 +261,29 @@ function handleCollisions(){
       playEatSounds();
     }
   }
+  
+  
+  // check to see if there are any collisions with any of the targets
+  for(var i=0;i<walls.length;i++){
+    if(character.collidesWith(walls[i])){
+      // remove it from the array
+      // if character is below wall
+      if(character.y > walls[i].y){
+        character.speed.up = 0;
+      }
+      else if (character.y < walls[i].y){
+        character.speed.down = 0;
+      }
+      else if (character.x < walls[i].x){
+        
+      }
+        
+        
+
+      createjs.Sound.play("wall_collide");
+    }
+  }
+  
 }
 
 
