@@ -112,13 +112,17 @@ function gameLoop(evt){
 // an array with n number of pre-level display screens
 // for each define image, xy location, timer vs on-click vs key input, and duration if timer or key if key input
 
+  /////////////////////////////
+ //      DEFINE LEVELS     //
+////////////////////////////
+
 level[0] = 
   { preLevelDisplay : [
     {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
     {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
     {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
   
-  
+     // x = wall, t = target, e = enemy, c = character start location
     layout : [
      ["x", "x", "x", "x", "x", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
      ["x", " ", " ", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
@@ -126,7 +130,7 @@ level[0] =
      ["x", " ", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", "x", " ", " ", " ", "x"],
      ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", "x", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", "x", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", "t ", " ", " ", " ", " ", " ", " ", "x", " ", " ", " ", "x"],
      ["x", " ", "t", " ", " ", " ", " ", " ", " ", " ", "e", "x", " ", " ", " ", "x"],
      ["x", " ", "t", " ", " ", " ", "x", "x", "x", "x", "x", "x", " ", "e", " ", "x"],
      ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
