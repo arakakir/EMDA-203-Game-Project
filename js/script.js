@@ -128,7 +128,8 @@ function generateStars(num){
   //     "xxxxxxxxxxxxxxxxx"
   // ];  
   
-    var level1 = [
+    var level1;
+    level1.layout = [
      ["x", "x", "x", "x", "x", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
      ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
@@ -141,6 +142,10 @@ function generateStars(num){
      ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", "x", "x", "x", "x", "x", "x", " ", " ", " ", "x", "x", "x", "x", "x", "x"]]; 
+
+    level1.howToComplete = function() {
+      if(character.y)
+    }
 
   // create targets
 
@@ -156,7 +161,7 @@ function loadLevel (level) {
   targets = [];
   enemies = [];
   
-    for (var i = 0; i < level.length; i++) {
+    for (var i = 0; i < level.layout.length; i++) {
         for (var j = 0; j < level[i].length; j++) {
             if (level[i][j] === "x") { 
                 // Create a wall and add it to the 'walls' group
@@ -270,21 +275,21 @@ function handleCollisions(){
   for(var i=0;i<walls.length;i++){
     if(character.collidesWith(walls[i])){
       // if character is below wall
-      if(character.y >= walls[i].y + 32){
+      if(character.y > walls[i].y){
         character.speed.up = 0;
         console.log("up = 0");
       }
-      else if (character.y <= walls[i].y - 32){
+      if (character.y < walls[i].y){
         character.speed.down = 0;
         console.log("down = 0");
       }
-      else if (character.x >= walls[i].x + 32){
-        character.speed.right = 0;
-        console.log("right = 0");
-      }
-      else if (character.x <= walls[i].x - 32){
+     if (character.x > walls[i].x){
         character.speed.left = 0;
         console.log("left = 0");
+      }
+    if (character.x < walls[i].x){
+        character.speed.right = 0;
+        console.log("right = 0");
       }
     }
 
