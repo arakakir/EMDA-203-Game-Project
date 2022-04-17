@@ -83,7 +83,7 @@ function init(){
   createjs.Ticker.addEventListener('tick', gameLoop);
   createjs.Ticker._setFPS(myFrameRate);
   
-  loadLevel(level1);
+  loadLevel(level[1]);
 }
 
 // ***************** THE MAIN LOOP ******************
@@ -91,6 +91,7 @@ function gameLoop(evt){
   // put code in here that will change every 'tick'
   handleKeyInput();
   handleCollisions();
+  runLevels();
   endCheck();
   myStage.update();
 }
@@ -110,7 +111,12 @@ function generateStars(num){
   }
 }
 
-// function level1(){
+ function runLevels(){
+   for(var i=0;i<level.length;i++){
+     if(level[i].active){
+       level[i].completionCheck();
+     }
+   }
 
   // Design the level. x = wall, t = target, e = enemy.
   // var level1 = [
@@ -127,9 +133,11 @@ function generateStars(num){
   //     "    t   e    e   ",
   //     "xxxxxxxxxxxxxxxxx"
   // ];  
-  
-    var level1;
-    level1.layout = [
+ }
+ 
+    var level = [];
+   
+    level[1] = {"layout" : [
      ["x", "x", "x", "x", "x", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
      ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
@@ -141,10 +149,14 @@ function generateStars(num){
      ["x", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", " ", "e", " ", "x"],
      ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", "x", "x", "x", "x", "x", "x", " ", " ", " ", "x", "x", "x", "x", "x", "x"]]; 
+     ["x", "x", "x", "x", "x", "x", "x", " ", " ", " ", "x", "x", "x", "x", "x", "x"]]}; 
 
-    level1.howToComplete = function() {
-      if(character.y)
+    level[1].completionCheck = function() {
+      if(character.y <= 0){
+        console.log("level 1 complete");
+        level[1].active = false;
+        loadLevel(2)
+      }
     }
 
   // create targets
@@ -156,14 +168,14 @@ function generateStars(num){
 
 
 // Create the level from the level data grid in create
-function loadLevel (level) {
+function loadLevel (m) {
   walls = [];
   targets = [];
   enemies = [];
   
-    for (var i = 0; i < level.layout.length; i++) {
-        for (var j = 0; j < level[i].length; j++) {
-            if (level[i][j] === "x") { 
+    for (var i = 0; i < level[m].layout.length; i++) {
+        for (var j = 0; j < level[m].layout[i].length; j++) {
+            if (level[m].layout[i][j] === "x") { 
                 // Create a wall and add it to the 'walls' group
                 var wall = new createjs.Bitmap("images/box_yellow.png");
                 wall.x = 64*j;
@@ -171,7 +183,7 @@ function loadLevel (level) {
                 collisionGnome.addCollider(wall, 1.0);
                 walls.push(wall);
 
-            } else if (level[i][j] === "t") { 
+            } else if (level[m].layout[i][j] === "t") { 
                 // Create a coin and add it to the 'targets' group
                 var target = new createjs.Bitmap("images/box_green.png");
                 target.x = 64*j;
@@ -179,7 +191,7 @@ function loadLevel (level) {
                 collisionGnome.addCollider(target, 1.0);
                 targets.push(target);
 
-            } else if (level[i][j] === "h") { 
+            } else if (level[m].layout[i][j] === "h") { 
                 // Create a enemy and add it to the 'enemies' group
                 var enemy = new createjs.Bitmap("images/box_orange.png");
                 enemy.x = 64*j;
@@ -197,6 +209,8 @@ function loadLevel (level) {
   display(character);
   
   myStage.setChildIndex( scoreDisplay, myStage.numChildren-1);
+  
+  level[m].active = true;
 
 }
 
