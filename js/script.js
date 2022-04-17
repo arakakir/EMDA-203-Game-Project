@@ -103,25 +103,55 @@
 
   function level1(){
     // create walls
-    var level1Walls = [{0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, ];
-    // grid of 64 x 64  16 x 12
+
     
-    // W = wall, T = target, E = enemy, o = nothing, C = character
-    [[W,W,W,W,o,W,W,W,W,W,W,W,w,,w,w],
-     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
-     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
-     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
-     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
-     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
-     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
-     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w]
-     ]
+    // Design the level. x = wall, t = target, e = enemy.
+    var level1 = [
+        "                 ",
+        "                 ",
+        "                 ",
+        "     t           ",
+        "   e             ",
+        "   xxxxxxx       ",
+        "                 ",
+        "                t",
+        "             xxxx",
+        "                 ",
+        "    t   e    e   ",
+        "xxxxxxxxxxxxxxxxx"
+    ];  
     
     // create targets
     
     // reposition character
     character.x = stageWidth / 2;
 		character.y = stageHeight - 64;
+  }
+
+
+// Create the level from the level data grid in create
+  function loadLevel (level) {
+      for (var i = 0; i < level.length; i = i + 1) {
+          for (var j = 0; j < level[i].length; j = j + 1) {
+              if (level[i][j] === "x") { 
+                  // Create a wall and add it to the 'platform' group
+                  var platform = game.add.sprite(0 + 32 * j, 0 + 32 * i, "platform");
+                  platform.body.immovable = true;
+                  platforms.add(platform);
+
+              } else if (level[i][j] === "o") { 
+                  // Create a coin and add it to the 'coins' group
+                  var coin = game.add.sprite(0 + 32 * j, 0 + 32 * i, "coin");
+                  coins.add(coin);
+
+              } else if (level[i][j] === "h") { 
+                  // Create a enemy and add it to the 'enemies' group
+                  var enemy = game.add.sprite(0 + 32 * j, 0 + 32 * i, "enemy");
+                  enemies.add(enemy);
+
+              }
+          }
+      }
   }
 	
 	function generateTargets(num){
