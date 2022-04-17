@@ -90,7 +90,6 @@ function gameLoop(evt){
   // put code in here that will change every 'tick'
   handleKeyInput();
   handleCollisions();
-  handlePerimeter();
   endCheck();
   myStage.update();
 }
@@ -258,7 +257,7 @@ function handleCollisions(){
       targets.splice(i, 1);
       score++;
       scoreDisplay.text = "SCORE: " + score;
-      playEatSounds();
+      createjs.Sound.play("target_collide");
     }
   }
   
@@ -275,35 +274,25 @@ function handleCollisions(){
         character.speed.down = 0;
       }
       else if (character.x < walls[i].x){
-        
+        character.speed.right = 0;
       }
-        
-        
+      else if (character.x > walls[i].x){
+        character.speed.left = 0;
+      }
+    }
 
+    
+      
+
+        
+        
       createjs.Sound.play("wall_collide");
     }
-  }
+}
   
-}
 
 
-function handlePerimeter(){
-  // check distance from center of the circle, if too big reset to center
-  var x = (stageWidth/2) - character.x;
-  var y = (stageHeight/2) - character.y;
-  var z = Math.sqrt( x*x + y*y );
-  if (z > 415){
-    character.x = stageWidth/2;
-    character.y = stageHeight/2;
-    createjs.Sound.play("edgeSound");
 
-    // set score to zero unless end of game
-    if(theEnd.arrived != true){
-      score = 0;
-      scoreDisplay.text = score;
-    }
-  }
-}
 
 
 
