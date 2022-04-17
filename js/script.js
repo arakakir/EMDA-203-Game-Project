@@ -14,6 +14,7 @@ var speed = 10;
 var walls = [];
 var targets = [];
 var enemies = [];
+var level = [];
 
 var score = 0;
 var a,b,c,xpos,ypos;
@@ -83,7 +84,7 @@ function init(){
   createjs.Ticker.addEventListener('tick', gameLoop);
   createjs.Ticker._setFPS(myFrameRate);
   
-  loadLevel(level[1]);
+  loadLevel(0);
 }
 
 // ***************** THE MAIN LOOP ******************
@@ -98,73 +99,38 @@ function gameLoop(evt){
 
 
 // ************* Various self-defined functions *************
-function generateStars(num){
-  // create any number of stars, random location and size
-  for(var i=0;i<num;i++){
-    var star = new createjs.Bitmap("images/star.png");
-    star.scaleX = star.scaleY = Math.random();
-        star.rotation = 360 * Math.random();
-    star.x = Math.random() * stageWidth;
-    star.y = Math.random() * stageHeight;
-    star.alpha = 0.5
-    myStage.addChild(star);
-  }
-}
-
  function runLevels(){
    for(var i=0;i<level.length;i++){
      if(level[i].active){
        level[i].completionCheck();
      }
    }
-
-  // Design the level. x = wall, t = target, e = enemy.
-  // var level1 = [
-  //     "                 ",
-  //     "                 ",
-  //     "                 ",
-  //     "     t           ",
-  //     "   e             ",
-  //     "   xxxxxxx       ",
-  //     "                 ",
-  //     "                t",
-  //     "             xxxx",
-  //     "                 ",
-  //     "    t   e    e   ",
-  //     "xxxxxxxxxxxxxxxxx"
-  // ];  
  }
  
-    var level = [];
-   
-    level[1] = {"layout" : [
-     ["x", "x", "x", "x", "x", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
-     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", " ", "e", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", "x", "x", "x", "x", "x", "x", " ", " ", " ", "x", "x", "x", "x", "x", "x"]]}; 
 
-    level[1].completionCheck = function() {
-      if(character.y <= 0){
-        console.log("level 1 complete");
-        level[1].active = false;
-        loadLevel(2)
-      }
-    }
 
-  // create targets
+level[0] = {layout : [
+ ["x", "x", "x", "x", "x", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+ ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+ ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
+ ["x", " ", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+ ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+ ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
+ ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+ ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
+ ["x", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", " ", "e", " ", "x"],
+ ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+ ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+ ["x", "x", "x", "x", "x", "x", "x", " ", " ", " ", "x", "x", "x", "x", "x", "x"]]}; 
 
-  // reposition character
-//   character.x = stageWidth / 2;
-//   character.y = stageHeight - 64;
-// }
+level[0].completionCheck = function() {
+  if(character.y <= 0){
+    console.log("level 0 complete");
+    level[0].active = false;
+    loadLevel(1)
+  }
+}
+
 
 
 // Create the level from the level data grid in create
