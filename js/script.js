@@ -56,9 +56,9 @@
 		//collisionGnome.setDebug(true);
 		
 		scoreDisplay = new createjs.Text("SCORE: " + score, "48px Courier");
-		scoreDisplay.x = stageWidth / 2;
-		scoreDisplay.y = stageHeight / 2;
-		scoreDisplay.textAlign = "center";
+		scoreDisplay.x = stageWidth - 50;
+		scoreDisplay.y = stageHeight - 64;
+		scoreDisplay.textAlign = "right";
 		scoreDisplay.textBaseline = "middle";
 		myStage.addChild(scoreDisplay);
 		
@@ -100,6 +100,29 @@
 			myStage.addChild(star);
 		}
 	}
+
+  function level1(){
+    // create walls
+    var level1Walls = [{0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, ];
+    // grid of 64 x 64  16 x 12
+    
+    // W = wall, T = target, E = enemy, o = nothing, C = character
+    [[W,W,W,W,o,W,W,W,W,W,W,W,w,,w,w],
+     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
+     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
+     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
+     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
+     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
+     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w],
+     [w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w]
+     ]
+    
+    // create targets
+    
+    // reposition character
+    character.x = stageWidth / 2;
+		character.y = stageHeight - 64;
+  }
 	
 	function generateTargets(num){
 		// create any number of targets
