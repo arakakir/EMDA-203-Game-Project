@@ -189,6 +189,8 @@ function loadLevel (level) {
   display(targets);
   display(enemies);
   display(character);
+  
+  myStage.setChildIndex( scoreDisplay, myStage.numChildren-1);
 
 }
 
