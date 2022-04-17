@@ -50,10 +50,11 @@ function init(){
   background = new createjs.Bitmap("images/bg.png");
   myStage.addChild(background);
 
-  character = new createjs.Bitmap("images/box_yellow.png");
-  character.regX = character.regY = 45;
+  character = new createjs.Bitmap("images/hero.png");
+  character.regX = character.regY = 64;
   character.x = stageWidth / 2;
   character.y = stageHeight - 64;
+  character.scaleX = character.scaleY = 0.5;
   character.speed = 10;
   myStage.addChild(character);
 
@@ -191,6 +192,7 @@ function loadLevel (level) {
 
 }
 
+
 function display(object){
   if(object.constructor === Array){
     for(var i=0; i<object.length; i++){
@@ -200,8 +202,6 @@ function display(object){
   else{
     myStage.addChild(object);
   }
-  
-  console.log("displayed " + object);
 }
 
 
@@ -256,7 +256,7 @@ function handleCollisions(){
       myStage.removeChild(targets[i]);
       targets.splice(i, 1);
       score++;
-      scoreDisplay.text = score;
+      scoreDisplay.text = "SCORE: " + score;
       playEatSounds();
     }
   }
