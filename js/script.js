@@ -132,14 +132,14 @@ function generateStars(num){
      ["x", "x", "x", "x", "x", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
      ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", " ", "e", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", "x", "x", "x", "x", "x", "x", " ", " ", " ", "x", "x", "x", "x", "x", "x"]]; 
 
   // create targets
@@ -270,17 +270,19 @@ function handleCollisions(){
   for(var i=0;i<walls.length;i++){
     if(character.collidesWith(walls[i])){
       // if character is below wall
-      if(character.y > walls[i].y){
+      if(character.y >= walls[i].y + 32){
         character.speed.up = 0;
+        console.log("up = 0");
       }
-      else if (character.y < walls[i].y){
+      else if (character.y <= walls[i].y - 32){
         character.speed.down = 0;
+        console.log("down = 0");
       }
-      else if (character.x < walls[i].x){
+      else if (character.x >= walls[i].x + 32){
         character.speed.right = 0;
         console.log("right = 0");
       }
-      else if (character.x > walls[i].x){
+      else if (character.x <= walls[i].x - 32){
         character.speed.left = 0;
         console.log("left = 0");
       }
