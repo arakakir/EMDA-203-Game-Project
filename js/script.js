@@ -186,7 +186,7 @@ level[1] =
   }
 
 
-function clearScreen(level){
+function clearScreen(){
   myStage.removeAllChildren();
   myStage.addChild(background, character, scoreDisplay);
   myStage.update();
