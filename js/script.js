@@ -88,30 +88,19 @@ function init(){
   loadLevel(0);
 }
 
+
 // ***************** THE MAIN LOOP ******************
 function gameLoop(evt){
   // put code in here that will change every 'tick'
   handleKeyInput();
   handleCollisions();
   runLevels();
-  endCheck();
   myStage.update();
 }
 
 
-// ************* Various self-defined functions *************
- function runLevels(){
-   for(var i=0;i<level.length;i++){
-     if(level[i].active){
-       level[i].completionCheck();
-     }
-   }
- }
- 
 
-// to do: level define pre-level display
-// an array with n number of pre-level display screens
-// for each define image, xy location, timer vs on-click vs key input, and duration if timer or key if key input
+ 
 
   /////////////////////////////
  //      DEFINE LEVELS     //
@@ -122,6 +111,9 @@ level[0] =
     {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
     {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
     {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
+  
+  
+    backgroundImage : "images/bg.png",
   
      // x = wall, t = target, e = enemy, c = character start location
     layout : [
@@ -230,18 +222,15 @@ function clearScreen(){
 // Create the level from the level data grid in create
 function loadLevel (m) {
   // remove children
-  
   clearScreen();
+  
  // Display pre-level images (if any)
   // for (var i = 0; i < level[m].preLevelDisplay.length; i++){
   //   // display one image
   //   var preLevelDisplay = new createjs.Bitmap(level[m].preLevelDisplay)
   // }
   
-
-  
   // Load in the level layout
-  
   walls = [];
   targets = [];
   enemies = [];
@@ -294,6 +283,16 @@ function loadLevel (m) {
 }
 
 
+// ************* Various self-defined functions *************
+ function runLevels(){
+   for(var i=0;i<level.length;i++){
+     if(level[i].active){
+       level[i].completionCheck();
+     }
+   }
+ }
+
+
 function display(object){
   if(object.constructor === Array){
     for(var i=0; i<object.length; i++){
@@ -313,6 +312,7 @@ function handleKeyInput(){
   if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; checkWallCollisions("down");}
   if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; checkWallCollisions("right");}
 }
+
 
 function handleCollisions(){
   // check to see if there are any collisions with any of the targets
@@ -342,8 +342,7 @@ function handleCollisions(){
 }
   
   
-  // check to see if there are any collisions with any of the targets
-  
+// check to see if there are any collisions with any of the walls
 function checkWallCollisions(direction){
   character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
   
@@ -373,43 +372,3 @@ function checkWallCollisions(direction){
     }
 }
   
-
-
-
-
-
-
-function playEatSounds(){  
-    var i = Math.floor((Math.random()*5));
-    var x; 
-    switch(i){
-      case 0:
-        x="eatSound1";
-        break;
-      case 1:
-        x="eatSound2";
-        break;
-      case 2:
-        x="eatSound3";
-        break;
-      case 3:
-        x="eatSound4";
-        break;
-      case 4:
-        x="eatSound5";
-        break;
-    }
-  createjs.Sound.play(x);  // Play the sound that corresponds to the random number!
-}
-
-function endCheck(){
-  // if all targets are gone, display end text and don't allow score to reset
-  if(targets.length == 0){
-    theEnd.arrived = true;
-    theEnd.alpha = 1.0;
-  }
-  if (theEnd.arrived == true && endSoundPlayed == false){
-    createjs.Sound.play("endSound");
-    endSoundPlayed = true;
-  }
-}
