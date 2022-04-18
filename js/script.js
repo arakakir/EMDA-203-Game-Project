@@ -179,15 +179,17 @@ level[1] =
       if(character.x <= 0){
         console.log("level 0 complete");
         level[1].active = false;
-        removeLevel(1);
+        clearScreen();
         loadLevel(0)
       }
     }
   }
 
 
-function removeLevel(level){
-  myStage.removeChild
+function clearScreen(level){
+  myStage.removeAllChildren();
+  myStage.addChild(background, character, scoreDisplay);
+  myStage.update();
 }
 
 
