@@ -153,6 +153,16 @@ level[0] =
 
 // Create the level from the level data grid in create
 function loadLevel (m) {
+ // Display pre-level images (if any)
+  // for (var i = 0; i < level[m].preLevelDisplay.length; i++){
+  //   // display one image
+  //   var preLevelDisplay = new createjs.Bitmap(level[m].preLevelDisplay)
+  // }
+  
+
+  
+  // Load in the level layout
+  
   walls = [];
   targets = [];
   enemies = [];
@@ -250,10 +260,10 @@ function targetLocator(){
 
 function handleKeyInput(){
   // allow key strokes to control movement
-  if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; }
-  if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; }
-  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; }
-  if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; }
+  if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; checkWallCollisions("up");}
+  if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; checkWallCollisions("down");}
+  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; checkWallCollisions("left");}
+  if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; checkWallCollisions("right");}
 
 }
 
@@ -269,30 +279,32 @@ function handleCollisions(){
       createjs.Sound.play("target_collide");
     }
   }
+}
   
   
   // check to see if there are any collisions with any of the targets
   
+function checkWallCollisions(direction){
   character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
   
   for(var i=0;i<walls.length;i++){
     if(character.collidesWith(walls[i])){
       // if character is below wall set up speed to 0
-      if(character.y > walls[i].y){
+      if(character.y > walls[i].y && direction == "up"){
         character.speed.up = 0;
-        character.y = walls[i].y + 64;
+        //character.y = walls[i].y + 64;
       }
-      if (character.y < walls[i].y){
+      if (character.y < walls[i].y && direction == "down"){
         character.speed.down = 0;
-        character.y = walls[i].y - 64;
+        //character.y = walls[i].y - 64;
       }
-      if (character.x > walls[i].x){
+      if (character.x > walls[i].x && direction == "left"){
         character.speed.left = 0;
-        character.x = walls[i].x + 64;
+        //character.x = walls[i].x + 64;
       }
-      if (character.x < walls[i].x){
+      if (character.x < walls[i].x && direction == "right"){
         character.speed.right = 0;
-        character.x = walls[i].x - 64;
+        //character.x = walls[i].x - 64;
       }
     }
 
