@@ -56,7 +56,7 @@ function init(){
   character.regX = character.regY = 64;
   character.x = stageWidth / 2;
   character.y = stageHeight - 64;
-  character.startPosition
+  character.startPosition = {x: 0, y: 0};
   character.scaleX = character.scaleY = 0.5;
   character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
   myStage.addChild(character);
@@ -151,9 +151,46 @@ level[0] =
   }
 
 
+level[1] = 
+  { preLevelDisplay : [
+    {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
+    {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
+    {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
+  
+     // x = wall, t = target, e = enemy, c = character start location
+    layout : [
+     ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+     [" ", " ", " ", " ", "x", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "x", "x", "x", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
+     ["x", " ", "x", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", "t ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", " ", " ", "x", "x", "x", "x", "x", " ", " ", "e", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", "x", "x", "x", "x", "x", "x", " ", "c", " ", "x", "x", "x", "x", "x", "x"]], 
+   
+   
+    enemyMovementStyle : "randomWallBounce",
+
+    completionCheck : function() {
+      if(character.x <= 0){
+        console.log("level 0 complete");
+        level[1].active = false;
+        loadLevel(0)
+      }
+    }
+  }
+
+
 
 // Create the level from the level data grid in create
 function loadLevel (m) {
+  // remove children
+  
+  
  // Display pre-level images (if any)
   // for (var i = 0; i < level[m].preLevelDisplay.length; i++){
   //   // display one image
@@ -198,6 +235,7 @@ function loadLevel (m) {
                 // set the character start position
                 character.x = 64*j + 32;
                 character.y = 64*i + 32;
+                character.startPosition = {x: character.x, y: character.y};
 
             }
         }
@@ -254,8 +292,8 @@ function handleCollisions(){
         myStage.removeChild(enemies[i]);
         enemies.splice(i, 1);
         score--;
-        character.x = characterStartPosition.x;
-        character.y = characterStartPosition.y;
+        character.x = character.startPosition.x;
+        character.y = character.startPosition.y;
         scoreDisplay.text = "SCORE: " + score;
         createjs.Sound.play("enemy_collide");
       }
