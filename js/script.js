@@ -21,7 +21,6 @@ var a,b,c,xpos,ypos;
 var endSoundPlayed = false;
 
 
-
 function preload(){
   var queue = new createjs.LoadQueue();
   createjs.Sound.alternateExtensions = ["mp3"];
@@ -43,11 +42,8 @@ function preload(){
 // ************ INITIALIZATION - Happens only once ****************
 function init(){
   myStage = new createjs.Stage(document.getElementById("myCanvas"));
-    stageWidth = myStage.canvas.width;
-    stageHeight = myStage.canvas.height;
-
-  // generateStars(500);
-  // generateTargets(10); 
+  stageWidth = myStage.canvas.width;
+  stageHeight = myStage.canvas.height;
 
   background = new createjs.Bitmap("images/bg.png");
   myStage.addChild(background);
@@ -97,7 +93,6 @@ function gameLoop(evt){
   runLevels();
   myStage.update();
 }
-
 
 
  
@@ -212,13 +207,6 @@ level[2] =
   }
 
 
-function clearScreen(){
-  myStage.removeAllChildren();
-  myStage.addChild(background, character, scoreDisplay);
-  myStage.update();
-}
-
-
 // Create the level from the level data grid in create
 function loadLevel (m) {
   // remove children
@@ -227,8 +215,16 @@ function loadLevel (m) {
  // Display pre-level images (if any)
   // for (var i = 0; i < level[m].preLevelDisplay.length; i++){
   //   // display one image
-  //   var preLevelDisplay = new createjs.Bitmap(level[m].preLevelDisplay)
+     var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i])
+     preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
+     preLevelImage.y = level[m].preLevelDisplay[i].loc.x;
   // }
+  
+  
+  
+  // Display background image
+  
+  
   
   // Load in the level layout
   walls = [];
@@ -293,6 +289,13 @@ function loadLevel (m) {
  }
 
 
+function clearScreen(){
+  myStage.removeAllChildren();
+  myStage.addChild(background, character, scoreDisplay);
+  myStage.update();
+}
+
+
 function display(object){
   if(object.constructor === Array){
     for(var i=0; i<object.length; i++){
@@ -307,10 +310,10 @@ function display(object){
 
 function handleKeyInput(){
   // allow key strokes to control movement
-  if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; checkWallCollisions("up");}
-  if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; checkWallCollisions("left");}
-  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; checkWallCollisions("down");}
-  if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; checkWallCollisions("right");}
+  if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; handleWallCollisions("up");}
+  if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; handleWallCollisions("left");}
+  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
+  if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; handleWallCollisions("right");}
 }
 
 
@@ -343,7 +346,7 @@ function handleCollisions(){
   
   
 // check to see if there are any collisions with any of the walls
-function checkWallCollisions(direction){
+function handleWallCollisions(direction){
   character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
   
   for(var i=0;i<walls.length;i++){
