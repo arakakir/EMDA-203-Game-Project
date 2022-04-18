@@ -179,11 +179,16 @@ level[1] =
       if(character.x <= 0){
         console.log("level 0 complete");
         level[1].active = false;
+        removeLevel(1);
         loadLevel(0)
       }
     }
   }
 
+
+function removeLevel(level){
+  myStage.removeChild
+}
 
 
 // Create the level from the level data grid in create
