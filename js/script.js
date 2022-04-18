@@ -215,9 +215,13 @@ function loadLevel (m) {
  // Display pre-level images (if any)
   // for (var i = 0; i < level[m].preLevelDisplay.length; i++){
   //   // display one image
-     var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i])
-     preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
-     preLevelImage.y = level[m].preLevelDisplay[i].loc.x;
+  //    var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i])
+  //    preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
+  //    preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
+  //    myStage.addChild(preLevelImage);
+  // if (level[m].preLevelDisplay[i].toEnd == "timer"){
+  //   // set timeout for n seconds;
+  // }
   // }
   
   
