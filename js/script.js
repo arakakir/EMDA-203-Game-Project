@@ -56,6 +56,7 @@ function init(){
   character.regX = character.regY = 64;
   character.x = stageWidth / 2;
   character.y = stageHeight - 64;
+  character.startPosition
   character.scaleX = character.scaleY = 0.5;
   character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
   myStage.addChild(character);
@@ -66,7 +67,7 @@ function init(){
 
   scoreDisplay = new createjs.Text("SCORE: " + score, "48px Courier");
   scoreDisplay.x = stageWidth - 50;
-  scoreDisplay.y = stageHeight - 64;
+  scoreDisplay.y = stageHeight - 32;
   scoreDisplay.textAlign = "right";
   scoreDisplay.textBaseline = "middle";
   myStage.addChild(scoreDisplay);
@@ -185,7 +186,7 @@ function loadLevel (m) {
                 collisionGnome.addCollider(target, 1.0);
                 targets.push(target);
 
-            } else if (level[m].layout[i][j] === "h") { 
+            } else if (level[m].layout[i][j] === "e") { 
                 // Create a enemy and add it to the 'enemies' group
                 var enemy = new createjs.Bitmap("images/box_orange.png");
                 enemy.x = 64*j + 32;
@@ -226,45 +227,12 @@ function display(object){
 }
 
 
-function generateTargets(num){
-  // create any number of targets
-  for(var i=0;i<num;i++){
-    var target = new createjs.Bitmap("images/target.png");
-    target.scaleX = target.scaleY = Math.min(Math.max(Math.random(), 0.3), 1);
-    target.rotation = 360 * Math.random();
-
-    // call this function until we get a locations within bounds of circle
-    while(targetLocator());
-
-    target.x = xpos;
-    target.y = ypos;
-
-    targets[i]= target;
-    collisionGnome.addCollider(targets[i], 0.5);
-    myStage.addChild(target);
-  }	
-}
-
-function targetLocator(){
-    // generate locations within bounds of circle
-  xpos = Math.random() * stageWidth;
-  ypos = Math.random() * stageHeight;
-
-  a = (stageWidth/2) - xpos;
-  b = (stageHeight/2) - ypos;
-  c = Math.sqrt( a*a + b*b );
-
-  if (c > 450) { return true;}
-  else { return false;}
-}
-
 function handleKeyInput(){
   // allow key strokes to control movement
   if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; checkWallCollisions("up");}
-  if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; checkWallCollisions("down");}
-  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; checkWallCollisions("left");}
+  if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; checkWallCollisions("left");}
+  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; checkWallCollisions("down");}
   if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; checkWallCollisions("right");}
-
 }
 
 function handleCollisions(){
@@ -279,6 +247,19 @@ function handleCollisions(){
       createjs.Sound.play("target_collide");
     }
   }
+  
+    for(var i=0;i<enemies.length;i++){
+      if(character.collidesWith(enemies[i])){
+        // remove it from the array
+        myStage.removeChild(enemies[i]);
+        enemies.splice(i, 1);
+        score--;
+        character.x = characterStartPosition.x;
+        character.y = characterStartPosition.y;
+        scoreDisplay.text = "SCORE: " + score;
+        createjs.Sound.play("enemy_collide");
+      }
+    }
 }
   
   
@@ -292,19 +273,19 @@ function checkWallCollisions(direction){
       // if character is below wall set up speed to 0
       if(character.y > walls[i].y && direction == "up"){
         character.speed.up = 0;
-        //character.y = walls[i].y + 64;
+        character.y = walls[i].y + 64;
       }
       if (character.y < walls[i].y && direction == "down"){
         character.speed.down = 0;
-        //character.y = walls[i].y - 64;
+        character.y = walls[i].y - 64;
       }
       if (character.x > walls[i].x && direction == "left"){
         character.speed.left = 0;
-        //character.x = walls[i].x + 64;
+        character.x = walls[i].x + 64;
       }
       if (character.x < walls[i].x && direction == "right"){
         character.speed.right = 0;
-        //character.x = walls[i].x - 64;
+        character.x = walls[i].x - 64;
       }
     }
 
