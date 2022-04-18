@@ -275,26 +275,18 @@ function handleCollisions(){
       // if character is below wall
       if(character.y > walls[i].y){
         character.speed.up = 0;
-        console.log("up = 0");
       }
       if (character.y < walls[i].y){
         character.speed.down = 0;
-        console.log("down = 0");
       }
      if (character.x > walls[i].x){
         character.speed.left = 0;
-        console.log("left = 0");
       }
     if (character.x < walls[i].x){
         character.speed.right = 0;
-        console.log("right = 0");
       }
     }
 
-    
-      
-
-        
         
       createjs.Sound.play("wall_collide");
     }
