@@ -57,7 +57,7 @@ function init(){
   character.x = stageWidth / 2;
   character.y = stageHeight - 64;
   character.startPosition = {x: 0, y: 0};
-  character.scaleX = character.scaleY = 0.5;
+  character.scaleX = character.scaleY = 0.4;
   character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
   myStage.addChild(character);
 
@@ -125,7 +125,7 @@ level[0] =
   
      // x = wall, t = target, e = enemy, c = character start location
     layout : [
-     ["x", "x", "x", "x", "x", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+     ["x", "x", "x", "x", "x", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
      ["x", " ", " ", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
      ["x", " ", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
@@ -165,12 +165,12 @@ level[1] =
      ["x", " ", "x", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", " ", " ", " ", " ", "x"],
      ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "t ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", " ", " ", "x", "x", "x", "x", "x", " ", " ", "e", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", "x", "x", "x", "x", "x", "x", " ", "c", " ", "x", "x", "x", "x", "x", "x"]], 
+     ["x", " ", "t", " ", "x", "x", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", "x", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", "x", " ", " ", " ", "x", "x", "x", " ", " ", "e", " ", "x"],
+     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", "x", "x", "x", "x", "c", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
    
    
     enemyMovementStyle : "randomWallBounce",
@@ -179,6 +179,40 @@ level[1] =
       if(character.x <= 0){
         console.log("level 0 complete");
         level[1].active = false;
+        clearScreen();
+        loadLevel(2)
+      }
+    }
+  }
+
+level[2] = 
+  { preLevelDisplay : [
+    {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
+    {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
+    {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
+  
+     // x = wall, t = target, e = enemy, c = character start location
+    layout : [
+     ["x", "x", "x", "x", "x", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+     ["x", " ", " ", " ", "x", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "c"],
+     ["x", " ", "x", "x", "x", " ", "x", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
+     ["x", " ", "x", " ", "x", "t", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", "x", "x", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", "x", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", "x", " ", " ", " ", "x", "x", "x", " ", " ", "e", " ", "x"],
+     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
+   
+   
+    enemyMovementStyle : "randomWallBounce",
+
+    completionCheck : function() {
+      if(character.y <= 0){
+        console.log("level 0 complete");
+        level[2].active = false;
         clearScreen();
         loadLevel(0)
       }
@@ -197,7 +231,7 @@ function clearScreen(){
 function loadLevel (m) {
   // remove children
   
-  
+  clearScreen();
  // Display pre-level images (if any)
   // for (var i = 0; i < level[m].preLevelDisplay.length; i++){
   //   // display one image
