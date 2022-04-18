@@ -62,7 +62,7 @@ function init(){
 
   collisionGnome.addCollider(character, 1.0);
   collisionGnome.setStage(myStage);
-  // collisionGnome.setDebug(true);
+  //collisionGnome.setDebug(true);
 
   scoreDisplay = new createjs.Text("SCORE: " + score, "48px Courier");
   scoreDisplay.x = stageWidth - 50;
@@ -162,24 +162,24 @@ function loadLevel (m) {
             if (level[m].layout[i][j] === "x") { 
                 // Create a wall and add it to the 'walls' group
                 var wall = new createjs.Bitmap("images/box_yellow.png");
-                wall.x = 64*j;
-                wall.y = 64*i;
+                wall.x = 64*j + 32;
+                wall.y = 64*i + 32;
                 collisionGnome.addCollider(wall, 1.0);
                 walls.push(wall);
 
             } else if (level[m].layout[i][j] === "t") { 
                 // Create a coin and add it to the 'targets' group
                 var target = new createjs.Bitmap("images/box_green.png");
-                target.x = 64*j;
-                target.y = 64*i;
+                target.x = 64*j + 32;
+                target.y = 64*i + 32;
                 collisionGnome.addCollider(target, 1.0);
                 targets.push(target);
 
             } else if (level[m].layout[i][j] === "h") { 
                 // Create a enemy and add it to the 'enemies' group
                 var enemy = new createjs.Bitmap("images/box_orange.png");
-                enemy.x = 64*j;
-                enemy.y = 64*i;
+                enemy.x = 64*j + 32;
+                enemy.y = 64*i + 32;
                 collisionGnome.addCollider(enemy, 1.0);
                 enemies.push(enemy);
 
