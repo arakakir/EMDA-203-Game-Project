@@ -135,7 +135,7 @@ level[0] =
      ["x", " ", "t", " ", " ", " ", "x", "x", "x", "x", "x", "x", " ", "e", " ", "x"],
      ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
      ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", "x", "x", "x", "x", "x", "x", " ", " ", " ", "x", "x", "x", "x", "x", "x"]], 
+     ["x", "x", "x", "x", "x", "x", "x", " ", "c", " ", "x", "x", "x", "x", "x", "x"]], 
    
    
     enemyMovementStyle : "randomWallBounce",
@@ -182,6 +182,11 @@ function loadLevel (m) {
                 enemy.y = 64*i + 32;
                 collisionGnome.addCollider(enemy, 1.0);
                 enemies.push(enemy);
+              
+            } else if (level[m].layout[i][j] === "c") { 
+                // set the character start position
+                character.x = 64*j + 32;
+                character.y = 64*i + 32;
 
             }
         }
@@ -272,18 +277,22 @@ function handleCollisions(){
   
   for(var i=0;i<walls.length;i++){
     if(character.collidesWith(walls[i])){
-      // if character is below wall
+      // if character is below wall set up speed to 0
       if(character.y > walls[i].y){
         character.speed.up = 0;
+        character.y = walls[i].y + 64;
       }
       if (character.y < walls[i].y){
         character.speed.down = 0;
+        character.y = walls[i].y - 64;
       }
-     if (character.x > walls[i].x){
+      if (character.x > walls[i].x){
         character.speed.left = 0;
+        character.x = walls[i].x + 64;
       }
-    if (character.x < walls[i].x){
+      if (character.x < walls[i].x){
         character.speed.right = 0;
+        character.x = walls[i].x - 64;
       }
     }
 
