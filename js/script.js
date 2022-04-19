@@ -143,6 +143,8 @@ level[1] =
     {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
     {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
     {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
+   
+   backgroundImage : "images/bg.png",
   
      // x = wall, t = target, e = enemy, c = character start location
     layout : [
@@ -164,7 +166,7 @@ level[1] =
 
     completionCheck : function() {
       if(character.x <= 0){
-        console.log("level 0 complete");
+        console.log("level 1 complete");
         level[1].active = false;
         clearScreen();
         loadLevel(2)
@@ -177,6 +179,8 @@ level[2] =
     {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
     {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
     {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
+   
+   backgroundImage : "images/bg.png",
   
      // x = wall, t = target, e = enemy, c = character start location
     layout : [
@@ -198,7 +202,7 @@ level[2] =
 
     completionCheck : function() {
       if(character.y <= 0){
-        console.log("level 0 complete");
+        console.log("level 2 complete");
         level[2].active = false;
         clearScreen();
         loadLevel(0)
@@ -213,21 +217,26 @@ function loadLevel (m) {
   clearScreen();
   
  // Display pre-level images (if any)
-  // for (var i = 0; i < level[m].preLevelDisplay.length; i++){
-  //   // display one image
-  //    var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i])
-  //    preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
-  //    preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
-  //    myStage.addChild(preLevelImage);
-  // if (level[m].preLevelDisplay[i].toEnd == "timer"){
-  //   // set timeout for n seconds;
-  // }
-  // }
+  for (var i = 0; i < level[m].preLevelDisplay.length; i++){
+    // display one image
+    var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i])
+    preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
+    preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
+    myStage.addChild(preLevelImage);
+    
+    if (level[m].preLevelDisplay[i].toEnd == "timer"){
+      sleep(level[m].preLevelDisplay[i].duration);
+    }
+    
+    if (level[m].preLevelDisplay[i].toEnd == "onClick"){
+      preLevelImage.;
+    }
+  }
   
   
   
   // Display background image
-  
+  background.image.src = level[m].backgroundImage;
   
   
   // Load in the level layout
@@ -297,6 +306,14 @@ function clearScreen(){
   myStage.removeAllChildren();
   myStage.addChild(background, character, scoreDisplay);
   myStage.update();
+}
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
 }
 
 
