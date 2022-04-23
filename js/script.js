@@ -216,9 +216,11 @@ function loadLevel (m) {
   clearScreen();
   
  // Display pre-level images (if any)
+  if(level[m].preLevelDisplay==)
   for (var i = 0; i < level[m].preLevelDisplay.length; i++){
     // display one image
-    var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i])
+    // var preLevelImage = new createjs.Bitmap("images/level1.1.png");
+    var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i].img)
     preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
     preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
     myStage.addChild(preLevelImage);
@@ -226,14 +228,17 @@ function loadLevel (m) {
     console.log("added prelevelimage");
     console.log(preLevelImage);
     
-//     if (level[m].preLevelDisplay[i].toEnd == "timer"){
-//       sleep(level[m].preLevelDisplay[i].duration);
-//     }
+    if (level[m].preLevelDisplay[i].toEnd == "timer"){
+      sleep(level[m].preLevelDisplay[i].duration);
+    }
     
-//     if (level[m].preLevelDisplay[i].toEnd == "onClick"){
-//       preLevelImage.on("click", function(){myStage.removeChild(preLevelImage)});
-//     }
+    if (level[m].preLevelDisplay[i].toEnd == "onClick"){
+      preLevelImage.on("click", function(){myStage.removeChild(preLevelImage)});
+    }
   }
+  
+  // display first image, then wait some amount
+  // if last image clicked then load rest of level.
   
   
   
