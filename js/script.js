@@ -46,7 +46,7 @@ function init(){
   stageHeight = myStage.canvas.height;
 
   background = new createjs.Bitmap("images/bg.png");
-  myStage.addChild(background);
+  // myStage.addChild(background);
 
   character = new createjs.Bitmap("images/hero.png");
   character.regX = character.regY = 64;
@@ -223,8 +223,8 @@ function loadLevel (m) {
     preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
     myStage.addChild(preLevelImage);
     myStage.update();
-    console.log("added prelevelimage")
-    console.log(preLevelImage)p
+    console.log("added prelevelimage");
+    console.log(preLevelImage);
     
 //     if (level[m].preLevelDisplay[i].toEnd == "timer"){
 //       sleep(level[m].preLevelDisplay[i].duration);
