@@ -7,17 +7,18 @@ var myStage, stageWidth, stageHeight;
 var myFrameRate = 24;
 var character, background, scoreDisplay, theEnd;
 var rotationSpeed = 3;
-var speed = 20;
+var speed = 10;
+
+var score = 0;
 
 var walls = [];
 var targets = [];
 var enemies = [];
 var level = [];
 
-var score = 0;
-var a,b,c,xpos,ypos;
-var endSoundPlayed = false;
 
+
+// ************************* PRELOAD ASSETS ***************************
 
 function preload(){
   var queue = new createjs.LoadQueue();
@@ -32,12 +33,18 @@ function preload(){
     {id:"eatSound4", src:"sounds/eat4.mp3", data:2},
     {id:"eatSound5", src:"sounds/eat5.mp3", data:2},
     {id:"endSound", src:"sounds/endSound.mp3", data:2},
-    {id:"edgeSound", src:"sounds/edgeSound.mp3", data:2}
+    {id:"hero", src:"images/hero.png"},
+    {id:"background", src:"images/bg.png"},
+    {id:"wall", src:"images/box_yellow.png"},
+    {id:"enemy", src:"images/box_orange.png"},
+    {id:"target", src:"images/box_green.png"}
     ]);
 }
 
 
+
 // ************ INITIALIZATION - Happens only once ****************
+
 function init(){
   myStage = new createjs.Stage(document.getElementById("myCanvas"));
   stageWidth = myStage.canvas.width;
