@@ -87,6 +87,7 @@ function init(){
 
   createjs.Ticker.addEventListener('tick', gameLoop);
   createjs.Ticker._setFPS(myFrameRate);
+  //createjs.Ticker.setFPS(myFrameRate);
   
   loadLevel(0);
 }
