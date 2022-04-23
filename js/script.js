@@ -217,29 +217,50 @@ function loadLevel (m) {
   
  // Display pre-level images (if any)
   if(typeof level[m].preLevelDisplay != "undefined") {
-    for (var i = 0; i < level[m].preLevelDisplay.length; i++){
-      // display one image
-      // var preLevelImage = new createjs.Bitmap("images/level1.1.png");
-      var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i].img)
-      preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
-      preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
-      myStage.addChild(preLevelImage);
-      myStage.update();
-      // console.log("added prelevelimage");
-      // console.log(preLevelImage);
-
-      if (level[m].preLevelDisplay[i].toEnd == "timer"){
-        setTimeout(, level[m].preLevelDisplay[i].dur);
+    // for (var i = 0; i < level[m].preLevelDisplay.length; i++){
+    //   // display one image
+    //   // var preLevelImage = new createjs.Bitmap("images/level1.1.png");
+    //   var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i].img)
+    //   preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
+    //   preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
+    //   myStage.addChild(preLevelImage);
+    //   myStage.update();
+    
+      
+      function displayNext(i){
+        if(i>=level[m].preLevelDisplay.length){return;}
+        
+        var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i].img)
+        preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
+        preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
+        myStage.addChild(preLevelImage);
+        myStage.update();
+        
+        if (level[m].preLevelDisplay[i].toEnd == "timer"){
+          setTimeout(function(){
+            myStage.removeChild(preLevelImage);
+            displayNext(i+1);}, 
+            level[m].preLevelDisplay[i].dur);
+        }
+        
+        if (level[m].preLevelDisplay[i].toEnd == "onClick"){
+          preLevelImage.on("click", function(){
+            myStage.removeChild(preLevelImage);
+            if(i == level[m].preLevelDisplay.length-1){
+              loadLevelComponents();
+            }
+            else { displayNext(i+1); }
+            });
+        }
       }
+    
+      let i = 0;
+    
+      displayNext(i);
 
-      if (level[m].preLevelDisplay[i].toEnd == "onClick"){
-        preLevelImage.on("click", function(){
-          myStage.removeChild(preLevelImage);
-          if(i == level[m].preLevelDisplay.length-1){
-            loadLevelComponents();
-          }
-          });
-      }
+
+
+
     }
   }
   else {
