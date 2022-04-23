@@ -5,7 +5,6 @@
 
 
 // to make it complete:
-// better level slides (indicating click vs timer)
 // sounds
 // moving enemies
 
@@ -114,8 +113,10 @@ function gameLoop(evt){
 
 level[0] = 
   { preLevelDisplay : [
-    {img: "images/level1.1.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 3000},
-    {img: "images/level1.2.png", loc: {x: 0, y: 0}, toEnd: "onClick"}],
+    {img: "images/level0.1.png", loc: {x: 0, y: 0}, toEnd: "onClick"},
+    {img: "images/level0.2.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 1000},
+    {img: "images/level0.3.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 1000},
+    {img: "images/level0.4.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 1000}],
   
   
     backgroundImage : "images/bg.png",
@@ -276,7 +277,11 @@ function loadLevel (m) {
         if (level[m].preLevelDisplay[i].toEnd == "timer"){
           setTimeout(function(){
             myStage.removeChild(preLevelImage);
-            displayNext(i+1);}, 
+            if(i == level[m].preLevelDisplay.length-1){
+              loadLevelComponents(m);
+            }
+            else { displayNext(i+1); }
+            }, 
             level[m].preLevelDisplay[i].duration);
         }
         
