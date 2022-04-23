@@ -103,7 +103,7 @@ function gameLoop(evt){
 
 level[0] = 
   { preLevelDisplay : [
-    {img: "images/level1.1.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 3000},
+    {img: "images/level1.1.png", loc: {x: 0, y: 0}, toEnd: "onClick", duration: 3000},
     {img: "images/level1.2.png", loc: {x: 0, y: 0}, toEnd: "onClick"}],
   
   
@@ -216,31 +216,42 @@ function loadLevel (m) {
   clearScreen();
   
  // Display pre-level images (if any)
-  if(level[m].preLevelDisplay==)
-  for (var i = 0; i < level[m].preLevelDisplay.length; i++){
-    // display one image
-    // var preLevelImage = new createjs.Bitmap("images/level1.1.png");
-    var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i].img)
-    preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
-    preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
-    myStage.addChild(preLevelImage);
-    myStage.update();
-    console.log("added prelevelimage");
-    console.log(preLevelImage);
-    
-    if (level[m].preLevelDisplay[i].toEnd == "timer"){
-      sleep(level[m].preLevelDisplay[i].duration);
-    }
-    
-    if (level[m].preLevelDisplay[i].toEnd == "onClick"){
-      preLevelImage.on("click", function(){myStage.removeChild(preLevelImage)});
+  if(typeof level[m].preLevelDisplay != "undefined") {
+    for (var i = 0; i < level[m].preLevelDisplay.length; i++){
+      // display one image
+      // var preLevelImage = new createjs.Bitmap("images/level1.1.png");
+      var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i].img)
+      preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
+      preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
+      myStage.addChild(preLevelImage);
+      myStage.update();
+      // console.log("added prelevelimage");
+      // console.log(preLevelImage);
+
+      if (level[m].preLevelDisplay[i].toEnd == "timer"){
+        setTimeout(, level[m].preLevelDisplay[i].dur);
+      }
+
+      if (level[m].preLevelDisplay[i].toEnd == "onClick"){
+        preLevelImage.on("click", function(){
+          myStage.removeChild(preLevelImage);
+          if(i == level[m].preLevelDisplay.length-1){
+            loadLevelComponents();
+          }
+          });
+      }
     }
   }
+  else {
+    loadLevelComponents(m);
+  }
+  
+}
   
   // display first image, then wait some amount
   // if last image clicked then load rest of level.
   
-  
+ function loadLevelComponents(m){ 
   
   // Display background image
   background.image.src = level[m].backgroundImage;
