@@ -103,9 +103,8 @@ function gameLoop(evt){
 
 level[0] = 
   { preLevelDisplay : [
-    {img: "images/hero.png", loc: {x: stageWidth/3, y: stageHeight/2}, toEnd: "timer", duration: 3000},
-    {img: "images/hero.png", loc: {x: stageWidth/4, y: stageHeight/2}, toEnd: "timer", duration: 3000},
-    {img: "images/hero.png", loc: {x: stageWidth/5, y: stageHeight/2}, toEnd: "onClick"}],
+    {img: "images/level1.1.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 3000},
+    {img: "images/level1.2.png", loc: {x: 0, y: 0}, toEnd: "onClick"}],
   
   
     backgroundImage : "images/bg.png",
@@ -217,14 +216,15 @@ function loadLevel (m) {
   clearScreen();
   
  // Display pre-level images (if any)
-//   for (var i = 0; i < level[m].preLevelDisplay.length; i++){
-//     // display one image
-//     var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i])
-//     preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
-//     preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
-//     myStage.addChild(preLevelImage);
-//     myStage.update();
-//     console.log("added prelevelimage")
+  for (var i = 0; i < level[m].preLevelDisplay.length; i++){
+    // display one image
+    var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i])
+    preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
+    preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
+    myStage.addChild(preLevelImage);
+    myStage.update();
+    console.log("added prelevelimage")
+    console.log(preLevelImage)p
     
 //     if (level[m].preLevelDisplay[i].toEnd == "timer"){
 //       sleep(level[m].preLevelDisplay[i].duration);
@@ -233,7 +233,7 @@ function loadLevel (m) {
 //     if (level[m].preLevelDisplay[i].toEnd == "onClick"){
 //       preLevelImage.on("click", function(){myStage.removeChild(preLevelImage)});
 //     }
-//   }
+  }
   
   
   
