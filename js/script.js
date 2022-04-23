@@ -284,6 +284,7 @@ function loadLevel (m) {
         
         if (level[m].preLevelDisplay[i].toEnd == "onClick"){
           preLevelImage.on("click", function(){
+            createjs.WebAudioPlugin.playEmptySound()
             myStage.removeChild(preLevelImage);
             if(i == level[m].preLevelDisplay.length-1){
               loadLevelComponents(m);
