@@ -139,9 +139,9 @@ level[0] =
 
 level[1] = 
   // { preLevelDisplay : [
-  //   {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
-  //   {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
-  //   {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
+  //   {img: "images/level1_predisplay1.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 3000},
+  //   {img: "images/level1_predisplay2.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 3000},
+  //   {img: "images/level1_predisplay3.png", loc: {x: 0, y: 0}, toEnd: "onClick"}],
    
   { backgroundImage : "images/bg.png",
   
@@ -174,12 +174,12 @@ level[1] =
   }
 
 level[2] = 
-  { preLevelDisplay : [
-    {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
-    {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
-    {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
+  // { preLevelDisplay : [
+  //   {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
+  //   {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
+  //   {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
    
-   backgroundImage : "images/bg.png",
+  { backgroundImage : "images/bg.png",
   
      // x = wall, t = target, e = enemy, c = character start location
     layout : [
@@ -208,6 +208,41 @@ level[2] =
       }
     }
   }
+
+level[3] = 
+  { preLevelDisplay : [
+    {img: "images/endScreen.png", loc: {x: 0, y: 0}, toEnd: "onClickRestart"}],
+   
+   backgroundImage : "images/bg.png",
+  
+     // x = wall, t = target, e = enemy, c = character start location
+    layout : [
+     ["x", "x", "x", "x", "x", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+     ["x", " ", " ", " ", "x", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "c"],
+     ["x", " ", "x", "x", "x", " ", "x", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
+     ["x", " ", "x", " ", "x", "t", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", "x", "x", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", "x", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
+     ["x", " ", "t", " ", "x", " ", " ", " ", "x", "x", "x", " ", " ", "e", " ", "x"],
+     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+     ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
+   
+   
+    enemyMovementStyle : "randomWallBounce",
+
+    completionCheck : function() {
+      if(character.y <= 0){
+        console.log("level 2 complete");
+        level[3].active = false;
+        clearScreen();
+        loadLevel(0)
+      }
+    }
+  }
+
 
 
 // Create the level from the level data grid in create
@@ -242,6 +277,15 @@ function loadLevel (m) {
             }
             else { displayNext(i+1); }
             });
+        }
+        
+        if (level[m].preLevelDisplay[i].toEnd == "onClickRestart"){
+          preLevelImage.on("click", function(){
+            myStage.removeChild(preLevelImage);
+            level[3].active = false;
+            //clearScreen();
+            loadLevel(0)})
+            
         }
       }
     
