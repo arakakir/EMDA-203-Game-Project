@@ -10,7 +10,7 @@
 
 var myStage, stageWidth, stageHeight;
 var myFrameRate = 24;
-var character, background, scoreDisplay, theEnd;
+var character, background, scoreDisplay, theEnd, backgroundSound;
 var rotationSpeed = 3;
 var speed = 10;
 
@@ -31,7 +31,7 @@ function preload(){
   queue.installPlugin(createjs.Sound);
   queue.on("complete", init);
   queue.loadManifest([
-    {id:"backgroundSound", src:"sounds/soundtrack.mp3"},
+    {id:"backgroundSound", src:"sounds/soundtrack.mp3", data:1},
     {id:"enemy", src:"sounds/enemy.mp3", data:2},
     {id:"target", src:"sounds/target.mp3", data:10},
     {id:"levelUp", src:"sounds/levelUp.mp3", data:2},
@@ -93,7 +93,9 @@ function init(){
   theEnd.alpha = 0.;
   myStage.addChild(theEnd);
 
-  createjs.Sound.play("backgroundSound");
+  backgroundSound = createjs.Sound.play("levelUp");
+  backgroundSound.volume = 0.5;
+  backgroundSound.loop = -1;
 
   createjs.Ticker.addEventListener('tick', gameLoop);
   createjs.Ticker._setFPS(myFrameRate);
@@ -150,6 +152,7 @@ level[0] =
     completionCheck : function() {
       if(character.y <= 0){
         console.log("level 0 complete");
+        createjs.Sound.play("levelUp");
         level[0].active = false;
         loadLevel(1)
       }
@@ -187,6 +190,7 @@ level[1] =
       if(character.x <= 0){
         console.log("level 1 complete");
         level[1].active = false;
+        createjs.Sound.play("levelUp");
         clearScreen();
         loadLevel(2)
       }
@@ -223,6 +227,7 @@ level[2] =
       if(character.y <= 0){
         console.log("level 2 complete");
         level[2].active = false;
+        createjs.Sound.play("levelUp");
         clearScreen();
         loadLevel(3)
       }
@@ -257,6 +262,7 @@ level[3] =
       if(character.y <= 0){
         console.log("level 3 complete");
         level[3].active = false;
+        createjs.Sound.play("levelUp");
         clearScreen();
         loadLevel(0)
       }
