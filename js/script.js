@@ -31,13 +31,10 @@ function preload(){
   queue.installPlugin(createjs.Sound);
   queue.addEventListener("complete", init);
   queue.loadManifest([
-    {id:"backgroundSound", src:"sounds/slowbackground.mp3"},
-    {id:"eatSound1", src:"sounds/eat1.mp3", data:2},
-    {id:"eatSound2", src:"sounds/eat2.mp3", data:2},
-    {id:"eatSound3", src:"sounds/eat3.mp3", data:2},
-    {id:"eatSound4", src:"sounds/eat4.mp3", data:2},
-    {id:"eatSound5", src:"sounds/eat5.mp3", data:2},
-    {id:"endSound", src:"sounds/endSound.mp3", data:2},
+    {id:"backgroundSound", src:"sounds/soundtrack.mp3"},
+    {id:"enemy", src:"sounds/enemy.mp3", data:2},
+    {id:"target", src:"sounds/target.mp3", data:10},
+    {id:"levelUp", src:"sounds/levelUp.mp3", data:2},
     {id:"hero", src:"images/hero.png"},
     {id:"background", src:"images/bg.png"},
     {id:"wall", src:"images/box_yellow.png"},
@@ -422,7 +419,7 @@ function handleCollisions(){
       targets.splice(i, 1);
       score++;
       scoreDisplay.text = "SCORE: " + score;
-      createjs.Sound.play("target_collide");
+      createjs.Sound.play("target");
     }
   }
   
@@ -435,7 +432,7 @@ function handleCollisions(){
         character.x = character.startPosition.x;
         character.y = character.startPosition.y;
         scoreDisplay.text = "SCORE: " + score;
-        createjs.Sound.play("enemy_collide");
+        createjs.Sound.play("enemy");
       }
     }
 }
