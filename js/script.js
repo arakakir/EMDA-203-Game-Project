@@ -3,13 +3,11 @@
   /* global keyMonkey */
   /* global collisionGnome */
 
-var myStage;
-var stageWidth;
-var stageHeight;
+var myStage, stageWidth, stageHeight;
 var myFrameRate = 24;
 var character, background, scoreDisplay, theEnd;
 var rotationSpeed = 3;
-var speed = 10;
+var speed = 20;
 
 var walls = [];
 var targets = [];
@@ -204,7 +202,7 @@ level[2] =
         console.log("level 2 complete");
         level[2].active = false;
         clearScreen();
-        loadLevel(0)
+        loadLevel(3)
       }
     }
   }
@@ -235,7 +233,7 @@ level[3] =
 
     completionCheck : function() {
       if(character.y <= 0){
-        console.log("level 2 complete");
+        console.log("level 3 complete");
         level[3].active = false;
         clearScreen();
         loadLevel(0)
@@ -280,12 +278,13 @@ function loadLevel (m) {
         }
         
         if (level[m].preLevelDisplay[i].toEnd == "onClickRestart"){
+          console.log(preLevelImage);
           preLevelImage.on("click", function(){
             myStage.removeChild(preLevelImage);
             level[3].active = false;
-            //clearScreen();
-            loadLevel(0)})
-            
+            clearScreen();
+            loadLevel(0);
+          }) 
         }
       }
     
@@ -372,14 +371,6 @@ function clearScreen(){
   myStage.removeAllChildren();
   //myStage.addChild(background, character, scoreDisplay);
   myStage.update();
-}
-
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
 }
 
 
