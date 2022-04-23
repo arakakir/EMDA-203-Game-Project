@@ -26,10 +26,10 @@ var level = [];
 // ************************* PRELOAD ASSETS ***************************
 
 function preload(){
-  var queue = new createjs.LoadQueue();
+  var queue = new createjs.LoadQueue(false);
   createjs.Sound.alternateExtensions = ["mp3"];
   queue.installPlugin(createjs.Sound);
-  queue.addEventListener("complete", init);
+  queue.on("complete", init);
   queue.loadManifest([
     {id:"backgroundSound", src:"sounds/soundtrack.mp3"},
     {id:"enemy", src:"sounds/enemy.mp3", data:2},
@@ -43,6 +43,16 @@ function preload(){
     ]);
 }
 
+// var myQueue = new createjs.LoadQueue(false);	//(preferXHR)			// 	createjs.LoadQueue's got them methods...
+// 	createjs.Sound.alternateExtensions = ["mp3"];
+// 	myQueue.installPlugin(createjs.Sound);								// *** causes cross - origin errors unless remote
+// 	myQueue.on("fileload", handleFileLoad, this);						// 	fires when a file has finished loading
+// 	myQueue.on("loadstart", handleLoadStart, this);
+// 	myQueue.on("complete", handleLoadComplete, this);					// 	fires when the entire array has finished loading
+// 	myQueue.loadManifest(thingsToLoad);					  //	tell the createjs.LoadQueue to load the 'thingsToLoad' arrray					
+	
+
+	
 
 
 // ************ INITIALIZATION - Happens only once ****************
