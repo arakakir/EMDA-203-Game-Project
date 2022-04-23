@@ -103,7 +103,7 @@ function gameLoop(evt){
 
 level[0] = 
   { preLevelDisplay : [
-    {img: "images/level1.1.png", loc: {x: 0, y: 0}, toEnd: "onClick", duration: 3000},
+    {img: "images/level1.1.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 3000},
     {img: "images/level1.2.png", loc: {x: 0, y: 0}, toEnd: "onClick"}],
   
   
@@ -138,12 +138,12 @@ level[0] =
 
 
 level[1] = 
-  { preLevelDisplay : [
-    {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
-    {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
-    {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
+  // { preLevelDisplay : [
+  //   {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
+  //   {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
+  //   {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
    
-   backgroundImage : "images/bg.png",
+  { backgroundImage : "images/bg.png",
   
      // x = wall, t = target, e = enemy, c = character start location
     layout : [
@@ -217,15 +217,6 @@ function loadLevel (m) {
   
  // Display pre-level images (if any)
   if(typeof level[m].preLevelDisplay != "undefined") {
-    // for (var i = 0; i < level[m].preLevelDisplay.length; i++){
-    //   // display one image
-    //   // var preLevelImage = new createjs.Bitmap("images/level1.1.png");
-    //   var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i].img)
-    //   preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
-    //   preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
-    //   myStage.addChild(preLevelImage);
-    //   myStage.update();
-    
       
       function displayNext(i){
         if(i>=level[m].preLevelDisplay.length){return;}
@@ -240,14 +231,14 @@ function loadLevel (m) {
           setTimeout(function(){
             myStage.removeChild(preLevelImage);
             displayNext(i+1);}, 
-            level[m].preLevelDisplay[i].dur);
+            level[m].preLevelDisplay[i].duration);
         }
         
         if (level[m].preLevelDisplay[i].toEnd == "onClick"){
           preLevelImage.on("click", function(){
             myStage.removeChild(preLevelImage);
             if(i == level[m].preLevelDisplay.length-1){
-              loadLevelComponents();
+              loadLevelComponents(m);
             }
             else { displayNext(i+1); }
             });
@@ -255,28 +246,19 @@ function loadLevel (m) {
       }
     
       let i = 0;
-    
       displayNext(i);
 
-
-
-
-    }
   }
   else {
     loadLevelComponents(m);
-  }
-  
+  } 
 }
   
-  // display first image, then wait some amount
-  // if last image clicked then load rest of level.
   
  function loadLevelComponents(m){ 
-  
+   
   // Display background image
   background.image.src = level[m].backgroundImage;
-  
   
   // Load in the level layout
   walls = [];
@@ -319,15 +301,16 @@ function loadLevel (m) {
         }
     }
 
+  display(background); 
   display(walls);
   display(targets);
   display(enemies);
   display(character);
+  display(scoreDisplay);
   
   myStage.setChildIndex( scoreDisplay, myStage.numChildren-1);
   
   level[m].active = true;
-
 }
 
 
@@ -343,7 +326,7 @@ function loadLevel (m) {
 
 function clearScreen(){
   myStage.removeAllChildren();
-  myStage.addChild(background, character, scoreDisplay);
+  //myStage.addChild(background, character, scoreDisplay);
   myStage.update();
 }
 
