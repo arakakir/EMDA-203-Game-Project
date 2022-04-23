@@ -3,6 +3,12 @@
   /* global keyMonkey */
   /* global collisionGnome */
 
+
+// to make it complete:
+// better level slides (indicating click vs timer)
+// sounds
+// moving enemies
+
 var myStage, stageWidth, stageHeight;
 var myFrameRate = 24;
 var character, background, scoreDisplay, theEnd;
