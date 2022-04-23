@@ -154,9 +154,10 @@ level[0] =
       if(character.y <= 0){
         console.log("level 0 complete");
         createjs.Sound.play("levelUp");
+        enemySpeed += 2;
         level[0].active = false;
         loadLevel(1)
-        enemySpeed += 2;
+
       }
     }
   }
@@ -231,6 +232,7 @@ level[2] =
         console.log("level 2 complete");
         level[2].active = false;
         createjs.Sound.play("levelUp");
+        enemySpeed += 2;
         clearScreen();
         loadLevel(3)
       }
