@@ -13,6 +13,7 @@ var myFrameRate = 24;
 var character, background, scoreDisplay, theEnd, backgroundSound;
 var rotationSpeed = 3;
 var speed = 10;
+var enemySpeed = 2;
 
 var score = 0;
 
@@ -110,7 +111,6 @@ function gameLoop(evt){
   // put code in here that will change every 'tick'
   handleKeyInput();
   handleCollisions();
-  moveEnemies();
   runLevels();
   myStage.update();
 }
@@ -148,7 +148,7 @@ level[0] =
      ["x", "x", "x", "x", "x", "x", "x", " ", "c", " ", "x", "x", "x", "x", "x", "x"]], 
    
    
-    enemyMovementStyle : "static",
+    enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
       if(character.y <= 0){
@@ -156,6 +156,7 @@ level[0] =
         createjs.Sound.play("levelUp");
         level[0].active = false;
         loadLevel(1)
+        enemySpeed += 2;
       }
     }
   }
@@ -185,13 +186,14 @@ level[1] =
      ["x", "x", "x", "x", "x", "c", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
    
    
-    enemyMovementStyle : "static",
+    enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
       if(character.x <= 0){
         console.log("level 1 complete");
         level[1].active = false;
         createjs.Sound.play("levelUp");
+        enemySpeed += 2;
         clearScreen();
         loadLevel(2)
       }
@@ -366,6 +368,7 @@ function loadLevel (m) {
                 enemy.x = 64*j + 32;
                 enemy.y = 64*i + 32;
                 collisionGnome.addCollider(enemy, 1.0);
+                enemy.speed = enemySpeed;
                 enemies.push(enemy);
               
             } else if (level[m].layout[i][j] === "c") { 
@@ -396,6 +399,7 @@ function loadLevel (m) {
    for(var i=0;i<level.length;i++){
      if(level[i].active){
        level[i].completionCheck();
+       moveEnemies(i);
      }
    }
  }
@@ -487,7 +491,31 @@ function handleWallCollisions(direction){
     }
 }
 
-function moveEnemies(){
-  
+
+
+function moveEnemies(i){
+  if(level[i].enemyMovementStyle == "static"){
+    return;
+  }
+  else if (level[i].enemyMovementStyle == "x_or_y_bounce"){
+    for(var i=0; i<enemies.length; i++){
+      enemies[i].x += enemies[i].speed;
+      
+      //check wall collisions
+      for(var j=0; j<walls.length; j++){
+        if(enemies[i].collidesWith(walls[j])){
+          enemies[i].speed = -enemies[i].speed;
+        }
+      }
+
+      // if hit target change direction
+      for(var j=0; j<targets.length; j++){
+        if(enemies[i].collidesWith(targets[j])){
+          enemies[i].speed = -enemies[i].speed;
+        }
+      }
+    }
+  }
 }
+
   
