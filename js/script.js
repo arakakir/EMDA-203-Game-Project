@@ -93,8 +93,8 @@ function init(){
   theEnd.alpha = 0.;
   myStage.addChild(theEnd);
 
-  backgroundSound = createjs.Sound.play("levelUp");
-  backgroundSound.volume = 0.5;
+  backgroundSound = createjs.Sound.play("backgroundSound");
+  backgroundSound.volume = 0.3;
   backgroundSound.loop = -1;
 
   createjs.Ticker.addEventListener('tick', gameLoop);
@@ -110,6 +110,7 @@ function gameLoop(evt){
   // put code in here that will change every 'tick'
   handleKeyInput();
   handleCollisions();
+  moveEnemies();
   runLevels();
   myStage.update();
 }
@@ -147,7 +148,7 @@ level[0] =
      ["x", "x", "x", "x", "x", "x", "x", " ", "c", " ", "x", "x", "x", "x", "x", "x"]], 
    
    
-    enemyMovementStyle : "randomWallBounce",
+    enemyMovementStyle : "static",
 
     completionCheck : function() {
       if(character.y <= 0){
@@ -184,7 +185,7 @@ level[1] =
      ["x", "x", "x", "x", "x", "c", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
    
    
-    enemyMovementStyle : "randomWallBounce",
+    enemyMovementStyle : "static",
 
     completionCheck : function() {
       if(character.x <= 0){
@@ -221,7 +222,7 @@ level[2] =
      ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
    
    
-    enemyMovementStyle : "randomWallBounce",
+    enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
       if(character.y <= 0){
@@ -256,7 +257,7 @@ level[3] =
      ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
    
    
-    enemyMovementStyle : "randomWallBounce",
+    enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
       if(character.y <= 0){
@@ -484,5 +485,9 @@ function handleWallCollisions(direction){
         
       createjs.Sound.play("wall_collide");
     }
+}
+
+function moveEnemies(){
+  
 }
   
