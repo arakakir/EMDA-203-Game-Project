@@ -142,6 +142,15 @@ level[0] =
                       {img: "images/background_midMountains.png", scrollRate: 0.66},
                       {img: "images/background_backMountains.png", scrollRate: 0.5}],
   
+   
+    spawnObjects : [{ type: "setTiming", 
+                      objectArray: [
+                        {img:"images/enemy.png", loc:{x:2000,y:900}, collider: true}]
+      // defined array
+    },{
+      //every x milliseconds, probability of happening 0-1
+    }],   
+   
      // x = wall, t = target, e = enemy, c = character start location
     layout : [
      ["x", "x", "x", "x", "x", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
