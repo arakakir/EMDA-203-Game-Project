@@ -10,8 +10,7 @@
 
 var myStage, stageWidth, stageHeight;
 var myFrameRate = 24;
-var character, background, scoreDisplay, theEnd, backgroundSound;
-var rotationSpeed = 3;
+var character, background, scoreDisplay, theEnd, backgroundSound, endGoal;
 var speed = 10;
 var enemySpeed = 2;
 var currentLevel;
@@ -143,7 +142,7 @@ level[0] =
                       {img: "images/background_backMountains.png", scrollRate: 0.5}],
   
    
-    spawnObjects : [{type: "enemy", img:"images/enemy.png", loc:{x:2000,y:900}, 
+    objectsToSpawn : [{type: "enemy", img:"images/enemy.png", loc:{x:2000,y:900}, 
                          collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
                     {type: "wall", img:"images/wall.png", loc:{x:2000,y:900}, 
                          collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
@@ -152,20 +151,18 @@ level[0] =
                     {type: "shrub", img:"images/shrub.png", loc:{x:500,y:900}, 
                          collider: false, repeat: true, repeatRate: 200, repeatProbability: 1},
                     {type: "boss", img:"images/boss.png", loc:{x:3000,y:900}, 
+                         collider: true, repeat: false},
+                    {type: "endGoal", img:"images/endGoal.png", loc:{x:3400,y:900}, 
                          collider: true, repeat: false}],
-                    
-                    
-                    
-      //every x milliseconds, probability of happening 0-1
    
    
     enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
-      if(character.y <= 0){
+      if(character.collidesWith(endGoal)){
         console.log("level 0 complete");
         createjs.Sound.play("levelUp");
-        enemySpeed += 2;
+        //enemySpeed += 2;
         level[0].active = false;
         loadLevel(1)
 
