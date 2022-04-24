@@ -21,6 +21,7 @@ var walls = [];
 var targets = [];
 var enemies = [];
 var level = [];
+var backgroundImages = [];
 
 
 
@@ -129,8 +130,13 @@ level[0] =
     {img: "images/level0.3.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 1000},
     {img: "images/level0.4.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 1000}],
   
-  
-    backgroundImage : "images/bg.png",
+   
+    // define an array of background images for paralax scrolling.  If you just need one image, just use one!  
+   // 'scrollRate' is a multiplier of speed (e.g. 0.5 = half speed)
+    backgroundImage : [{img: "images/background_ground.png", scrollRate: 1},
+                      {img: "images/background_frontMountains.png", scrollRate: 0.75},
+                      {img: "images/background_midMountains.png", scrollRate: 0.66},
+                      {img: "images/background_backMountains.png", scrollRate: 0.5}],
   
      // x = wall, t = target, e = enemy, c = character start location
     layout : [
@@ -338,8 +344,16 @@ function loadLevel (m) {
   
  function loadLevelComponents(m){ 
    
+  backgroundImages = []; 
+   
   // Display background image
   background.image.src = level[m].backgroundImage;
+   
+   for (var i = 0; i < level[m].backgroundImage.length; i++){
+     var backgroundImage = new createjs.Bitmap(level[m].backgroundImage[i].img)
+     backgroundImage.
+     backgroundImages.push(backgroundImage);
+   } 
   
   // Load in the level layout
   walls = [];
