@@ -351,8 +351,16 @@ function loadLevel (m) {
    
    for (var i = 0; i < level[m].backgroundImage.length; i++){
      var backgroundImage = new createjs.Bitmap(level[m].backgroundImage[i].img)
-     backgroundImage.
+     backgroundImage.x = 0;
+     backgroundImage.y = 0;
+     backgroundImage.scrollRate = level[m].backgroundImage[i].scrollRate;
      backgroundImages.push(backgroundImage);
+     
+     var backgroundImageChaser = new createjs.Bitmap(level[m].backgroundImage[i].img)
+     backgroundImageChaser.x = backgroundImageChaser.image.width;
+     backgroundImageChaser.y = 0;
+     backgroundImageChaser.scrollRate = level[m].backgroundImage[i].scrollRate;
+     backgroundImages.push(backgroundImageChaser);
    } 
   
   // Load in the level layout
@@ -442,10 +450,14 @@ function display(object){
 
 function handleKeyInput(){
   // allow key strokes to control movement
+  // if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; handleWallCollisions("up");}
+  // if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; handleWallCollisions("left");}
+  // if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
+  // if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; handleWallCollisions("right");}
   if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; handleWallCollisions("up");}
   if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; handleWallCollisions("left");}
   if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
-  if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; handleWallCollisions("right");}
+  if(keyMonkey["d"] || keyMonkey["right"]) 	{ moveBackground("right"); handleWallCollisions("right");}
 }
 
 
@@ -532,6 +544,13 @@ function moveEnemies(i){
       }
     }
   }
+}
+
+
+function moveBackground(dir){
+  if
+  // when arrow key pressed backgroundImage.x += speed * backgroundImage.scrollRate
+  // if (backgroundImage.x <= -backgroundImage.image.width){ backgroundImage.x = backgroundImage.image.width;}
 }
 
   
