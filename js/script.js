@@ -14,6 +14,7 @@ var character, background, scoreDisplay, theEnd, backgroundSound;
 var rotationSpeed = 3;
 var speed = 10;
 var enemySpeed = 2;
+var currentLevel;
 
 var score = 0;
 
@@ -422,6 +423,7 @@ function loadLevel (m) {
  function runLevels(){
    for(var i=0;i<level.length;i++){
      if(level[i].active){
+       currentLevel = i;
        level[i].completionCheck();
        moveEnemies(i);
      }
@@ -548,7 +550,14 @@ function moveEnemies(i){
 
 
 function moveBackground(dir){
-  if
+  if(dir == "right"){
+    for(var i = 0; i<backgroundImages.length; i++){
+      backgroundImages[i].x += (speed * backgroundImages[i].scrollRate);
+      if (backgroundImages[i].x <= -backgroundImages[i].image.width){
+        backgroundImages[i].x = backgroundImages[i].image.width;
+      }
+    }
+  }
   // when arrow key pressed backgroundImage.x += speed * backgroundImage.scrollRate
   // if (backgroundImage.x <= -backgroundImage.image.width){ backgroundImage.x = backgroundImage.image.width;}
 }
