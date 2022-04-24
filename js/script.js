@@ -134,7 +134,7 @@ level[0] =
    
     // define an array of background images for paralax scrolling.  If you just need one image, just use one!  
    // 'scrollRate' is a multiplier of speed (e.g. 0.5 = half speed)
-    backgroundImage : [{img: "images/background_ground.png", scrollRate: 1},
+    backgroundImage : [{img: "images/background_footpath.png", scrollRate: 1},
                       {img: "images/background_frontMountains.png", scrollRate: 0.75},
                       {img: "images/background_midMountains.png", scrollRate: 0.66},
                       {img: "images/background_backMountains.png", scrollRate: 0.5}],
@@ -350,7 +350,7 @@ function loadLevel (m) {
   // Display background image
   background.image.src = level[m].backgroundImage;
    
-   for (var i = 0; i < level[m].backgroundImage.length; i++){
+   for (var i = level[m].backgroundImage.length-1; i >= 0; i--){
      var backgroundImage = new createjs.Bitmap(level[m].backgroundImage[i].img)
      backgroundImage.x = 0;
      backgroundImage.y = 0;
@@ -369,44 +369,44 @@ function loadLevel (m) {
   targets = [];
   enemies = [];
   
-    for (var i = 0; i < level[m].layout.length; i++) {
-        for (var j = 0; j < level[m].layout[i].length; j++) {
-            if (level[m].layout[i][j] === "x") { 
-                // Create a wall and add it to the 'walls' group
-                var wall = new createjs.Bitmap("images/box_yellow.png");
-                wall.x = 64*j + 32;
-                wall.y = 64*i + 32;
-                collisionGnome.addCollider(wall, 1.0);
-                walls.push(wall);
+//     for (var i = 0; i < level[m].layout.length; i++) {
+//         for (var j = 0; j < level[m].layout[i].length; j++) {
+//             if (level[m].layout[i][j] === "x") { 
+//                 // Create a wall and add it to the 'walls' group
+//                 var wall = new createjs.Bitmap("images/box_yellow.png");
+//                 wall.x = 64*j + 32;
+//                 wall.y = 64*i + 32;
+//                 collisionGnome.addCollider(wall, 1.0);
+//                 walls.push(wall);
 
-            } else if (level[m].layout[i][j] === "t") { 
-                // Create a coin and add it to the 'targets' group
-                var target = new createjs.Bitmap("images/box_green.png");
-                target.x = 64*j + 32;
-                target.y = 64*i + 32;
-                collisionGnome.addCollider(target, 1.0);
-                targets.push(target);
+//             } else if (level[m].layout[i][j] === "t") { 
+//                 // Create a coin and add it to the 'targets' group
+//                 var target = new createjs.Bitmap("images/box_green.png");
+//                 target.x = 64*j + 32;
+//                 target.y = 64*i + 32;
+//                 collisionGnome.addCollider(target, 1.0);
+//                 targets.push(target);
 
-            } else if (level[m].layout[i][j] === "e") { 
-                // Create a enemy and add it to the 'enemies' group
-                var enemy = new createjs.Bitmap("images/box_orange.png");
-                enemy.x = 64*j + 32;
-                enemy.y = 64*i + 32;
-                collisionGnome.addCollider(enemy, 1.0);
-                enemy.speed = enemySpeed;
-                enemies.push(enemy);
+//             } else if (level[m].layout[i][j] === "e") { 
+//                 // Create a enemy and add it to the 'enemies' group
+//                 var enemy = new createjs.Bitmap("images/box_orange.png");
+//                 enemy.x = 64*j + 32;
+//                 enemy.y = 64*i + 32;
+//                 collisionGnome.addCollider(enemy, 1.0);
+//                 enemy.speed = enemySpeed;
+//                 enemies.push(enemy);
               
-            } else if (level[m].layout[i][j] === "c") { 
-                // set the character start position
-                character.x = 64*j + 32;
-                character.y = 64*i + 32;
-                character.startPosition = {x: character.x, y: character.y};
+//             } else if (level[m].layout[i][j] === "c") { 
+//                 // set the character start position
+//                 character.x = 64*j + 32;
+//                 character.y = 64*i + 32;
+//                 character.startPosition = {x: character.x, y: character.y};
 
-            }
-        }
-    }
+//             }
+//         }
+//     }
 
-  display(background); 
+  display(backgroundImages); 
   display(walls);
   display(targets);
   display(enemies);
@@ -552,7 +552,7 @@ function moveEnemies(i){
 function moveBackground(dir){
   if(dir == "right"){
     for(var i = 0; i<backgroundImages.length; i++){
-      backgroundImages[i].x += (speed * backgroundImages[i].scrollRate);
+      backgroundImages[i].x -= (speed * backgroundImages[i].scrollRate);
       if (backgroundImages[i].x <= -backgroundImages[i].image.width){
         backgroundImages[i].x = backgroundImages[i].image.width;
       }
