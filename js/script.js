@@ -143,28 +143,20 @@ level[0] =
                       {img: "images/background_backMountains.png", scrollRate: 0.5}],
   
    
-    spawnObjects : [{ type: "setTiming", 
-                      objectArray: [
-                        {img:"images/enemy.png", loc:{x:2000,y:900}, collider: true}]
-      // defined array
-    },{
+    spawnObjects : [{type: "enemy", img:"images/enemy.png", loc:{x:2000,y:900}, 
+                         collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
+                    {type: "wall", img:"images/wall.png", loc:{x:2000,y:900}, 
+                         collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
+                    {type: "target", img:"images/target.png", loc:{x:2700,y:900}, 
+                         collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
+                    {type: "shrub", img:"images/shrub.png", loc:{x:500,y:900}, 
+                         collider: false, repeat: true, repeatRate: 200, repeatProbability: 1},
+                    {type: "boss", img:"images/boss.png", loc:{x:3000,y:900}, 
+                         collider: true, repeat: false}],
+                    
+                    
+                    
       //every x milliseconds, probability of happening 0-1
-    }],   
-   
-     // x = wall, t = target, e = enemy, c = character start location
-    layout : [
-     ["x", "x", "x", "x", "x", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
-     ["x", " ", " ", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", "x", " ", " ", " ", "x"],
-     ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", "x", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "t ", " ", " ", " ", " ", " ", " ", "x", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", " ", " ", " ", " ", " ", " ", "e", "x", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", " ", " ", "x", "x", "x", "x", "x", "x", " ", "e", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", "x", "x", "x", "x", "x", "x", " ", "c", " ", "x", "x", "x", "x", "x", "x"]], 
    
    
     enemyMovementStyle : "x_or_y_bounce",
