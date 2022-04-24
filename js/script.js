@@ -61,6 +61,9 @@ function preload(){
 // ************ INITIALIZATION - Happens only once ****************
 
 function init(){
+  // document.getElementById("myCanvas").width = window.innerWidth;
+  // document.getElementById("myCanvas").height = window.innerHeight;
+  
   myStage = new createjs.Stage(document.getElementById("myCanvas"));
   stageWidth = myStage.canvas.width;
   stageHeight = myStage.canvas.height;
@@ -358,7 +361,7 @@ function loadLevel (m) {
      backgroundImages.push(backgroundImage);
      
      var backgroundImageChaser = new createjs.Bitmap(level[m].backgroundImage[i].img)
-     backgroundImageChaser.x = backgroundImageChaser.image.width;
+     backgroundImageChaser.x = backgroundImageChaser.image.width - 20;
      backgroundImageChaser.y = 0;
      backgroundImageChaser.scrollRate = level[m].backgroundImage[i].scrollRate;
      backgroundImages.push(backgroundImageChaser);
