@@ -143,8 +143,8 @@ level[0] =
                       {img: "images/background_backMountains.png", scrollRate: 0.5}],
   
    
-    objectsToSpawn : [{class: "enemy", img:"images/box_yellow.png", loc:{x:2000,y:1200}, 
-                         collider: true, repeat: true, repeatSpacing: 200, repeatNumber: 20, repeatProbability: 0.75}],
+    objectsToSpawn : [{class: "target", img:"images/box_yellow.png", loc:{x:2000,y:1000}, collider: true, 
+                       repeat: true, repeatSpacing: 200, repeatNumber: 20, repeatProbability: 0.75}],
                     // {class: "wall", img:"images/wall.png", loc:{x:2000,y:900}, 
                     //      collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
                     // {class: "target", img:"images/target.png", loc:{x:2700,y:900}, 
@@ -475,30 +475,28 @@ function display(object){
 
 
 function handleKeyInput(){
-  // allow key strokes to control movement
   // if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; handleWallCollisions("up");}
-  // if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; handleWallCollisions("left");}
   // if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
-  // if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; handleWallCollisions("right");}
-  if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; handleWallCollisions("up");}
   if(keyMonkey["a"] || keyMonkey["left"]) 	{ moveBackground("left"); moveObjects("left"); 
                                              handleWallCollisions("left");}
-  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
   if(keyMonkey["d"] || keyMonkey["right"]) 	{ moveBackground("right"); moveObjects("right"); 
                                              handleWallCollisions("right");}
+  if(keyMonkey["d"] || keyMonkey["right"]) 
 }
 
 
 function handleCollisions(){
   // check to see if there are any collisions with any of the targets
-  for(var i=0;i<targets.length;i++){
-    if(character.collidesWith(targets[i])){
+  for(var i=0;i<objectsToMove.length;i++){
+    if(character.collidesWith(objectsToMove[i])){
       // remove it from the array
-      myStage.removeChild(targets[i]);
-      targets.splice(i, 1);
-      score++;
-      scoreDisplay.text = "SCORE: " + score;
-      createjs.Sound.play("target");
+      if(objectsToMove[i].class == "target"){
+        myStage.removeChild(objectsToMove[i]);
+        objectsToMove.splice(i, 1);
+        score++;
+        scoreDisplay.text = "SCORE: " + score;
+        createjs.Sound.play("target");
+      }
     }
   }
   
