@@ -375,6 +375,7 @@ function loadLevel (m) {
          for (var j = 0; j < level[m].objectsToSpawn[i].repeatNumber; j++){
            if(Math.random() < level[m].objectsToSpawn[i].repeatProbability){
               var object = new createjs.Bitmap(level[m].objectsToSpawn[i].img);
+              object.class = level[m].objectsToSpawn[i].class;
               object.x = level[m].objectsToSpawn[i].loc.x + (j*level[m].objectsToSpawn[i].repeatSpacing);
               object.y = level[m].objectsToSpawn[i].loc.y;
               if(level[m].objectsToSpawn[i].collider){ collisionGnome.addCollider(object, 1.0);}
@@ -385,14 +386,11 @@ function loadLevel (m) {
      }
    }
    
-   // {class: "enemy", img:"images/enemy.png", loc:{x:2000,y:900}, 
-   //                       collider: true, repeat: true, repeatSpacing: 200, repeatNumber: 20, repeatProbability: 1}
-   
    
   // Load in the level layout
-  walls = [];
-  targets = [];
-  enemies = [];
+  // walls = [];
+  // targets = [];
+  // enemies = [];
   
 //     for (var i = 0; i < level[m].layout.length; i++) {
 //         for (var j = 0; j < level[m].layout[i].length; j++) {
@@ -583,8 +581,27 @@ function moveBackground(dir){
       }
     }
   }
+   if(dir == "left"){
+    for(var i = 0; i<backgroundImages.length; i++){
+      backgroundImages[i].x += (speed * backgroundImages[i].scrollRate);
+    }
+  }
   // when arrow key pressed backgroundImage.x += speed * backgroundImage.scrollRate
   // if (backgroundImage.x <= -backgroundImage.image.width){ backgroundImage.x = backgroundImage.image.width;}
+}
+
+function moveObjects(dir){
+  for(var i = objectsToMove.length-1; i >= 0; i++){
+      objectsToMove[i].x -= speed;
+    
+      // if x is < 2000 and not added to stage
+      if(objectsToMove[i].x < 2000 && myStage.getChildByName())
+          myStage.addChild(objectsToMove[i]);
+    
+    // if x is < 300 and is on the stage
+          myStage.removeChild(objectsToMove[i]);
+        
+  }
 }
 
   
