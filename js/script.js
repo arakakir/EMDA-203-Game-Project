@@ -143,7 +143,7 @@ level[0] =
   
    
     objectsToSpawn : [{class: "enemy", img:"images/enemy.png", loc:{x:2000,y:900}, 
-                         collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
+                         collider: true, repeat: true, repeatSpacing: 200, repeatNumber: 20, repeatProbability: 1},
                     {class: "wall", img:"images/wall.png", loc:{x:2000,y:900}, 
                          collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
                     {class: "target", img:"images/target.png", loc:{x:2700,y:900}, 
@@ -368,12 +368,24 @@ function loadLevel (m) {
    
    for (var i = 0; i < level[m].objectsToSpawn.length; i++){
      if (level[m].objectsToSpawn[i].class == "enemy"){
-       
+       //if repeating
+       if (level[m].objectsToSpawn[i].repeat){
+         for (var j = 0; j < level[m].objectsToSpawn[i].repeatNumber; j++){
+           if(Math.random() < level[m].objectsToSpawn[i].repeatProbability){
+              var enemy = new createjs.Bitmap(level[m].objectsToSpawn[i].img);
+              enemy.x = level[m].objectsToSpawn[i].loc.x + (j*level[m].objectsToSpawn[i].repeatSpacing);
+              enemy.y = level[m].objectsToSpawn[i].loc.y;
+              if(level[m].objectsToSpawn[i].collider){ collisionGnome.addCollider(enemy, 1.0);}
+              enemy.speed = enemySpeed;
+              enemies.push(enemy);
+           }
+         }
+       }
      }
    }
    
    // {class: "enemy", img:"images/enemy.png", loc:{x:2000,y:900}, 
-   //                       collider: true, repeat: true, repeatRate: 200, repeatProbability: 1}
+   //                       collider: true, repeat: true, repeatSpacing: 200, repeatNumber: 20, repeatProbability: 1}
    
    
   // Load in the level layout
