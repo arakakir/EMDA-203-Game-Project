@@ -376,13 +376,21 @@ function display(object){
 
 
 function handleKeyInput(){
-  // if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; handleWallCollisions("up");}
-  // if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
+  if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; handleWallCollisions("up");}
+  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
   if(keyMonkey["a"] || keyMonkey["left"]) 	{ moveBackground("left"); moveObjects("left"); 
                                              handleWallCollisions("left");}
   if(keyMonkey["d"] || keyMonkey["right"]) 	{ moveBackground("right"); moveObjects("right"); 
                                              handleWallCollisions("right");}
-  if(keyMonkey["space"]) { jump(); }
+  // if (keyMonkey['up'] || keyMonkey['w'] || keyMonkey['space_bar']) {	//if any of our 'jump' keys are held down
+  // //NOTE: 'if(!hero.jumping)' is the same as 'if(hero.jumping != true)' which is the same as 'if(hero.jumping == false)'
+  // //so... AND he's not already jumping
+  // if (!character.jumping) {	
+  // character.jumping = true;
+  // character.grounded = false;
+  // //character.dy = -character.max_dy ;
+  // }
+  // }
 }
 
 
