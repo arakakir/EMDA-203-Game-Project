@@ -118,9 +118,10 @@ function init(){
 // ***************** THE MAIN LOOP ******************
 function gameLoop(evt){
   // put code in here that will change every 'tick'
+  runLevels();
   handleKeyInput();
   handleCollisions();
-  runLevels();
+
   myStage.update();
 }
 
@@ -170,14 +171,14 @@ level[0] =
     enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
-      if(level[0].complete){
-        console.log("level 0 complete");
-        createjs.Sound.play("levelUp");
-        //enemySpeed += 2;
-        level[0].active = false;
-        loadLevel(1)
+      // if(level[0].complete){
+      //   console.log("level 0 complete");
+      //   createjs.Sound.play("levelUp");
+      //   //enemySpeed += 2;
+      //   level[0].active = false;
+      //   loadLevel(1)
 
-      }
+      // }
     }
   }
 
@@ -397,61 +398,18 @@ function loadLevel (m) {
        // if not repeating just add the single iteration
        else {var object = new createjs.Bitmap(level[m].objectsToSpawn[i].img);
                 object.class = level[m].objectsToSpawn[i].class;
-                object.x = level[m].objectsToSpawn[i].loc.x + (j*level[m].objectsToSpawn[i].repeatSpacing);
+                object.x = level[m].objectsToSpawn[i].loc.x;
                 object.y = level[m].objectsToSpawn[i].loc.y;
                 object.onStage = false;
                 if(level[m].objectsToSpawn[i].collider){ collisionGnome.addCollider(object, 1.0);}
                 objectsToMove.push(object);}
-     // }
+
    }
    
-   
-  // Load in the level layout
-  // walls = [];
-  // targets = [];
-  // enemies = [];
-  
-//     for (var i = 0; i < level[m].layout.length; i++) {
-//         for (var j = 0; j < level[m].layout[i].length; j++) {
-//             if (level[m].layout[i][j] === "x") { 
-//                 // Create a wall and add it to the 'walls' group
-//                 var wall = new createjs.Bitmap("images/box_yellow.png");
-//                 wall.x = 64*j + 32;
-//                 wall.y = 64*i + 32;
-//                 collisionGnome.addCollider(wall, 1.0);
-//                 walls.push(wall);
-
-//             } else if (level[m].layout[i][j] === "t") { 
-//                 // Create a coin and add it to the 'targets' group
-//                 var target = new createjs.Bitmap("images/box_green.png");
-//                 target.x = 64*j + 32;
-//                 target.y = 64*i + 32;
-//                 collisionGnome.addCollider(target, 1.0);
-//                 targets.push(target);
-
-//             } else if (level[m].layout[i][j] === "e") { 
-//                 // Create a enemy and add it to the 'enemies' group
-//                 var enemy = new createjs.Bitmap("images/box_orange.png");
-//                 enemy.x = 64*j + 32;
-//                 enemy.y = 64*i + 32;
-//                 collisionGnome.addCollider(enemy, 1.0);
-//                 enemy.speed = enemySpeed;
-//                 enemies.push(enemy);
-              
-//             } else if (level[m].layout[i][j] === "c") { 
-//                 // set the character start position
-//                 character.x = 64*j + 32;
-//                 character.y = 64*i + 32;
-//                 character.startPosition = {x: character.x, y: character.y};
-
-//             }
-//         }
-//     }
-
-  display(backgroundImages); 
-  display(walls);
-  display(targets);
-  display(enemies);
+   display(backgroundImages); 
+  // display(walls);
+  // display(targets);
+  // display(enemies);
   display(character);
   display(scoreDisplay);
   
@@ -525,6 +483,11 @@ function handleCollisions(){
         }
         if(objectsToMove[i].class == "endGoal"){
           level[currentLevel].complete = true;
+          // console.log("level complete");
+          // createjs.Sound.play("levelUp");
+          // //enemySpeed += 2;
+          // level[currentLevel].active = false;
+          // loadLevel(currentLevel+1);
         }
       }
     }
