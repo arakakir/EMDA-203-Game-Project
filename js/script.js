@@ -144,7 +144,9 @@ level[0] =
   
    
     objectsToSpawn : [{class: "target", img:"images/box_yellow.png", loc:{x:2000,y:1000}, collider: true, 
-                       repeat: true, repeatSpacing: 200, repeatNumber: 20, repeatProbability: 0.75}],
+                       repeat: true, repeatSpacing: 400, repeatNumber: 20, repeatProbability: 0.5},
+                     {class: "enemy", img:"images/orange.png", loc:{x:2300,y:1000}, collider: true, 
+                       repeat: true, repeatSpacing: 500, repeatNumber: 20, repeatProbability: 0.5}],
                     // {class: "wall", img:"images/wall.png", loc:{x:2000,y:900}, 
                     //      collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
                     // {class: "target", img:"images/target.png", loc:{x:2700,y:900}, 
@@ -449,7 +451,7 @@ function loadLevel (m) {
      if(level[i].active){
        currentLevel = i;
        level[i].completionCheck();
-       moveEnemies(i);
+       
      }
    }
  }
@@ -481,7 +483,7 @@ function handleKeyInput(){
                                              handleWallCollisions("left");}
   if(keyMonkey["d"] || keyMonkey["right"]) 	{ moveBackground("right"); moveObjects("right"); 
                                              handleWallCollisions("right");}
-  if(keyMonkey["d"] || keyMonkey["right"]) 
+  if(keyMonkey["space"]) { jump(); }
 }
 
 
@@ -497,21 +499,15 @@ function handleCollisions(){
         scoreDisplay.text = "SCORE: " + score;
         createjs.Sound.play("target");
       }
-    }
-  }
-  
-    for(var i=0;i<enemies.length;i++){
-      if(character.collidesWith(enemies[i])){
-        // remove it from the array
-        myStage.removeChild(enemies[i]);
-        enemies.splice(i, 1);
+      if(objectsToMove[i].class == "enemy"){
+        myStage.removeChild(objectsToMove[i]);
+        objectsToMove.splice(i, 1);
         score--;
-        character.x = character.startPosition.x;
-        character.y = character.startPosition.y;
         scoreDisplay.text = "SCORE: " + score;
         createjs.Sound.play("enemy");
       }
     }
+  }
 }
   
   
@@ -543,33 +539,6 @@ function handleWallCollisions(direction){
         
       createjs.Sound.play("wall_collide");
     }
-}
-
-
-
-function moveEnemies(i){
-  if(level[i].enemyMovementStyle == "static"){
-    return;
-  }
-  else if (level[i].enemyMovementStyle == "x_or_y_bounce"){
-    for(var i=0; i<enemies.length; i++){
-      enemies[i].x += enemies[i].speed;
-      
-      //check wall collisions
-      for(var j=0; j<walls.length; j++){
-        if(enemies[i].collidesWith(walls[j])){
-          enemies[i].speed = -enemies[i].speed;
-        }
-      }
-
-      // if hit target change direction
-      for(var j=0; j<targets.length; j++){
-        if(enemies[i].collidesWith(targets[j])){
-          enemies[i].speed = -enemies[i].speed;
-        }
-      }
-    }
-  }
 }
 
 
@@ -611,6 +580,11 @@ function moveObjects(dir){
       }
         
   }
+}
+
+
+function jump(){
+  
 }
 
   
