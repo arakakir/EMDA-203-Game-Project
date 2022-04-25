@@ -50,15 +50,6 @@ function preload(){
     ]);
 }
 
-// var myQueue = new createjs.LoadQueue(false);	//(preferXHR)			// 	createjs.LoadQueue's got them methods...
-// 	createjs.Sound.alternateExtensions = ["mp3"];
-// 	myQueue.installPlugin(createjs.Sound);								// *** causes cross - origin errors unless remote
-// 	myQueue.on("fileload", handleFileLoad, this);						// 	fires when a file has finished loading
-// 	myQueue.on("loadstart", handleLoadStart, this);
-// 	myQueue.on("complete", handleLoadComplete, this);					// 	fires when the entire array has finished loading
-// 	myQueue.loadManifest(thingsToLoad);					  //	tell the createjs.LoadQueue to load the 'thingsToLoad' arrray					
-	
-
 	
 
 
@@ -214,26 +205,6 @@ level[1] =
 level[2] = 
   { preLevelDisplay : [
     {img: "images/endScreen.png", loc: {x: 0, y: 0}, toEnd: "onClickRestart"}],
-   
-//    backgroundImage : "images/bg.png",
-  
-//      // x = wall, t = target, e = enemy, c = character start location
-//     layout : [
-//      ["x", "x", "x", "x", "x", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
-//      ["x", " ", " ", " ", "x", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "c"],
-//      ["x", " ", "x", "x", "x", " ", "x", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
-//      ["x", " ", "x", " ", "x", "t", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-//      ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", " ", " ", " ", " ", "x"],
-//      ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
-//      ["x", " ", "t", " ", "x", "x", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-//      ["x", " ", "t", " ", "x", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
-//      ["x", " ", "t", " ", "x", " ", " ", " ", "x", "x", "x", " ", " ", "e", " ", "x"],
-//      ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-//      ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-//      ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
-   
-   
-//     enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
       if(character.y <= 0){
