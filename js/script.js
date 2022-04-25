@@ -145,17 +145,19 @@ level[0] =
    
     objectsToSpawn : [{class: "target", img:"images/box_yellow.png", loc:{x:2000,y:1000}, collider: true, 
                        repeat: true, repeatSpacing: 400, repeatNumber: 20, repeatProbability: 0.5},
-                     {class: "enemy", img:"images/orange.png", loc:{x:2300,y:1000}, collider: true, 
-                       repeat: true, repeatSpacing: 500, repeatNumber: 20, repeatProbability: 0.5}],
-                    // {class: "wall", img:"images/wall.png", loc:{x:2000,y:900}, 
+                     {class: "enemy", img:"images/box_orange.png", loc:{x:2300,y:1000}, collider: true, 
+                       repeat: true, repeatSpacing: 500, repeatNumber: 20, repeatProbability: 0.5},
+                     {class: "shrub", img:"images/box_green.png", loc:{x:1900,y:1000}, collider: false, 
+                       repeat: true, repeatSpacing: 400, repeatNumber: 20, repeatProbability: 0.5}],
+                    // {class: "wall", img:"images/wall.png", loc:{x:2000,y:1000}, 
                     //      collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    // {class: "target", img:"images/target.png", loc:{x:2700,y:900}, 
+                    // {class: "target", img:"images/target.png", loc:{x:2700,y:1000}, 
                     //      collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    // {class: "shrub", img:"images/shrub.png", loc:{x:500,y:900}, 
+                    // {class: "shrub", img:"images/shrub.png", loc:{x:500,y:1000}, 
                     //      collider: false, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    // {class: "boss", img:"images/boss.png", loc:{x:3000,y:900}, 
+                    // {class: "boss", img:"images/boss.png", loc:{x:3000,y:1000}, 
                     //      collider: true, repeat: false},
-                    // {class: "endGoal", img:"images/endGoal.png", loc:{x:3400,y:900}, 
+                    // {class: "endGoal", img:"images/endGoal.png", loc:{x:3400,y:1000}, 
                     //      collider: true, repeat: false}],
    
    
@@ -490,21 +492,23 @@ function handleKeyInput(){
 function handleCollisions(){
   // check to see if there are any collisions with any of the targets
   for(var i=0;i<objectsToMove.length;i++){
-    if(character.collidesWith(objectsToMove[i])){
-      // remove it from the array
-      if(objectsToMove[i].class == "target"){
-        myStage.removeChild(objectsToMove[i]);
-        objectsToMove.splice(i, 1);
-        score++;
-        scoreDisplay.text = "SCORE: " + score;
-        createjs.Sound.play("target");
-      }
-      if(objectsToMove[i].class == "enemy"){
-        myStage.removeChild(objectsToMove[i]);
-        objectsToMove.splice(i, 1);
-        score--;
-        scoreDisplay.text = "SCORE: " + score;
-        createjs.Sound.play("enemy");
+    if(objectsToMove[i].collidesWith != undefined){
+      if(character.collidesWith(objectsToMove[i])){
+        // remove it from the array
+        if(objectsToMove[i].class == "target"){
+          myStage.removeChild(objectsToMove[i]);
+          objectsToMove.splice(i, 1);
+          score++;
+          scoreDisplay.text = "SCORE: " + score;
+          createjs.Sound.play("target");
+        }
+        if(objectsToMove[i].class == "enemy"){
+          myStage.removeChild(objectsToMove[i]);
+          objectsToMove.splice(i, 1);
+          score--;
+          scoreDisplay.text = "SCORE: " + score;
+          createjs.Sound.play("enemy");
+        }
       }
     }
   }
