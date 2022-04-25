@@ -142,17 +142,17 @@ level[0] =
                       {img: "images/background_backMountains.png", scrollRate: 0.5}],
   
    
-    objectsToSpawn : [{type: "enemy", img:"images/enemy.png", loc:{x:2000,y:900}, 
+    objectsToSpawn : [{class: "enemy", img:"images/enemy.png", loc:{x:2000,y:900}, 
                          collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    {type: "wall", img:"images/wall.png", loc:{x:2000,y:900}, 
+                    {class: "wall", img:"images/wall.png", loc:{x:2000,y:900}, 
                          collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    {type: "target", img:"images/target.png", loc:{x:2700,y:900}, 
+                    {class: "target", img:"images/target.png", loc:{x:2700,y:900}, 
                          collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    {type: "shrub", img:"images/shrub.png", loc:{x:500,y:900}, 
+                    {class: "shrub", img:"images/shrub.png", loc:{x:500,y:900}, 
                          collider: false, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    {type: "boss", img:"images/boss.png", loc:{x:3000,y:900}, 
+                    {class: "boss", img:"images/boss.png", loc:{x:3000,y:900}, 
                          collider: true, repeat: false},
-                    {type: "endGoal", img:"images/endGoal.png", loc:{x:3400,y:900}, 
+                    {class: "endGoal", img:"images/endGoal.png", loc:{x:3400,y:900}, 
                          collider: true, repeat: false}],
    
    
@@ -365,6 +365,17 @@ function loadLevel (m) {
      backgroundImages.push(backgroundImageChaser);
    } 
   
+   
+   for (var i = 0; i < level[m].objectsToSpawn.length; i++){
+     if (level[m].objectsToSpawn[i].class == "enemy"){
+       
+     }
+   }
+   
+   // {class: "enemy", img:"images/enemy.png", loc:{x:2000,y:900}, 
+   //                       collider: true, repeat: true, repeatRate: 200, repeatProbability: 1}
+   
+   
   // Load in the level layout
   walls = [];
   targets = [];
