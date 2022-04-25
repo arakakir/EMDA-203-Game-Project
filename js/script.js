@@ -147,7 +147,7 @@ level[0] =
                        repeat: true, repeatSpacing: 400, repeatNumber: 20, repeatProbability: 0.5},
                      {class: "enemy", img:"images/box_orange.png", loc:{x:2300,y:1000}, collider: true, 
                        repeat: true, repeatSpacing: 500, repeatNumber: 20, repeatProbability: 0.5},
-                     {class: "shrub", img:"images/box_green.png", loc:{x:1900,y:1000}, collider: false, 
+                     {class: "shrub", img:"images/box_green.png", loc:{x:1900,y:968}, collider: false, 
                        repeat: true, repeatSpacing: 400, repeatNumber: 20, repeatProbability: 0.5}],
                     // {class: "wall", img:"images/wall.png", loc:{x:2000,y:1000}, 
                     //      collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
