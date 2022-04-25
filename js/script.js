@@ -22,6 +22,7 @@ var targets = [];
 var enemies = [];
 var level = [];
 var backgroundImages = [];
+var objectsToMove = [];
 
 
 
@@ -365,6 +366,7 @@ function loadLevel (m) {
      backgroundImages.push(backgroundImageChaser);
    } 
   
+   objectsToMove = [];
    
    for (var i = 0; i < level[m].objectsToSpawn.length; i++){
      if (level[m].objectsToSpawn[i].class == "enemy"){
@@ -372,12 +374,11 @@ function loadLevel (m) {
        if (level[m].objectsToSpawn[i].repeat){
          for (var j = 0; j < level[m].objectsToSpawn[i].repeatNumber; j++){
            if(Math.random() < level[m].objectsToSpawn[i].repeatProbability){
-              var enemy = new createjs.Bitmap(level[m].objectsToSpawn[i].img);
-              enemy.x = level[m].objectsToSpawn[i].loc.x + (j*level[m].objectsToSpawn[i].repeatSpacing);
-              enemy.y = level[m].objectsToSpawn[i].loc.y;
-              if(level[m].objectsToSpawn[i].collider){ collisionGnome.addCollider(enemy, 1.0);}
-              enemy.speed = enemySpeed;
-              enemies.push(enemy);
+              var object = new createjs.Bitmap(level[m].objectsToSpawn[i].img);
+              object.x = level[m].objectsToSpawn[i].loc.x + (j*level[m].objectsToSpawn[i].repeatSpacing);
+              object.y = level[m].objectsToSpawn[i].loc.y;
+              if(level[m].objectsToSpawn[i].collider){ collisionGnome.addCollider(object, 1.0);}
+              objectsToMove.push(object);
            }
          }
        }
