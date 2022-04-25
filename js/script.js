@@ -42,7 +42,11 @@ function preload(){
     {id:"background", src:"images/bg.png"},
     {id:"wall", src:"images/box_yellow.png"},
     {id:"enemy", src:"images/box_orange.png"},
-    {id:"target", src:"images/box_green.png"}
+    {id:"target", src:"images/box_green.png"},
+    {id:"background_footpath", src:"images/background_footpath.png"},
+    {id:"background_frontMountains", src:"images/background_frontMountains.png"},
+    {id:"background_midMountains", src:"images/background_midMountains.png"},
+    {id:"background_backMountains", src:"images/background_backMountains.png"}
     ]);
 }
 
@@ -390,6 +394,14 @@ function loadLevel (m) {
            }
          }
        }
+       // if not repeating just add the single iteration
+       else {var object = new createjs.Bitmap(level[m].objectsToSpawn[i].img);
+                object.class = level[m].objectsToSpawn[i].class;
+                object.x = level[m].objectsToSpawn[i].loc.x + (j*level[m].objectsToSpawn[i].repeatSpacing);
+                object.y = level[m].objectsToSpawn[i].loc.y;
+                object.onStage = false;
+                if(level[m].objectsToSpawn[i].collider){ collisionGnome.addCollider(object, 1.0);}
+                objectsToMove.push(object);}
      // }
    }
    
@@ -512,7 +524,7 @@ function handleCollisions(){
           createjs.Sound.play("enemy");
         }
         if(objectsToMove[i].class == "endGoal"){
-          level(currentLevel).complete = true;
+          level[currentLevel].complete = true;
         }
       }
     }
@@ -575,7 +587,7 @@ function moveObjects(dir){
     if(dir == "left"){ objectsToMove[i].x += speed;}
 
       // if x is < 2000 and not added to stage
-      if(objectsToMove[i].x < 2000 && objectsToMove[i].x > 1800 && objectsToMove[i].onStage == false){
+      if(objectsToMove[i].x < 2000 && objectsToMove[i].x > 0 && objectsToMove[i].onStage == false){
           objectsToMove[i].onStage = true;
           myStage.addChild(objectsToMove[i]);
           console.log("added child")
