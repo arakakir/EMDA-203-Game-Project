@@ -148,7 +148,9 @@ level[0] =
                      {class: "enemy", img:"images/box_orange.png", loc:{x:2300,y:1000}, collider: true, 
                        repeat: true, repeatSpacing: 500, repeatNumber: 20, repeatProbability: 0.5},
                      {class: "shrub", img:"images/box_green.png", loc:{x:1900,y:968}, collider: false, 
-                       repeat: true, repeatSpacing: 400, repeatNumber: 20, repeatProbability: 0.5}],
+                       repeat: true, repeatSpacing: 400, repeatNumber: 20, repeatProbability: 0.5},
+                     {class: "endGoal", img:"images/hero.png", loc:{x:4000,y:1000}, collider: true, 
+                       repeat: false}],
                     // {class: "wall", img:"images/wall.png", loc:{x:2000,y:1000}, 
                     //      collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
                     // {class: "target", img:"images/target.png", loc:{x:2700,y:1000}, 
@@ -164,14 +166,14 @@ level[0] =
     enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
-      // if(character.collidesWith(endGoal)){
-      //   console.log("level 0 complete");
-      //   createjs.Sound.play("levelUp");
-      //   //enemySpeed += 2;
-      //   level[0].active = false;
-      //   loadLevel(1)
+      if(level[0].complete){
+        console.log("level 0 complete");
+        createjs.Sound.play("levelUp");
+        //enemySpeed += 2;
+        level[0].active = false;
+        loadLevel(1)
 
-      // }
+      }
     }
   }
 
@@ -508,6 +510,9 @@ function handleCollisions(){
           score--;
           scoreDisplay.text = "SCORE: " + score;
           createjs.Sound.play("enemy");
+        }
+        if(objectsToMove[i].class == "endGoal"){
+          level(currentLevel).complete = true;
         }
       }
     }
