@@ -143,31 +143,31 @@ level[0] =
                       {img: "images/background_backMountains.png", scrollRate: 0.5}],
   
    
-    objectsToSpawn : [{class: "enemy", img:"images/enemy.png", loc:{x:2000,y:900}, 
-                         collider: true, repeat: true, repeatSpacing: 200, repeatNumber: 20, repeatProbability: 1},
-                    {class: "wall", img:"images/wall.png", loc:{x:2000,y:900}, 
-                         collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    {class: "target", img:"images/target.png", loc:{x:2700,y:900}, 
-                         collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    {class: "shrub", img:"images/shrub.png", loc:{x:500,y:900}, 
-                         collider: false, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    {class: "boss", img:"images/boss.png", loc:{x:3000,y:900}, 
-                         collider: true, repeat: false},
-                    {class: "endGoal", img:"images/endGoal.png", loc:{x:3400,y:900}, 
-                         collider: true, repeat: false}],
+    objectsToSpawn : [{class: "enemy", img:"images/box_yellow.png", loc:{x:2000,y:900}, 
+                         collider: true, repeat: true, repeatSpacing: 200, repeatNumber: 20, repeatProbability: 1}],
+                    // {class: "wall", img:"images/wall.png", loc:{x:2000,y:900}, 
+                    //      collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
+                    // {class: "target", img:"images/target.png", loc:{x:2700,y:900}, 
+                    //      collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
+                    // {class: "shrub", img:"images/shrub.png", loc:{x:500,y:900}, 
+                    //      collider: false, repeat: true, repeatRate: 200, repeatProbability: 1},
+                    // {class: "boss", img:"images/boss.png", loc:{x:3000,y:900}, 
+                    //      collider: true, repeat: false},
+                    // {class: "endGoal", img:"images/endGoal.png", loc:{x:3400,y:900}, 
+                    //      collider: true, repeat: false}],
    
    
     enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
-      if(character.collidesWith(endGoal)){
-        console.log("level 0 complete");
-        createjs.Sound.play("levelUp");
-        //enemySpeed += 2;
-        level[0].active = false;
-        loadLevel(1)
+      // if(character.collidesWith(endGoal)){
+      //   console.log("level 0 complete");
+      //   createjs.Sound.play("levelUp");
+      //   //enemySpeed += 2;
+      //   level[0].active = false;
+      //   loadLevel(1)
 
-      }
+      // }
     }
   }
 
@@ -369,7 +369,7 @@ function loadLevel (m) {
    objectsToMove = [];
    
    for (var i = 0; i < level[m].objectsToSpawn.length; i++){
-     if (level[m].objectsToSpawn[i].class == "enemy"){
+     // if (level[m].objectsToSpawn[i].class == "enemy"){
        //if repeating
        if (level[m].objectsToSpawn[i].repeat){
          for (var j = 0; j < level[m].objectsToSpawn[i].repeatNumber; j++){
@@ -383,7 +383,7 @@ function loadLevel (m) {
            }
          }
        }
-     }
+     // }
    }
    
    
@@ -480,9 +480,9 @@ function handleKeyInput(){
   // if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
   // if(keyMonkey["d"] || keyMonkey["right"]) 	{ character.x += character.speed.right; handleWallCollisions("right");}
   if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; handleWallCollisions("up");}
-  if(keyMonkey["a"] || keyMonkey["left"]) 	{ character.x -= character.speed.left; handleWallCollisions("left");}
+  if(keyMonkey["a"] || keyMonkey["left"]) 	{ moveBackground("left"); moveObjects("left"); handleWallCollisions("left");}
   if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
-  if(keyMonkey["d"] || keyMonkey["right"]) 	{ moveBackground("right"); handleWallCollisions("right");}
+  if(keyMonkey["d"] || keyMonkey["right"]) 	{ moveBackground("right"); moveObjects("right"); handleWallCollisions("right");}
 }
 
 
@@ -592,14 +592,20 @@ function moveBackground(dir){
 
 function moveObjects(dir){
   for(var i = objectsToMove.length-1; i >= 0; i++){
-      objectsToMove[i].x -= speed;
-    
+    if(dir == "right"){ objectsToMove[i].x -= speed;}
+    if(dir == "left"){ objectsToMove[i].x += speed;}
+
       // if x is < 2000 and not added to stage
-      if(objectsToMove[i].x < 2000 && myStage.getChildByName())
+      if(objectsToMove[i].x < 2000 && myStage.getChildByName(objectsToMove[i]) == "null"){
           myStage.addChild(objectsToMove[i]);
+          console.log("added child")
+      }
     
-    // if x is < 300 and is on the stage
+    // if x is < -300 and is on the stage
+      if(objectsToMove[i].x < -300 && myStage.getChildByName(objectsToMove[i]) != "null"){
           myStage.removeChild(objectsToMove[i]);
+          console.log("removed child")
+      }
         
   }
 }
