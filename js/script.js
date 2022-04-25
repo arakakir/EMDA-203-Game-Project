@@ -331,10 +331,7 @@ function loadLevel (m) {
 
    }
    
-   display(backgroundImages); 
-  // display(walls);
-  // display(targets);
-  // display(enemies);
+  display(backgroundImages); 
   display(character);
   display(scoreDisplay);
   
@@ -358,6 +355,7 @@ function loadLevel (m) {
 
 function clearScreen(){
   myStage.removeAllChildren();
+  objectsToMove = [];
   //myStage.addChild(background, character, scoreDisplay);
   myStage.update();
 }
@@ -416,11 +414,7 @@ function handleCollisions(){
         }
         if(objectsToMove[i].class == "endGoal"){
           level[currentLevel].complete = true;
-          // console.log("level complete");
-          // createjs.Sound.play("levelUp");
-          // //enemySpeed += 2;
-          // level[currentLevel].active = false;
-          // loadLevel(currentLevel+1);
+
         }
       }
     }
@@ -464,7 +458,7 @@ function moveBackground(dir){
     for(var i = 0; i<backgroundImages.length; i++){
       backgroundImages[i].x -= (speed * backgroundImages[i].scrollRate);
       if (backgroundImages[i].x <= -backgroundImages[i].image.width){
-        backgroundImages[i].x = backgroundImages[i].image.width;
+        backgroundImages[i].x = backgroundImages[i].image.width - 100;
       }
     }
   }
@@ -501,7 +495,7 @@ function moveObjects(dir){
 
 
 function jump(){
-  
+  // the best is yet to come!
 }
 
   
