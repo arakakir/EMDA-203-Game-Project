@@ -253,6 +253,8 @@ function loadLevel (m) {
   // remove children
   clearScreen();
   
+  level[m].complete = false;
+  
  // Display pre-level images (if any)
   if(typeof level[m].preLevelDisplay != "undefined") {
       
