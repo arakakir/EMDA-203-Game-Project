@@ -154,139 +154,91 @@ level[0] =
                        repeat: true, repeatSpacing: 500, repeatNumber: 20, repeatProbability: 0.5},
                      {class: "shrub", img:"images/box_green.png", loc:{x:1900,y:968}, collider: false, 
                        repeat: true, repeatSpacing: 400, repeatNumber: 20, repeatProbability: 0.5},
-                     {class: "endGoal", img:"images/hero.png", loc:{x:4000,y:1000}, collider: true, 
+                     {class: "endGoal", img:"images/hero.png", loc:{x:5000,y:1000}, collider: true, 
                        repeat: false}],
-                    // {class: "wall", img:"images/wall.png", loc:{x:2000,y:1000}, 
-                    //      collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    // {class: "target", img:"images/target.png", loc:{x:2700,y:1000}, 
-                    //      collider: true, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    // {class: "shrub", img:"images/shrub.png", loc:{x:500,y:1000}, 
-                    //      collider: false, repeat: true, repeatRate: 200, repeatProbability: 1},
-                    // {class: "boss", img:"images/boss.png", loc:{x:3000,y:1000}, 
-                    //      collider: true, repeat: false},
-                    // {class: "endGoal", img:"images/endGoal.png", loc:{x:3400,y:1000}, 
-                    //      collider: true, repeat: false}],
    
-   
-    enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
-      // if(level[0].complete){
-      //   console.log("level 0 complete");
-      //   createjs.Sound.play("levelUp");
-      //   //enemySpeed += 2;
-      //   level[0].active = false;
-      //   loadLevel(1)
+      if(level[0].complete){
+        console.log("level 0 complete");
+        createjs.Sound.play("levelUp");
+        //enemySpeed += 2;
+        level[0].active = false;
+        loadLevel(1)
 
-      // }
+      }
     }
   }
 
 
 level[1] = 
-  // { preLevelDisplay : [
-  //   {img: "images/level1_predisplay1.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 3000},
-  //   {img: "images/level1_predisplay2.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 3000},
-  //   {img: "images/level1_predisplay3.png", loc: {x: 0, y: 0}, toEnd: "onClick"}],
-   
-  { backgroundImage : "images/bg.png",
+  { preLevelDisplay : [
+    {img: "images/level2.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 2000},
+    {img: "images/level0.2.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 1000},
+    {img: "images/level0.3.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 1000},
+    {img: "images/level0.4.png", loc: {x: 0, y: 0}, toEnd: "timer", duration: 1000}],
   
-     // x = wall, t = target, e = enemy, c = character start location
-    layout : [
-     ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
-     [" ", " ", " ", " ", "x", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "x", "x", "x", " ", " ", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
-     ["x", " ", "x", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "x", "x", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "x", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "x", " ", " ", " ", "x", "x", "x", " ", " ", "e", " ", "x"],
-     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", "x", "x", "x", "x", "c", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
    
+    // define an array of background images for paralax scrolling.  If you just need one image, just use one!  
+   // 'scrollRate' is a multiplier of speed (e.g. 0.5 = half speed)
+    backgroundImage : [{img: "images/background_footpath.png", scrollRate: 1},
+                      {img: "images/background_frontMountains.png", scrollRate: 0.75},
+                      {img: "images/background_midMountains.png", scrollRate: 0.66},
+                      {img: "images/background_backMountains.png", scrollRate: 0.5}],
+  
    
-    enemyMovementStyle : "x_or_y_bounce",
+    objectsToSpawn : [{class: "target", img:"images/box_yellow.png", loc:{x:2000,y:1000}, collider: true, 
+                       repeat: true, repeatSpacing: 400, repeatNumber: 20, repeatProbability: 0.8},
+                     {class: "enemy", img:"images/box_orange.png", loc:{x:2300,y:1000}, collider: true, 
+                       repeat: true, repeatSpacing: 500, repeatNumber: 20, repeatProbability: 0.8},
+                     {class: "shrub", img:"images/box_green.png", loc:{x:1900,y:968}, collider: false, 
+                       repeat: true, repeatSpacing: 400, repeatNumber: 20, repeatProbability: 0.8},
+                     {class: "endGoal", img:"images/hero.png", loc:{x:5000,y:1000}, collider: true, 
+                       repeat: false}],
+   
 
     completionCheck : function() {
-      if(character.x <= 0){
-        console.log("level 1 complete");
-        level[1].active = false;
+      if(level[1].complete){
+        console.log("level 0 complete");
         createjs.Sound.play("levelUp");
-        enemySpeed += 2;
-        clearScreen();
+        //enemySpeed += 2;
+        level[1].active = false;
         loadLevel(2)
+
       }
     }
   }
+
+
 
 level[2] = 
-  // { preLevelDisplay : [
-  //   {img: "images/level1_predisplay1.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
-  //   {img: "images/level1_predisplay2.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "timer", duration: 3000},
-  //   {img: "images/level1_predisplay3.png", loc: {x: stageWidth/2, y: stageHeight/2}, toEnd: "onClick"}],
-   
-  { backgroundImage : "images/bg.png",
-  
-     // x = wall, t = target, e = enemy, c = character start location
-    layout : [
-     ["x", "x", "x", "x", "x", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
-     ["x", " ", " ", " ", "x", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "c"],
-     ["x", " ", "x", "x", "x", " ", "x", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
-     ["x", " ", "x", " ", "x", "t", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "x", "x", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "x", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "x", " ", " ", " ", "x", "x", "x", " ", " ", "e", " ", "x"],
-     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
-   
-   
-    enemyMovementStyle : "x_or_y_bounce",
-
-    completionCheck : function() {
-      if(character.y <= 0){
-        console.log("level 2 complete");
-        level[2].active = false;
-        createjs.Sound.play("levelUp");
-        enemySpeed += 2;
-        clearScreen();
-        loadLevel(3)
-      }
-    }
-  }
-
-level[3] = 
   { preLevelDisplay : [
     {img: "images/endScreen.png", loc: {x: 0, y: 0}, toEnd: "onClickRestart"}],
    
-   backgroundImage : "images/bg.png",
+//    backgroundImage : "images/bg.png",
   
-     // x = wall, t = target, e = enemy, c = character start location
-    layout : [
-     ["x", "x", "x", "x", "x", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
-     ["x", " ", " ", " ", "x", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "c"],
-     ["x", " ", "x", "x", "x", " ", "x", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
-     ["x", " ", "x", " ", "x", "t", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "x", "x", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "x", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
-     ["x", " ", "t", " ", "x", " ", " ", " ", "x", "x", "x", " ", " ", "e", " ", "x"],
-     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
-     ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
+//      // x = wall, t = target, e = enemy, c = character start location
+//     layout : [
+//      ["x", "x", "x", "x", "x", " ", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+//      ["x", " ", " ", " ", "x", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", "c"],
+//      ["x", " ", "x", "x", "x", " ", "x", " ", " ", " ", " ", "e", " ", " ", " ", "x"],
+//      ["x", " ", "x", " ", "x", "t", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+//      ["x", " ", "t", " ", " ", " ", " ", " ", " ", "x", "x", " ", " ", " ", " ", "x"],
+//      ["x", " ", " ", "t", " ", " ", " ", "t", " ", " ", " ", " ", " ", " ", " ", "x"],
+//      ["x", " ", "t", " ", "x", "x", "x", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+//      ["x", " ", "t", " ", "x", " ", " ", " ", " ", " ", "e", " ", " ", " ", " ", "x"],
+//      ["x", " ", "t", " ", "x", " ", " ", " ", "x", "x", "x", " ", " ", "e", " ", "x"],
+//      ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+//      ["x", " ", " ", " ", "x", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "x"],
+//      ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"]], 
    
    
-    enemyMovementStyle : "x_or_y_bounce",
+//     enemyMovementStyle : "x_or_y_bounce",
 
     completionCheck : function() {
       if(character.y <= 0){
         console.log("level 3 complete");
-        level[3].active = false;
+        level[2].active = false;
         createjs.Sound.play("levelUp");
         clearScreen();
         loadLevel(0)
@@ -339,7 +291,7 @@ function loadLevel (m) {
           console.log(preLevelImage);
           preLevelImage.on("click", function(){
             myStage.removeChild(preLevelImage);
-            level[3].active = false;
+            level[m].active = false;
             clearScreen();
             loadLevel(0);
           }) 
