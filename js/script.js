@@ -123,7 +123,8 @@ function gameLoop(evt){
  //      DEFINE LEVELS     //
 ////////////////////////////
 var scene = [
-  {id:"scene1", 
+  {id:"scene1",
+   sound: "scene1sound",
    text: "You enter a room with two doors...", 
    choices: [
      {text:"Take the door on the left", next:"scene2a"},
@@ -133,10 +134,42 @@ var scene = [
      {img:"images/scene1_character.png", animated: true, 
       animation: {wait: 0,
                   startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-                  endPosition:{x:200, y:, alpha:1, rotation:0, scale:1},
+                  endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
                   duration: 3000}}
      ]
-  } 
+  }, 
+  
+  {id:"scene2a",
+   sound: "scene2sound",
+   text: "You chose the left door. Now what?", 
+   choices: [
+     {text:"Give up.", next:"scene3a"},
+     {text:"Wind", next:"scene3b"}], 
+   images: [
+     {img:"images/scene2a_background.png", animated: false},
+     {img:"images/scene2a_character.png", animated: true, 
+      animation: {wait: 0,
+                  startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+                  endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+                  duration: 3000}}
+     ]
+  }, 
+  
+  {id:"scene2b",
+   sound: "scene2sound",
+   text: "You chose the right door. Now what?", 
+   choices: [
+     {text:"Ascend to the throne.", next:"scene3c"},
+     {text:"Give up.", next:"scene3a"}], 
+   images: [
+     {img:"images/scene2b_background.png", animated: false},
+     {img:"images/scene2b_character.png", animated: true, 
+      animation: {wait: 0,
+                  startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+                  endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+                  duration: 3000}}
+     ]
+  }
 ]
 
 
