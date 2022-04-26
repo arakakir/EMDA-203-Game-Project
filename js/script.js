@@ -122,6 +122,19 @@ function gameLoop(evt){
   /////////////////////////////
  //      DEFINE LEVELS     //
 ////////////////////////////
+var scene = [
+  {id:"scene1", 
+   text: "", 
+   choices: [
+     {text:"option one", next:"scene2a"},
+     {text:"option two", next:"scene2b"}], 
+   images: [
+     {img:"images/scene1.png", animated: true, animation: {startPosition:{x:0, y:0, alpha:1, rotation:0, scale:1}}},
+
+  
+]
+
+
 
 level[0] = 
   { preLevelDisplay : [
