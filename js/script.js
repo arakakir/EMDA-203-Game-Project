@@ -124,14 +124,19 @@ function gameLoop(evt){
 ////////////////////////////
 var scene = [
   {id:"scene1", 
-   text: "", 
+   text: "You enter a room with two doors...", 
    choices: [
-     {text:"option one", next:"scene2a"},
-     {text:"option two", next:"scene2b"}], 
+     {text:"Take the door on the left", next:"scene2a"},
+     {text:"Take the door on the right", next:"scene2b"}], 
    images: [
-     {img:"images/scene1.png", animated: true, animation: {startPosition:{x:0, y:0, alpha:1, rotation:0, scale:1}}},
-
-  
+     {img:"images/scene1_background.png", animated: false},
+     {img:"images/scene1_character.png", animated: true, 
+      animation: {wait: 0,
+                  startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+                  endPosition:{x:200, y:, alpha:1, rotation:0, scale:1},
+                  duration: 3000}}
+     ]
+  } 
 ]
 
 
