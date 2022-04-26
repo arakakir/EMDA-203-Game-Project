@@ -122,7 +122,7 @@ function gameLoop(evt){
   /////////////////////////////
  //      DEFINE LEVELS     //
 ////////////////////////////
-var scene = [
+var scenes = [
   {id:"scene1",
    sound: "scene1sound",
    text: "You enter a room with two doors...", 
