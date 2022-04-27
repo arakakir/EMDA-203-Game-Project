@@ -126,6 +126,7 @@ var scenes = [
   {id:"scene1",
    sound: "scene1sound",
    text: "You enter a room with two doors...", 
+   textScrolling: true,
    choices: [
      {text:"Take the door on the left", next:"scene2a"},
      {text:"Take the door on the right", next:"scene2b"}], 
