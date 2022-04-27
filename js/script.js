@@ -131,7 +131,8 @@ var scenes = [
    textScrolling: true,
    choices: [
      {text:"Take the door on the left", next:"scene2a"},
-     {text:"Take the door on the right", next:"scene2b"}], 
+     {text:"Take the door on the right", next:"scene2b"},
+     {image:"pushButton1", loc: {x:0, y:0}, next:"scene2c"}], 
    images: [
      {img:"images/scene1_background.png", animated: false},
      {img:"images/scene1_character.png", animated: true, 
