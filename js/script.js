@@ -125,7 +125,9 @@ function gameLoop(evt){
 var scenes = [
   {id:"scene1",
    sound: "scene1sound",
-   text: "You enter a room with two doors...", 
+   text: [{speaker: "James", text: "You enter a room with two doors..."},
+         {speaker: "Jennifer", text: "Wow two doors..."}
+         ], 
    textScrolling: true,
    choices: [
      {text:"Take the door on the left", next:"scene2a"},
