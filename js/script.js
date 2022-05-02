@@ -122,6 +122,12 @@ function gameLoop(evt){
   /////////////////////////////
  //      DEFINE LEVELS     //
 ////////////////////////////
+
+// set up scenery
+// set up actors and their behaviors
+// write "script" 
+
+
 var scenes = [
   {id:"scene1",
    sound: "scene1sound",
@@ -134,12 +140,13 @@ var scenes = [
      {text:"Take the door on the right", next:"scene2b"},
      {image:"pushButton1", loc: {x:0, y:0}, next:"scene2c"}], 
    images: [
-     {img:"images/scene1_background.png", animated: false},
-     {img:"images/scene1_character.png", animated: true, 
+     {img:"images/scene1_background.png", animated: false, clickable: false},
+     {img:"images/scene1_character.png", animated: true, clickable: true, 
       animation: {wait: 0,
                   startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                   endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
-                  duration: 3000}}
+                  duration: 3000},
+     onClick:"smile"}
      ]
   }, 
   
