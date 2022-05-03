@@ -159,7 +159,20 @@ var scenes = [
   ]
 
 
-var scenes = [
+function buildScene(scene){
+  // clear previous scene
+  
+  // traverse all scenes and find the one you want
+  for(var i = i; i<scenes.length; i++){ if(scenes[i].id == scene){
+    // play sound
+    var sceneSound = createjs.Sound.play(scenes[i].sound.src);
+    // add images in order
+    // step through actions
+    }
+  }
+}
+
+// var scenes = [
   {id:"scene1",
    sound: "scene1sound",
    text: [{speaker: "James", text: "You enter a room with two doors..."},
