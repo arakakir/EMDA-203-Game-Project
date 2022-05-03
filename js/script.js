@@ -25,6 +25,9 @@ var level = [];
 var backgroundImages = [];
 var objectsToMove = [];
 
+var scenes = [];
+var sceneImages = [];
+
 
 
 // ************************* PRELOAD ASSETS ***************************
@@ -133,8 +136,8 @@ var scenes = [
    sound: {src: "scene1sound", volume: 1.0, loop: -1},
    
    images: [
-     {id: "background", img:"images/scene1_background.png", animated: false, clickable: false},
-     {id: "character", img:"images/scene1_character.png", animated: true,
+     {id: "background", img:"images/scene1_background.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "character", img:"images/scene1_character.png", loc: {x:200, y:250}, animated: true,
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
@@ -165,12 +168,21 @@ function buildScene(scene){
   clearScene();
   
   // traverse all scenes and find the one you want
-  for(var i = i; i<scenes.length; i++){ if(scenes[i].id == scene){
+  for(var i = 0; i<scenes.length; i++){ if(scenes[i].id == scene){
     // play sound
     sceneSound = createjs.Sound.play(scenes[i].sound.src);
     sceneSound.volume = scenes[i].sound.volume;
     sceneSound.loop = scenes[i].sound.looping;
+    
     // add images in order
+    for (var j = scenes[i].images.length-1; i >= 0; i--){
+     var image = new createjs.Bitmap(scenes[i].images[j].img)
+     image.x = scenes[i].images[j].loc.x;
+     image.y = scenes[i].images[j].loc.y;
+     sceneImages.push(image);
+     myStage.addChild(sceneImages[sceneImages.length-1]);
+    }
+      
     // step through actions
     }
   }
@@ -237,6 +249,7 @@ function clearScene(){
   
   // remove images (children) from stage
   myStage.removeAllChildren();
+  sceneImages = [];
   
 }
 
