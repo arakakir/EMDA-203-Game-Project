@@ -130,19 +130,20 @@ function gameLoop(evt){
 var scenes = [
   {id:"scene1",
    sound: {src: "scene1sound", volume: 1.0, loop: -1},
+   
    images: [
-     {img:"images/scene1_background.png", animated: false, clickable: false},
-     {img:"images/scene1_character.png", animated: true,
-      animation: {wait: 0,
-                  startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-                  endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
-                  spriteAnimation:"wink",
-                  duration: 3000},
-      clickable: true, onClick:"smile"
-     }
+     {id: "background", img:"images/scene1_background.png", animated: false, clickable: false},
+     {id: "character", img:"images/scene1_character.png", animated: true,
+                  animation: {wait: 0,
+                              startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+                              endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+                              spriteAnimation:"wink",
+                              duration: 3000},
+                  clickable: true, onClick:"smile"}
      ],
+   
    actions: [
-     {type: "text", speaker: "James", text: "You enter a room with two doors..."},
+     {type: "text", speaker: "character", text: "You enter a room with two doors..."},
      {type: "text", speaker: "Jennifer", text: "Wow two doors..."},
      {type: "animation", objectToAnimate: "character", 
                   animation: {wait: 0,
@@ -150,14 +151,11 @@ var scenes = [
                               startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
                               duration: 3000}},
-     {type: "choice", }
+     {type: "choice", choices: [{text:"Take the door on the left", next:"scene2a"},
+                                {text:"Take the door on the right", next:"scene2b"},
+                                {image:"pushButton1", loc: {x:0, y:0}, next:"scene2c"}]}                   
          ], 
-   textScrolling: true,
-   choices: [
-     {text:"Take the door on the left", next:"scene2a"},
-     {text:"Take the door on the right", next:"scene2b"},
-     {image:"pushButton1", loc: {x:0, y:0}, next:"scene2c"}], 
-  }
+   }
   ]
 
 
