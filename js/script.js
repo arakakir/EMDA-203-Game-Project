@@ -147,8 +147,8 @@ var scenes = [
      ],
    
    actions: [
-     {type: "text", speaker: "character", text: "You enter a room with two doors..."},
-     {type: "text", speaker: "Jennifer", text: "Wow two doors..."},
+     {type: "text", speaker: "character", text: "You enter a room with two doors...", trigger: "timer", duration: 5000},
+     {type: "text", speaker: "Jennifer", text: "Wow two doors...", trigger: "click"},
      {type: "animation", objectToAnimate: "character", 
                   animation: {wait: 0,
                               spriteAnimation:"wavingHand",
@@ -193,6 +193,7 @@ function buildScene(scene){
     
     // set the action counter to zero
     scenes[i].currentAction = 0;
+    scenes[i].currentActionCompleted = false;
   }
     // set all other scenes inactive
     else { scenes[i].active = false;}
@@ -200,11 +201,23 @@ function buildScene(scene){
 }
 
 function handleSceneActions(){
-    for(var i = 0; i<scenes.length; i++){ if(scenes[i].active == true){
-      // perform current action
-      switch (scenes[i].actions[scenes[i].currentAction].type){
-        case ""
-      };
+    for(var i = 0; i<scenes.length; i++){ 
+      if(scenes[i].active == true && !scenes[i].currentActionCompleted){
+        
+        // perform current action
+        switch (scenes[i].actions[scenes[i].currentAction].type){
+          case "text":
+            // display text
+            break;
+          case "animation":
+            break;
+          case "choice":
+            break
+        };
+        
+        scenes[i].currentActionInitiated = true;
+      
+      
       // wait for trigger then increment current action
     }
 }
