@@ -202,7 +202,9 @@ function buildScene(scene){
 function handleSceneActions(){
     for(var i = 0; i<scenes.length; i++){ if(scenes[i].active == true){
       // perform current action
-      (scenes[i].currentAction)
+      switch (scenes[i].actions[scenes[i].currentAction].type){
+        case ""
+      };
       // wait for trigger then increment current action
     }
 }
