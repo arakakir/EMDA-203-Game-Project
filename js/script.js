@@ -193,7 +193,7 @@ function buildScene(scene){
     
     // set the action counter to zero
     scenes[i].currentAction = 0;
-    scenes[i].currentActionCompleted = false;
+    scenes[i].currentActionInitiated = false;
   }
     // set all other scenes inactive
     else { scenes[i].active = false;}
@@ -202,15 +202,25 @@ function buildScene(scene){
 
 function handleSceneActions(){
     for(var i = 0; i<scenes.length; i++){ 
-      if(scenes[i].active == true && !scenes[i].currentActionCompleted){
+      if(scenes[i].active == true && !scenes[i].currentActionInitiated){
+        
+        var thisAction = scenes[i].actions[scenes[i].currentAction];
         
         // perform current action
-        switch (scenes[i].actions[scenes[i].currentAction].type){
+        switch (thisAction.type){
           case "text":
             // display text
+            // set listener
+            if(thisAction.trigger == "click"){
+              // textDisplayObject.addEventListener('click', nextAction(i)})
+            } else if(thisAction.trigger == "timer"){
+              setTimeout(nextAction(i), thisAction.duration);
+            }
             break;
+            
           case "animation":
             break;
+            
           case "choice":
             break
         };
@@ -221,6 +231,14 @@ function handleSceneActions(){
       // wait for trigger then increment current action
     }
 }
+  
+  
+  function nextAction(scene){
+    if(scenes[scene].currentAction <= scenes[scene].actions.length){
+      scenes[scene].currentAction++;
+    }
+    scenes[scene].currentActionInitiated = false;
+  }
 
 // var scenes = [
 //   {id:"scene1",
