@@ -210,6 +210,7 @@ function handleSceneActions(){
         switch (thisAction.type){
           case "text":
             // display text
+            displayText(thisAction.speaker, thisAction.text);
             // set listener
             if(thisAction.trigger == "click"){
               // textDisplayObject.addEventListener('click', nextAction(i)})
