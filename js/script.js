@@ -129,13 +129,14 @@ function gameLoop(evt){
 
 var scenes = [
   {id:"scene1",
-   sound: "scene1sound",
+   sound: {src: "scene1sound", volume: 1.0, loop: -1},
    images: [
      {img:"images/scene1_background.png", animated: false, clickable: false},
      {img:"images/scene1_character.png", animated: true,
       animation: {wait: 0,
                   startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                   endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+                  spriteAnimation:"wink",
                   duration: 3000},
       clickable: true, onClick:"smile"
      }
@@ -143,6 +144,12 @@ var scenes = [
    actions: [
      {type: "text", speaker: "James", text: "You enter a room with two doors..."},
      {type: "text", speaker: "Jennifer", text: "Wow two doors..."},
+     {type: "animation", objectToAnimate: "character", 
+                  animation: {wait: 0,
+                              spriteAnimation:"wavingHand",
+                              startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+                              endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+                              duration: 3000}},
      {type: "choice", }
          ], 
    textScrolling: true,
