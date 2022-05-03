@@ -179,6 +179,11 @@ function buildScene(scene){
      var image = new createjs.Bitmap(scenes[i].images[j].img)
      image.x = scenes[i].images[j].loc.x;
      image.y = scenes[i].images[j].loc.y;
+     image.id = scenes[i].images[j].id;
+     image.animated = scenes[i].images[j].animated;
+     image.animation = scenes[i].images[j].animation;
+     image.clickable = scenes[i].images[j].clickable;
+     image.onClick = scenes[i].images[j].onClick;
      sceneImages.push(image);
      myStage.addChild(sceneImages[sceneImages.length-1]);
     }
