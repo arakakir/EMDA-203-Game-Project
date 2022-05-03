@@ -11,6 +11,7 @@
 var myStage, stageWidth, stageHeight;
 var myFrameRate = 24;
 var character, background, scoreDisplay, theEnd, backgroundSound, endGoal;
+var backgroundSound, sceneSound;
 var speed = 10;
 var enemySpeed = 2;
 var currentLevel;
@@ -161,11 +162,14 @@ var scenes = [
 
 function buildScene(scene){
   // clear previous scene
+  clearScene();
   
   // traverse all scenes and find the one you want
   for(var i = i; i<scenes.length; i++){ if(scenes[i].id == scene){
     // play sound
-    var sceneSound = createjs.Sound.play(scenes[i].sound.src);
+    sceneSound = createjs.Sound.play(scenes[i].sound.src);
+    sceneSound.volume = scenes[i].sound.volume;
+    sceneSound.loop = scenes[i].sound.looping;
     // add images in order
     // step through actions
     }
@@ -227,6 +231,14 @@ function buildScene(scene){
   }
 ]
 
+function clearScene(){
+  // stop sound
+  sceneSound = null;
+  
+  // remove images (children) from stage
+  myStage.removeAllChildren();
+  
+}
 
 
 // Create the level from the level data grid in create
