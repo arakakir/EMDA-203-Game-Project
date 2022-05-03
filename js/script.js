@@ -188,65 +188,79 @@ function buildScene(scene){
      myStage.addChild(sceneImages[sceneImages.length-1]);
     }
       
-    // step through actions
-    }
+    // make this the active scene
+    scenes[i].active = true;
+    
+    // set the action counter to zero
+    scenes[i].currentAction = 0;
+  }
+    // set all other scenes inactive
+    else { scenes[i].active = false;}
   }
 }
 
+function handleSceneActions(){
+    for(var i = 0; i<scenes.length; i++){ if(scenes[i].active == true){
+      // perform current action
+      (scenes[i].currentAction)
+      // wait for trigger then increment current action
+    }
+}
+
 // var scenes = [
-  {id:"scene1",
-   sound: "scene1sound",
-   text: [{speaker: "James", text: "You enter a room with two doors..."},
-         {speaker: "Jennifer", text: "Wow two doors..."}
-         ], 
-   textScrolling: true,
-   choices: [
-     {text:"Take the door on the left", next:"scene2a"},
-     {text:"Take the door on the right", next:"scene2b"},
-     {image:"pushButton1", loc: {x:0, y:0}, next:"scene2c"}], 
-   images: [
-     {img:"images/scene1_background.png", animated: false, clickable: false},
-     {img:"images/scene1_character.png", animated: true, clickable: true, 
-      animation: {wait: 0,
-                  startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-                  endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
-                  duration: 3000},
-     onClick:"smile"}
-     ]
-  }, 
+//   {id:"scene1",
+//    sound: "scene1sound",
+//    text: [{speaker: "James", text: "You enter a room with two doors..."},
+//          {speaker: "Jennifer", text: "Wow two doors..."}
+//          ], 
+//    textScrolling: true,
+//    choices: [
+//      {text:"Take the door on the left", next:"scene2a"},
+//      {text:"Take the door on the right", next:"scene2b"},
+//      {image:"pushButton1", loc: {x:0, y:0}, next:"scene2c"}], 
+//    images: [
+//      {img:"images/scene1_background.png", animated: false, clickable: false},
+//      {img:"images/scene1_character.png", animated: true, clickable: true, 
+//       animation: {wait: 0,
+//                   startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+//                   endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+//                   duration: 3000},
+//      onClick:"smile"}
+//      ]
+//   }, 
   
-  {id:"scene2a",
-   sound: "scene2sound",
-   text: "You chose the left door. Now what?", 
-   choices: [
-     {text:"Give up.", next:"scene3a"},
-     {text:"Wind", next:"scene3b"}], 
-   images: [
-     {img:"images/scene2a_background.png", animated: false},
-     {img:"images/scene2a_character.png", animated: true, 
-      animation: {wait: 0,
-                  startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-                  endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
-                  duration: 3000}}
-     ]
-  }, 
+//   {id:"scene2a",
+//    sound: "scene2sound",
+//    text: "You chose the left door. Now what?", 
+//    choices: [
+//      {text:"Give up.", next:"scene3a"},
+//      {text:"Wind", next:"scene3b"}], 
+//    images: [
+//      {img:"images/scene2a_background.png", animated: false},
+//      {img:"images/scene2a_character.png", animated: true, 
+//       animation: {wait: 0,
+//                   startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+//                   endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+//                   duration: 3000}}
+//      ]
+//   }, 
   
-  {id:"scene2b",
-   sound: "scene2sound",
-   text: "You chose the right door. Now what?", 
-   choices: [
-     {text:"Ascend to the throne.", next:"scene3c"},
-     {text:"Give up.", next:"scene3a"}], 
-   images: [
-     {img:"images/scene2b_background.png", animated: false},
-     {img:"images/scene2b_character.png", animated: true, 
-      animation: {wait: 0,
-                  startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-                  endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
-                  duration: 3000}}
-     ]
-  }
-]
+//   {id:"scene2b",
+//    sound: "scene2sound",
+//    text: "You chose the right door. Now what?", 
+//    choices: [
+//      {text:"Ascend to the throne.", next:"scene3c"},
+//      {text:"Give up.", next:"scene3a"}], 
+//    images: [
+//      {img:"images/scene2b_background.png", animated: false},
+//      {img:"images/scene2b_character.png", animated: true, 
+//       animation: {wait: 0,
+//                   startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+//                   endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+//                   duration: 3000}}
+//      ]
+//   }
+// ]
 
 function clearScene(){
   // stop sound
