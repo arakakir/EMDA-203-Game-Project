@@ -154,7 +154,7 @@ var scenes = [
                               spriteAnimation:"wavingHand",
                               startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
-                              duration: 3000}},
+                              duration: 3000}, trigger: "timer", duration: 4000},
      {type: "choice", choices: [{text:"Take the door on the left", next:"scene2a"},
                                 {text:"Take the door on the right", next:"scene2b"},
                                 {image:"pushButton1", loc: {x:0, y:0}, next:"scene2c"}]}                   
@@ -213,14 +213,7 @@ function handleSceneActions(){
           case "text":
             // display text
             displayText(thisAction.speaker, thisAction.text);
-            // set listener
-            if(thisAction.trigger == "click"){
-              myStage.addEventListener('click', function(){nextAction(s)}, {once : true})
-            } else if(thisAction.trigger == "timer"){
-              console.log("set timer for this long: " + thisAction.duration);
-              let s = i;
-              setTimeout(function(){nextAction(s)}, thisAction.duration);
-            }
+
             break;
             
           case "animation":
@@ -229,6 +222,14 @@ function handleSceneActions(){
           case "choice":
             break
         };
+        
+        // set listener
+        if(thisAction.trigger == "click"){
+          myStage.addEventListener('click', function(){nextAction(s);}, {once : true})
+        } else if(thisAction.trigger == "timer"){
+          console.log("set timer for this long: " + thisAction.duration);
+          setTimeout(function(){nextAction(s)}, thisAction.duration);
+        }
         
         
       
@@ -240,7 +241,7 @@ function handleSceneActions(){
   
   
 function nextAction(scene){
-  console.log(scene);
+  console.log("Scene: " + scenes[scene].id + " / NextActionIs: " + (scenes[scene].currentAction+1));
   if(scenes[scene].currentAction <= scenes[scene].actions.length){
     scenes[scene].currentAction++;
   }
