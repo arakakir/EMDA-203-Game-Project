@@ -102,7 +102,7 @@ function init(){
   // theEnd.alpha = 0.;
   // myStage.addChild(theEnd);
   
-  textDisplay = makeText(currentText, textStyle01, 350, 320); // start with an empty createjs.Text() object
+  textDisplay = makeText(currentText, textStyle01, 330, 320); // start with an empty createjs.Text() object
   textDisplay.msg = "Hello. I am mysterious.";
   textDisplay.counter = 0;
   textDisplay.interval=3;
@@ -271,7 +271,6 @@ function displayText(speaker, text){
   currentText = speaker+": " + text;
 }
   
-// if new message sent to writeText, start over.
   
 function writeText(){
   for(var i = 0; i<scenes.length; i++){ 
@@ -280,14 +279,25 @@ function writeText(){
       }
   }
     
+  // if text is completed wait for next action to start new text
+  if((textDisplay.completed == true) && (textDisplay.msg != scenes[i].actions[scenes[i].currentAction].text)){
+    textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
+    textDisplay.charIndex = 0;
+  }
+  // if text isn't completed
  if(textDisplay.charIndex<textDisplay.msg.length){
    textDisplay.counter++;
    if(textDisplay.counter%textDisplay.interval===0){
-     console.log("hi");
+     //console.log("hi");
      textDisplay.text += textDisplay.msg.charAt(textDisplay.charIndex);
      textDisplay.charIndex++;
    }    
  }else{
+   
+   if (textDisplay.charIndex == textDisplay.msg.length){
+     textDisplay.completed = true;
+   }
+   
    // reset
    // myStage.removeAllChildren();
    // obj = null;
