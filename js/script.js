@@ -103,10 +103,11 @@ function init(){
   // myStage.addChild(theEnd);
   
   textDisplay = makeText(currentText, textStyle01, 330, 320); // start with an empty createjs.Text() object
-  textDisplay.msg = "Hello. I am mysterious.";
+  textDisplay.msg = "";
   textDisplay.counter = 0;
   textDisplay.interval=3;
   textDisplay.charIndex=0;
+  textDisplay.completed = false;
   myStage.addChild(textDisplay);
 
   backgroundSound = createjs.Sound.play("backgroundSound");
@@ -275,26 +276,28 @@ function displayText(speaker, text){
 function writeText(){
   for(var i = 0; i<scenes.length; i++){ 
       if(scenes[i].active == true){
-       textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
+  
+          // if text is completed wait for next action to start new text
+          if((textDisplay.completed == true) && (textDisplay.msg != scenes[i].actions[scenes[i].currentAction].text)){
+            textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
+            textDisplay.text = "";
+            textDisplay.charIndex = 0;
+          }
+       //textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
       }
   }
     
-  // if text is completed wait for next action to start new text
-  if((textDisplay.completed == true) && (textDisplay.msg != scenes[i].actions[scenes[i].currentAction].text)){
-    textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
-    textDisplay.charIndex = 0;
-  }
-  // if text isn't completed
+  
+  // if text isn't completed keep updating text
  if(textDisplay.charIndex<textDisplay.msg.length){
+   textDisplay.completed = false;
    textDisplay.counter++;
    if(textDisplay.counter%textDisplay.interval===0){
      //console.log("hi");
      textDisplay.text += textDisplay.msg.charAt(textDisplay.charIndex);
      textDisplay.charIndex++;
    }    
- }else{
-   
-   if (textDisplay.charIndex == textDisplay.msg.length){
+ }else if (textDisplay.charIndex == textDisplay.msg.length){
      textDisplay.completed = true;
    }
    
@@ -302,7 +305,6 @@ function writeText(){
    // myStage.removeAllChildren();
    // obj = null;
    // init();
- }
 }
 
 function makeText(txt,style,xPos,yPos) {
