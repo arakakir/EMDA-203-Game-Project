@@ -102,10 +102,10 @@ function init(){
   // theEnd.alpha = 0.;
   // myStage.addChild(theEnd);
   
-  textDisplay = makeText(currentText, textStyle01, 0, 0); // start with an empty createjs.Text() object
+  textDisplay = makeText(currentText, textStyle01, 350, 320); // start with an empty createjs.Text() object
   textDisplay.msg = "Hello. I am mysterious.";
   textDisplay.counter = 0;
-  textDisplay.interval=5;
+  textDisplay.interval=3;
   textDisplay.charIndex=0;
   myStage.addChild(textDisplay);
 
@@ -160,7 +160,7 @@ var scenes = [
      ],
    
    actions: [
-     {type: "text", speaker: "character", text: "You enter a room with two doors...", trigger: "timer", duration: 5000},
+     {type: "text", speaker: "character", text: "You enter a room with two doors...", trigger: "timer", duration: 7000},
      {type: "text", speaker: "Jennifer", text: "Wow two doors...", trigger: "click"},
      {type: "animation", objectToAnimate: "character", 
                   animation: {wait: 0,
@@ -273,13 +273,19 @@ function displayText(speaker, text){
   
 // if new message sent to writeText, start over.
   
-function writeText(obj){
- if(obj.charIndex<obj.msg.length){
-   obj.counter++;
-   if(obj.counter%obj.interval===0){
+function writeText(){
+  for(var i = 0; i<scenes.length; i++){ 
+      if(scenes[i].active == true){
+       textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
+      }
+  }
+    
+ if(textDisplay.charIndex<textDisplay.msg.length){
+   textDisplay.counter++;
+   if(textDisplay.counter%textDisplay.interval===0){
      console.log("hi");
-     obj.text += obj.msg.charAt(obj.charIndex);
-     obj.charIndex++;
+     textDisplay.text += textDisplay.msg.charAt(textDisplay.charIndex);
+     textDisplay.charIndex++;
    }    
  }else{
    // reset
