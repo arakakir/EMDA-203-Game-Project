@@ -213,7 +213,7 @@ function handleSceneActions(){
             displayText(thisAction.speaker, thisAction.text);
             // set listener
             if(thisAction.trigger == "click"){
-              // textDisplayObject.addEventListener('click', nextAction(i)})
+              myStage.addEventListener('click', nextAction(i), {once : true})
             } else if(thisAction.trigger == "timer"){
               setTimeout(nextAction(i), thisAction.duration);
             }
@@ -234,12 +234,43 @@ function handleSceneActions(){
 }
   
   
-  function nextAction(scene){
-    if(scenes[scene].currentAction <= scenes[scene].actions.length){
-      scenes[scene].currentAction++;
-    }
-    scenes[scene].currentActionInitiated = false;
+function nextAction(scene){
+  if(scenes[scene].currentAction <= scenes[scene].actions.length){
+    scenes[scene].currentAction++;
   }
+  scenes[scene].currentActionInitiated = false;
+}
+  
+
+function displayText(speaker, text){
+  console.log(speaker+": " + text);
+  
+}
+  
+  
+function writeText(obj){
+ if(obj.charIndex<obj.msg.length){
+   obj.counter++;
+   if(obj.counter%obj.interval===0){
+     console.log("hi");
+     obj.text += obj.msg.charAt(obj.charIndex);
+     obj.charIndex++;
+   }    
+ }else{
+   // reset
+   myStage.removeAllChildren();
+   obj = null;
+   init();
+ }
+}
+
+function makeText(txt,style,xPos,yPos) {
+  // returns a createjs.Text object... pass obj like this: {txt: , style: , color: , xPos: , yPos:}
+  let t = new createjs.Text(txt, style.style, style.color);
+  t.x = xPos;
+  t.y = yPos;
+  return t;
+}
 
 // var scenes = [
 //   {id:"scene1",
@@ -369,7 +400,7 @@ function loadLevel (m) {
 }
   
   
- function loadLevelComponents(m){ 
+function loadLevelComponents(m){ 
    
   backgroundImages = []; 
    
@@ -581,9 +612,5 @@ function moveObjects(dir){
   }
 }
 
-
-function jump(){
-  // the best is yet to come!
-}
 
   
