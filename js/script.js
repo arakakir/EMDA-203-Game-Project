@@ -205,6 +205,7 @@ function handleSceneActions(){
       if(scenes[i].active == true && !scenes[i].currentActionInitiated){
         scenes[i].currentActionInitiated = true;
         
+        console.log("SCENE: " + scenes[i].id + " / ACTION: " + (scenes[i].currentAction));
         let thisAction = scenes[i].actions[scenes[i].currentAction];
         let s = i;
         
@@ -225,9 +226,10 @@ function handleSceneActions(){
         
         // set listener
         if(thisAction.trigger == "click"){
+          console.log("Waiting for click.");
           myStage.addEventListener('click', function(){nextAction(s);}, {once : true})
         } else if(thisAction.trigger == "timer"){
-          console.log("set timer for this long: " + thisAction.duration);
+          console.log("Next action in " + thisAction.duration + " milliseconds.");
           setTimeout(function(){nextAction(s)}, thisAction.duration);
         }
         
@@ -241,12 +243,11 @@ function handleSceneActions(){
   
   
 function nextAction(scene){
-  console.log("Scene: " + scenes[scene].id + " / NextActionIs: " + (scenes[scene].currentAction+1));
   if(scenes[scene].currentAction <= scenes[scene].actions.length){
     scenes[scene].currentAction++;
   }
   scenes[scene].currentActionInitiated = false;
-  console.log("currentActionInitiated");
+  //console.log("currentActionInitiated");
 }
   
 
