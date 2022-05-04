@@ -116,7 +116,7 @@ function gameLoop(evt){
   //runLevels();
   //handleKeyInput();
   //handleCollisions();
-
+  handleSceneActions();
   myStage.update();
 }
 
@@ -136,8 +136,8 @@ var scenes = [
    sound: {src: "scene1sound", volume: 1.0, loop: -1},
    
    images: [
-     {id: "background", img:"images/scene1_background.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "character", img:"images/scene1_character.png", loc: {x:200, y:250}, animated: true,
+     {id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
@@ -175,7 +175,7 @@ function buildScene(scene){
     sceneSound.loop = scenes[i].sound.looping;
     
     // add images in order
-    for (var j = scenes[i].images.length-1; i >= 0; i--){
+    for (var j = 0; j< scenes[i].images.length; j++){
      var image = new createjs.Bitmap(scenes[i].images[j].img)
      image.x = scenes[i].images[j].loc.x;
      image.y = scenes[i].images[j].loc.y;
@@ -205,6 +205,7 @@ function handleSceneActions(){
       if(scenes[i].active == true && !scenes[i].currentActionInitiated){
         
         var thisAction = scenes[i].actions[scenes[i].currentAction];
+        scenes[i].currentActionInitiated = true;
         
         // perform current action
         switch (thisAction.type){
@@ -215,6 +216,7 @@ function handleSceneActions(){
             if(thisAction.trigger == "click"){
               myStage.addEventListener('click', nextAction(i), {once : true})
             } else if(thisAction.trigger == "timer"){
+              console.log("set timer for );
               setTimeout(nextAction(i), thisAction.duration);
             }
             break;
@@ -226,7 +228,7 @@ function handleSceneActions(){
             break
         };
         
-        scenes[i].currentActionInitiated = true;
+        
       
       
       // wait for trigger then increment current action
@@ -240,6 +242,7 @@ function nextAction(scene){
     scenes[scene].currentAction++;
   }
   scenes[scene].currentActionInitiated = false;
+  console.log("currentActionInitiated");
 }
   
 
