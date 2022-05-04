@@ -175,7 +175,7 @@ function buildScene(scene){
     sceneSound.loop = scenes[i].sound.looping;
     
     // add images in order
-    for (var j = 0; j< scenes[i].images.length; j++){
+    for (var j = 0; j<scenes[i].images.length; j++){
      var image = new createjs.Bitmap(scenes[i].images[j].img)
      image.x = scenes[i].images[j].loc.x;
      image.y = scenes[i].images[j].loc.y;
@@ -205,7 +205,8 @@ function handleSceneActions(){
       if(scenes[i].active == true && !scenes[i].currentActionInitiated){
         scenes[i].currentActionInitiated = true;
         
-        var thisAction = scenes[i].actions[scenes[i].currentAction];
+        let thisAction = scenes[i].actions[scenes[i].currentAction];
+        let s = i;
         
         // perform current action
         switch (thisAction.type){
@@ -214,11 +215,11 @@ function handleSceneActions(){
             displayText(thisAction.speaker, thisAction.text);
             // set listener
             if(thisAction.trigger == "click"){
-              myStage.addEventListener('click', function(){nextAction(i)}, {once : true})
+              myStage.addEventListener('click', function(){nextAction(s)}, {once : true})
             } else if(thisAction.trigger == "timer"){
               console.log("set timer for this long: " + thisAction.duration);
-              console.log(i);
-              setTimeout(function(){nextAction(i)}, thisAction.duration);
+              let s = i;
+              setTimeout(function(){nextAction(s)}, thisAction.duration);
             }
             break;
             
