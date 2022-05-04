@@ -18,6 +18,9 @@ var currentLevel;
 
 var score = 0;
 
+var textStyle01 = {style: "bold 20px Helvetica", color: "red", alpha: 1, lineWidth: 50};
+var textDisplay;
+
 var walls = [];
 var targets = [];
 var enemies = [];
@@ -97,6 +100,13 @@ function init(){
   theEnd.textBaseline = "middle";
   theEnd.alpha = 0.;
   myStage.addChild(theEnd);
+  
+  textDisplay = makeText("Yep", textStyle01, 0, 0); // start with an empty createjs.Text() object
+  textDisplay.msg = "Hello. I am mysterious.";
+  textDisplay.counter = 0;
+  textDisplay.interval=5;
+  textDisplay.charIndex=0;
+  myStage.addChild(textDisplay);
 
   backgroundSound = createjs.Sound.play("backgroundSound");
   backgroundSound.volume = 0.3;
@@ -117,6 +127,8 @@ function gameLoop(evt){
   //handleKeyInput();
   //handleCollisions();
   handleSceneActions();
+  writeText(textDisplay);
+  myStage.setChildIndex(textDisplay, myStage.numChildren-1);
   myStage.update();
 }
 
@@ -267,9 +279,9 @@ function writeText(obj){
    }    
  }else{
    // reset
-   myStage.removeAllChildren();
-   obj = null;
-   init();
+   // myStage.removeAllChildren();
+   // obj = null;
+   // init();
  }
 }
 
