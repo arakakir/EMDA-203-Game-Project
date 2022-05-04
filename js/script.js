@@ -105,7 +105,7 @@ function init(){
   textDisplay = makeText(currentText, textStyle01, 330, 320); // start with an empty createjs.Text() object
   textDisplay.msg = "";
   textDisplay.counter = 0;
-  textDisplay.interval=3;
+  textDisplay.interval=1;
   textDisplay.charIndex=0;
   textDisplay.completed = false;
   myStage.addChild(textDisplay);
@@ -161,15 +161,17 @@ var scenes = [
      ],
    
    actions: [
-     {type: "text", speaker: "character", text: "You enter a room with two doors...", trigger: "timer", duration: 7000},
+     {type: "text", speaker: "character", text: "You enter a room with two doors...", trigger: "timer", duration: 5000},
      {type: "text", speaker: "Jennifer", text: "Wow two doors...", trigger: "click"},
-     {type: "animation", objectToAnimate: "character", 
+     {type: "text", speaker: "character", text: "which should we pick...", trigger: "click"},
+     {type: "text", speaker: "Jennifer", text: "I don't know...", trigger: "click"},
+     {type: "animation", text: "", objectToAnimate: "character", 
                   animation: {wait: 0,
                               spriteAnimation:"wavingHand",
                               startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
                               duration: 3000}, trigger: "timer", duration: 4000},
-     {type: "choice", choices: [{text:"Take the door on the left", next:"scene2a"},
+     {type: "choice", text: "", choices: [{text:"Take the door on the left", next:"scene2a"},
                                 {text:"Take the door on the right", next:"scene2b"},
                                 {image:"pushButton1", loc: {x:0, y:0}, next:"scene2c"}]}                   
          ], 
