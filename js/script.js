@@ -106,16 +106,16 @@ function init(){
   createjs.Ticker._setFPS(myFrameRate);
   //createjs.Ticker.setFPS(myFrameRate);
   
-  loadLevel(0);
+  buildScene("scene1");
 }
 
 
 // ***************** THE MAIN LOOP ******************
 function gameLoop(evt){
   // put code in here that will change every 'tick'
-  runLevels();
-  handleKeyInput();
-  handleCollisions();
+  //runLevels();
+  //handleKeyInput();
+  //handleCollisions();
 
   myStage.update();
 }
@@ -231,6 +231,7 @@ function handleSceneActions(){
       
       // wait for trigger then increment current action
     }
+  }
 }
   
   
@@ -338,279 +339,279 @@ function clearScene(){
 }
 
 
-// Create the level from the level data grid in create
-function loadLevel (m) {
-  // remove children
-  clearScreen();
+// // Create the level from the level data grid in create
+// function loadLevel (m) {
+//   // remove children
+//   clearScreen();
   
-  level[m].complete = false;
+//   level[m].complete = false;
   
- // Display pre-level images (if any)
-  if(typeof level[m].preLevelDisplay != "undefined") {
+//  // Display pre-level images (if any)
+//   if(typeof level[m].preLevelDisplay != "undefined") {
       
-      function displayNext(i){
-        if(i>=level[m].preLevelDisplay.length){return;}
+//       function displayNext(i){
+//         if(i>=level[m].preLevelDisplay.length){return;}
         
-        var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i].img)
-        preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
-        preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
-        myStage.addChild(preLevelImage);
-        myStage.update();
+//         var preLevelImage = new createjs.Bitmap(level[m].preLevelDisplay[i].img)
+//         preLevelImage.x = level[m].preLevelDisplay[i].loc.x;
+//         preLevelImage.y = level[m].preLevelDisplay[i].loc.y;
+//         myStage.addChild(preLevelImage);
+//         myStage.update();
         
-        if (level[m].preLevelDisplay[i].toEnd == "timer"){
-          setTimeout(function(){
-            myStage.removeChild(preLevelImage);
-            if(i == level[m].preLevelDisplay.length-1){
-              loadLevelComponents(m);
-            }
-            else { displayNext(i+1); }
-            }, 
-            level[m].preLevelDisplay[i].duration);
-        }
+//         if (level[m].preLevelDisplay[i].toEnd == "timer"){
+//           setTimeout(function(){
+//             myStage.removeChild(preLevelImage);
+//             if(i == level[m].preLevelDisplay.length-1){
+//               loadLevelComponents(m);
+//             }
+//             else { displayNext(i+1); }
+//             }, 
+//             level[m].preLevelDisplay[i].duration);
+//         }
         
-        if (level[m].preLevelDisplay[i].toEnd == "onClick"){
-          preLevelImage.on("click", function(){
-            createjs.WebAudioPlugin.playEmptySound()
-            myStage.removeChild(preLevelImage);
-            if(i == level[m].preLevelDisplay.length-1){
-              loadLevelComponents(m);
-            }
-            else { displayNext(i+1); }
-            });
-        }
+//         if (level[m].preLevelDisplay[i].toEnd == "onClick"){
+//           preLevelImage.on("click", function(){
+//             createjs.WebAudioPlugin.playEmptySound()
+//             myStage.removeChild(preLevelImage);
+//             if(i == level[m].preLevelDisplay.length-1){
+//               loadLevelComponents(m);
+//             }
+//             else { displayNext(i+1); }
+//             });
+//         }
         
-        if (level[m].preLevelDisplay[i].toEnd == "onClickRestart"){
-          console.log(preLevelImage);
-          preLevelImage.on("click", function(){
-            myStage.removeChild(preLevelImage);
-            level[m].active = false;
-            clearScreen();
-            loadLevel(0);
-          }) 
-        }
-      }
+//         if (level[m].preLevelDisplay[i].toEnd == "onClickRestart"){
+//           console.log(preLevelImage);
+//           preLevelImage.on("click", function(){
+//             myStage.removeChild(preLevelImage);
+//             level[m].active = false;
+//             clearScreen();
+//             loadLevel(0);
+//           }) 
+//         }
+//       }
     
-      let i = 0;
-      displayNext(i);
+//       let i = 0;
+//       displayNext(i);
 
-  }
-  else {
-    loadLevelComponents(m);
-  } 
-}
+//   }
+//   else {
+//     loadLevelComponents(m);
+//   } 
+// }
   
   
-function loadLevelComponents(m){ 
+// function loadLevelComponents(m){ 
    
-  backgroundImages = []; 
+//   backgroundImages = []; 
    
-  // Display background image
-  background.image.src = level[m].backgroundImage;
+//   // Display background image
+//   background.image.src = level[m].backgroundImage;
    
-   for (var i = level[m].backgroundImage.length-1; i >= 0; i--){
-     var backgroundImage = new createjs.Bitmap(level[m].backgroundImage[i].img)
-     backgroundImage.x = 0;
-     backgroundImage.y = 0;
-     backgroundImage.scrollRate = level[m].backgroundImage[i].scrollRate;
-     backgroundImages.push(backgroundImage);
+//    for (var i = level[m].backgroundImage.length-1; i >= 0; i--){
+//      var backgroundImage = new createjs.Bitmap(level[m].backgroundImage[i].img)
+//      backgroundImage.x = 0;
+//      backgroundImage.y = 0;
+//      backgroundImage.scrollRate = level[m].backgroundImage[i].scrollRate;
+//      backgroundImages.push(backgroundImage);
      
-     var backgroundImageChaser = new createjs.Bitmap(level[m].backgroundImage[i].img)
-     backgroundImageChaser.x = backgroundImageChaser.image.width - 20;
-     backgroundImageChaser.y = 0;
-     backgroundImageChaser.scrollRate = level[m].backgroundImage[i].scrollRate;
-     backgroundImages.push(backgroundImageChaser);
-   } 
+//      var backgroundImageChaser = new createjs.Bitmap(level[m].backgroundImage[i].img)
+//      backgroundImageChaser.x = backgroundImageChaser.image.width - 20;
+//      backgroundImageChaser.y = 0;
+//      backgroundImageChaser.scrollRate = level[m].backgroundImage[i].scrollRate;
+//      backgroundImages.push(backgroundImageChaser);
+//    } 
   
-   objectsToMove = [];
+//    objectsToMove = [];
    
-   for (var i = 0; i < level[m].objectsToSpawn.length; i++){
-     // if (level[m].objectsToSpawn[i].class == "enemy"){
-       //if repeating
-       if (level[m].objectsToSpawn[i].repeat){
-         for (var j = 0; j < level[m].objectsToSpawn[i].repeatNumber; j++){
-           if(Math.random() < level[m].objectsToSpawn[i].repeatProbability){
-              var object = new createjs.Bitmap(level[m].objectsToSpawn[i].img);
-              object.class = level[m].objectsToSpawn[i].class;
-              object.x = level[m].objectsToSpawn[i].loc.x + (j*level[m].objectsToSpawn[i].repeatSpacing);
-              object.y = level[m].objectsToSpawn[i].loc.y;
-              object.onStage = false;
-              if(level[m].objectsToSpawn[i].collider){ collisionGnome.addCollider(object, 1.0);}
-              objectsToMove.push(object);
-           }
-         }
-       }
-       // if not repeating just add the single iteration
-       else {var object = new createjs.Bitmap(level[m].objectsToSpawn[i].img);
-                object.class = level[m].objectsToSpawn[i].class;
-                object.x = level[m].objectsToSpawn[i].loc.x;
-                object.y = level[m].objectsToSpawn[i].loc.y;
-                object.onStage = false;
-                if(level[m].objectsToSpawn[i].collider){ collisionGnome.addCollider(object, 1.0);}
-                objectsToMove.push(object);}
+//    for (var i = 0; i < level[m].objectsToSpawn.length; i++){
+//      // if (level[m].objectsToSpawn[i].class == "enemy"){
+//        //if repeating
+//        if (level[m].objectsToSpawn[i].repeat){
+//          for (var j = 0; j < level[m].objectsToSpawn[i].repeatNumber; j++){
+//            if(Math.random() < level[m].objectsToSpawn[i].repeatProbability){
+//               var object = new createjs.Bitmap(level[m].objectsToSpawn[i].img);
+//               object.class = level[m].objectsToSpawn[i].class;
+//               object.x = level[m].objectsToSpawn[i].loc.x + (j*level[m].objectsToSpawn[i].repeatSpacing);
+//               object.y = level[m].objectsToSpawn[i].loc.y;
+//               object.onStage = false;
+//               if(level[m].objectsToSpawn[i].collider){ collisionGnome.addCollider(object, 1.0);}
+//               objectsToMove.push(object);
+//            }
+//          }
+//        }
+//        // if not repeating just add the single iteration
+//        else {var object = new createjs.Bitmap(level[m].objectsToSpawn[i].img);
+//                 object.class = level[m].objectsToSpawn[i].class;
+//                 object.x = level[m].objectsToSpawn[i].loc.x;
+//                 object.y = level[m].objectsToSpawn[i].loc.y;
+//                 object.onStage = false;
+//                 if(level[m].objectsToSpawn[i].collider){ collisionGnome.addCollider(object, 1.0);}
+//                 objectsToMove.push(object);}
 
-   }
+//    }
    
-  display(backgroundImages); 
-  display(character);
-  display(scoreDisplay);
+//   display(backgroundImages); 
+//   display(character);
+//   display(scoreDisplay);
   
-  myStage.setChildIndex( scoreDisplay, myStage.numChildren-1);
+//   myStage.setChildIndex( scoreDisplay, myStage.numChildren-1);
   
-  level[m].active = true;
-}
+//   level[m].active = true;
+// }
 
 
 // ************* Various self-defined functions *************
- function runLevels(){
-   for(var i=0;i<level.length;i++){
-     if(level[i].active){
-       currentLevel = i;
-       level[i].completionCheck();
+//  function runLevels(){
+//    for(var i=0;i<level.length;i++){
+//      if(level[i].active){
+//        currentLevel = i;
+//        level[i].completionCheck();
        
-     }
-   }
- }
+//      }
+//    }
+//  }
 
 
-function clearScreen(){
-  myStage.removeAllChildren();
-  objectsToMove = [];
-  //myStage.addChild(background, character, scoreDisplay);
-  myStage.update();
-}
+// function clearScreen(){
+//   myStage.removeAllChildren();
+//   objectsToMove = [];
+//   //myStage.addChild(background, character, scoreDisplay);
+//   myStage.update();
+// }
 
 
-function display(object){
-  if(object.constructor === Array){
-    for(var i=0; i<object.length; i++){
-      myStage.addChild(object[i]);
-    }
-  }
-  else{
-    myStage.addChild(object);
-  }
-}
+// function display(object){
+//   if(object.constructor === Array){
+//     for(var i=0; i<object.length; i++){
+//       myStage.addChild(object[i]);
+//     }
+//   }
+//   else{
+//     myStage.addChild(object);
+//   }
+// }
 
 
-function handleKeyInput(){
-  if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; handleWallCollisions("up");}
-  if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
-  if(keyMonkey["a"] || keyMonkey["left"]) 	{ moveBackground("left"); moveObjects("left"); 
-                                             handleWallCollisions("left");}
-  if(keyMonkey["d"] || keyMonkey["right"]) 	{ moveBackground("right"); moveObjects("right"); 
-                                             handleWallCollisions("right");}
-  // if (keyMonkey['up'] || keyMonkey['w'] || keyMonkey['space_bar']) {	//if any of our 'jump' keys are held down
-  // //NOTE: 'if(!hero.jumping)' is the same as 'if(hero.jumping != true)' which is the same as 'if(hero.jumping == false)'
-  // //so... AND he's not already jumping
-  // if (!character.jumping) {	
-  // character.jumping = true;
-  // character.grounded = false;
-  // //character.dy = -character.max_dy ;
-  // }
-  // }
-}
+// function handleKeyInput(){
+//   if(keyMonkey["w"] || keyMonkey["up"]) 		{ character.y -= character.speed.up; handleWallCollisions("up");}
+//   if(keyMonkey["s"] || keyMonkey["down"]) 	{ character.y += character.speed.down; handleWallCollisions("down");}
+//   if(keyMonkey["a"] || keyMonkey["left"]) 	{ moveBackground("left"); moveObjects("left"); 
+//                                              handleWallCollisions("left");}
+//   if(keyMonkey["d"] || keyMonkey["right"]) 	{ moveBackground("right"); moveObjects("right"); 
+//                                              handleWallCollisions("right");}
+//   // if (keyMonkey['up'] || keyMonkey['w'] || keyMonkey['space_bar']) {	//if any of our 'jump' keys are held down
+//   // //NOTE: 'if(!hero.jumping)' is the same as 'if(hero.jumping != true)' which is the same as 'if(hero.jumping == false)'
+//   // //so... AND he's not already jumping
+//   // if (!character.jumping) {	
+//   // character.jumping = true;
+//   // character.grounded = false;
+//   // //character.dy = -character.max_dy ;
+//   // }
+//   // }
+// }
 
 
-function handleCollisions(){
-  // check to see if there are any collisions with any of the targets
-  for(var i=0;i<objectsToMove.length;i++){
-    if(objectsToMove[i].collidesWith != undefined){
-      if(character.collidesWith(objectsToMove[i])){
-        // remove it from the array
-        if(objectsToMove[i].class == "target"){
-          myStage.removeChild(objectsToMove[i]);
-          objectsToMove.splice(i, 1);
-          score++;
-          scoreDisplay.text = "SCORE: " + score;
-          createjs.Sound.play("target");
-        }
-        if(objectsToMove[i].class == "enemy"){
-          myStage.removeChild(objectsToMove[i]);
-          objectsToMove.splice(i, 1);
-          score--;
-          scoreDisplay.text = "SCORE: " + score;
-          createjs.Sound.play("enemy");
-        }
-        if(objectsToMove[i].class == "endGoal"){
-          level[currentLevel].complete = true;
+// function handleCollisions(){
+//   // check to see if there are any collisions with any of the targets
+//   for(var i=0;i<objectsToMove.length;i++){
+//     if(objectsToMove[i].collidesWith != undefined){
+//       if(character.collidesWith(objectsToMove[i])){
+//         // remove it from the array
+//         if(objectsToMove[i].class == "target"){
+//           myStage.removeChild(objectsToMove[i]);
+//           objectsToMove.splice(i, 1);
+//           score++;
+//           scoreDisplay.text = "SCORE: " + score;
+//           createjs.Sound.play("target");
+//         }
+//         if(objectsToMove[i].class == "enemy"){
+//           myStage.removeChild(objectsToMove[i]);
+//           objectsToMove.splice(i, 1);
+//           score--;
+//           scoreDisplay.text = "SCORE: " + score;
+//           createjs.Sound.play("enemy");
+//         }
+//         if(objectsToMove[i].class == "endGoal"){
+//           level[currentLevel].complete = true;
 
-        }
-      }
-    }
-  }
-}
+//         }
+//       }
+//     }
+//   }
+// }
   
   
-// check to see if there are any collisions with any of the walls
-function handleWallCollisions(direction){
-  character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
+// // check to see if there are any collisions with any of the walls
+// function handleWallCollisions(direction){
+//   character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
   
-  for(var i=0;i<walls.length;i++){
-    if(character.collidesWith(walls[i])){
-      // if character is below wall set up speed to 0
-      if(character.y > walls[i].y && direction == "up"){
-        character.speed.up = 0;
-        character.y = walls[i].y + 64;
-      }
-      if (character.y < walls[i].y && direction == "down"){
-        character.speed.down = 0;
-        character.y = walls[i].y - 64;
-      }
-      if (character.x > walls[i].x && direction == "left"){
-        character.speed.left = 0;
-        character.x = walls[i].x + 64;
-      }
-      if (character.x < walls[i].x && direction == "right"){
-        character.speed.right = 0;
-        character.x = walls[i].x - 64;
-      }
-    }
+//   for(var i=0;i<walls.length;i++){
+//     if(character.collidesWith(walls[i])){
+//       // if character is below wall set up speed to 0
+//       if(character.y > walls[i].y && direction == "up"){
+//         character.speed.up = 0;
+//         character.y = walls[i].y + 64;
+//       }
+//       if (character.y < walls[i].y && direction == "down"){
+//         character.speed.down = 0;
+//         character.y = walls[i].y - 64;
+//       }
+//       if (character.x > walls[i].x && direction == "left"){
+//         character.speed.left = 0;
+//         character.x = walls[i].x + 64;
+//       }
+//       if (character.x < walls[i].x && direction == "right"){
+//         character.speed.right = 0;
+//         character.x = walls[i].x - 64;
+//       }
+//     }
 
         
-      createjs.Sound.play("wall_collide");
-    }
-}
+//       createjs.Sound.play("wall_collide");
+//     }
+// }
 
 
-function moveBackground(dir){
-  if(dir == "right"){
-    for(var i = 0; i<backgroundImages.length; i++){
-      backgroundImages[i].x -= (speed * backgroundImages[i].scrollRate);
-      if (backgroundImages[i].x <= -backgroundImages[i].image.width){
-        backgroundImages[i].x = backgroundImages[i].image.width - 100;
-      }
-    }
-  }
-   if(dir == "left"){
-    for(var i = 0; i<backgroundImages.length; i++){
-      backgroundImages[i].x += (speed * backgroundImages[i].scrollRate);
-    }
-  }
-  // when arrow key pressed backgroundImage.x += speed * backgroundImage.scrollRate
-  // if (backgroundImage.x <= -backgroundImage.image.width){ backgroundImage.x = backgroundImage.image.width;}
-}
+// function moveBackground(dir){
+//   if(dir == "right"){
+//     for(var i = 0; i<backgroundImages.length; i++){
+//       backgroundImages[i].x -= (speed * backgroundImages[i].scrollRate);
+//       if (backgroundImages[i].x <= -backgroundImages[i].image.width){
+//         backgroundImages[i].x = backgroundImages[i].image.width - 100;
+//       }
+//     }
+//   }
+//    if(dir == "left"){
+//     for(var i = 0; i<backgroundImages.length; i++){
+//       backgroundImages[i].x += (speed * backgroundImages[i].scrollRate);
+//     }
+//   }
+//   // when arrow key pressed backgroundImage.x += speed * backgroundImage.scrollRate
+//   // if (backgroundImage.x <= -backgroundImage.image.width){ backgroundImage.x = backgroundImage.image.width;}
+// }
 
-function moveObjects(dir){
-  for(var i = objectsToMove.length-1; i >= 0; i--){
-    if(dir == "right"){ objectsToMove[i].x -= speed;}
-    if(dir == "left"){ objectsToMove[i].x += speed;}
+// function moveObjects(dir){
+//   for(var i = objectsToMove.length-1; i >= 0; i--){
+//     if(dir == "right"){ objectsToMove[i].x -= speed;}
+//     if(dir == "left"){ objectsToMove[i].x += speed;}
 
-      // if x is < 2000 and not added to stage
-      if(objectsToMove[i].x < 2000 && objectsToMove[i].x > 0 && objectsToMove[i].onStage == false){
-          objectsToMove[i].onStage = true;
-          myStage.addChild(objectsToMove[i]);
-          console.log("added child")
-      }
+//       // if x is < 2000 and not added to stage
+//       if(objectsToMove[i].x < 2000 && objectsToMove[i].x > 0 && objectsToMove[i].onStage == false){
+//           objectsToMove[i].onStage = true;
+//           myStage.addChild(objectsToMove[i]);
+//           console.log("added child")
+//       }
     
-    // if x is < -300 and is on the stage
-      if(objectsToMove[i].x < -300 && objectsToMove[i].onStage == true){
-          objectsToMove[i].onStage = false;
-          myStage.removeChild(objectsToMove[i]);
-          console.log("removed child")
-      }
+//     // if x is < -300 and is on the stage
+//       if(objectsToMove[i].x < -300 && objectsToMove[i].onStage == true){
+//           objectsToMove[i].onStage = false;
+//           myStage.removeChild(objectsToMove[i]);
+//           console.log("removed child")
+//       }
         
-  }
-}
+//   }
+// }
 
 
   
