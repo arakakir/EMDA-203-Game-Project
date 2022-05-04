@@ -20,6 +20,7 @@ var score = 0;
 
 var textStyle01 = {style: "bold 20px Helvetica", color: "red", alpha: 1, lineWidth: 50};
 var textDisplay;
+var currentText = "";
 
 var walls = [];
 var targets = [];
@@ -86,22 +87,22 @@ function init(){
   collisionGnome.setStage(myStage);
   //collisionGnome.setDebug(true);
 
-  scoreDisplay = new createjs.Text("SCORE: " + score, "48px Courier");
-  scoreDisplay.x = stageWidth - 50;
-  scoreDisplay.y = stageHeight - 32;
-  scoreDisplay.textAlign = "right";
-  scoreDisplay.textBaseline = "middle";
-  myStage.addChild(scoreDisplay);
+  // scoreDisplay = new createjs.Text("SCORE: " + score, "48px Courier");
+  // scoreDisplay.x = stageWidth - 50;
+  // scoreDisplay.y = stageHeight - 32;
+  // scoreDisplay.textAlign = "right";
+  // scoreDisplay.textBaseline = "middle";
+  // myStage.addChild(scoreDisplay);
 
-  theEnd = new createjs.Text("THE END", "144px Courier");
-  theEnd.x = stageWidth / 2;
-  theEnd.y = stageHeight / 2;
-  theEnd.textAlign = "center";
-  theEnd.textBaseline = "middle";
-  theEnd.alpha = 0.;
-  myStage.addChild(theEnd);
+  // theEnd = new createjs.Text("THE END", "144px Courier");
+  // theEnd.x = stageWidth / 2;
+  // theEnd.y = stageHeight / 2;
+  // theEnd.textAlign = "center";
+  // theEnd.textBaseline = "middle";
+  // theEnd.alpha = 0.;
+  // myStage.addChild(theEnd);
   
-  textDisplay = makeText("Yep", textStyle01, 0, 0); // start with an empty createjs.Text() object
+  textDisplay = makeText(currentText, textStyle01, 0, 0); // start with an empty createjs.Text() object
   textDisplay.msg = "Hello. I am mysterious.";
   textDisplay.counter = 0;
   textDisplay.interval=5;
@@ -210,6 +211,8 @@ function buildScene(scene){
     // set all other scenes inactive
     else { scenes[i].active = false;}
   }
+
+  myStage.addChild(textDisplay);
 }
 
 function handleSceneActions(){
@@ -226,7 +229,7 @@ function handleSceneActions(){
           case "text":
             // display text
             displayText(thisAction.speaker, thisAction.text);
-
+            
             break;
             
           case "animation":
@@ -265,9 +268,10 @@ function nextAction(scene){
 
 function displayText(speaker, text){
   console.log(speaker+": " + text);
-  
+  currentText = speaker+": " + text;
 }
   
+// if new message sent to writeText, start over.
   
 function writeText(obj){
  if(obj.charIndex<obj.msg.length){
