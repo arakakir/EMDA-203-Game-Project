@@ -54,7 +54,10 @@ function preload(){
     {id:"background_footpath", src:"images/background_footpath.png"},
     {id:"background_frontMountains", src:"images/background_frontMountains.png"},
     {id:"background_midMountains", src:"images/background_midMountains.png"},
-    {id:"background_backMountains", src:"images/background_backMountains.png"}
+    {id:"background_backMountains", src:"images/background_backMountains.png"},
+    {id:"balloon01", src:"images/balloon01.png"},
+    {id:"skull01", src:"images/skull01.png"},
+    {id:"heroReddeSprite", src:"images/heroReddeSprite.png"},
     ]);
 }
 
