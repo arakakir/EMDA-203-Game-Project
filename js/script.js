@@ -164,6 +164,7 @@ var scenes = [
      {type: "text", speaker: "character", text: "You enter a room with two doors...", trigger: "timer", duration: 5000},
      {type: "text", speaker: "Jennifer", text: "Wow two doors...", trigger: "click"},
      {type: "text", speaker: "character", text: "which should we pick...", trigger: "click"},
+     {type: "text", speaker: "character", text: "hmm...", trigger: "click"},
      {type: "text", speaker: "Jennifer", text: "I don't know...", trigger: "click"},
      {type: "animation", text: "", objectToAnimate: "character", 
                   animation: {wait: 0,
