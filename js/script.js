@@ -203,9 +203,9 @@ function buildScene(scene){
 function handleSceneActions(){
     for(var i = 0; i<scenes.length; i++){ 
       if(scenes[i].active == true && !scenes[i].currentActionInitiated){
+        scenes[i].currentActionInitiated = true;
         
         var thisAction = scenes[i].actions[scenes[i].currentAction];
-        scenes[i].currentActionInitiated = true;
         
         // perform current action
         switch (thisAction.type){
@@ -214,10 +214,11 @@ function handleSceneActions(){
             displayText(thisAction.speaker, thisAction.text);
             // set listener
             if(thisAction.trigger == "click"){
-              myStage.addEventListener('click', nextAction(i), {once : true})
+              myStage.addEventListener('click', function(){nextAction(i)}, {once : true})
             } else if(thisAction.trigger == "timer"){
-              console.log("set timer for );
-              setTimeout(nextAction(i), thisAction.duration);
+              console.log("set timer for this long: " + thisAction.duration);
+              console.log(i);
+              setTimeout(function(){nextAction(i)}, thisAction.duration);
             }
             break;
             
@@ -238,6 +239,7 @@ function handleSceneActions(){
   
   
 function nextAction(scene){
+  console.log(scene);
   if(scenes[scene].currentAction <= scenes[scene].actions.length){
     scenes[scene].currentAction++;
   }
