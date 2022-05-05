@@ -327,10 +327,11 @@ function handleAnimations(){
     if(scenes[activeScene].currentActionInitiated == false){
       scenes[activeScene].currentActionInitiated = true;
       let animation = scenes[activeScene].actions[scenes[activeScene].currentAction].animation;
-      var objectToAnimate;
+      // var objectToAnimate;
       for(var i = 0; i<sceneImages.length; i++){
-        if(sceneImages[i].id==scenes[activeScene].actions[scenes[activeScene].currentAction]){
-          objectToAnimate = sceneImages[i]
+        if(sceneImages[i].id==scenes[activeScene].actions[scenes[activeScene].currentAction].id){
+          console.log("inner sanctum");
+          var objectToAnimate = sceneImages[i];
 
       
           createjs.Tween.get(objectToAnimate)
