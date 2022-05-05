@@ -326,18 +326,20 @@ function handleAnimations(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].animation != undefined){
     if(scenes[activeScene].currentActionInitiated == false){
       scenes[activeScene].currentActionInitiated = true;
-      let animation = scenes[activeScene].actions[scenes[activeScene].currentAction].animation
-      
+      let animation = scenes[activeScene].actions[scenes[activeScene].currentAction].animation;
+      var objectToAnimate;
       for(var i = 0; i<sceneImages.length; i++){
         if(sceneImages[i].id==scenes[activeScene].actions[scenes[activeScene].currentAction]){
-          sceneImages[i]
-        }
-      }
+          objectToAnimate = sceneImages[i]
+
       
-      createjs.Tween.get(circle)
+          createjs.Tween.get(objectToAnimate)
                     .wait(animation.wait)
-                    .to(animation.startPosition, 0, createjs.Ease.getPowInOut(4))
-                    .to(animation.endPosition, animation.duration, createjs.Ease.getPowInOut(4))
+                    .to({x:0,y:0})
+                    // .to(animation.startPosition, 0, createjs.Ease.getPowInOut(4))
+                    .to({x:100,y:200}, animation.duration, createjs.Ease.getPowInOut(4))
+                  }
+      }
     }
   }  
 }
