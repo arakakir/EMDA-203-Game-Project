@@ -249,6 +249,7 @@ function handleSceneActions(){
         // set listener
         if(thisAction.trigger == "click"){
           console.log("Waiting for click.");
+          myStage.removeEventListener('click', function(){nextAction(s);});
           myStage.addEventListener('click', function(){nextAction(s);}, {once : true})
         } else if(thisAction.trigger == "timer"){
           console.log("Next action in " + thisAction.duration + " milliseconds.");
@@ -265,6 +266,7 @@ function handleSceneActions(){
   
   
 function nextAction(scene){
+  console.log("nextAction called. scene: "+ scene+" currentAction: "+scenes[scene].currentAction);
   if(scenes[scene].currentAction <= scenes[scene].actions.length){
     scenes[scene].currentAction++;
   }
