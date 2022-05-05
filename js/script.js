@@ -183,9 +183,8 @@ var scenes = [
      {type: "text", speaker: "Villain", text: "I don't know...", trigger: "click"},
      {type: "animation", text: "", id: "character", 
                   animation: {wait: 0,
-                              spriteAnimation:"wavingHand",
-                              startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-                              endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+                              startPosition:{scale:1},
+                              endPosition:{scale:1.5},
                               duration: 3000}, trigger: "timer", duration: 4000},
      {type: "choice", text: "", choices: [{text:"Take the door on the left", next:"scene2a"},
                                 {text:"Take the door on the right", next:"scene2b"},
@@ -237,7 +236,7 @@ function buildScene(scene){
 function handleSceneActions(){
     for(var i = 0; i<scenes.length; i++){ 
       if(scenes[i].active == true && !scenes[i].currentActionInitiated){
-        //scenes[i].currentActionInitiated = true;
+        scenes[i].currentActionInitiated = true;   // something about this flag hinders secondary animations starting
         
         console.log("SCENE: " + scenes[i].id + " / ACTION: " + (scenes[i].currentAction));
         let thisAction = scenes[i].actions[scenes[i].currentAction];
