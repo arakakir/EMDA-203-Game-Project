@@ -168,7 +168,7 @@ var scenes = [
                               spriteAnimation:"wink",
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "click", duration: 5000},
-     {type: "image", id: "villain", img:"images/skull01.png", loc: {x:500, y:100},
+     {type: "animation", id: "villain", img:"images/skull01.png", loc: {x:500, y:100},
                   animation: {wait: 0,
                               startPosition:{x:2000, y:400, alpha:1, rotation:360, scale:0.75},
                               endPosition:{x:500, y:100, alpha:1, rotation:0, scale:1},
@@ -237,7 +237,7 @@ function buildScene(scene){
 function handleSceneActions(){
     for(var i = 0; i<scenes.length; i++){ 
       if(scenes[i].active == true && !scenes[i].currentActionInitiated){
-        scenes[i].currentActionInitiated = true;
+        //scenes[i].currentActionInitiated = true;
         
         console.log("SCENE: " + scenes[i].id + " / ACTION: " + (scenes[i].currentAction));
         let thisAction = scenes[i].actions[scenes[i].currentAction];
@@ -285,6 +285,10 @@ function handleSceneActions(){
             
           case "auto":
             nextAction();
+            break;
+            
+          case "objectClick":
+            break;
         }
         
         
@@ -311,8 +315,10 @@ function displayText(speaker, text){
 
 function handleAnimations(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].animation != undefined){
+    // console.log("animation defined");
     if(scenes[activeScene].currentActionInitiated == false){
-      // scenes[activeScene].currentActionInitiated = true;
+      console.log("currentActionInitiated = false");
+      //scenes[activeScene].currentActionInitiated = true;
       let animation = scenes[activeScene].actions[scenes[activeScene].currentAction].animation;
       // var objectToAnimate;
       for(var i = 0; i<sceneImages.length; i++){
@@ -322,7 +328,7 @@ function handleAnimations(){
           console.log("inner sanctum");
           var objectToAnimate = sceneImages[i];
 
-          scenes[activeScene].currentActionInitiated = true;
+          //scenes[activeScene].currentActionInitiated = true;
           
           createjs.Tween.get(objectToAnimate)
                     .wait(animation.wait)
