@@ -132,7 +132,7 @@ function gameLoop(evt){
   //handleKeyInput();
   //handleCollisions();
   handleSceneActions();
- // handleAnimations();
+  handleAnimations();
   writeText(textDisplay);
   myStage.setChildIndex(textDisplay, myStage.numChildren-1);
   myStage.update();
@@ -162,7 +162,7 @@ var scenes = [
                   //             spriteAnimation:"wink",
                   //             duration: 3000},
                   clickable: true, onClick:"smile"},
-      {id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
+      {id: "villain", img:"images/skull01.png", loc: {x:2000, y:100}, animated: true,
                   // animation: {wait: 0,
                   //             startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                   //             endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
@@ -173,17 +173,17 @@ var scenes = [
    
    actions: [
      //{type: "image", id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false, trigger: "auto"},
-     {type: "animation", id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
+     {type: "image", id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:360, scaleX:0.75, scaleY:0.75},
-                              endPosition:{x:200, y:300, alpha:1, rotation:0, scaleX:1, scaleY:1},
+                              endPosition:{x:200, y:300, alpha:1, rotation:0, scaleX:2, scaleY:2},
                               spriteAnimation:"wink",
                               duration: 3000},
-                  clickable: true, onClick:"smile", trigger: "auto"},
-     {type: "animation", id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
+                  clickable: true, onClick:"smile", trigger: "auto", duration: 5000},
+     {type: "image", id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
                   animation: {wait: 0,
-                              startPosition:{x:2000, y:400, alpha:1, rotation:0, scale:0.75},
-                              endPosition:{x:600, y:200, alpha:1, rotation:0, scale:1},
+                              startPosition:{x:2000, y:400, alpha:1, rotation:360, scale:0.75},
+                              endPosition:{x:500, y:100, alpha:1, rotation:0, scale:1},
                               spriteAnimation:"wink",
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "timer", duration: 5000},
@@ -338,10 +338,9 @@ function handleAnimations(){
       
           createjs.Tween.get(objectToAnimate)
                     .wait(animation.wait)
-                    //.to({x:0,y:0})
                     .to(animation.startPosition)
-//                    .to({x:100,y:200}, animation.duration, createjs.Ease.getPowInOut(4))
                     .to(animation.endPosition, animation.duration, createjs.Ease.getPowInOut(4))
+                    .call(nextAction);
                   }
       }
     }
