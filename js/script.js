@@ -84,7 +84,6 @@ function init(){
   character.y = stageHeight - 64;
   character.startPosition = {x: 0, y: 0};
   character.scaleX = character.scaleY = 0.4;
-  character.speed = {"up": speed,"down": speed,"left":speed,"right":speed};
   myStage.addChild(character);
 
   collisionGnome.addCollider(character, 1.0);
@@ -161,15 +160,23 @@ var scenes = [
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
                               spriteAnimation:"wink",
                               duration: 3000},
+                  clickable: true, onClick:"smile"},
+      {id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
+                  animation: {wait: 0,
+                              startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+                              endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+                              spriteAnimation:"wink",
+                              duration: 3000},
                   clickable: true, onClick:"smile"}
      ],
    
    actions: [
-     {type: "text", speaker: "character", text: "You enter a room with two doors...", trigger: "timer", duration: 5000},
-     {type: "text", speaker: "Jennifer", text: "Wow two doors...", trigger: "click"},
-     {type: "text", speaker: "character", text: "which should we pick...", trigger: "click"},
-     {type: "text", speaker: "character", text: "hmm...", trigger: "click"},
-     {type: "text", speaker: "Jennifer", text: "I don't know...", trigger: "click"},
+     {type: "text", speaker: "Hero", text: "You enter a room with two doors...", 
+            loc: {x:330,y:320}, trigger: "timer", duration: 5000},
+     {type: "text", speaker: "Villain", text: "Wow two doors...", loc: {x:630,y:120}, trigger: "click"},
+     {type: "text", speaker: "Hero", text: "which should we pick...", loc: {x:330,y:320}, trigger: "click"},
+     {type: "text", speaker: "Villain", text: "hmm...", loc: {x:630,y:120}, trigger: "click"},
+     {type: "text", speaker: "Villain", text: "I don't know...", trigger: "click"},
      {type: "animation", text: "", objectToAnimate: "character", 
                   animation: {wait: 0,
                               spriteAnimation:"wavingHand",
@@ -289,6 +296,10 @@ function writeText(){
             textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
             textDisplay.text = "";
             textDisplay.charIndex = 0;
+            if(scenes[i].actions[scenes[i].currentAction].loc != undefined){
+              textDisplay.x = scenes[i].actions[scenes[i].currentAction].loc.x;
+              textDisplay.y = scenes[i].actions[scenes[i].currentAction].loc.y;
+            }
           }
        //textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
       }
