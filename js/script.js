@@ -172,21 +172,21 @@ var scenes = [
      ],
    
    actions: [
-     //{type: "image", id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false, trigger: "auto"},
+     {type: "image", id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false, trigger: "auto"},
      {type: "image", id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:360, scaleX:0.75, scaleY:0.75},
-                              endPosition:{x:200, y:300, alpha:1, rotation:0, scaleX:2, scaleY:2},
+                              endPosition:{x:200, y:300, alpha:1, rotation:0, scaleX:1, scaleY:1},
                               spriteAnimation:"wink",
                               duration: 3000},
-                  clickable: true, onClick:"smile", trigger: "auto", duration: 5000},
+                  clickable: true, onClick:"smile", trigger: "click", duration: 5000},
      {type: "image", id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
                   animation: {wait: 0,
                               startPosition:{x:2000, y:400, alpha:1, rotation:360, scale:0.75},
                               endPosition:{x:500, y:100, alpha:1, rotation:0, scale:1},
                               spriteAnimation:"wink",
                               duration: 3000},
-                  clickable: true, onClick:"smile", trigger: "timer", duration: 5000},
+                  clickable: true, onClick:"smile", trigger: "click", duration: 5000},
      {type: "text", speaker: "Hero", text: "You enter a room with two doors...", 
             loc: {x:330,y:320}, trigger: "click"},
      {type: "text", speaker: "Villain", text: "Wow two doors...", loc: {x:630,y:120}, trigger: "click"},
@@ -312,7 +312,6 @@ function nextAction(){
     scenes[activeScene].currentAction++;
   }
   scenes[activeScene].currentActionInitiated = false;
-  //console.log("currentActionInitiated");
 }
   
 
