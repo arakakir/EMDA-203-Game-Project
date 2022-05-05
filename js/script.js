@@ -29,6 +29,7 @@ var level = [];
 var backgroundImages = [];
 var objectsToMove = [];
 
+var activeScene = 0;
 var scenes = [];
 var sceneImages = [];
 
@@ -229,13 +230,13 @@ function handleSceneActions(){
         
         console.log("SCENE: " + scenes[i].id + " / ACTION: " + (scenes[i].currentAction));
         let thisAction = scenes[i].actions[scenes[i].currentAction];
-        let s = i;
+        activeScene = i;
         
         // perform current action
         switch (thisAction.type){
           case "text":
             // display text
-            displayText(thisAction.speaker, thisAction.text);
+            //displayText(thisAction.speaker, thisAction.text);
             
             break;
             
@@ -246,31 +247,29 @@ function handleSceneActions(){
             break
         };
         
-        // set listener
+        // set listener for nextAction trigger 
         if(thisAction.trigger == "click"){
           console.log("Waiting for click.");
-          myStage.removeEventListener('click', function(){nextAction(s);});
-          myStage.addEventListener('click', function(){nextAction(s);}, {once : true})
+          //myStage.removeEventListener('click', nextAction);
+          myStage.addEventListener('click', nextAction, {once : true})
         } else if(thisAction.trigger == "timer"){
           console.log("Next action in " + thisAction.duration + " milliseconds.");
-          setTimeout(function(){nextAction(s)}, thisAction.duration);
+          setTimeout(nextAction, thisAction.duration);
         }
         
         
       
-      
-      // wait for trigger then increment current action
     }
   }
 }
   
   
-function nextAction(scene){
-  console.log("nextAction called. scene: "+ scene+" currentAction: "+scenes[scene].currentAction);
-  if(scenes[scene].currentAction <= scenes[scene].actions.length){
-    scenes[scene].currentAction++;
+function nextAction(){
+  console.log("nextAction called. scene: "+ activeScene+" currentAction: "+scenes[activeScene].currentAction);
+  if(scenes[activeScene].currentAction <= scenes[activeScene].actions.length){
+    scenes[activeScene].currentAction++;
   }
-  scenes[scene].currentActionInitiated = false;
+  scenes[activeScene].currentActionInitiated = false;
   //console.log("currentActionInitiated");
 }
   
@@ -308,11 +307,6 @@ function writeText(){
  }else if (textDisplay.charIndex == textDisplay.msg.length){
      textDisplay.completed = true;
    }
-   
-   // reset
-   // myStage.removeAllChildren();
-   // obj = null;
-   // init();
 }
 
 function makeText(txt,style,xPos,yPos) {
