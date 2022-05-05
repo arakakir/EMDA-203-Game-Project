@@ -132,7 +132,7 @@ function gameLoop(evt){
   //handleKeyInput();
   //handleCollisions();
   handleSceneActions();
-  handleAnimations();
+ // handleAnimations();
   writeText(textDisplay);
   myStage.setChildIndex(textDisplay, myStage.numChildren-1);
   myStage.update();
@@ -154,36 +154,36 @@ var scenes = [
    sound: {src: "scene1sound", volume: 1.0, loop: -1},
    
    images: [
-     // {id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     // {id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
-     //              animation: {wait: 0,
-     //                          startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-     //                          endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
-     //                          spriteAnimation:"wink",
-     //                          duration: 3000},
-     //              clickable: true, onClick:"smile"},
-     //  {id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
-     //              animation: {wait: 0,
-     //                          startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-     //                          endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
-     //                          spriteAnimation:"wink",
-     //                          duration: 3000},
-     //              clickable: true, onClick:"smile"}
+     {id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "character", img:"images/hero.png", loc: {x:-200, y:250}, animated: true,
+                  // animation: {wait: 0,
+                  //             startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+                  //             endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+                  //             spriteAnimation:"wink",
+                  //             duration: 3000},
+                  clickable: true, onClick:"smile"},
+      {id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
+                  // animation: {wait: 0,
+                  //             startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+                  //             endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+                  //             spriteAnimation:"wink",
+                  //             duration: 3000},
+                  clickable: true, onClick:"smile"}
      ],
    
    actions: [
-     {type: "image", id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false, trigger: "auto"},
-     {type: "image", id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
+     //{type: "image", id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false, trigger: "auto"},
+     {type: "animation", id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:360, scaleX:0.75, scaleY:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scaleX:1, scaleY:1},
                               spriteAnimation:"wink",
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "auto"},
-     {type: "image", id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
+     {type: "animation", id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
                   animation: {wait: 0,
-                              startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-                              endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+                              startPosition:{x:2000, y:400, alpha:1, rotation:0, scale:0.75},
+                              endPosition:{x:600, y:200, alpha:1, rotation:0, scale:1},
                               spriteAnimation:"wink",
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "timer", duration: 5000},
@@ -264,16 +264,16 @@ function handleSceneActions(){
             break;
             
           case "image":
-             var image = new createjs.Bitmap(thisAction.img)
-             image.x = thisAction.loc.x;
-             image.y = thisAction.loc.y;
-             image.id = thisAction.id;
-             image.animated = thisAction.animated;
-             image.animation = thisAction.animation;
-             image.clickable = thisAction.clickable;
-             image.onClick = thisAction.onClick;
-             sceneImages.push(image);
-             myStage.addChild(sceneImages[sceneImages.length-1]);
+             // var image = new createjs.Bitmap(thisAction.img)
+             // image.x = thisAction.loc.x;
+             // image.y = thisAction.loc.y;
+             // image.id = thisAction.id;
+             // image.animated = thisAction.animated;
+             // image.animation = thisAction.animation;
+             // image.clickable = thisAction.clickable;
+             // image.onClick = thisAction.onClick;
+             // sceneImages.push(image);
+             // myStage.addChild(sceneImages[sceneImages.length-1]);
             break;
             
           case "animation":
@@ -329,6 +329,8 @@ function handleAnimations(){
       let animation = scenes[activeScene].actions[scenes[activeScene].currentAction].animation;
       // var objectToAnimate;
       for(var i = 0; i<sceneImages.length; i++){
+        console.log(sceneImages[i].id);
+        console.log(scenes[activeScene].actions[scenes[activeScene].currentAction].id);
         if(sceneImages[i].id==scenes[activeScene].actions[scenes[activeScene].currentAction].id){
           console.log("inner sanctum");
           var objectToAnimate = sceneImages[i];
@@ -336,9 +338,10 @@ function handleAnimations(){
       
           createjs.Tween.get(objectToAnimate)
                     .wait(animation.wait)
-                    .to({x:0,y:0})
-                    // .to(animation.startPosition, 0, createjs.Ease.getPowInOut(4))
-                    .to({x:100,y:200}, animation.duration, createjs.Ease.getPowInOut(4))
+                    //.to({x:0,y:0})
+                    .to(animation.startPosition)
+//                    .to({x:100,y:200}, animation.duration, createjs.Ease.getPowInOut(4))
+                    .to(animation.endPosition, animation.duration, createjs.Ease.getPowInOut(4))
                   }
       }
     }
