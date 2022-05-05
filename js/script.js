@@ -312,7 +312,7 @@ function displayText(speaker, text){
 function handleAnimations(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].animation != undefined){
     if(scenes[activeScene].currentActionInitiated == false){
-      scenes[activeScene].currentActionInitiated = true;
+      // scenes[activeScene].currentActionInitiated = true;
       let animation = scenes[activeScene].actions[scenes[activeScene].currentAction].animation;
       // var objectToAnimate;
       for(var i = 0; i<sceneImages.length; i++){
@@ -322,13 +322,14 @@ function handleAnimations(){
           console.log("inner sanctum");
           var objectToAnimate = sceneImages[i];
 
-      
+          scenes[activeScene].currentActionInitiated = true;
+          
           createjs.Tween.get(objectToAnimate)
                     .wait(animation.wait)
                     .to(animation.startPosition)
                     .to(animation.endPosition, animation.duration, createjs.Ease.getPowInOut(4))
-                    .call(nextAction);
-                  }
+                    //.call(nextAction);
+        }
       }
     }
   }  
