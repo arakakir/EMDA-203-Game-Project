@@ -155,32 +155,20 @@ var scenes = [
    
    images: [
      {id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "character", img:"images/hero.png", loc: {x:-200, y:250}, animated: true,
-                  // animation: {wait: 0,
-                  //             startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-                  //             endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
-                  //             spriteAnimation:"wink",
-                  //             duration: 3000},
-                  clickable: true, onClick:"smile"},
-      {id: "villain", img:"images/skull01.png", loc: {x:2000, y:100}, animated: true,
-                  // animation: {wait: 0,
-                  //             startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
-                  //             endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
-                  //             spriteAnimation:"wink",
-                  //             duration: 3000},
-                  clickable: true, onClick:"smile"}
+     {id: "character", img:"images/hero.png", loc: {x:-200, y:250}, clickable: true, onClick:"smile"},
+     {id: "villain", img:"images/skull01.png", loc: {x:2000, y:100}, clickable: true, onClick:"smile"}
      ],
    
    actions: [
-     {type: "image", id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false, trigger: "auto"},
-     {type: "image", id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
+     {type: "animation", id: "background", img:"images/bg.png", clickable: false, trigger: "auto"},
+     {type: "animation", id: "character", img:"images/hero.png", loc: {x:200, y:250},
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:360, scaleX:0.75, scaleY:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scaleX:1, scaleY:1},
                               spriteAnimation:"wink",
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "click", duration: 5000},
-     {type: "image", id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
+     {type: "image", id: "villain", img:"images/skull01.png", loc: {x:500, y:100},
                   animation: {wait: 0,
                               startPosition:{x:2000, y:400, alpha:1, rotation:360, scale:0.75},
                               endPosition:{x:500, y:100, alpha:1, rotation:0, scale:1},
@@ -193,7 +181,7 @@ var scenes = [
      {type: "text", speaker: "Hero", text: "which should we pick...", loc: {x:330,y:320}, trigger: "click"},
      {type: "text", speaker: "Villain", text: "hmm...", loc: {x:630,y:120}, trigger: "click"},
      {type: "text", speaker: "Villain", text: "I don't know...", trigger: "click"},
-     {type: "animation", text: "", objectToAnimate: "character", 
+     {type: "animation", text: "", id: "character", 
                   animation: {wait: 0,
                               spriteAnimation:"wavingHand",
                               startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
@@ -329,7 +317,7 @@ function handleAnimations(){
       // var objectToAnimate;
       for(var i = 0; i<sceneImages.length; i++){
         console.log(sceneImages[i].id);
-        console.log(scenes[activeScene].actions[scenes[activeScene].currentAction].id);
+        console.log(scenes[activeScene].actions[scenes[activeScene].currentAction].id); // this part not getting updated?
         if(sceneImages[i].id==scenes[activeScene].actions[scenes[activeScene].currentAction].id){
           console.log("inner sanctum");
           var objectToAnimate = sceneImages[i];
