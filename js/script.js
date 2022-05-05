@@ -179,7 +179,7 @@ var scenes = [
                               spriteAnimation:"wink",
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "auto"},
-      {id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
+     {type: "image", id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
@@ -283,13 +283,19 @@ function handleSceneActions(){
         };
         
         // set listener for nextAction trigger 
-        if(thisAction.trigger == "click"){
-          console.log("Waiting for click.");
-          //myStage.removeEventListener('click', nextAction);
-          myStage.addEventListener('click', nextAction, {once : true})
-        } else if(thisAction.trigger == "timer"){
-          console.log("Next action in " + thisAction.duration + " milliseconds.");
-          setTimeout(nextAction, thisAction.duration);
+        switch (thisAction.trigger){
+          case "click":
+            console.log("Waiting for click.");
+            myStage.addEventListener('click', nextAction, {once : true});
+            break;
+            
+          case "timer":
+            console.log("Next action in " + thisAction.duration + " milliseconds.");
+            setTimeout(nextAction, thisAction.duration);
+            break;
+            
+          case "auto":
+            nextAction();
         }
         
         
@@ -316,7 +322,7 @@ function displayText(speaker, text){
   
   
 function writeText(){
-  if(scenes[activeScene].action)
+  if(scenes[activeScene].actions[scenes[activeScene].currentAction].type == "text"){
   
   for(var i = 0; i<scenes.length; i++){ 
       if(scenes[i].active == true){
@@ -348,6 +354,7 @@ function writeText(){
  }else if (textDisplay.charIndex == textDisplay.msg.length){
      textDisplay.completed = true;
    }
+}
 }
 
 function makeText(txt,style,xPos,yPos) {
