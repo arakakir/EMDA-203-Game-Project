@@ -153,26 +153,41 @@ var scenes = [
    sound: {src: "scene1sound", volume: 1.0, loop: -1},
    
    images: [
-     {id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
+     // {id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     // {id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
+     //              animation: {wait: 0,
+     //                          startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+     //                          endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+     //                          spriteAnimation:"wink",
+     //                          duration: 3000},
+     //              clickable: true, onClick:"smile"},
+     //  {id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
+     //              animation: {wait: 0,
+     //                          startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
+     //                          endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
+     //                          spriteAnimation:"wink",
+     //                          duration: 3000},
+     //              clickable: true, onClick:"smile"}
+     ],
+   
+   actions: [
+     {type: "image", id: "background", img:"images/bg.png", loc: {x:0, y:0}, animated: false, clickable: false, trigger: "auto"},
+     {type: "image", id: "character", img:"images/hero.png", loc: {x:200, y:250}, animated: true,
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
                               spriteAnimation:"wink",
                               duration: 3000},
-                  clickable: true, onClick:"smile"},
+                  clickable: true, onClick:"smile", trigger: "auto"},
       {id: "villain", img:"images/skull01.png", loc: {x:500, y:100}, animated: true,
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:0, scale:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scale:1},
                               spriteAnimation:"wink",
                               duration: 3000},
-                  clickable: true, onClick:"smile"}
-     ],
-   
-   actions: [
+                  clickable: true, onClick:"smile", trigger: "timer", duration: 5000},
      {type: "text", speaker: "Hero", text: "You enter a room with two doors...", 
-            loc: {x:330,y:320}, trigger: "timer", duration: 5000},
+            loc: {x:330,y:320}, trigger: "click"},
      {type: "text", speaker: "Villain", text: "Wow two doors...", loc: {x:630,y:120}, trigger: "click"},
      {type: "text", speaker: "Hero", text: "which should we pick...", loc: {x:330,y:320}, trigger: "click"},
      {type: "text", speaker: "Villain", text: "hmm...", loc: {x:630,y:120}, trigger: "click"},
@@ -247,6 +262,19 @@ function handleSceneActions(){
             
             break;
             
+          case "image":
+             var image = new createjs.Bitmap(thisAction.img)
+             image.x = thisAction.loc.x;
+             image.y = thisAction.loc.y;
+             image.id = thisAction.id;
+             image.animated = thisAction.animated;
+             image.animation = thisAction.animation;
+             image.clickable = thisAction.clickable;
+             image.onClick = thisAction.onClick;
+             sceneImages.push(image);
+             myStage.addChild(sceneImages[sceneImages.length-1]);
+            break;
+            
           case "animation":
             break;
             
@@ -288,6 +316,8 @@ function displayText(speaker, text){
   
   
 function writeText(){
+  if(scenes[activeScene].action)
+  
   for(var i = 0; i<scenes.length; i++){ 
       if(scenes[i].active == true){
   
