@@ -320,6 +320,14 @@ function displayText(speaker, text){
   currentText = speaker+": " + text;
 }
   
+
+function handleAnimations(){
+  if(scenes[activeScene].actions[scenes[activeScene].currentAction].animated != undefined){
+    if(scenes[activeScene].currentActionInitiated == false){
+      createjs.Tween.get(circle)
+                    .to({ x: 400 }, 1000, createjs.Ease.getPowInOut(4));
+    }
+}
   
 function writeText(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].type == "text"){
