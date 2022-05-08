@@ -339,6 +339,10 @@ function handleAnimations(){
     }
   }  
 }
+
+// Make each text a new Text instance pushed into texts[] array.
+// Somehow remove last text.
+// Differentiate onClick: "nextAction"
   
 function writeText(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].type == "text"){
