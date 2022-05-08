@@ -236,7 +236,7 @@ function buildScene(scene){
 function handleSceneActions(){
     for(var i = 0; i<scenes.length; i++){ 
       if(scenes[i].active == true && !scenes[i].currentActionInitiated){
-        //scenes[i].currentActionInitiated = true;   // something about this flag hinders secondary animations starting
+        scenes[i].currentActionInitiated = true;   // something about this flag hinders secondary animations starting
         
         console.log("SCENE: " + scenes[i].id + " / ACTION: " + (scenes[i].currentAction));
         let thisAction = scenes[i].actions[scenes[i].currentAction];
@@ -301,8 +301,9 @@ function nextAction(){
   console.log("nextAction called. scene: "+ activeScene+" currentAction: "+scenes[activeScene].currentAction);
   if(scenes[activeScene].currentAction <= scenes[activeScene].actions.length){
     scenes[activeScene].currentAction++;
-  }
+  //}
   scenes[activeScene].currentActionInitiated = false;
+  }
 }
   
 
