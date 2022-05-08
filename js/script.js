@@ -177,7 +177,7 @@ var scenes = [
                   clickable: true, onClick:"smile", trigger: "click", duration: 5000},
      {type: "text", speaker: "Hero", text: "You enter a room with two doors...", 
             loc: {x:330,y:320}, trigger: "click"},
-     {type: "text", speaker: "Villain", text: "Wow two doors...", loc: {x:630,y:120}, trigger: "click"},
+     {type: "text", speaker: "Villain", text: "Wow two doors...", loc: {x:630,y:120}, trigger: "click", duration: 3000},
      {type: "text", speaker: "Hero", text: "which should we pick...", loc: {x:330,y:320}, trigger: "click"},
      {type: "text", speaker: "Villain", text: "hmm...", loc: {x:630,y:120}, trigger: "click"},
      {type: "text", speaker: "Villain", text: "I don't know...", trigger: "click"},
@@ -236,7 +236,7 @@ function buildScene(scene){
 function handleSceneActions(){
     for(var i = 0; i<scenes.length; i++){ 
       if(scenes[i].active == true && !scenes[i].currentActionInitiated){
-        scenes[i].currentActionInitiated = true;   // something about this flag hinders secondary animations starting
+        //scenes[i].currentActionInitiated = true;   // something about this flag hinders secondary animations starting
         
         console.log("SCENE: " + scenes[i].id + " / ACTION: " + (scenes[i].currentAction));
         let thisAction = scenes[i].actions[scenes[i].currentAction];
