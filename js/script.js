@@ -6,6 +6,7 @@
 
 // to make it complete:
 // sounds
+// text objects created for each line of text
 // clickable objects
 
 var myStage, stageWidth, stageHeight;
