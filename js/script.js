@@ -285,12 +285,24 @@ function handleSceneActions(){
         switch (thisAction.trigger){
           case "click":
             console.log("Waiting for click.");
-            myStage.addEventListener('click', nextAction, {once : true});
+            if (thisAction.doNext=="nextAction"){
+              myStage.addEventListener('click', nextAction, {once : true});
+            }
+            else {
+              buildScene(thisAction.doNext); //
+            }
             break;
             
           case "timer":
             console.log("Next action in " + thisAction.duration + " milliseconds.");
-            setTimeout(nextAction, thisAction.duration);
+            
+            if (thisAction.doNext=="nextAction"){
+              setTimeout(nextAction, thisAction.duration);
+            }
+            else {
+              setTimeout(nextAction, thisAction.duration);
+              buildScene(thisAction.doNext); //
+            }
             break;
             
           case "auto":
