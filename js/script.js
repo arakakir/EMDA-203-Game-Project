@@ -131,8 +131,9 @@ function gameLoop(evt){
   //runLevels();
   //handleKeyInput();
   //handleCollisions();
-  handleSceneActions();
+
   handleAnimations();
+  handleSceneActions();
   writeText(textDisplay);
   myStage.setChildIndex(textDisplay, myStage.numChildren-1);
   myStage.update();
