@@ -6,7 +6,7 @@
 
 // to make it complete:
 // sounds
-// moving enemies
+// clickable objects
 
 var myStage, stageWidth, stageHeight;
 var myFrameRate = 24;
@@ -281,8 +281,8 @@ function handleSceneActions(){
             break
         };
         
-        // find object connected with this action (text in array, image in array, )
-        // create thisAction.doNext = "nextAction"  or "scene2b"
+        // find object connected with this action (text in array, image in array, ) to allow clicking on object (not just stage)
+
         
         // set listener for nextAction trigger 
         switch (thisAction.trigger){
@@ -292,7 +292,8 @@ function handleSceneActions(){
               myStage.addEventListener('click', nextAction, {once : true});
             }
             else {
-              buildScene(thisAction.doNext);
+              function buildNext(){buildScene(thisAction.doNext);}
+              myStage.addEventListener('click', buildNext, {once : true});
             }
             break;
             
@@ -317,7 +318,8 @@ function handleSceneActions(){
               myStage.addEventListener('click', nextAction, {once : true});
             }
             else {
-              buildScene(thisAction.doNext);
+              function buildNext(){buildScene(thisAction.doNext);}
+              myStage.addEventListener('click', buildNext, {once : true});
             }
             break;
         }
