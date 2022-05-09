@@ -161,7 +161,7 @@ var scenes = [
      ],
    
    actions: [
-     {type: "animation", id: "background", img:"images/bg.png", clickable: false, trigger: "auto"},
+     {type: "animation", id: "background", img:"images/bg.png", clickable: false, trigger: "auto", do },
      {type: "animation", id: "character", img:"images/hero.png", loc: {x:200, y:250},
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:360, scaleX:0.75, scaleY:0.75},
@@ -193,6 +193,11 @@ var scenes = [
          ], 
    }
   ]
+
+// if an action has an onClick: defined it is like a choice
+// onClick: nextAction advances to next action when that object is clicked
+// onClick: targetScene builds a new scene
+// e.g.  text "door #1" onClick: "scene2a" // text "door #2" onClick: "scene2b"
 
 
 function buildScene(scene){
@@ -272,6 +277,9 @@ function handleSceneActions(){
             break
         };
         
+        // find object connected with this action (text in array, image in array, )
+        // create thisAction.doNext = "nextAction"  or "scene2b"
+        
         // set listener for nextAction trigger 
         switch (thisAction.trigger){
           case "click":
@@ -288,7 +296,9 @@ function handleSceneActions(){
             nextAction();
             break;
             
-          case "objectClick":
+          case "stageClick":
+            console.log("Waiting for stage click.");
+            myStage.addEventListener('click', nextAction, {once : true});
             break;
         }
         
