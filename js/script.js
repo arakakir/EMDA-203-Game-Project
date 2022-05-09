@@ -168,7 +168,7 @@ var scenes = [
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scaleX:1, scaleY:1},
                               spriteAnimation:"wink",
                               duration: 3000},
-                  clickable: true, onClick:"smile", trigger: "click", duration: 5000},
+                  clickable: true, onClick:"smile", trigger: "auto", duration: 5000},
      {type: "animation", id: "villain", img:"images/skull01.png", loc: {x:500, y:100},
                   animation: {wait: 0,
                               startPosition:{x:2000, y:400, alpha:1, rotation:360, scale:0.75},
@@ -302,7 +302,7 @@ function handleSceneActions(){
 function nextAction(){
   //console.log("nextAction called. scene: "+ activeScene+" currentAction: "+scenes[activeScene].currentAction);
   if(scenes[activeScene].currentAction <= scenes[activeScene].actions.length){
-    console.log("nextAction called. scene: "+ activeScene+" currentAction: "+scenes[activeScene].currentAction);
+    // console.log("nextAction called. scene: "+ activeScene+" currentAction: "+scenes[activeScene].currentAction);
     scenes[activeScene].currentAction++;
   //}
   scenes[activeScene].currentActionInitiated = false;
@@ -318,17 +318,17 @@ function displayText(speaker, text){
 
 function handleAnimations(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].animation != undefined){
-    console.log("animation defined");
+    //console.log("animation defined");
     if(scenes[activeScene].currentActionInitiated == false){
-      console.log("currentActionInitiated = false");
+      // console.log("currentActionInitiated = false");
       //scenes[activeScene].currentActionInitiated = true;
       let animation = scenes[activeScene].actions[scenes[activeScene].currentAction].animation;
       // var objectToAnimate;
       for(var i = 0; i<sceneImages.length; i++){
-        console.log(sceneImages[i].id);
-        console.log(scenes[activeScene].actions[scenes[activeScene].currentAction].id); // this part not getting updated?
+        // console.log(sceneImages[i].id);
+        // console.log(scenes[activeScene].actions[scenes[activeScene].currentAction].id); // this part not getting updated?
         if(sceneImages[i].id==scenes[activeScene].actions[scenes[activeScene].currentAction].id){
-          console.log("inner sanctum");
+          // console.log("inner sanctum");
           var objectToAnimate = sceneImages[i];
 
           //scenes[activeScene].currentActionInitiated = true;
