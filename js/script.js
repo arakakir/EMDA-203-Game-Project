@@ -298,8 +298,9 @@ function handleSceneActions(){
   
   
 function nextAction(){
-  console.log("nextAction called. scene: "+ activeScene+" currentAction: "+scenes[activeScene].currentAction);
+  //console.log("nextAction called. scene: "+ activeScene+" currentAction: "+scenes[activeScene].currentAction);
   if(scenes[activeScene].currentAction <= scenes[activeScene].actions.length){
+    console.log("nextAction called. scene: "+ activeScene+" currentAction: "+scenes[activeScene].currentAction);
     scenes[activeScene].currentAction++;
   //}
   scenes[activeScene].currentActionInitiated = false;
@@ -315,7 +316,7 @@ function displayText(speaker, text){
 
 function handleAnimations(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].animation != undefined){
-    // console.log("animation defined");
+    console.log("animation defined");
     if(scenes[activeScene].currentActionInitiated == false){
       console.log("currentActionInitiated = false");
       //scenes[activeScene].currentActionInitiated = true;
