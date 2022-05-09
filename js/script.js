@@ -161,38 +161,39 @@ var scenes = [
      ],
    
    actions: [
-     {type: "animation", id: "background", img:"images/bg.png", clickable: false, trigger: "auto", do },
+     {type: "animation", id: "background", img:"images/bg.png", clickable: false, trigger: "auto", doNext: "nextAction"},
      {type: "animation", id: "character", img:"images/hero.png", loc: {x:200, y:250},
                   animation: {wait: 0,
                               startPosition:{x:-300, y:400, alpha:1, rotation:360, scaleX:0.75, scaleY:0.75},
                               endPosition:{x:200, y:300, alpha:1, rotation:0, scaleX:1, scaleY:1},
                               spriteAnimation:"wink",
                               duration: 3000},
-                  clickable: true, onClick:"smile", trigger: "auto", duration: 5000},
+                  clickable: true, onClick:"smile", trigger: "auto", duration: 5000, doNext: "nextAction"},
      {type: "animation", id: "villain", img:"images/skull01.png", loc: {x:500, y:100},
                   animation: {wait: 0,
                               startPosition:{x:2000, y:400, alpha:1, rotation:360, scale:0.75},
                               endPosition:{x:500, y:100, alpha:1, rotation:0, scale:1},
                               spriteAnimation:"wink",
                               duration: 3000},
-                  clickable: true, onClick:"smile", trigger: "click", duration: 5000},
+                  clickable: true, onClick:"smile", trigger: "click", duration: 5000, doNext: "nextAction"},
      {type: "text", speaker: "Hero", text: "You enter a room with two doors...", 
             loc: {x:330,y:320}, trigger: "click"},
-     {type: "text", speaker: "Villain", text: "Wow two doors...", loc: {x:630,y:120}, trigger: "click", duration: 3000},
-     {type: "text", speaker: "Hero", text: "which should we pick...", loc: {x:330,y:320}, trigger: "click"},
-     {type: "text", speaker: "Villain", text: "hmm...", loc: {x:630,y:120}, trigger: "click"},
-     {type: "text", speaker: "Villain", text: "I don't know...", trigger: "click"},
+     {type: "text", speaker: "Villain", text: "Wow two doors...", loc: {x:630,y:120}, trigger: "click", duration: 3000, doNext: "nextAction"},
+     {type: "text", speaker: "Hero", text: "which should we pick...", loc: {x:330,y:320}, trigger: "click", doNext: "nextAction"},
+     {type: "text", speaker: "Villain", text: "hmm...", loc: {x:630,y:120}, trigger: "click", doNext: "nextAction"},
+     {type: "text", speaker: "Villain", text: "I don't know...", trigger: "click", doNext: "nextAction"},
      {type: "animation", text: "", id: "character", 
                   animation: {wait: 0,
                               startPosition:{scale:1},
                               endPosition:{scale:1.5},
-                              duration: 3000}, trigger: "timer", duration: 4000},
-     {type: "choice", text: "", choices: [{text:"Take the door on the left", next:"scene2a"},
-                                {text:"Take the door on the right", next:"scene2b"},
-                                {image:"pushButton1", loc: {x:0, y:0}, next:"scene2c"}]}                   
-         ], 
-   }
-  ]
+                              duration: 3000}, trigger: "timer", duration: 4000, doNext: "nextAction"},
+     {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:330,y:320}, 
+            trigger: "click", doNext: "scene2A"},
+     {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:330,y:320}, 
+            trigger: "click", doNext: "scene2B"}]}                   
+] 
+   
+  
 
 // if an action has an onClick: defined it is like a choice
 // onClick: nextAction advances to next action when that object is clicked
