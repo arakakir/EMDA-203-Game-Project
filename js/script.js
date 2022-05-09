@@ -68,8 +68,8 @@ function preload(){
 // ************ INITIALIZATION - Happens only once ****************
 
 function init(){
-  // document.getElementById("myCanvas").width = window.innerWidth;
-  // document.getElementById("myCanvas").height = window.innerHeight;
+  document.getElementById("myCanvas").width = window.innerWidth;
+  document.getElementById("myCanvas").height = window.innerHeight;
   
   myStage = new createjs.Stage(document.getElementById("myCanvas"));
   stageWidth = myStage.canvas.width;
