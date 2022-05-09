@@ -177,20 +177,23 @@ var scenes = [
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "click", duration: 5000, doNext: "nextAction"},
      {type: "text", speaker: "Hero", text: "You enter a room with two doors...", 
-            loc: {x:330,y:320}, trigger: "click"},
-     {type: "text", speaker: "Villain", text: "Wow two doors...", loc: {x:630,y:120}, trigger: "click", duration: 3000, doNext: "nextAction"},
-     {type: "text", speaker: "Hero", text: "which should we pick...", loc: {x:330,y:320}, trigger: "click", doNext: "nextAction"},
-     {type: "text", speaker: "Villain", text: "hmm...", loc: {x:630,y:120}, trigger: "click", doNext: "nextAction"},
+            loc: {x:330,y:320}, trigger: "click", doNext: "nextAction"},
+     {type: "text", speaker: "Villain", text: "Wow two doors...", 
+            loc: {x:630,y:120}, trigger: "click", duration: 3000, doNext: "nextAction"},
+     {type: "text", speaker: "Hero", text: "which should we pick...", 
+            loc: {x:330,y:320}, trigger: "click", doNext: "nextAction"},
+     {type: "text", speaker: "Villain", text: "hmm...", 
+            loc: {x:630,y:120}, trigger: "click", doNext: "nextAction"},
      {type: "text", speaker: "Villain", text: "I don't know...", trigger: "click", doNext: "nextAction"},
      {type: "animation", text: "", id: "character", 
                   animation: {wait: 0,
                               startPosition:{scale:1},
                               endPosition:{scale:1.5},
-                              duration: 3000}, trigger: "timer", duration: 4000, doNext: "nextAction"},
+                              duration: 3000}, trigger: "click", duration: 4000, doNext: "nextAction"},
      {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:330,y:320}, 
-            trigger: "click", doNext: "scene2A"},
+            trigger: "click", doNext: "scene2a"},
      {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:330,y:320}, 
-            trigger: "click", doNext: "scene2B"}]}                   
+            trigger: "click", doNext: "scene2a"}]}                   
 ] 
    
   
@@ -289,7 +292,7 @@ function handleSceneActions(){
               myStage.addEventListener('click', nextAction, {once : true});
             }
             else {
-              buildScene(thisAction.doNext); //
+              buildScene(thisAction.doNext);
             }
             break;
             
@@ -300,8 +303,7 @@ function handleSceneActions(){
               setTimeout(nextAction, thisAction.duration);
             }
             else {
-              setTimeout(nextAction, thisAction.duration);
-              buildScene(thisAction.doNext); //
+              setTimeout(function(){buildScene(thisAction.doNext);}, thisAction.duration);
             }
             break;
             
@@ -311,7 +313,12 @@ function handleSceneActions(){
             
           case "stageClick":
             console.log("Waiting for stage click.");
-            myStage.addEventListener('click', nextAction, {once : true});
+            if (thisAction.doNext=="nextAction"){
+              myStage.addEventListener('click', nextAction, {once : true});
+            }
+            else {
+              buildScene(thisAction.doNext);
+            }
             break;
         }
         
