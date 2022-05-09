@@ -379,8 +379,6 @@ function handleAnimations(){
 
 // Make each text a new Text instance pushed into texts[] array.
 // Somehow remove last text.
-// Differentiate onClick: "nextAction" or "targetScene".
-// Then any text or image can be a branching choice.
   
 function writeText(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].type == "text"){
