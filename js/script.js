@@ -107,13 +107,13 @@ function init(){
   // theEnd.alpha = 0.;
   // myStage.addChild(theEnd);
   
-  textDisplay = makeText(currentText, defaultStyle, 330, 320); // start with an empty createjs.Text() object
-  textDisplay.msg = "";
-  textDisplay.counter = 0;
-  textDisplay.interval=1;
-  textDisplay.charIndex=0;
-  textDisplay.completed = false;
-  myStage.addChild(textDisplay);
+  // textDisplay = makeText(currentText, defaultStyle, 330, 320); // start with an empty createjs.Text() object
+  // textDisplay.msg = "";
+  // textDisplay.counter = 0;
+  // textDisplay.interval=1;
+  // textDisplay.charIndex=0;
+  // textDisplay.completed = false;
+  // myStage.addChild(textDisplay);
 
   backgroundSound = createjs.Sound.play("backgroundSound");
   backgroundSound.volume = 0.3;
@@ -265,13 +265,16 @@ function handleSceneActions(){
             if(thisAction.style==undefined){ textStyle = defaultStyle;}
             else{textStyle = thisAction.style;}
             
-            textArray.push(makeText(thisAction.text, textStyle, thisAction.loc.x, thisAction.loc.y));
-            textArray[textArray.length-1].msg = "";
-            textArray[textArray.length-1].counter = 0;
-            textArray[textArray.length-1].interval=1;
-            textArray[textArray.length-1].charIndex=0;
-            textArray[textArray.length-1].completed = false;
-            //myStage.addChild(textArray[textArray.length-1]);
+            if(thisAction.hideAfter==undefined){thisAction.hideAfter=1;}
+            
+            textArray[thisAction] = makeText(thisAction.text, textStyle, thisAction.loc.x, thisAction.loc.y);
+            textArray[thisAction].msg = "";
+            textArray[thisAction].counter = 0;
+            textArray[thisAction].interval = 1;
+            textArray[thisAction].charIndex = 0;
+            textArray[thisAction].completed = false;
+            textArray[thisAction].hideAfter = thisAction.hideAfter;
+            myStage.addChild(textArray[thisAction]);
             
             
             break;
@@ -414,13 +417,13 @@ function writeText(){
 //       }
 //     }
     
-    var thisAction = scenes[activeScene].actions[scenes[activeScene].currentAction];
+    //var thisAction = scenes[activeScene].actions[scenes[activeScene].currentAction];
 
     // iterate textArray
   for(var i = 0; i<textArray.length;i++){
     // textArray is populated based on action index (action 4 goes in textArray[4])
     // use text.hideAfter to determine when to remove it
-    
+  if(textArray[i]!=undefined){
     var thisText = textArray[i];
     // if text is completed wait for next action to start new text
     // if((thisText.completed == true) && (thisText.msg != thisAction.text)){
@@ -432,7 +435,10 @@ function writeText(){
     //     textDisplay.y = thisAction.loc.y;
     //   }
     // }    
-    if((thisText.completed == true) && (thisText.actionCounter == thisAction.hideAfter)){
+    
+    // if completed && currentAction >= (i+thisAction.hideAfter)
+    
+    if((thisText.completed == true) && (scenes[activeScene].currentAction >= (i+thisText.hideAfter))){
       myStage.removeChild(thisText);
       textArray.splice(i,1);
     }
@@ -449,8 +455,9 @@ function writeText(){
    }else if (thisText.charIndex == thisText.msg.length){
        thisText.completed = true;
      }
+   }
   }
-}
+ }
 }
     // if text isn't completed keep updating text
 //    if(textDisplay.charIndex<textDisplay.msg.length){
