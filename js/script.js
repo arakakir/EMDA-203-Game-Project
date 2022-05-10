@@ -196,10 +196,10 @@ var scenes = [
      {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:360,y:320}, 
             trigger: "click", doNext: "scene2a", hideAfter:2},
      {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:360,y:350}, 
-            trigger: "click", doNext: "scene2a"}]},
+            trigger: "click", doNext: "scene2b"}]},
   
-   {id:"scene2a"},
-   {id:"scene2b"}
+   {id:"scene2a", actions: []},
+   {id:"scene2b", actions: []}
 ] 
    
   
@@ -329,7 +329,7 @@ function handleSceneActions(){
               object.addEventListener('click', nextAction, {once : true});
             }
             else {
-              function buildNext(){buildScene(thisAction.doNext);}
+              function buildNext(){buildScene(thisAction.doNext); console.log("")}
               object.addEventListener('click', buildNext, {once : true});
             }
             break;
@@ -352,13 +352,13 @@ function handleSceneActions(){
           case "stageClick":
             console.log("Waiting for stage click.");
             if (thisAction.doNext=="nextAction"){
-              sceneImages[0].addEventListener('click', nextAction, {once : true}); // a little sketch - relying on bg image
-              // myStage.addEventListener('click', nextAction, {once : true});
+              //sceneImages[0].addEventListener('click', nextAction, {once : true}); // a little sketch - relying on bg image
+              myStage.addEventListener('click', nextAction, {once : true});
             }
             else {
               function buildNext(){buildScene(thisAction.doNext);}
-              sceneImages[0].addEventListener('click', buildNext, {once : true}); // a little sketch - relying on bg image
-              // myStage.addEventListener('click', buildNext, {once : true});
+              //sceneImages[0].addEventListener('click', buildNext, {once : true}); // a little sketch - relying on bg image
+              myStage.addEventListener('click', buildNext, {once : true});
             }
             break;
             
@@ -399,6 +399,7 @@ function displayText(speaker, text){
   
 
 function handleAnimations(){
+  if(scenes[activeScene].actions[scenes[activeScene].currentAction] != undefined){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].animation != undefined){
     //console.log("animation defined");
     if(scenes[activeScene].currentActionInitiated == false){
@@ -424,6 +425,7 @@ function handleAnimations(){
       }
     }
   }  
+ }
 }
 
 // Make each text a new Text instance pushed into texts[] array.
