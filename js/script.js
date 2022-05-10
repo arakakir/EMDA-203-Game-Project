@@ -352,6 +352,17 @@ function handleSceneActions(){
               myStage.addEventListener('click', buildNext, {once : true});
             }
             break;
+            
+          case "choice":
+            // if choice add a stageListener to add next choices
+            // and add an obejectListener
+            if (thisAction.doNext=="nextAction"){
+              object.addEventListener('click', nextAction, {once : true});
+            }
+            else {
+              function buildNext(){buildScene(thisAction.doNext);}
+              object.addEventListener('click', buildNext, {once : true});
+            }
         }
         
         //scenes[activeScene].currentActionInitiated = true;
