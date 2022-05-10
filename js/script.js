@@ -399,6 +399,9 @@ function writeText(){
     
     var thisAction = scenes[activeScene].actions[scenes[activeScene].currentAction];
 
+    // iterate textArray with id's
+    // textArray is populated based on action index (action 4 goes in textArray[4])
+    
     // if text is completed wait for next action to start new text
     if((textDisplay.completed == true) && (textDisplay.msg != thisAction.text)){
       textDisplay.msg = thisAction.text;
