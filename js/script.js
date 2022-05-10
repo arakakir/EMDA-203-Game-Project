@@ -180,7 +180,7 @@ var scenes = [
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "click", duration: 5000, doNext: "nextAction"},
      {type: "text", speaker: "Hero", text: "You enter a room with two doors...", style: defaultStyle,
-            loc: {x:330,y:320}, trigger: "click", doNext: "nextAction"},
+            loc: {x:330,y:320}, trigger: "click", doNext: "nextAction", hideAfter:2},
      {type: "text", speaker: "Villain", text: "Wow two doors...", 
             loc: {x:630,y:120}, trigger: "click", duration: 3000, doNext: "nextAction"},
      {type: "text", speaker: "Hero", text: "which should we pick...", 
@@ -195,7 +195,7 @@ var scenes = [
                               endPosition:{scale:1.5},
                               duration: 3000}, trigger: "click", duration: 4000, doNext: "nextAction"},
      {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:330,y:320}, 
-            trigger: "click", doNext: "scene2a"},
+            trigger: "click", doNext: "scene2a", hideAfter:2},
      {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:330,y:320}, 
             trigger: "click", doNext: "scene2a"}]}                   
 ] 
@@ -268,16 +268,20 @@ function handleSceneActions(){
             
             if(thisAction.hideAfter==undefined){thisAction.hideAfter=1;}
             
-            textArray[thisAction] = makeText(thisAction.text, textStyle, thisAction.loc.x, thisAction.loc.y);
-            textArray[thisAction].msg = "";
-            textArray[thisAction].counter = 0;
-            textArray[thisAction].interval = 1;
-            textArray[thisAction].charIndex = 0;
-            textArray[thisAction].completed = false;
-            textArray[thisAction].hideAfter = thisAction.hideAfter;
-            console.log(textArray[thisAction]);
+            let actionNumber = scenes[i].currentAction;
+            
+            textArray[actionNumber] = makeText(thisAction.text, textStyle, thisAction.loc.x, thisAction.loc.y);
+            textArray[actionNumber].msg = thisAction.text;
+            textArray[actionNumber].text = "";
+            textArray[actionNumber].counter = 0;
+            textArray[actionNumber].interval = 1;
+            textArray[actionNumber].charIndex = 0;
+            textArray[actionNumber].completed = false;
+            textArray[actionNumber].hideAfter = thisAction.hideAfter;
+            console.log(actionNumber);
+            console.log(textArray[actionNumber]);
             console.log(textArray);
-            myStage.addChild(textArray[thisAction]);
+            myStage.addChild(textArray[actionNumber]);
             
             
             break;
@@ -401,7 +405,7 @@ function handleAnimations(){
 // Somehow remove last text.
   
 function writeText(){
-  if(scenes[activeScene].actions[scenes[activeScene].currentAction].type == "text"){
+// if(scenes[activeScene].actions[scenes[activeScene].currentAction].type == "text"){
     
 //     var thisAction = scenes[activeScene].actions[scenes[activeScene].currentAction];
 
@@ -461,7 +465,8 @@ function writeText(){
    }
   }
  }
-}
+//}
+
     // if text isn't completed keep updating text
 //    if(textDisplay.charIndex<textDisplay.msg.length){
 //      textDisplay.completed = false;
