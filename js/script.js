@@ -178,25 +178,25 @@ var scenes = [
                               endPosition:{x:500, y:100, alpha:1, rotation:0, scale:1},
                               spriteAnimation:"wink",
                               duration: 3000},
-                  clickable: true, onClick:"smile", trigger: "click", duration: 5000, doNext: "nextAction"},
+                  clickable: true, onClick:"smile", trigger: "stageClick", duration: 5000, doNext: "nextAction"},
      {type: "text", speaker: "Hero", text: "You enter a room with two doors...", style: defaultStyle,
-            loc: {x:330,y:320}, trigger: "click", doNext: "nextAction", hideAfter:2},
+            loc: {x:330,y:320}, trigger: "stageClick", doNext: "nextAction", hideAfter:2},
      {type: "text", speaker: "Villain", text: "Wow two doors...", 
-            loc: {x:630,y:120}, trigger: "click", duration: 3000, doNext: "nextAction"},
+            loc: {x:630,y:120}, trigger: "stageClick", duration: 3000, doNext: "nextAction"},
      {type: "text", speaker: "Hero", text: "which should we pick...", 
-            loc: {x:330,y:320}, trigger: "click", doNext: "nextAction"},
+            loc: {x:330,y:320}, trigger: "stageClick", doNext: "nextAction"},
      {type: "text", speaker: "Villain", text: "hmm...", 
-            loc: {x:630,y:120}, trigger: "click", doNext: "nextAction"},
+            loc: {x:630,y:120}, trigger: "stageClick", doNext: "nextAction"},
      {type: "text", speaker: "Villain", text: "I don't know...", 
-            loc: {x:630,y:120}, trigger: "click", doNext: "nextAction"},
+            loc: {x:630,y:120}, trigger: "stageClick", doNext: "nextAction"},
      {type: "animation", text: "", id: "character", 
                   animation: {wait: 0,
                               startPosition:{scale:1},
                               endPosition:{scale:1.5},
-                              duration: 3000}, trigger: "click", duration: 4000, doNext: "nextAction"},
-     {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:330,y:320}, 
+                              duration: 3000}, trigger: "stageClick", duration: 4000, doNext: "nextAction"},
+     {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:360,y:320}, 
             trigger: "click", doNext: "scene2a", hideAfter:2},
-     {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:330,y:320}, 
+     {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:360,y:350}, 
             trigger: "click", doNext: "scene2a"}]}                   
 ] 
    
@@ -255,6 +255,7 @@ function handleSceneActions(){
         
         console.log("SCENE: " + scenes[i].id + " / ACTION: " + (scenes[i].currentAction));
         let thisAction = scenes[i].actions[scenes[i].currentAction];
+        let object;
         //activeScene = i;
         
         // perform current action
@@ -291,26 +292,23 @@ function handleSceneActions(){
             // console.log(textArray);
             myStage.addChild(textArray[actionNumber]);
             
+            object = textArray[actionNumber];
+            
             break;
             
           case "image":
-             // var image = new createjs.Bitmap(thisAction.img)
-             // image.x = thisAction.loc.x;
-             // image.y = thisAction.loc.y;
-             // image.id = thisAction.id;
-             // image.animated = thisAction.animated;
-             // image.animation = thisAction.animation;
-             // image.clickable = thisAction.clickable;
-             // image.onClick = thisAction.onClick;
-             // sceneImages.push(image);
-             // myStage.addChild(sceneImages[sceneImages.length-1]);
+            for(var j = 0; j<sceneImages.length; j++){
+              if(sceneImages[j].id==scenes[activeScene].actions[scenes[activeScene].currentAction].id){
+                 object = sceneImages[j];}
+            }
             break;
             
           case "animation":
+            for(var j = 0; j<sceneImages.length; j++){
+              if(sceneImages[j].id==scenes[activeScene].actions[scenes[activeScene].currentAction].id){
+                 object = sceneImages[j];}
+            }
             break;
-            
-          case "choice":
-            break
         };
         
         // find object connected with this action (text in array, image in array, ) to allow clicking on object (not just stage)
@@ -321,11 +319,11 @@ function handleSceneActions(){
           case "click":
             console.log("Waiting for click.");
             if (thisAction.doNext=="nextAction"){
-              myStage.addEventListener('click', nextAction, {once : true});
+              object.addEventListener('click', nextAction, {once : true});
             }
             else {
               function buildNext(){buildScene(thisAction.doNext);}
-              myStage.addEventListener('click', buildNext, {once : true});
+              object.addEventListener('click', buildNext, {once : true});
             }
             break;
             
