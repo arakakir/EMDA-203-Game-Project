@@ -59,7 +59,7 @@ function preload(){
     {id:"background_backMountains", src:"images/background_backMountains.png"},
     {id:"balloon01", src:"images/balloon01.png"},
     {id:"skull01", src:"images/skull01.png"},
-    {id:"heroReddeSprite", src:"images/heroReddeSprite.png"},
+    {id:"heroReddeSprite", src:"images/heroReddeSprite.png"}
     ]);
 }
 
@@ -114,9 +114,9 @@ function init(){
   // textDisplay.completed = false;
   // myStage.addChild(textDisplay);
 
-  // backgroundSound = createjs.Sound.play("backgroundSound");
-  // backgroundSound.volume = 0.3;
-  // backgroundSound.loop = -1;
+  backgroundSound = createjs.Sound.play("scene1sound");
+  backgroundSound.volume = 0.3;
+  backgroundSound.loop = -1;
 
   createjs.Ticker.addEventListener('tick', gameLoop);
   createjs.Ticker._setFPS(myFrameRate);
