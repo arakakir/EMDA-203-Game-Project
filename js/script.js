@@ -196,7 +196,10 @@ var scenes = [
      {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:360,y:320}, 
             trigger: "click", doNext: "scene2a", hideAfter:2},
      {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:360,y:350}, 
-            trigger: "click", doNext: "scene2a"}]}                   
+            trigger: "click", doNext: "scene2a"}]},
+  
+   {id:"scene2a"},
+   {id:"scene2b"}
 ] 
    
   
@@ -214,26 +217,31 @@ function buildScene(scene){
   // traverse all scenes and find the one you want
   for(var i = 0; i<scenes.length; i++){ if(scenes[i].id == scene){
     // play sound
-    sceneSound = createjs.Sound.play(scenes[i].sound.src);
-    sceneSound.volume = scenes[i].sound.volume;
-    sceneSound.loop = scenes[i].sound.looping;
+    if(scenes[i].sound != undefined){
+      sceneSound = createjs.Sound.play(scenes[i].sound.src);
+      sceneSound.volume = scenes[i].sound.volume;
+      sceneSound.loop = scenes[i].sound.looping;
+    }
     
     // add images in order
-    for (var j = 0; j<scenes[i].images.length; j++){
-     var image = new createjs.Bitmap(scenes[i].images[j].img)
-     image.x = scenes[i].images[j].loc.x;
-     image.y = scenes[i].images[j].loc.y;
-     image.id = scenes[i].images[j].id;
-     image.animated = scenes[i].images[j].animated;
-     image.animation = scenes[i].images[j].animation;
-     image.clickable = scenes[i].images[j].clickable;
-     image.onClick = scenes[i].images[j].onClick;
-     sceneImages.push(image);
-     myStage.addChild(sceneImages[sceneImages.length-1]);
+    if(scenes[i].images != undefined){
+      for (var j = 0; j<scenes[i].images.length; j++){
+       var image = new createjs.Bitmap(scenes[i].images[j].img)
+       image.x = scenes[i].images[j].loc.x;
+       image.y = scenes[i].images[j].loc.y;
+       image.id = scenes[i].images[j].id;
+       image.animated = scenes[i].images[j].animated;
+       image.animation = scenes[i].images[j].animation;
+       image.clickable = scenes[i].images[j].clickable;
+       image.onClick = scenes[i].images[j].onClick;
+       sceneImages.push(image);
+       myStage.addChild(sceneImages[sceneImages.length-1]);
+      }
     }
       
     // make this the active scene
     scenes[i].active = true;
+    console.log("The active scene is: " +i);
     
     // set the action counter to zero
     scenes[i].currentAction = 0;
