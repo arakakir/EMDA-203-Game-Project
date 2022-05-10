@@ -5,8 +5,9 @@
 
 
 // to make it complete:
-// sounds
+// sounds - use prelevel screen loads to initiate sound.
 // clickable objects - confirm choices are working
+
 
 var myStage, stageWidth, stageHeight;
 var myFrameRate = 24;
