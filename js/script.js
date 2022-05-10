@@ -136,8 +136,9 @@ function gameLoop(evt){
 
   handleAnimations();
   handleSceneActions();
-  writeText(textDisplay);
-  myStage.setChildIndex(textDisplay, myStage.numChildren-1);
+  writeText();
+  //writeText(textDisplay);
+  //myStage.setChildIndex(textDisplay, myStage.numChildren-1);
   myStage.update();
 }
 
@@ -274,6 +275,8 @@ function handleSceneActions(){
             textArray[thisAction].charIndex = 0;
             textArray[thisAction].completed = false;
             textArray[thisAction].hideAfter = thisAction.hideAfter;
+            console.log(textArray[thisAction]);
+            console.log(textArray);
             myStage.addChild(textArray[thisAction]);
             
             
@@ -440,7 +443,7 @@ function writeText(){
     
     if((thisText.completed == true) && (scenes[activeScene].currentAction >= (i+thisText.hideAfter))){
       myStage.removeChild(thisText);
-      textArray.splice(i,1);
+      //textArray.splice(i,1);
     }
 
    // if text isn't completed keep updating text
