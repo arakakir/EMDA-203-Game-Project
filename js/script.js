@@ -44,7 +44,7 @@ function preload(){
   queue.installPlugin(createjs.Sound);
   queue.on("complete", init);
   queue.loadManifest([
-    {id:"backgroundSound", src:"sounds/soundtrack.mp3", data:1},
+    {id:"scene1sound", src:"sounds/soundtrack.mp3", data:1},
     {id:"enemy", src:"sounds/enemy.mp3", data:2},
     {id:"target", src:"sounds/target.mp3", data:10},
     {id:"levelUp", src:"sounds/levelUp.mp3", data:2},
