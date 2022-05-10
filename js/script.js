@@ -396,53 +396,34 @@ function handleAnimations(){
   
 function writeText(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].type == "text"){
-  
-//   for(var i = 0; i<scenes.length; i++){ 
-//       if(scenes[i].active == true){
-  
-//           // if text is completed wait for next action to start new text
-//           if((textDisplay.completed == true) && (textDisplay.msg != scenes[i].actions[scenes[i].currentAction].text)){
-//             textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
-//             textDisplay.text = "";
-//             textDisplay.charIndex = 0;
-//             if(scenes[i].actions[scenes[i].currentAction].loc != undefined){
-//               textDisplay.x = scenes[i].actions[scenes[i].currentAction].loc.x;
-//               textDisplay.y = scenes[i].actions[scenes[i].currentAction].loc.y;
-//             }
-//           }
-//        //textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
-//       }
-//   }
     
-          var thisAction = scenes[activeScene].actions[scenes[activeScene].currentAction];
-  
-          // if text is completed wait for next action to start new text
-          if((textDisplay.completed == true) && (textDisplay.msg != thisAction.text)){
-            textDisplay.msg = thisAction.text;
-            textDisplay.text = "";
-            textDisplay.charIndex = 0;
-            if(thisAction.loc != undefined){
-              textDisplay.x = thisAction.loc.x;
-              textDisplay.y = thisAction.loc.y;
-            }
-          }
+    var thisAction = scenes[activeScene].actions[scenes[activeScene].currentAction];
 
+    // if text is completed wait for next action to start new text
+    if((textDisplay.completed == true) && (textDisplay.msg != thisAction.text)){
+      textDisplay.msg = thisAction.text;
+      textDisplay.text = "";
+      textDisplay.charIndex = 0;
+      if(thisAction.loc != undefined){
+        textDisplay.x = thisAction.loc.x;
+        textDisplay.y = thisAction.loc.y;
+      }
+    }
 
-    
   
-  // if text isn't completed keep updating text
- if(textDisplay.charIndex<textDisplay.msg.length){
-   textDisplay.completed = false;
-   textDisplay.counter++;
-   if(textDisplay.counter%textDisplay.interval===0){
-     //console.log("hi");
-     textDisplay.text += textDisplay.msg.charAt(textDisplay.charIndex);
-     textDisplay.charIndex++;
-   }    
- }else if (textDisplay.charIndex == textDisplay.msg.length){
-     textDisplay.completed = true;
-   }
-}
+    // if text isn't completed keep updating text
+   if(textDisplay.charIndex<textDisplay.msg.length){
+     textDisplay.completed = false;
+     textDisplay.counter++;
+     if(textDisplay.counter%textDisplay.interval===0){
+       //console.log("hi");
+       textDisplay.text += textDisplay.msg.charAt(textDisplay.charIndex);
+       textDisplay.charIndex++;
+     }    
+   }else if (textDisplay.charIndex == textDisplay.msg.length){
+       textDisplay.completed = true;
+     }
+  }
 }
 
 function makeText(txt,style,xPos,yPos) {
