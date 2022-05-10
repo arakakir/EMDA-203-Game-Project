@@ -114,9 +114,9 @@ function init(){
   // textDisplay.completed = false;
   // myStage.addChild(textDisplay);
 
-  backgroundSound = createjs.Sound.play("backgroundSound");
-  backgroundSound.volume = 0.3;
-  backgroundSound.loop = -1;
+  // backgroundSound = createjs.Sound.play("backgroundSound");
+  // backgroundSound.volume = 0.3;
+  // backgroundSound.loop = -1;
 
   createjs.Ticker.addEventListener('tick', gameLoop);
   createjs.Ticker._setFPS(myFrameRate);
