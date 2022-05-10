@@ -186,7 +186,8 @@ var scenes = [
             loc: {x:330,y:320}, trigger: "click", doNext: "nextAction"},
      {type: "text", speaker: "Villain", text: "hmm...", 
             loc: {x:630,y:120}, trigger: "click", doNext: "nextAction"},
-     {type: "text", speaker: "Villain", text: "I don't know...", trigger: "click", doNext: "nextAction"},
+     {type: "text", speaker: "Villain", text: "I don't know...", 
+            loc: {x:630,y:120}, trigger: "click", doNext: "nextAction"},
      {type: "animation", text: "", id: "character", 
                   animation: {wait: 0,
                               startPosition:{scale:1},
@@ -260,9 +261,19 @@ function handleSceneActions(){
           case "text":
             // display text
             //displayText(thisAction.speaker, thisAction.text);
+            var textStyle;
+            if(thisAction.style==undefined){ textStyle = defaultStyle;}
+            else{textStyle = thisAction.style;}
             
-            if(thisAction.style==undefined){}
-            textArray.push(makeText(thisAction.text, thisAction.style, thisAction.loc.x, thisAction.loc.y));
+            textArray.push(makeText(thisAction.text, textStyle, thisAction.loc.x, thisAction.loc.y));
+            textArray[textArray.length-1].msg = "";
+            textArray[textArray.length-1].counter = 0;
+            textArray[textArray.length-1].interval=1;
+            textArray[textArray.length-1].charIndex=0;
+            textArray[textArray.length-1].completed = false;
+            //myStage.addChild(textArray[textArray.length-1]);
+            
+            
             break;
             
           case "image":
@@ -386,22 +397,37 @@ function handleAnimations(){
 function writeText(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].type == "text"){
   
-  for(var i = 0; i<scenes.length; i++){ 
-      if(scenes[i].active == true){
+//   for(var i = 0; i<scenes.length; i++){ 
+//       if(scenes[i].active == true){
+  
+//           // if text is completed wait for next action to start new text
+//           if((textDisplay.completed == true) && (textDisplay.msg != scenes[i].actions[scenes[i].currentAction].text)){
+//             textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
+//             textDisplay.text = "";
+//             textDisplay.charIndex = 0;
+//             if(scenes[i].actions[scenes[i].currentAction].loc != undefined){
+//               textDisplay.x = scenes[i].actions[scenes[i].currentAction].loc.x;
+//               textDisplay.y = scenes[i].actions[scenes[i].currentAction].loc.y;
+//             }
+//           }
+//        //textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
+//       }
+//   }
+    
+          var thisAction = scenes[activeScene].actions[scenes[activeScene].currentAction];
   
           // if text is completed wait for next action to start new text
-          if((textDisplay.completed == true) && (textDisplay.msg != scenes[i].actions[scenes[i].currentAction].text)){
-            textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
+          if((textDisplay.completed == true) && (textDisplay.msg != thisAction.text)){
+            textDisplay.msg = thisAction.text;
             textDisplay.text = "";
             textDisplay.charIndex = 0;
-            if(scenes[i].actions[scenes[i].currentAction].loc != undefined){
-              textDisplay.x = scenes[i].actions[scenes[i].currentAction].loc.x;
-              textDisplay.y = scenes[i].actions[scenes[i].currentAction].loc.y;
+            if(thisAction.loc != undefined){
+              textDisplay.x = thisAction.loc.x;
+              textDisplay.y = thisAction.loc.y;
             }
           }
-       //textDisplay.msg = scenes[i].actions[scenes[i].currentAction].text;
-      }
-  }
+
+
     
   
   // if text isn't completed keep updating text
