@@ -221,6 +221,7 @@ function buildScene(scene){
       sceneSound = createjs.Sound.play(scenes[i].sound.src);
       sceneSound.volume = scenes[i].sound.volume;
       sceneSound.loop = scenes[i].sound.looping;
+      sceneSound.gainNode.context.
     }
     
     // add images in order
