@@ -271,6 +271,14 @@ function handleSceneActions(){
             let actionNumber = scenes[i].currentAction;
             
             textArray[actionNumber] = makeText(thisAction.text, textStyle, thisAction.loc.x, thisAction.loc.y);
+            
+            // create a rectangle shape the same size as the text, and assign it as the hitArea
+			      // note that it is never added to the display list.
+			      var hit = new createjs.Shape();
+			      hit.graphics.beginFill("#000")
+              .drawRect(0, 0, textArray[actionNumber].getMeasuredWidth(), textArray[actionNumber].getMeasuredHeight());
+			      textArray[actionNumber].hitArea = hit;
+            
             textArray[actionNumber].msg = thisAction.text;
             textArray[actionNumber].text = "";
             textArray[actionNumber].counter = 0;
@@ -278,11 +286,10 @@ function handleSceneActions(){
             textArray[actionNumber].charIndex = 0;
             textArray[actionNumber].completed = false;
             textArray[actionNumber].hideAfter = thisAction.hideAfter;
-            console.log(actionNumber);
-            console.log(textArray[actionNumber]);
-            console.log(textArray);
+            // console.log(actionNumber);
+            // console.log(textArray[actionNumber]);
+            // console.log(textArray);
             myStage.addChild(textArray[actionNumber]);
-            
             
             break;
             
