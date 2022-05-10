@@ -397,38 +397,75 @@ function handleAnimations(){
 function writeText(){
   if(scenes[activeScene].actions[scenes[activeScene].currentAction].type == "text"){
     
+//     var thisAction = scenes[activeScene].actions[scenes[activeScene].currentAction];
+
+//     // iterate textArray with id's
+//     // textArray is populated based on action index (action 4 goes in textArray[4])
+//     // use text.hideAfter to determine when to remove it
+    
+//     // if text is completed wait for next action to start new text
+//     if((textDisplay.completed == true) && (textDisplay.msg != thisAction.text)){
+//       textDisplay.msg = thisAction.text;
+//       textDisplay.text = "";
+//       textDisplay.charIndex = 0;
+//       if(thisAction.loc != undefined){
+//         textDisplay.x = thisAction.loc.x;
+//         textDisplay.y = thisAction.loc.y;
+//       }
+//     }
+    
     var thisAction = scenes[activeScene].actions[scenes[activeScene].currentAction];
 
-    // iterate textArray with id's
+    // iterate textArray
+  for(var i = 0; i<textArray.length;i++){
     // textArray is populated based on action index (action 4 goes in textArray[4])
+    // use text.hideAfter to determine when to remove it
     
-    
+    var thisText = textArray[i];
     // if text is completed wait for next action to start new text
-    if((textDisplay.completed == true) && (textDisplay.msg != thisAction.text)){
-      textDisplay.msg = thisAction.text;
-      textDisplay.text = "";
-      textDisplay.charIndex = 0;
-      if(thisAction.loc != undefined){
-        textDisplay.x = thisAction.loc.x;
-        textDisplay.y = thisAction.loc.y;
-      }
+    // if((thisText.completed == true) && (thisText.msg != thisAction.text)){
+    //   textDisplay.msg = thisAction.text;
+    //   textDisplay.text = "";
+    //   textDisplay.charIndex = 0;
+    //   if(thisAction.loc != undefined){
+    //     textDisplay.x = thisAction.loc.x;
+    //     textDisplay.y = thisAction.loc.y;
+    //   }
+    // }    
+    if((thisText.completed == true) && (thisText.actionCounter == thisAction.hideAfter)){
+      myStage.removeChild(thisText);
+      textArray.splice(i,1);
     }
 
-  
-    // if text isn't completed keep updating text
-   if(textDisplay.charIndex<textDisplay.msg.length){
-     textDisplay.completed = false;
-     textDisplay.counter++;
-     if(textDisplay.counter%textDisplay.interval===0){
+   // if text isn't completed keep updating text
+    if(thisText.charIndex<thisText.msg.length){
+     thisText.completed = false;
+     thisText.counter++;
+     if(thisText.counter%thisText.interval===0){
        //console.log("hi");
-       textDisplay.text += textDisplay.msg.charAt(textDisplay.charIndex);
-       textDisplay.charIndex++;
+       thisText.text += thisText.msg.charAt(thisText.charIndex);
+       thisText.charIndex++;
      }    
-   }else if (textDisplay.charIndex == textDisplay.msg.length){
-       textDisplay.completed = true;
+   }else if (thisText.charIndex == thisText.msg.length){
+       thisText.completed = true;
      }
   }
 }
+}
+    // if text isn't completed keep updating text
+//    if(textDisplay.charIndex<textDisplay.msg.length){
+//      textDisplay.completed = false;
+//      textDisplay.counter++;
+//      if(textDisplay.counter%textDisplay.interval===0){
+//        //console.log("hi");
+//        textDisplay.text += textDisplay.msg.charAt(textDisplay.charIndex);
+//        textDisplay.charIndex++;
+//      }    
+//    }else if (textDisplay.charIndex == textDisplay.msg.length){
+//        textDisplay.completed = true;
+//      }
+//   }
+// }
 
 function makeText(txt,style,xPos,yPos) {
   // returns a createjs.Text object... pass obj like this: {txt: , style: , color: , xPos: , yPos:}
