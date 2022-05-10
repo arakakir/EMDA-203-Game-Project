@@ -19,7 +19,7 @@ var currentLevel;
 
 var score = 0;
 
-var textStyle01 = {style: "bold 20px Helvetica", color: "red", alpha: 1, lineWidth: 50};
+var defaultStyle = {style: "bold 20px Helvetica", color: "red", alpha: 1, lineWidth: 50};
 var textDisplay;
 var currentText = "";
 
@@ -33,6 +33,7 @@ var objectsToMove = [];
 var activeScene = 0;
 var scenes = [];
 var sceneImages = [];
+var textArray = [];
 
 
 
@@ -106,7 +107,7 @@ function init(){
   // theEnd.alpha = 0.;
   // myStage.addChild(theEnd);
   
-  textDisplay = makeText(currentText, textStyle01, 330, 320); // start with an empty createjs.Text() object
+  textDisplay = makeText(currentText, defaultStyle, 330, 320); // start with an empty createjs.Text() object
   textDisplay.msg = "";
   textDisplay.counter = 0;
   textDisplay.interval=1;
@@ -177,7 +178,7 @@ var scenes = [
                               spriteAnimation:"wink",
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "click", duration: 5000, doNext: "nextAction"},
-     {type: "text", speaker: "Hero", text: "You enter a room with two doors...", 
+     {type: "text", speaker: "Hero", text: "You enter a room with two doors...", style: defaultStyle,
             loc: {x:330,y:320}, trigger: "click", doNext: "nextAction"},
      {type: "text", speaker: "Villain", text: "Wow two doors...", 
             loc: {x:630,y:120}, trigger: "click", duration: 3000, doNext: "nextAction"},
@@ -260,6 +261,8 @@ function handleSceneActions(){
             // display text
             //displayText(thisAction.speaker, thisAction.text);
             
+            if(thisAction.style==undefined){}
+            textArray.push(makeText(thisAction.text, thisAction.style, thisAction.loc.x, thisAction.loc.y));
             break;
             
           case "image":
