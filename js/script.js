@@ -5,7 +5,7 @@
 
 
 // to make it complete:
-// sounds - use prelevel screen loads to initiate sound.
+// sounds - use prelevel screen loads to initiate sound?
 // clickable objects - confirm choices are working
 
 
@@ -194,9 +194,9 @@ var scenes = [
                               startPosition:{scale:1},
                               endPosition:{scale:1.5},
                               duration: 3000}, trigger: "stageClick", duration: 4000, doNext: "nextAction"},
-     {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:360,y:320}, 
+     {type: "choice", speaker: "Choice", text: "Take the door on the left", loc: {x:360,y:320}, 
             trigger: "click", doNext: "scene2a", hideAfter:2},
-     {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:360,y:350}, 
+     {type: "lastchoice", speaker: "Choice", text: "Take the door on the right", loc: {x:360,y:350}, 
             trigger: "click", doNext: "scene2b"}]},
   
    {id:"scene2a", actions: []},
@@ -204,6 +204,7 @@ var scenes = [
 ] 
    
   
+// display choice - 
 
 // if an action has an onClick: defined it is like a choice
 // onClick: nextAction advances to next action when that object is clicked
@@ -328,10 +329,12 @@ function handleSceneActions(){
           case "click":
             console.log("Waiting for click.");
             if (thisAction.doNext=="nextAction"){
+              //myStage.removeAllEventListeners();
               object.addEventListener('click', nextAction, {once : true});
             }
             else {
               function buildNext(){buildScene(thisAction.doNext); console.log("")}
+              //myStage.removeAllEventListeners();
               object.addEventListener('click', buildNext, {once : true});
             }
             break;
@@ -354,12 +357,14 @@ function handleSceneActions(){
           case "stageClick":
             console.log("Waiting for stage click.");
             if (thisAction.doNext=="nextAction"){
-              //sceneImages[0].addEventListener('click', nextAction, {once : true}); // a little sketch - relying on bg image
+              //sceneImages[0].addEventListener('click', nextAction, {once : true}); // a little sketch - relying on bg image   
+              myStage.removeAllEventListeners();
               myStage.addEventListener('click', nextAction, {once : true});
             }
             else {
               function buildNext(){buildScene(thisAction.doNext);}
               //sceneImages[0].addEventListener('click', buildNext, {once : true}); // a little sketch - relying on bg image
+              myStage.removeAllEventListeners();
               myStage.addEventListener('click', buildNext, {once : true});
             }
             break;
@@ -374,6 +379,7 @@ function handleSceneActions(){
               function buildNext(){buildScene(thisAction.doNext);}
               object.addEventListener('click', buildNext, {once : true});
             }
+            
         }
         
         //scenes[activeScene].currentActionInitiated = true;
