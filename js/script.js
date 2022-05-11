@@ -20,8 +20,8 @@ var currentLevel;
 var score = 0;
 
 var defaultStyle = {style: "bold 20px Helvetica", color: "red", alpha: 1, lineWidth: 50};
-var whiteTextStyle = {style: "bold 20px Courier", color: "whitesmoke", alpha: 1, lineWidth: 50};
-var blackTextStyle = {style: "bold 20px Courier", color: "lightslategrey", alpha: 1, lineWidth: 50};
+var whiteTextStyle = {style: "bold 20px Courier", color: "#999999", alpha: 1, lineWidth: 50};
+var blackTextStyle = {style: "bold 20px Courier", color: "#222222", alpha: 1, lineWidth: 50};
 var textDisplay;
 var currentText = "";
 
@@ -72,8 +72,8 @@ function preload(){
 // ************ INITIALIZATION - Happens only once ****************
 
 function init(){
-  document.getElementById("myCanvas").width = window.innerWidth;
-  document.getElementById("myCanvas").height = window.innerHeight;
+  // document.getElementById("myCanvas").width = window.innerWidth;
+  // document.getElementById("myCanvas").height = window.innerHeight;
   
   myStage = new createjs.Stage(document.getElementById("myCanvas"));
   stageWidth = myStage.canvas.width;
@@ -138,9 +138,9 @@ var scenes = [
    
    images: [
      {id: "background", img:"images/nightsky.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "character", img:"images/hero.png", loc: {x:200, y:700}, clickable: true, onClick:"smile"},
+     {id: "villain", img:"images/hero.png", loc: {x:200, y:900}, clickable: true, onClick:"smile"},
      {id: "rear-mountains", img:"images/rear-mountains.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "villain", img:"images/hero.png", loc: {x:600, y:700}, clickable: true, onClick:"smile"},
+     {id: "character", img:"images/hero.png", loc: {x:600, y:900}, clickable: true, onClick:"smile"},
      {id: "front-mountains", img:"images/front-mountains.png", loc: {x:0, y:0}, animated: false, clickable: false}
      ],
    
@@ -149,16 +149,16 @@ var scenes = [
      {type: "animation", id: "character",
                   animation: {wait: 0,
                               startPosition:{x:400, y:700, alpha:1, rotation:0, scaleX:0.75, scaleY:0.75},
-                              endPosition:{x:400, y:500, alpha:1, rotation:0, scaleX:1, scaleY:1},
+                              endPosition:{x:400, y:510, alpha:1, rotation:0, scaleX:1, scaleY:1},
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "stageClick", doNext: "nextAction"},
      {type: "text", speaker: "Hero", text: "You enter a room \rwith two doors...", style: blackTextStyle,
-            loc: {x:330,y:320}, trigger: "stageClick", doNext: "nextAction", hideAfter:2},
+            loc: {x:550,y:520}, trigger: "stageClick", doNext: "nextAction", hideAfter:2},
      {type: "animation", id: "villain",
                   animation: {wait: 0,
                               startPosition:{x:600, y:800, alpha:1, rotation:0, scale:0.5},
-                              endPosition:{x:600, y:400, alpha:1, rotation:0, scale:0.75},
-                              duration: 7000},
+                              endPosition:{x:700, y:280, alpha:1, rotation:0, scale:0.75},
+                              duration: 3000},
                   clickable: true, onClick:"smile", trigger: "stageClick", duration: 5000, doNext: "nextAction"},
      {type: "text", speaker: "Villain", text: "Wow two doors...", 
             loc: {x:630,y:120}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
