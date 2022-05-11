@@ -173,7 +173,7 @@ var scenes = [
      {type: "animation", text: "", id: "character", 
                   animation: {wait: 0,
                               startPosition:{scale:1},
-                              endPosition:{x:800, y: 600, scale:1.5},
+                              endPosition:{x:780, y: 600, scale:1.4},
                               duration: 3000}, trigger: "stageClick", duration: 4000, doNext: "nextAction"},
      {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:950,y:620}, 
             trigger: "choice", doNext: "scene2a", hideAfter:2},
