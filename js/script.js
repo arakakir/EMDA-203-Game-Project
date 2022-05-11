@@ -243,8 +243,9 @@ function handleSceneActions(){
             if (thisAction.doNext=="nextAction"){
               object.addEventListener('click', nextAction, {once : true});
             }
-            else if (thisAction.doNext=="nextAction"){
+            else if (thisAction.doNext=="goToAction"){
               //if specific action specified
+              //thisAction.nextAction
             }
             else {
               function buildNext(){buildScene(thisAction.doNext); console.log("")}
