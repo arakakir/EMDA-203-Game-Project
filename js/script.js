@@ -1,12 +1,11 @@
 // ************************ GLOBAL VARIABLES *********************
-  /* global createjs */
-  /* global keyMonkey */
+  /* global createjs, keyMonkey, collisionGnome */
+  /* global defaultStyle, whiteTextStyle, blackTextStyle */
   /* global collisionGnome */
 
 
 // to make it complete:
 // sounds - use prelevel screen loads to initiate sound?
-// clickable objects - confirm choices are working
 // make doNext be able to be a scene, nextAction, or a specific numbered action of current scene
 // then you can have exit animations that then auto trigger next scene.
 
@@ -21,9 +20,6 @@ var currentLevel;
 
 var score = 0;
 
-// var defaultStyle = {style: "bold 20px Helvetica", color: "red", alpha: 1, lineWidth: 50};
-// var whiteTextStyle = {style: "bold 20px Courier", color: "#cccccc", alpha: 1, lineWidth: 50};
-// var blackTextStyle = {style: "bold 20px Courier", color: "#222222", alpha: 1, lineWidth: 50};
 var textDisplay;
 var currentText = "";
 
@@ -107,78 +103,17 @@ function init(){
   buildScene("scene1");
 }
 
-
+//////////////////////////////////////////////////////
 // ***************** THE MAIN LOOP ******************
 function gameLoop(evt){
-  // put code in here that will change every 'tick'
-  //runLevels();
-  //handleKeyInput();
-  //handleCollisions();
-
+  
   handleAnimations();
   handleSceneActions();
   writeText();
-  //writeText(textDisplay);
-  //myStage.setChildIndex(textDisplay, myStage.numChildren-1);
   myStage.update();
-}
-
-
- 
-
-//   /////////////////////////////
-//  //      DEFINE SCENES     //
-// ////////////////////////////
-
-// var scenes = [
-//   {id:"scene1",
-//    sound: {src: "scene1sound", volume: 1.0, loop: -1},
-   
-//    images: [
-//      {id: "background", img:"images/nightsky.png", loc: {x:0, y:0}, animated: false, clickable: false},
-//      {id: "villain", img:"images/hero.png", loc: {x:200, y:900}, clickable: true, onClick:"smile"},
-//      {id: "rear-mountains", img:"images/rear-mountains.png", loc: {x:0, y:0}, animated: false, clickable: false},
-//      {id: "character", img:"images/hero.png", loc: {x:600, y:900}, clickable: true, onClick:"smile"},
-//      {id: "front-mountains", img:"images/front-mountains.png", loc: {x:0, y:0}, animated: false, clickable: false}
-//      ],
-   
-//    actions: [
-//      {type: "animation", id: "background", img:"images/bg.png", clickable: false, trigger: "stageClick", doNext: "nextAction"},
-//      {type: "animation", id: "character",
-//                   animation: {wait: 0,
-//                               startPosition:{x:400, y:700, alpha:1, rotation:0, scaleX:0.75, scaleY:0.75},
-//                               endPosition:{x:400, y:510, alpha:1, rotation:0, scaleX:1, scaleY:1},
-//                               duration: 3000},
-//                   clickable: true, onClick:"smile", trigger: "stageClick", doNext: "nextAction"},
-//      {type: "text", speaker: "Hero", text: "You enter a room \rwith two doors...", style: blackTextStyle,
-//             loc: {x:550,y:520}, trigger: "stageClick", doNext: "nextAction", hideAfter:2},
-//      {type: "animation", id: "villain",
-//                   animation: {wait: 0,
-//                               startPosition:{x:600, y:800, alpha:1, rotation:0, scale:0.5},
-//                               endPosition:{x:700, y:280, alpha:1, rotation:0, scale:0.75},
-//                               duration: 3000},
-//                   clickable: true, onClick:"smile", trigger: "stageClick", duration: 5000, doNext: "nextAction"},
-//      {type: "text", speaker: "Villain", text: "Wow two doors...", 
-//             loc: {x:800,y:300}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
-//      {type: "text", speaker: "Hero", text: "which should we pick...", 
-//             loc: {x:550,y:520}, trigger: "stageClick", doNext: "nextAction", style: blackTextStyle},
-//      {type: "text", speaker: "Villain", text: "hmm...", 
-//             loc: {x:800,y:300}, trigger: "stageClick", doNext: "nextAction", style: whiteTextStyle},
-//      {type: "text", speaker: "Villain", text: "I don't know...", 
-//             loc: {x:800,y:300}, trigger: "stageClick", doNext: "nextAction", style: whiteTextStyle},
-//      {type: "animation", text: "", id: "character", 
-//                   animation: {wait: 0,
-//                               startPosition:{scale:1},
-//                               endPosition:{x:780, y: 600, scale:1.4},
-//                               duration: 3000}, trigger: "stageClick", duration: 4000, doNext: "nextAction"},
-//      {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:950,y:620}, 
-//             trigger: "choice", doNext: "scene2a", hideAfter:2},
-//      {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:950,y:690}, 
-//             trigger: "lastchoice", doNext: "scene2b"}]},
   
-//    {id:"scene2a", actions: []},
-//    {id:"scene2b", actions: []}
-// ] 
+}
+///////////////////////////////////////////////////////
    
   
 // display choice - 
@@ -306,12 +241,13 @@ function handleSceneActions(){
           case "click":
             console.log("Waiting for click.");
             if (thisAction.doNext=="nextAction"){
-              //myStage.removeAllEventListeners();
               object.addEventListener('click', nextAction, {once : true});
+            }
+            else if (thisAction.doNext=="nextAction"){
+              //if specific action specified
             }
             else {
               function buildNext(){buildScene(thisAction.doNext); console.log("")}
-              //myStage.removeAllEventListeners();
               object.addEventListener('click', buildNext, {once : true});
             }
             break;
