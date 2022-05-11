@@ -194,10 +194,10 @@ var scenes = [
                               startPosition:{scale:1},
                               endPosition:{scale:1.5},
                               duration: 3000}, trigger: "stageClick", duration: 4000, doNext: "nextAction"},
-     {type: "choice", speaker: "Choice", text: "Take the door on the left", loc: {x:360,y:320}, 
-            trigger: "click", doNext: "scene2a", hideAfter:2},
-     {type: "lastchoice", speaker: "Choice", text: "Take the door on the right", loc: {x:360,y:350}, 
-            trigger: "click", doNext: "scene2b"}]},
+     {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:360,y:320}, 
+            trigger: "choice", doNext: "scene2a", hideAfter:2},
+     {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:360,y:350}, 
+            trigger: "lastchoice", doNext: "scene2b"}]},
   
    {id:"scene2a", actions: []},
    {id:"scene2b", actions: []}
@@ -357,13 +357,11 @@ function handleSceneActions(){
           case "stageClick":
             console.log("Waiting for stage click.");
             if (thisAction.doNext=="nextAction"){
-              //sceneImages[0].addEventListener('click', nextAction, {once : true}); // a little sketch - relying on bg image   
               myStage.removeAllEventListeners();
               myStage.addEventListener('click', nextAction, {once : true});
             }
             else {
               function buildNext(){buildScene(thisAction.doNext);}
-              //sceneImages[0].addEventListener('click', buildNext, {once : true}); // a little sketch - relying on bg image
               myStage.removeAllEventListeners();
               myStage.addEventListener('click', buildNext, {once : true});
             }
@@ -379,7 +377,21 @@ function handleSceneActions(){
               function buildNext(){buildScene(thisAction.doNext);}
               object.addEventListener('click', buildNext, {once : true});
             }
+            break;
             
+          case "lastchoice":
+            // if lastchoice remove all stageListeners
+            // and add an objectListener to this object
+            if (thisAction.doNext=="nextAction"){
+              myStage.removeAllEventListeners();
+              object.addEventListener('click', nextAction, {once : true});
+            }
+            else {
+              function buildNext(){buildScene(thisAction.doNext);}
+              myStage.removeAllEventListeners();
+              object.addEventListener('click', buildNext, {once : true});
+            }
+            break;
         }
         
         //scenes[activeScene].currentActionInitiated = true;
