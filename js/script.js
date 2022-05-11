@@ -147,7 +147,7 @@ var scenes = [
      ],
    
    actions: [
-     {type: "animation", id: "background", img:"images/bg.png", clickable: false, trigger: "auto", doNext: "nextAction"},
+     {type: "animation", id: "background", img:"images/bg.png", clickable: false, trigger: "stageClick", doNext: "nextAction"},
      {type: "animation", id: "character",
                   animation: {wait: 0,
                               startPosition:{x:400, y:700, alpha:1, rotation:0, scaleX:0.75, scaleY:0.75},
