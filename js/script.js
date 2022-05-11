@@ -7,6 +7,8 @@
 // to make it complete:
 // sounds - use prelevel screen loads to initiate sound?
 // clickable objects - confirm choices are working
+// make doNext be able to be a scene, nextAction, or a specific numbered action of current scene
+// then you can have exit animations that then auto trigger next scene.
 
 
 var myStage, stageWidth, stageHeight;
@@ -20,7 +22,7 @@ var currentLevel;
 var score = 0;
 
 var defaultStyle = {style: "bold 20px Helvetica", color: "red", alpha: 1, lineWidth: 50};
-var whiteTextStyle = {style: "bold 20px Courier", color: "#999999", alpha: 1, lineWidth: 50};
+var whiteTextStyle = {style: "bold 20px Courier", color: "#cccccc", alpha: 1, lineWidth: 50};
 var blackTextStyle = {style: "bold 20px Courier", color: "#222222", alpha: 1, lineWidth: 50};
 var textDisplay;
 var currentText = "";
@@ -161,21 +163,21 @@ var scenes = [
                               duration: 3000},
                   clickable: true, onClick:"smile", trigger: "stageClick", duration: 5000, doNext: "nextAction"},
      {type: "text", speaker: "Villain", text: "Wow two doors...", 
-            loc: {x:630,y:120}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
+            loc: {x:800,y:300}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
      {type: "text", speaker: "Hero", text: "which should we pick...", 
-            loc: {x:330,y:320}, trigger: "stageClick", doNext: "nextAction"},
+            loc: {x:550,y:520}, trigger: "stageClick", doNext: "nextAction", style: blackTextStyle},
      {type: "text", speaker: "Villain", text: "hmm...", 
-            loc: {x:630,y:120}, trigger: "stageClick", doNext: "nextAction"},
+            loc: {x:800,y:300}, trigger: "stageClick", doNext: "nextAction", style: whiteTextStyle},
      {type: "text", speaker: "Villain", text: "I don't know...", 
-            loc: {x:630,y:120}, trigger: "stageClick", doNext: "nextAction"},
+            loc: {x:800,y:300}, trigger: "stageClick", doNext: "nextAction", style: whiteTextStyle},
      {type: "animation", text: "", id: "character", 
                   animation: {wait: 0,
                               startPosition:{scale:1},
-                              endPosition:{scale:1.5},
+                              endPosition:{x:800, y: 600, scale:1.5},
                               duration: 3000}, trigger: "stageClick", duration: 4000, doNext: "nextAction"},
-     {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:360,y:320}, 
+     {type: "text", speaker: "Choice", text: "Take the door on the left", loc: {x:950,y:620}, 
             trigger: "choice", doNext: "scene2a", hideAfter:2},
-     {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:360,y:350}, 
+     {type: "text", speaker: "Choice", text: "Take the door on the right", loc: {x:950,y:690}, 
             trigger: "lastchoice", doNext: "scene2b"}]},
   
    {id:"scene2a", actions: []},
