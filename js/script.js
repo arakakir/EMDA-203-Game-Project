@@ -20,6 +20,8 @@ var currentLevel;
 var score = 0;
 
 var defaultStyle = {style: "bold 20px Helvetica", color: "red", alpha: 1, lineWidth: 50};
+var whiteTextStyle = {style: "bold 20px Courier", color: "whitesmoke", alpha: 1, lineWidth: 50};
+var blackTextStyle = {style: "bold 20px Courier", color: "lightslategrey", alpha: 1, lineWidth: 50};
 var textDisplay;
 var currentText = "";
 
@@ -92,29 +94,6 @@ function init(){
   collisionGnome.setStage(myStage);
   //collisionGnome.setDebug(true);
 
-  // scoreDisplay = new createjs.Text("SCORE: " + score, "48px Courier");
-  // scoreDisplay.x = stageWidth - 50;
-  // scoreDisplay.y = stageHeight - 32;
-  // scoreDisplay.textAlign = "right";
-  // scoreDisplay.textBaseline = "middle";
-  // myStage.addChild(scoreDisplay);
-
-  // theEnd = new createjs.Text("THE END", "144px Courier");
-  // theEnd.x = stageWidth / 2;
-  // theEnd.y = stageHeight / 2;
-  // theEnd.textAlign = "center";
-  // theEnd.textBaseline = "middle";
-  // theEnd.alpha = 0.;
-  // myStage.addChild(theEnd);
-  
-  // textDisplay = makeText(currentText, defaultStyle, 330, 320); // start with an empty createjs.Text() object
-  // textDisplay.msg = "";
-  // textDisplay.counter = 0;
-  // textDisplay.interval=1;
-  // textDisplay.charIndex=0;
-  // textDisplay.completed = false;
-  // myStage.addChild(textDisplay);
-
   backgroundSound = createjs.Sound.play("scene1sound");
   backgroundSound.volume = 0.3;
   backgroundSound.loop = -1;
@@ -167,24 +146,22 @@ var scenes = [
    
    actions: [
      {type: "animation", id: "background", img:"images/bg.png", clickable: false, trigger: "auto", doNext: "nextAction"},
-     {type: "animation", id: "character", img:"images/hero.png", loc: {x:200, y:250},
+     {type: "animation", id: "character",
                   animation: {wait: 0,
-                              startPosition:{x:200, y:700, alpha:1, rotation:0, scaleX:0.75, scaleY:0.75},
-                              endPosition:{x:200, y:300, alpha:1, rotation:0, scaleX:1, scaleY:1},
-                              spriteAnimation:"wink",
+                              startPosition:{x:400, y:700, alpha:1, rotation:0, scaleX:0.75, scaleY:0.75},
+                              endPosition:{x:400, y:500, alpha:1, rotation:0, scaleX:1, scaleY:1},
                               duration: 3000},
-                  clickable: true, onClick:"smile", trigger: "auto", duration: 5000, doNext: "nextAction"},
-     {type: "animation", id: "villain", img:"images/hero.png", loc: {x:500, y:100},
+                  clickable: true, onClick:"smile", trigger: "stageClick", doNext: "nextAction"},
+     {type: "text", speaker: "Hero", text: "You enter a room \rwith two doors...", style: blackTextStyle,
+            loc: {x:330,y:320}, trigger: "stageClick", doNext: "nextAction", hideAfter:2},
+     {type: "animation", id: "villain",
                   animation: {wait: 0,
-                              startPosition:{x:2000, y:400, alpha:1, rotation:360, scale:0.75},
-                              endPosition:{x:500, y:100, alpha:1, rotation:0, scale:1},
-                              spriteAnimation:"wink",
+                              startPosition:{x:600, y:800, alpha:1, rotation:0, scale:0.5},
+                              endPosition:{x:600, y:400, alpha:1, rotation:0, scale:0.75},
                               duration: 7000},
                   clickable: true, onClick:"smile", trigger: "stageClick", duration: 5000, doNext: "nextAction"},
-     {type: "text", speaker: "Hero", text: "You enter a room with two doors...", style: defaultStyle,
-            loc: {x:330,y:320}, trigger: "stageClick", doNext: "nextAction", hideAfter:2},
      {type: "text", speaker: "Villain", text: "Wow two doors...", 
-            loc: {x:630,y:120}, trigger: "stageClick", duration: 3000, doNext: "nextAction"},
+            loc: {x:630,y:120}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
      {type: "text", speaker: "Hero", text: "which should we pick...", 
             loc: {x:330,y:320}, trigger: "stageClick", doNext: "nextAction"},
      {type: "text", speaker: "Villain", text: "hmm...", 
