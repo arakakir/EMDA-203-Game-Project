@@ -27,7 +27,7 @@ var scenes = [
      {type: "text", speaker: "Narrator", text: "You enter a filthy room; there’s clothes everywhere, and it smells like a barn. You see a man hunched over a desk; he looks stressed. What the hell?", style: blackTextStyle,
             loc: {x:550,y:520}, trigger: "timer", duration: 1000, doNext: "nextAction", hideAfter:2},
          {type: "text", speaker: "Bellhop", text: "Hello?", style: blackTextStyle,
-            loc: {x:550,y:520}, trigger: "timer", duration: 0, doNext: "nextAction", hideAfter:2},
+            loc: {x:550,y:520}, trigger: "auto", duration: 1000, doNext: "nextAction", hideAfter:2},
      {type: "animation", id: "Malakai Flustered",
                   animation: {wait: 0,
                               startPosition:{x:0, y:-800, alpha:1, rotation:0, scale:1},
