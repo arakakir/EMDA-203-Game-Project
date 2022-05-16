@@ -108,7 +108,7 @@ var scenes = [
     actions: [
         {type: "text", speaker: "Bellhop", text: "Good to meet you Malakai. I’m (y/n). Quick question: is that a cow? Are you allowed to have a cow here?", 
             loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
-       {type: "animation", id: "Malakai Laughing",
+       {type: "animation", id: "Malakai ",
                   animation: {wait: 0,
                               startPosition:{x:0, y:-800, alpha:1, rotation:0, scale:1},
                               endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
