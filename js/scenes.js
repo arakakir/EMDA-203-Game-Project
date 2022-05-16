@@ -12,7 +12,7 @@ var blackTextStyle = {style: "bold 20px Courier", color: "#222222", alpha: 1, li
 ////////////////////////////
 
 var scenes = [
-  {id:"Malakai's Room",
+  {id:"Malakai's Room Part 1",
    sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
    
    images: [
@@ -57,8 +57,13 @@ var scenes = [
 //                               duration: 3000}, trigger: "stageClick", duration: 4000, doNext: "nextAction"},
      {type: "text", speaker: "Bellhop", text: "Oh, uhm. I’m just checking in; Mr. Jonas told me to come meet the regulars? Are regulars a thing at hotels?", loc: {x:950,y:620}, 
             trigger: "choice", doNext: "MalakaiResponse1", hideAfter:2},
-     {type: "text", speaker: "Bellhop", text: "Take the door on the right", loc: {x:950,y:690}, 
+     {type: "text", speaker: "Bellhop", text: "Better now that I’ve met you. It’s been a weird day…", loc: {x:950,y:690}, 
             trigger: "lastchoice", doNext: "MalakaiResponse2"}]},
+  
+  
+  
+  
+  
   
    {id:"MalakaiResponse1", 
     sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
@@ -69,8 +74,47 @@ var scenes = [
     {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-      {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; didn’t expect ya’ to be so damn cute, though. What can I do for you?", 
-            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},]},
+      {type: "text", speaker: "Malakai", text: "They are at this one, sweetheart. It’s a pleasure to meet you. The name’s Malakai Whitney. Welcome to the Inn", 
+            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle},]},
+ 
   
-//    {id:"scene2b", actions: []}
+  
+  
+  
+  {id:"MalakaiResponse2", 
+    sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
+    images: [
+     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+    {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     ],
+    actions: [
+      {type: "text", speaker: "Malakai", text: "Well, hell. That’s awfully sweet of you, dalrin’. Glad I could make your day a little better for ya’. Name’s Malakai Whitney.", 
+            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle},]},
+  
+ 
+  
+  
+  
+  
+  {id:"Malakai's Room Part 2", 
+     images: [
+     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+    {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     ],
+    actions: [
+        {type: "text", speaker: "Bellhop", text: "Good to meet you Malakai. I’m (y/n). Quick question: is that a cow? Are you allowed to have a cow here?", 
+            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
+       {type: "animation", id: "Malakai Laughing",
+                  animation: {wait: 0,
+                              startPosition:{x:0, y:-800, alpha:1, rotation:0, scale:1},
+                              endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
+                              duration: 3000},
+                  clickable: false, doNext: "nextAction"},
+       {type: "text", speaker: "Malakai", text: "Oh, yeah. That’s Belemy; she’s a sweetheart. She’s not not allowed to be here, I don’t think. I didn’t read anything about a no cow policy in the contract when I moved in.", 
+            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
+    ]}]
 // ]
