@@ -46,7 +46,7 @@ var scenes = [
                               duration: 3000},
                   clickable: false, doNext: "nextAction"},
      {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; didn’t expect ya’ to be so damn cute, though.", 
-            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
+            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle}]}]
 //      {type: "text", speaker: "Bellhop", text: "The slingshot is the gravity \rof the sun.", 
 //             loc: {x:550,y:520}, trigger: "stageClick", doNext: "nextAction", style: blackTextStyle},
 //      {type: "text", speaker: "Villain", text: "The stone is I, and you are the target.", 
