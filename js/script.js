@@ -194,6 +194,8 @@ function handleSceneActions(){
             
             if(thisAction.hideAfter==undefined){thisAction.hideAfter=1;}
             
+            // console.log(scenes[i].currentAction);
+            
             let actionNumber = scenes[i].currentAction;
             
             textArray[actionNumber] = makeText(thisAction.text, textStyle, thisAction.loc.x, thisAction.loc.y);
@@ -419,6 +421,9 @@ function clearScene(){
   // stop sound
   //sceneSound = null;
   sceneSounds = [];
+  
+  // clear textArray
+  textArray = [];
   
   // remove images (children) from stage
   myStage.removeAllChildren();
