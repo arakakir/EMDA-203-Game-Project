@@ -58,24 +58,24 @@ var scenes = [
   
   
    {id:"MalakaiResponse1", 
-    sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
+    // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
     images: [
 
-      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
      {id: "Malakai Laugh", img:"images/MalakaiSpriteLaughing.png", loc: {x:0, y:0}, clickable: false},
      {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
       {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
       {type: "text", speaker: "Malakai", text: "They are at this one, sweetheart. It’s a pleasure to meet you. The name’s Malakai Whitney. Welcome to the Inn.", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle, hideAfter:1}]},
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle, hideAfter:1}]},
  
   
   
   
   
   {id:"MalakaiResponse2", 
-    sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
+    // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
     images: [
      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
      {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
@@ -83,8 +83,9 @@ var scenes = [
      {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-     {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; didn’t expect ya’ to be so damn cute, though. What can I do for you?", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle}]},
+      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; didn’t expect ya’ to be so damn cute, though. What can I do for you?", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle}]},
   
  
   
