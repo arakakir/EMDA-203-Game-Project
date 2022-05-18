@@ -23,24 +23,12 @@ var scenes = [
    
    actions: [
      {type: "animation", id: "Background", img:"images/MalakaiRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
-     {type: "animation", id: "MalakaiText", img:"images/MalakaiRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
+     {type: "animation", id: "Bellhop Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Narrator", text: "You enter a filthy room; there’s clothes everywhere, and it smells like a barn. You see a man hunched over a desk; he looks stressed. What the hell?", style: whiteTextStyle,
-            loc: {x:450,y:800}, trigger: "timer", duration: 1000, doNext: "nextAction", hideAfter:2},
+            loc: {x:450,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:2},
          {type: "text", speaker: "Bellhop", text: "Hello?", style: whiteTextStyle,
-            loc: {x:550,y:520}, trigger: "auto", duration: 1000, doNext: "nextAction", hideAfter:2},
-     {type: "animation", id: "Malakai Flustered",
-                  animation: {wait: 0,
-                              startPosition:{x:0, y:-800, alpha:1, rotation:0, scale:1},
-                              endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
-                              duration: 3000},
-                  trigger: "stageClick", doNext: "nextAction"},
-     {type: "animation", id: "Malakai Base",
-                  animation: {wait: 1000,
-                              startPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
-                              endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
-                              duration: 3000},
-                  trigger: "stageClick", doNext: "nextAction"},
+            loc: {x:550,y:520}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:2},
      {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; didn’t expect ya’ to be so damn cute, though. What can I do for you?", 
             loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
      // {type: "text", speaker: "Bellhop", text: "The slingshot is the gravity \rof the sun.", 
@@ -76,7 +64,7 @@ var scenes = [
      ],
     actions: [
       {type: "text", speaker: "Malakai", text: "They are at this one, sweetheart. It’s a pleasure to meet you. The name’s Malakai Whitney. Welcome to the Inn", 
-            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle},]},
+            loc: {x:800,y:200}, trigger: "auto", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle},]},
  
   
   
@@ -92,7 +80,7 @@ var scenes = [
      ],
     actions: [
       {type: "text", speaker: "Malakai", text: "Well, hell. That’s awfully sweet of you, dalrin’. Glad I could make your day a little better for ya’. Name’s Malakai Whitney.", 
-            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle},]},
+            loc: {x:800,y:200}, trigger: "auto", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle},]},
   
  
   
