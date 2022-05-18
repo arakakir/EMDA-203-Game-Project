@@ -34,6 +34,7 @@ var activeScene = 0;
 var scenes = [];
 var sceneImages = [];
 var textArray = [];
+var sceneSounds = [];
 
 
 
@@ -133,12 +134,12 @@ function buildScene(scene){
   // traverse all scenes and find the one you want
   for(var i = 0; i<scenes.length; i++){ if(scenes[i].id == scene){
     // play sound
-    if(scenes[i].sound != undefined){
-      sceneSound = createjs.Sound.play(scenes[i].sound.src);
-      sceneSound.volume = scenes[i].sound.volume;
-      sceneSound.loop = scenes[i].sound.looping;
-      //sceneSound.gainNode.context.
-    }
+    // if(scenes[i].sound != undefined){
+    //   sceneSound = createjs.Sound.play(scenes[i].sound.src);
+    //   sceneSound.volume = scenes[i].sound.volume;
+    //   sceneSound.loop = scenes[i].sound.looping;
+    //   //sceneSound.gainNode.context.
+    // }
     
     // add images in order
     if(scenes[i].images != undefined){
@@ -232,6 +233,13 @@ function handleSceneActions(){
               if(sceneImages[j].id==scenes[activeScene].actions[scenes[activeScene].currentAction].id){
                  object = sceneImages[j];}
             }
+            break;
+            
+          case "sound":
+            var thisSound = createjs.Sound.play(thisAction.src);
+            thisSound.volume = thisAction.volume;
+            thisSound.loop = thisAction.loop;
+            sceneSounds.push(thisSound);// add sound to array of sceneSounds
             break;
         };
         
@@ -408,7 +416,8 @@ function makeText(txt,style,xPos,yPos) {
 
 function clearScene(){
   // stop sound
-  sceneSound = null;
+  //sceneSound = null;
+  sceneSounds = [];
   
   // remove images (children) from stage
   myStage.removeAllChildren();
