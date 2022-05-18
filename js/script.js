@@ -77,30 +77,32 @@ function init(){
   stageWidth = myStage.canvas.width;
   stageHeight = myStage.canvas.height;
 
-  background = new createjs.Bitmap("images/bg.png");
+  // background = new createjs.Bitmap("images/bg.png");
   // myStage.addChild(background);
 
-  character = new createjs.Bitmap("images/hero.png");
-  character.regX = character.regY = 64;
-  character.x = stageWidth / 2;
-  character.y = stageHeight - 64;
-  character.startPosition = {x: 0, y: 0};
-  character.scaleX = character.scaleY = 0.4;
-  myStage.addChild(character);
+  // character = new createjs.Bitmap("images/hero.png");
+  // character.regX = character.regY = 64;
+  // character.x = stageWidth / 2;
+  // character.y = stageHeight - 64;
+  // character.startPosition = {x: 0, y: 0};
+  // character.scaleX = character.scaleY = 0.4;
+  // myStage.addChild(character);
 
-  collisionGnome.addCollider(character, 1.0);
-  collisionGnome.setStage(myStage);
+  // collisionGnome.addCollider(character, 1.0);
+  // collisionGnome.setStage(myStage);
   //collisionGnome.setDebug(true);
 
   backgroundSound = createjs.Sound.play("scene1sound");
   backgroundSound.volume = 0.3;
   backgroundSound.loop = -1;
+  
+  buildScene("Malakai's Room Part 1");
 
   createjs.Ticker.addEventListener('tick', gameLoop);
   createjs.Ticker._setFPS(myFrameRate);
   //createjs.Ticker.setFPS(myFrameRate);
   
-  buildScene("scene1");
+
 }
 
 //////////////////////////////////////////////////////
