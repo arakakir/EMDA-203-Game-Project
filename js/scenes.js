@@ -16,9 +16,10 @@ var scenes = [
 
    
    images: [
+    {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:960, y:800}, animated: false, clickable: false},
      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
-    {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+       {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
+         {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:-250, y:0}, animated: false, clickable: false},
      ],
    
    actions: [
@@ -26,9 +27,9 @@ var scenes = [
      {type: "animation", id: "Bellhop Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Narrator", text: "You enter a filthy room; there’s clothes everywhere, and it smells like a barn. You see a man hunched over a desk; he looks stressed. What the hell?", style: whiteTextStyle,
-            loc: {x:450,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:2},
-         {type: "text", speaker: "Bellhop", text: "Hello?", style: whiteTextStyle,
-            loc: {x:550,y:520}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:2},
+            loc: {x:450,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+     {type: "text", speaker: "Bellhop", text: "Hello?", style: whiteTextStyle,
+            loc: {x:550,y:520}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; didn’t expect ya’ to be so damn cute, though. What can I do for you?", 
             loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
      // {type: "text", speaker: "Bellhop", text: "The slingshot is the gravity \rof the sun.", 
@@ -75,6 +76,7 @@ var scenes = [
     images: [
      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
      {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
+    {id: "Malakai Base", img:"images/MalakaiSpriteFlustered.png", loc: {x:0, y:0}, clickable: false},
      {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
     {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
