@@ -3,7 +3,7 @@
 ////////////////////////////
 
 var defaultStyle = {style: "bold 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50};
-var italicTextStyle = {style: "italic 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50};
+var italicTextStyle = {style: "italic 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 4};
 var whiteTextStyle = {style: "30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50};
 var blackTextStyle = {style: "bold 30px Courier", color: "#222222", alpha: 1, lineWidth: 50};
 
@@ -27,7 +27,7 @@ var scenes = [
      {type: "animation", id: "Background", img:"images/MalakaiRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "Bellhop Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Narrator", text: "You enter a filthy room; there’s clothes everywhere, and it smells like a barn. You see a man hunched over a desk; he looks stressed. What the hell?", style: italicTextStyle,
+     {type: "text", speaker: "Narrator", text: "You enter a filthy room; there’s clothes everywhere, and it smells like\r a barn. You see a man hunched over a desk; he looks stressed. \r What the hell?", style: italicTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "text", speaker: "Bellhop", text: "Hello?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
@@ -59,14 +59,15 @@ var scenes = [
    {id:"MalakaiResponse1", 
     sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
     images: [
-     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+
+      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
      {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
      {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
-    {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-      {type: "text", speaker: "Malakai", text: "They are at this one, sweetheart. It’s a pleasure to meet you. The name’s Malakai Whitney. Welcome to the Inn", 
-            loc: {x:800,y:200}, trigger: "auto", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle},]},
+      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "text", speaker: "Malakai", text: "They are at this one, sweetheart. It’s a pleasure to meet you. The name’s Malakai Whitney. Welcome to the Inn.", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle}]},
  
   
   
@@ -79,11 +80,10 @@ var scenes = [
      {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
     {id: "Malakai Base", img:"images/MalakaiSpriteFlustered.png", loc: {x:0, y:0}, clickable: false},
      {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
-    {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-      {type: "text", speaker: "Malakai", text: "Well, hell. That’s awfully sweet of you, dalrin’. Glad I could make your day a little better for ya’. Name’s Malakai Whitney.", 
-            loc: {x:800,y:200}, trigger: "auto", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle},]},
+     {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; didn’t expect ya’ to be so damn cute, though. What can I do for you?", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle}]},
   
  
   
@@ -107,6 +107,6 @@ var scenes = [
                               duration: 3000},
                   clickable: false, doNext: "nextAction"},
        {type: "text", speaker: "Malakai", text: "Oh, yeah. That’s Belemy; she’s a sweetheart. She’s not not allowed to be here, I don’t think. I didn’t read anything about a no cow policy in the contract when I moved in.", 
-            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
+            loc: {x:800,y:200}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle}
     ]}]
 // ]
