@@ -2,10 +2,11 @@
 //      DEFINE STYLES      //
 ////////////////////////////
 
-var defaultStyle = {style: "bold 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50};
-var italicTextStyle = {style: "italic 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 4};
-var whiteTextStyle = {style: "30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50};
-var blackTextStyle = {style: "bold 30px Courier", color: "#222222", alpha: 1, lineWidth: 50};
+var defaultStyle = {style: "bold 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 50};
+var italicTextStyle = {style: "bold italic 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 50};
+var whiteTextStyle = {style: "bold 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 50};
+var choice1TextStyle = {style: "bold 30px Courier", color: "#F1BD53", alpha: 1, lineWidth: 50, lineHeight: 50};
+var choice2TextStyle = {style: "bold 30px Courier", color: "#FFC7C7", alpha: 1, lineWidth: 50, lineHeight: 50};
 
 
 /////////////////////////////
@@ -27,11 +28,11 @@ var scenes = [
      {type: "animation", id: "Background", img:"images/MalakaiRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "Bellhop Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Narrator", text: "You enter a filthy room; there’s clothes everywhere, and it smells like\r a barn. You see a man hunched over a desk; he looks stressed. \r What the hell?", style: italicTextStyle,
+     {type: "text", speaker: "Narrator", text: "You enter a filthy room; there’s clothes everywhere, and it smells like\ra barn. You see a man hunched over a desk; he looks stressed. \rWhat the hell?", style: italicTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "text", speaker: "Bellhop", text: "Hello?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-     {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; didn’t expect ya’ to be so damn cute, though. What can I do for you?", 
+     {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; \rdidn’t expect ya’ to be so damn cute, though. What can I do for you?", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
      // {type: "text", speaker: "Bellhop", text: "The slingshot is the gravity \rof the sun.", 
      //        loc: {x:550,y:520}, trigger: "stageClick", doNext: "nextAction", style: blackTextStyle},
@@ -46,9 +47,9 @@ var scenes = [
 //                               startPosition:{scale:1},
 //                               endPosition:{x:780, y: 600, scale:1.4},
 //                               duration: 3000}, trigger: "stageClick", duration: 4000, doNext: "nextAction"},
-     {type: "text", speaker: "Bellhop", text: "Oh, uhm. I’m just checking in; Mr. Jonas told me to come meet the regulars? Are regulars a thing at hotels?", loc: {x:250,y:800}, 
+     {type: "text", speaker: "Bellhop", text: "Oh, uhm. I’m just checking in; Mr. Jonas told me to come meet the regulars? \rAre regulars a thing at hotels?", style: choice1TextStyle,loc: {x:250,y:800}, 
             trigger: "choice", doNext: "MalakaiResponse1", hideAfter:2},
-     {type: "text", speaker: "Bellhop", text: "Better now that I’ve met you. It’s been a weird day…", loc: {x:250,y:900}, 
+     {type: "text", speaker: "Bellhop", text: "Better now that I’ve met you. It’s been a weird day…", style: choice2TextStyle,loc: {x:250,y:900}, 
             trigger: "lastchoice", doNext: "MalakaiResponse2"}]},
   
   

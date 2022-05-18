@@ -408,6 +408,7 @@ function writeText(){
 function makeText(txt,style,xPos,yPos) {
   // returns a createjs.Text object... pass obj like this: {txt: , style: , color: , xPos: , yPos:}
   let t = new createjs.Text(txt, style.style, style.color);
+  t.lineHeight = style.lineHeight;
   t.x = xPos;
   t.y = yPos;
   return t;
