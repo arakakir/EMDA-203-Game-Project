@@ -156,7 +156,7 @@ var scenes = [
      {type: "text", speaker: "Malakai", text: "Oh, yeah. That’s Belemy; she’s a sweetheart. She’s not NOT allowed to \rbe here, I don’t think. I didn’t read anything about a no cow policy in \rthe contract when I moved in.", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "animation", id: "Malakai", img: "images/MalakaiSpriteDread.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Malakai", text: "Oh God, do you think Davie would kick her out? She’s my only source of \rincome. Oh God, how am I gunna afford living here?", 
+     {type: "text", speaker: "Malakai", text: "Oh God, do you think Davey would kick her out? She’s my only source of \rincome. Oh God, how am I gunna afford living here?", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
      {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
        {type: "text", speaker: "Narrator", text: "Malakai’s spiraling out of control. You should handle this, right? Mr. \rJonas told you to help the regulars with anything they needed, right?", style: italicTextStyle,
@@ -177,9 +177,9 @@ var scenes = [
     actions: [
       {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
       {type: "text", speaker: "Malakai", text: "Oh, thank GOD.", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "", style: whiteTextStyle, hideAfter:1},
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle, hideAfter:1},
      {type: "animation", id: "Malakai", img: "images/MalakaiSpriteBase.png", trigger: "auto", doNext: "nextAction"},
-       {type: "text", speaker: "Malakai", text: "Sorry about that, I got kinda a lot going on right now, but I really appreciate your secrecy.", 
+       {type: "text", speaker: "Malakai", text: "Sorry about that, I got kinda a lot going on right now, but I \rreally appreciate your secrecy.", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 3", style: whiteTextStyle, hideAfter:1}]},
  
   
