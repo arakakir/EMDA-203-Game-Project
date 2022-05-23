@@ -237,7 +237,13 @@ function handleSceneActions(){
           case "animation":
             for(var j = 0; j<sceneImages.length; j++){
               if(sceneImages[j].id==scenes[activeScene].actions[scenes[activeScene].currentAction].id){
-                 object = sceneImages[j];}
+                 object = sceneImages[j];
+                // if img is provided, swap the image for this object
+                 if(thisAction.img != undefined){
+                   sceneImages[j].image.src = thisAction.img;
+                   //sceneImage associated with thisAction
+                 }
+              }
             }
             break;
             
