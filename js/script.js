@@ -97,7 +97,8 @@ function init(){
   backgroundSound.volume = 0.3;
   backgroundSound.loop = -1;
   
-  buildScene("Malakai's Room Part 1");
+  //buildScene("Malakai's Room Part 1");
+  buildScene("MalakaiResponse1");
 
   createjs.Ticker.addEventListener('tick', gameLoop);
   createjs.Ticker._setFPS(myFrameRate);
@@ -164,6 +165,8 @@ function buildScene(scene){
     // set the action counter to zero
     scenes[i].currentAction = 0;
     scenes[i].currentActionInitiated = false;
+    
+    console.log("Scene " + i + " currentAction = " +scenes[i].currentAction);
   }
     // set all other scenes inactive
     else { scenes[i].active = false;}
