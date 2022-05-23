@@ -48,20 +48,20 @@ function preload(){
   queue.loadManifest([
     {id:"JackAmbience", src:"sounds/JackAmbience.mp3", data:1},
     {id:"MalakaiAmbience", src:"sounds/MalakaiAmbience.mp3", data:2},
-    // {id:"target", src:"sounds/target.mp3", data:10},
-    // {id:"levelUp", src:"sounds/levelUp.mp3", data:2},
     {id:"MalakaiBase", src:"images/MalakaiSpriteBase.png"},
     {id:"MalakaiRoom", src:"images/MalakaiRoom.png"},
     {id:"MalakaiDread", src:"images/MalakaiSpriteDread.png"},
     {id:"MalakaiFlustered", src:"images/MalakaiSpriteFlustered.png"},
     {id:"MalakaiLaughing", src:"images/MalakaiSpriteLaughing.png"},
-    // {id:"nightsky", src:"images/nightsky.png"},
-    // {id:"front-mountains", src:"images/front-mountains.png"},
-    // {id:"rear-mountains", src:"images/rear-mountains.png"},
-    // {id:"background_backMountains", src:"images/background_backMountains.png"},
-    // {id:"balloon01", src:"images/balloon01.png"},
-    // {id:"skull01", src:"images/skull01.png"},
-    // {id:"heroReddeSprite", src:"images/heroReddeSprite.png"}
+    {id:"LobbyRoom", src:"images/LobbyRoom.png"},
+    {id:"DaveyTextBox", src:"images/DaveyTextBox.png"},
+    {id:"BellhopTextBox", src:"images/BellhopTextBox.png"},
+    {id:"JackRoom", src:"images/JackRoom.png"},
+    {id:"JackFrown", src:"images/JackSpriteFrown.png"},
+    {id:"JackHorny", src:"images/JackSpriteHorny.png"},
+    {id:"JackSmile", src:"images/JackSpriteSmile.png"},
+    {id:"JackTextBox", src:"images/JackTextBox.png"},
+    {id:"JackRoom", src:"images/JackRoom.png"}
     ]);
 }
 
