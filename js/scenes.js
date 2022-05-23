@@ -20,7 +20,6 @@ var scenes = [
    images: [
     {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:960, y:800}, animated: false, clickable: false},
      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-       {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
          {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:-200, y:0}, animated: false, clickable: false},
      ],
    
@@ -32,6 +31,8 @@ var scenes = [
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "text", speaker: "Bellhop", text: "Hello?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+     {type: "animation", id: "Malakai", img: "images/MalakaiSpriteFlustered.png", trigger: "auto", doNext: "nextAction"},
+     {type: "animation", id: "Malakai", img: "images/MalakaiSpriteBase.png", trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; \rdidn’t expect ya’ to be so damn cute, though. What can I do for you?", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
      // {type: "text", speaker: "Bellhop", text: "The slingshot is the gravity \rof the sun.", 
@@ -42,11 +43,7 @@ var scenes = [
 //      //        loc: {x:800,y:200}, trigger: "stageClick", doNext: "nextAction", style: whiteTextStyle},
 //           {type: "text", speaker: "Hero", text: "There is no attraction, \ras the force of our common star-\ra body so colossal it cannot \rbe called 'object'...", 
 //             loc: {x:550,y:520}, trigger: "stageClick", doNext: "nextAction", style: blackTextStyle},
-//      {type: "animation", text: "", id: "character", 
-//                   animation: {wait: 0,
-//                               startPosition:{scale:1},
-//                               endPosition:{x:780, y: 600, scale:1.4},
-//                               duration: 3000}, trigger: "stageClick", duration: 4000, doNext: "nextAction"},
+
      {type: "text", speaker: "Bellhop", text: "Oh, uhm. I’m just checking in; Mr. Jonas told me to come meet the regulars? \rAre regulars a thing at hotels?", style: choice1TextStyle,loc: {x:250,y:800}, 
             trigger: "choice", doNext: "MalakaiResponse1", hideAfter:2},
      {type: "text", speaker: "Bellhop", text: "Better now that I’ve met you. It’s been a weird day…", style: choice2TextStyle,loc: {x:250,y:900}, 
@@ -67,7 +64,7 @@ var scenes = [
      ],
     actions: [
       {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-      {type: "text", speaker: "Malakai", text: "They are at this one, sweetheart. It’s a pleasure to meet you. The name’s Malakai Whitney. Welcome to the Inn.", 
+      {type: "text", speaker: "Malakai", text: "They are at this one, sweetheart. It’s a pleasure to meet you. \rThe name’s Malakai Whitney. Welcome to the Inn.", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle, hideAfter:1}]},
  
   
