@@ -20,7 +20,10 @@ var scenes = [
    images: [
     {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:960, y:800}, animated: false, clickable: false},
      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+      {id: "Malakai", img:"images/MalakaiSpriteFlustered.png", loc: {x:0, y:2000}, animated: true, clickable: false},
          {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:-200, y:0}, animated: false, clickable: false},
+     
+     
      ],
    
    actions: [
@@ -31,7 +34,12 @@ var scenes = [
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "text", speaker: "Bellhop", text: "Hello?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-     {type: "animation", id: "Malakai", img: "images/MalakaiSpriteFlustered.png", trigger: "auto", doNext: "nextAction"},
+  {type: "animation", id: "Malakai",
+                  animation: {wait: 0,
+                              startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
+                              endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
+                              duration: 2000},
+                  trigger: "stageClick", doNext: "nextAction"},
      {type: "animation", id: "Malakai", img: "images/MalakaiSpriteBase.png", trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Malakai", text: "Hey there, sweetheart. Davie told me there was a new bellhop in town; \rdidn’t expect ya’ to be so damn cute, though. What can I do for you?", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
