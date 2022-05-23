@@ -48,6 +48,7 @@ function preload(){
   queue.loadManifest([
     {id:"JackAmbience", src:"sounds/JackAmbience.mp3", data:1},
     {id:"MalakaiAmbience", src:"sounds/MalakaiAmbience.mp3", data:2},
+    {id:"LobbyAmbience", src:"sounds/LobbyAmbience.mp3", data:3},
     {id:"MalakaiBase", src:"images/MalakaiSpriteBase.png"},
     {id:"MalakaiRoom", src:"images/MalakaiRoom.png"},
     {id:"MalakaiDread", src:"images/MalakaiSpriteDread.png"},
