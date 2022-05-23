@@ -93,20 +93,19 @@ var scenes = [
      images: [
      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
      {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
-     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
-    {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+    {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
        {type: "animation", id: "Background", img:"images/MalakaiRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Bellhop", text: "Good to meet you Malakai. I’m (y/n). Quick question: is that a cow? Are you allowed to have a cow here?", style: whiteTextStyle,
+     {type: "text", speaker: "Bellhop", text: "Good to meet you Malakai. I’m (y/n). Quick question: is that a cow? \rAre you allowed to have a cow here?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
         {type: "animation", id: "Textbox", img: "images/MalakaiTextBox.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Malakai", text: "Oh, yeah. That’s Belemy; she’s a sweetheart. She’s not not allowed to be here, I don’t think. I didn’t read anything about a no cow policy in the contract when I moved in.", style: whiteTextStyle,
+     {type: "text", speaker: "Malakai", text: "Oh, yeah. That’s Belemy; she’s a sweetheart. She’s not not allowed to \rbe here, I don’t think. I didn’t read anything about a no cow policy in the contract when I moved in.", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "animation", id: "Malakai", img: "images/MalakaiSpriteDread.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Malakai", text: "Oh God, do you think Davie would kick her out? She’s my only source of income. Oh God, how am I gunna afford living here?", 
+     {type: "text", speaker: "Malakai", text: "Oh God, do you think Davie would kick her out? She’s my only source of \rincome. Oh God, how am I gunna afford living here?", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
      {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
        {type: "text", speaker: "Narrator", text: "Malakai’s spiraling out of control. You should handle this, right? Mr. Jonas told you to help the regulars with anything they needed, right?", style: italicTextStyle,
@@ -115,4 +114,65 @@ var scenes = [
             trigger: "choice", doNext: "MalakaiResponse3", hideAfter:2},
      {type: "text", speaker: "Bellhop", text: "Shh. Calm down, pet. I won’t let anything bad happen to you, okay?", style: choice2TextStyle,loc: {x:250,y:900}, 
             trigger: "lastchoice", doNext: "MalakaiResponse4"}]},
+  
+     {id:"MalakaiResponse3", 
+    // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
+    images: [
+
+     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Malakai Laugh", img:"images/MalakaiSpriteLaughing.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     ],
+    actions: [
+      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "text", speaker: "Malakai", text: "Oh, thank GOD.", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle, hideAfter:1},
+     {type: "animation", id: "Malakai", img: "images/MalakaiSpriteBase.png", trigger: "auto", doNext: "nextAction"},
+       {type: "text", speaker: "Malakai", text: "Sorry about that, I got kinda a lot going on right now, but I really appreciate your secrecy.", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 3", style: whiteTextStyle, hideAfter:1}]},
+ 
+  
+  
+  
+  
+  {id:"MalakaiResponse4", 
+    // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
+    images: [
+     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+    {id: "Malakai Base", img:"images/MalakaiSpriteFlustered.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     ],
+    actions: [
+      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "text", speaker: "Malakai", text: "Oh. Well, shit. Alright, then. Ahem. That’s, uh, that’s real nice of you. Thank you.", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 3", style: whiteTextStyle}]},
+  
+   {id:"Malakai's Room Part 3", 
+     images: [
+     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+    {id: "Bellhop Text Box", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     ],
+    actions: [
+       {type: "animation", id: "Background", img:"images/MalakaiRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
+     {type: "animation", id: "Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
+     {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Bellhop", text: "Sure thing! Did you need anything else before I go?", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+        {type: "animation", id: "Textbox", img: "images/MalakaiTextBox.png", trigger: "auto", doNext: "nextAction"},
+         {type: "animation", id: "Malakai", img: "images/MalakaiSpriteLaughing.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Malakai", text: "Well, not at the moment, but I’m planning on going shootin’ later if you’d care to come with?", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+       {type: "animation", id: "Malakai", img: "images/MalakaiSpriteFlustered.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Malakai", text: "No pressure, of course. I just enjoy your company.", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+      {type: "animation", id: "Malakai", img: "images/MalakaiSpriteBase.png", trigger: "auto", doNext: "nextAction"},
+     {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Bellhop", text: "Oh, uh. I’ll definitely think about it. I have to go, but have a good rest of your day!", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+     {type: "animation", id: "Textbox", img: "images/MalakaiTextBox.png", trigger: "auto", doNext: "nextAction"}, 
+       {type: "text", speaker: "Malakai", text: "You too, sweetheart. Thanks for stopping by, and I hope to see you later~", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+    ]}]
 // ]
