@@ -20,7 +20,7 @@ var scenes = [
    images: [
      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Malakai", img:"images/MalakaiSpriteFlustered.png", loc: {x:0, y:2000}, animated: true, clickable: false},
-         {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:-200, y:0}, animated: false, clickable: false},
+         {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      
      
      ],
