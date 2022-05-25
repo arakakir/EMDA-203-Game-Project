@@ -325,7 +325,7 @@ var scenes = [
 
      {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
      {id: "Jack", img:"images/JackSpriteHorny.png", loc: {x:0, y:0}, clickable: false},
-     {id: "Text Box", img:"images/JackTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Textbox", img:"images/JackTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
       {type: "sound", src: "JackAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
@@ -356,20 +356,20 @@ var scenes = [
   {id:"Jack's Room Part 2", 
      images: [
      {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "Malakai", img:"images/JackSpriteBase.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Jack", img:"images/JackSpriteBase.png", loc: {x:0, y:0}, clickable: false},
     {id: "Textbox", img:"images/JackTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
        {type: "animation", id: "Background", img:"images/JackRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "Textbox", img:"images/JackTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "JackAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Jack", text: "My name is ☠ j̶̢̦͓̝̹̒̂̔͂j̶̻̺͛j̶̢̲̳̟͓̄͊j̸̡̟̯̅̿̄͝j̶͎̱̤̉̀j̶̨̖͆̊̀ ☠ but most people just call me Jack. You must be the new bellhop, lovely to meet you.", style: whiteTextStyle,
+     {type: "text", speaker: "Jack", text: "My name is ☠ j̶̢̦͓̝̹̒̂̔͂j̶̻̺͛j̶̢̲̳̟͓̄͊j̸̡̟̯̅̿̄͝j̶͎̱̤̉̀j̶̨̖͆̊̀ ☠ but most people just \rcall me Jack. You must be the new bellhop, lovely to meet you.", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
         {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Bellhop", text: "Are those ghosts screaming? Are they alright?? Is your room haunted???", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "animation", id: "Jack", img: "images/JackSpriteSmile.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Jack", text: "I got my suite to connect to my home realm, making this a portal to Hell of sorts. Makes the suite feel like home.", 
+     {type: "text", speaker: "Jack", text: "I got my suite to connect to my home realm, making this a portal to Hell \rof sorts. Makes the suite feel like home.", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
        {type: "text", speaker: "Jack", text: "I am the king of Hell’s right hand man after all!", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
@@ -384,8 +384,8 @@ var scenes = [
     images: [
 
      {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "Malakai Laugh", img:"images/JackSpriteHorny.png", loc: {x:0, y:0}, clickable: false},
-     {id: "Malakai Text Box", img:"images/JackTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Jack", img:"images/JackSpriteHorny.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Textbox", img:"images/JackTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
       {type: "sound", src: "JackAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
@@ -400,40 +400,47 @@ var scenes = [
     // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
     images: [
      {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-    {id: "Malakai Base", img:"images/JackSpriteSmile.png", loc: {x:0, y:0}, clickable: false},
-     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+    {id: "Jack", img:"images/JackSpriteSmile.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Textbox", img:"images/JackTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-      {type: "text", speaker: "Malakai", text: "Oh. Well, shit. Alright, then. Ahem. That’s, uh, that’s real nice of you. \rThank you.", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 3", style: whiteTextStyle}]},
+      {type: "sound", src: "JackAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "text", speaker: "Jack", text: "Why yes actually, thank you for noticing. I don’t usually get much recognition for it.", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Jack's Room Part 3", style: whiteTextStyle}]},
   
   
   
   
-   {id:"Malakai's Room Part 3", 
+   {id:"Jack's Room Part 3", 
      images: [
-     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "Malakai", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Jack", img:"images/JackSpriteBase.png", loc: {x:0, y:0}, clickable: false},
     {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-       {type: "animation", id: "Background", img:"images/MalakaiRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
-     {type: "animation", id: "Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
-     {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Bellhop", text: "Sure thing! Did you need anything else before I go?", style: whiteTextStyle,
+       {type: "animation", id: "Background", img:"images/JackRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
+        {type: "sound", src: "JackAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "animation", id: "Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
+     {type: "text", speaker: "Bellhop", text: "What is it like? Working in… Hell?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-        {type: "animation", id: "Textbox", img: "images/MalakaiTextBox.png", trigger: "auto", doNext: "nextAction"},
-         {type: "animation", id: "Malakai", img: "images/MalakaiSpriteLaughing.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Malakai", text: "Well, not at the moment, but I’m planning on going shootin’ later if \ryou’d care to come with?", style: whiteTextStyle,
+        {type: "animation", id: "Textbox", img: "images/JackTextBox.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Jack", text: "I get most of the paperwork that the boss doesn’t want to deal with. \rI also do a lot of his dirty work, like dealing with unruly souls and… other things.", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-       {type: "animation", id: "Malakai", img: "images/MalakaiSpriteFlustered.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Malakai", text: "No pressure, of course. I just enjoy your company.", style: whiteTextStyle,
+       {type: "animation", id: "Jack", img: "images/JackSpriteSmile.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Jack", text: "Don’t get me wrong, I love Hell! But my job is exhausting. I usually \rcome here on my days off to relax. The spa here is absolutely to die for~", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-      {type: "animation", id: "Malakai", img: "images/MalakaiSpriteBase.png", trigger: "auto", doNext: "nextAction"},
+      {type: "animation", id: "Jack", img: "images/JackSpriteBase.png", trigger: "auto", doNext: "nextAction"},
      {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Bellhop", text: "Oh, uh. I’ll definitely think about it. I have to go, but have a good \rrest of your day!", style: whiteTextStyle,
+     {type: "text", speaker: "Bellhop", text: "Oh, well, I haven't personally gotten the chance to check it out yet, \rbut I’ve heard great things!", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-     {type: "animation", id: "Textbox", img: "images/MalakaiTextBox.png", trigger: "auto", doNext: "nextAction"}, 
-       {type: "text", speaker: "Malakai", text: "You too, sweetheart. Thanks for stopping by, and I hope to see you later~", style: whiteTextStyle,
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "Elevator", hideAfter:1}]}]
+     {type: "animation", id: "Textbox", img: "images/JackTextBox.png", trigger: "auto", doNext: "nextAction"}, 
+       {type: "text", speaker: "Jack", text: "Well if you ever have a free moment, I’d love to take you sometime! \rI actually got a coupon for a free couple’s massage that I’ve been wanting to use..", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+     {type: "animation", id: "Jack", img: "images/JackSpriteSmile.png", trigger: "auto", doNext: "nextAction"},
+      {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Bellhop", text: "Oh! That's so nice of you! I am kinda busy, but I’ll definitely consider it!", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+       {type: "animation", id: "Textbox", img: "images/JackTextBox.png", trigger: "auto", doNext: "nextAction"}, 
+       {type: "text", speaker: "Jack", text: "Wonderful! I hope to see you there, honey~", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "Elevator", hideAfter:1}
+    ]}]
