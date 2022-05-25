@@ -28,7 +28,6 @@ var scenes = [
      ],
    
    actions: [
-
      {type: "animation", id: "Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
        {type: "animation", id: "Bellhop",
@@ -78,14 +77,17 @@ var scenes = [
    images: [
      {id: "Background", img:"images/ElevatorRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
-     {id: "MalakaiButton", img:"images/MalakaiButton.png", loc: {x:0, y:2000}, animated: true, clickable: false},
-     {id: "JackButton", img:"images/JackButton.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+     {id: "MalakaiButton", img:"images/MalakaiButton.png", loc: {x:0, y:10}, animated: true, clickable: false},
+     {id: "JackButton", img:"images/JackButton.png", loc: {x:0, y:100}, animated: true, clickable: false},
+     {id: "LobbyButton", img:"images/LobbyButton.png", loc: {x:100, y:300}, animated: true, clickable: false},
    
      
      ],
    
    actions: [
-
+{type: "animation", id: "MalakaiButton", img:"images/MalakaiButton.png", scale:0.5,trigger: "auto", duration: 1000, doNext: "nextAction"},
+     {type: "animation", id: "JackButton", img:"images/JackButton.png", scale:0.5, trigger: "auto", duration: 1000, doNext: "nextAction"},
+     {type: "animation", id: "LobbyButton", img:"images/LobbyButton.png", scale:0.5, trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "ElevatorAmbience.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
        {type: "animation", id: "Bellhop",
                   animation: {wait: 0,
@@ -95,8 +97,10 @@ var scenes = [
                   trigger: "timer", duration: 2000, doNext: "nextAction"},
    {type: "image", id: "MalakaiButton", 
             trigger: "choice", doNext: "Malakai's Room Part 1", hideAfter:2},
-     {type: "text", id: "JackButton", 
-            trigger: "lastchoice", doNext: "Jack's Room Part 1"}]},
+      {type: "image", id: "JackButton", 
+            trigger: "choice", doNext: "Jack's Room Part 1", hideAfter:2},
+     {type: "image", id: "LobbyButton", 
+            trigger: "lastchoice", doNext: "Lobby Part 2"}]},
 
   
   
@@ -436,4 +440,4 @@ var scenes = [
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "animation", id: "Textbox", img: "images/MalakaiTextBox.png", trigger: "auto", doNext: "nextAction"}, 
        {type: "text", speaker: "Malakai", text: "You too, sweetheart. Thanks for stopping by, and I hope to see you later~", style: whiteTextStyle,
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "Elevator", hideAfter:1}]}
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "Elevator", hideAfter:1}]}]
