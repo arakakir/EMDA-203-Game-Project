@@ -13,6 +13,9 @@ var choice2TextStyle = {style: "bold 30px Courier", color: "#F055A5", alpha: 1, 
 //      DEFINE SCENES     //
 ////////////////////////////
 
+
+//ASK DAVID ABOUT THE SOUND TRANSFERRING TO THE NEXT SCENES- SOUND DOESNT TURN OFF
+
 var scenes = [
   
   {id:"Lobby Part 1",
@@ -78,16 +81,16 @@ var scenes = [
      {id: "Background", img:"images/ElevatorRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
      {id: "MalakaiButton", img:"images/MalakaiButton.png", loc: {x:0, y:10}, animated: true, clickable: false},
-     {id: "JackButton", img:"images/JackButton.png", loc: {x:0, y:100}, animated: true, clickable: false},
-     {id: "LobbyButton", img:"images/LobbyButton.png", loc: {x:100, y:300}, animated: true, clickable: false},
+     {id: "JackButton", img:"images/JackButton.png", loc: {x:0, y:500}, animated: true, clickable: false},
+     {id: "LobbyButton", img:"images/LobbyButton.png", loc: {x:500, y:300}, animated: true, clickable: false},
    
      
      ],
    
    actions: [
-{type: "animation", id: "MalakaiButton", img:"images/MalakaiButton.png", scale:0.5,trigger: "auto", duration: 1000, doNext: "nextAction"},
-     {type: "animation", id: "JackButton", img:"images/JackButton.png", scale:0.5, trigger: "auto", duration: 1000, doNext: "nextAction"},
-     {type: "animation", id: "LobbyButton", img:"images/LobbyButton.png", scale:0.5, trigger: "auto", duration: 1000, doNext: "nextAction"},
+{type: "animation", id: "MalakaiButton", img:"images/MalakaiButton.png",trigger: "auto", duration: 1000, doNext: "nextAction"},
+     {type: "animation", id: "JackButton", img:"images/JackButton.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
+     {type: "animation", id: "LobbyButton", img:"images/LobbyButton.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "ElevatorAmbience.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
        {type: "animation", id: "Bellhop",
                   animation: {wait: 0,
@@ -96,11 +99,9 @@ var scenes = [
                               duration: 2000},
                   trigger: "timer", duration: 2000, doNext: "nextAction"},
    {type: "image", id: "MalakaiButton", 
-            trigger: "choice", doNext: "Malakai's Room Part 1", hideAfter:2},
+            trigger: "choice", doNext: "Malakai's Room Part 1", hideAfter:1},
       {type: "image", id: "JackButton", 
-            trigger: "choice", doNext: "Jack's Room Part 1", hideAfter:2},
-     {type: "image", id: "LobbyButton", 
-            trigger: "lastchoice", doNext: "Lobby Part 2"}]},
+            trigger: "choice", doNext: "Jack's Room Part 1", hideAfter:1}]},
 
   
   
