@@ -276,7 +276,7 @@ var scenes = [
    
    images: [
      {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Jack", img:"images/JackSpriteHorny.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+      {id: "Jack", img:"images/JackSpriteBase.png", loc: {x:0, y:2000}, animated: true, clickable: false},
          {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      
      
@@ -296,13 +296,13 @@ var scenes = [
                               endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
                               duration: 2000},
                   trigger: "timer", duration: 2000, doNext: "nextAction"},
-     {type: "animation", id: "Jack", img: "images/JackSpriteBase.png", trigger: "auto", doNext: "nextAction"},
      {type: "animation", id: "Textbox", img: "images/JackTextBox.png", trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Jack", text: "BOO!", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
      {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Bellhop", text: "AAaAAhH!", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+     {type: "animation", id: "Jack", img: "images/JackSpriteSmile.png", trigger: "auto", doNext: "nextAction"},
      {type: "animation", id: "Textbox", img: "images/JackTextBox.png", trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Jack", text: "Ha! You must be the new bellhop! Welcome to my beloved suite~", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
@@ -368,6 +368,7 @@ var scenes = [
         {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Bellhop", text: "Are those ghosts screaming? Are they alright?? Is your room haunted???", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+      {type: "animation", id: "Textbox", img: "images/JackTextBox.png", trigger: "auto", doNext: "nextAction"},
      {type: "animation", id: "Jack", img: "images/JackSpriteSmile.png", trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Jack", text: "I got my suite to connect to my home realm, making this a portal to Hell \rof sorts. Makes the suite feel like home.", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
@@ -405,7 +406,7 @@ var scenes = [
      ],
     actions: [
       {type: "sound", src: "JackAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-      {type: "text", speaker: "Jack", text: "Why yes actually, thank you for noticing. I don’t usually get much recognition for it.", 
+      {type: "text", speaker: "Jack", text: "Why yes actually, thank you for noticing. I don’t usually get much \rrecognition for it.", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Jack's Room Part 3", style: whiteTextStyle}]},
   
   
@@ -424,7 +425,7 @@ var scenes = [
      {type: "text", speaker: "Bellhop", text: "What is it like? Working in… Hell?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
         {type: "animation", id: "Textbox", img: "images/JackTextBox.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Jack", text: "I get most of the paperwork that the boss doesn’t want to deal with. \rI also do a lot of his dirty work, like dealing with unruly souls and… other things.", style: whiteTextStyle,
+     {type: "text", speaker: "Jack", text: "I get most of the paperwork that the boss doesn’t want to deal with. \rI also do a lot of his dirty work, like dealing with unruly souls and… \rother things.", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
        {type: "animation", id: "Jack", img: "images/JackSpriteSmile.png", trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Jack", text: "Don’t get me wrong, I love Hell! But my job is exhausting. I usually \rcome here on my days off to relax. The spa here is absolutely to die for~", style: whiteTextStyle,
@@ -434,11 +435,11 @@ var scenes = [
      {type: "text", speaker: "Bellhop", text: "Oh, well, I haven't personally gotten the chance to check it out yet, \rbut I’ve heard great things!", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "animation", id: "Textbox", img: "images/JackTextBox.png", trigger: "auto", doNext: "nextAction"}, 
-       {type: "text", speaker: "Jack", text: "Well if you ever have a free moment, I’d love to take you sometime! \rI actually got a coupon for a free couple’s massage that I’ve been wanting to use..", style: whiteTextStyle,
+       {type: "text", speaker: "Jack", text: "Well if you ever have a free moment, I’d love to take you sometime! \rI actually got a coupon for a free couple’s massage that I’ve been \rwanting to use..", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "animation", id: "Jack", img: "images/JackSpriteSmile.png", trigger: "auto", doNext: "nextAction"},
       {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Bellhop", text: "Oh! That's so nice of you! I am kinda busy, but I’ll definitely consider it!", style: whiteTextStyle,
+     {type: "text", speaker: "Bellhop", text: "Oh! That's so nice of you! I am kinda busy, but I’ll definitely \rconsider it!", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
        {type: "animation", id: "Textbox", img: "images/JackTextBox.png", trigger: "auto", doNext: "nextAction"}, 
        {type: "text", speaker: "Jack", text: "Wonderful! I hope to see you there, honey~", style: whiteTextStyle,
