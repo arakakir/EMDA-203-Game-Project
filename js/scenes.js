@@ -70,6 +70,63 @@ var scenes = [
                               duration: 2000}},
         {type: "text", speaker: "Bellhop", text: "First day and I’m already getting yelled at… Where's that damned elevator?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "Elevator", hideAfter:1}]},
+  
+  
+//    {id:"Elevator",
+
+   
+//    images: [
+//      {id: "Background", img:"images/LobbyRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+//       {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+//       {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+//       {id: "Davey", img:"images/WalkieTalkie.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+     
+     
+//      ],
+   
+//    actions: [
+
+//      {type: "animation", id: "Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
+//      {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+//        {type: "animation", id: "Bellhop",
+//                   animation: {wait: 0,
+//                               startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
+//                               endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
+//                               duration: 2000},
+//                   trigger: "timer", duration: 2000, doNext: "nextAction"},
+//      {type: "text", speaker: "Bellhop", text: "Alright bellhop, you can do this! It’s your first day, gotta make a good first impression!", style: whiteTextStyle,
+//             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+//       {type: "animation", id: "Davey",
+//                   animation: {wait: 0,
+//                               startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
+//                               endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
+//                               duration: 2000},
+//                   trigger: "timer", duration: 2000, doNext: "nextAction"},
+//      {type: "animation", id: "Textbox", img: "images/DaveyTextBox.png", trigger: "auto", doNext: "nextAction"},
+//      {type: "text", speaker: "Davey", text: "Bellhop!", style: whiteTextStyle,
+//             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+//      {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
+//        {type: "text", speaker: "Bellhop", text: "Ack!", style: whiteTextStyle,
+//             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+//        {type: "animation", id: "Textbox", img: "images/DaveyTextBox.png", trigger: "auto", doNext: "nextAction"},
+//        {type: "text", speaker: "Davey", text: "What are you doing standing around??? Why aren’t you already out and about greeting our regulars???", style: whiteTextStyle,
+//             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+//      {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
+//        {type: "text", speaker: "Bellhop", text: "Regulars? I didn’t know we had regulars... Isn’t this a hotel?", style: whiteTextStyle,
+//             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+//       {type: "animation", id: "Textbox", img: "images/DaveyTextBox.png", trigger: "auto", doNext: "nextAction"},
+//        {type: "text", speaker: "Bellhop", text: " Don’t question the game, bellhop! I need you to go check on the regulars, see if anyone needs anything, understand?", style: whiteTextStyle,
+//             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+//       {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
+//        {type: "text", speaker: "Bellhop", text: "Y-Yes sir!", style: whiteTextStyle,
+//             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+//          {type: "animation", id: "Davey",
+//                     animation: {wait: 0,
+//                               startPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
+//                               endPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
+//                               duration: 2000}},
+//         {type: "text", speaker: "Bellhop", text: "First day and I’m already getting yelled at… Where's that damned elevator?", style: whiteTextStyle,
+//             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "Elevator", hideAfter:1}]},
 
   
   {id:"Malakai's Room Part 1",
