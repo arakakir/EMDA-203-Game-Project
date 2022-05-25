@@ -98,7 +98,7 @@ function init(){
   backgroundSound.volume = 0.3;
   backgroundSound.loop = -1;
   
-  buildScene("Malakai's Room Part 1");
+  buildScene("Lobby Part 1");
   //buildScene("MalakaiResponse1");
 
   createjs.Ticker.addEventListener('tick', gameLoop);

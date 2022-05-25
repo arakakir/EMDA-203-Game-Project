@@ -21,8 +21,8 @@ var scenes = [
    images: [
      {id: "Background", img:"images/LobbyRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
-      {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Davey", img:"images/WalkieTalkie.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+      {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:100}, animated: false, clickable: false},
+      {id: "Davey", img:"images/WalkieTalkie.png", loc: {x:-500, y:2000}, animated: true, clickable: false},
      
      
      ],
@@ -34,11 +34,11 @@ var scenes = [
        {type: "animation", id: "Bellhop",
                   animation: {wait: 0,
                               startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
-                              endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
+                              endPosition:{x:0, y:-100, alpha:1, rotation:0, scale:1},
                               duration: 2000},
                   trigger: "timer", duration: 2000, doNext: "nextAction"},
-     {type: "text", speaker: "Bellhop", text: "Alright bellhop, you can do this! It’s your first day, gotta make a good first impression!", style: whiteTextStyle,
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+     {type: "text", speaker: "Bellhop", text: "Alright bellhop, you can do this! It’s your first day, gotta make a \rgood first impression!", style: whiteTextStyle,
+            loc: {x:250,y:900}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
       {type: "animation", id: "Davey",
                   animation: {wait: 0,
                               startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
