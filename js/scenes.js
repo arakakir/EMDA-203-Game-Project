@@ -78,6 +78,8 @@ var scenes = [
    images: [
      {id: "Background", img:"images/ElevatorRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+     {id: "MalakaiButton", img:"images/MalakaiButton.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+     {id: "JackButton", img:"images/JackButton.png", loc: {x:0, y:2000}, animated: true, clickable: false},
    
      
      ],
@@ -90,8 +92,15 @@ var scenes = [
                               startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
                               endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},
                               duration: 2000},
-                  trigger: "timer", duration: 2000, doNext: "nextAction"}]},
+                  trigger: "timer", duration: 2000, doNext: "nextAction"},
+   {type: "image", id: "MalakaiButton", 
+            trigger: "choice", doNext: "Malakai's Room Part 1", hideAfter:2},
+     {type: "text", id: "JackButton", 
+            trigger: "lastchoice", doNext: "Jack's Room Part 1"}]},
 
+  
+  
+  
   
   {id:"Malakai's Room Part 1",
 
