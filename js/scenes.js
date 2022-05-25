@@ -339,15 +339,14 @@ var scenes = [
   {id:"JackResponse2", 
     // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
     images: [
-     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "Malakai Base", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
-    {id: "Malakai Base", img:"images/MalakaiSpriteFlustered.png", loc: {x:0, y:0}, clickable: false},
-     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Jack", img:"images/JackSpriteSmile.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Textbox", img:"images/JackTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-      {type: "text", speaker: "Malakai", text: "Well, hell. That’s awfully sweet of you, dalrin’. Glad I could make \ryour day a little better for ya’. Name’s Malakai Whitney.", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle}]},
+      {type: "sound", src: "JackAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "text", speaker: "Jack", text: "Ah, don’t worry about them, honey. They’re alright!", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Jack's Room Part 2", style: whiteTextStyle}]},
   
  
   
@@ -356,45 +355,42 @@ var scenes = [
   
   {id:"Jack's Room Part 2", 
      images: [
-     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "Malakai", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
-    {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Malakai", img:"images/JackSpriteBase.png", loc: {x:0, y:0}, clickable: false},
+    {id: "Textbox", img:"images/JackTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-       {type: "animation", id: "Background", img:"images/MalakaiRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
-     {type: "animation", id: "Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
-     {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Bellhop", text: "Good to meet you Malakai. I’m (y/n). Quick question: is that a cow? \rAre you allowed to have a cow here?", style: whiteTextStyle,
+       {type: "animation", id: "Background", img:"images/JackRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
+     {type: "animation", id: "Textbox", img:"images/JackTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
+     {type: "sound", src: "JackAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Jack", text: "My name is ☠ j̶̢̦͓̝̹̒̂̔͂j̶̻̺͛j̶̢̲̳̟͓̄͊j̸̡̟̯̅̿̄͝j̶͎̱̤̉̀j̶̨̖͆̊̀ ☠ but most people just call me Jack. You must be the new bellhop, lovely to meet you.", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-        {type: "animation", id: "Textbox", img: "images/MalakaiTextBox.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Malakai", text: "Oh, yeah. That’s Belemy; she’s a sweetheart. She’s not NOT allowed to \rbe here, I don’t think. I didn’t read anything about a no cow policy in \rthe contract when I moved in.", style: whiteTextStyle,
+        {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Bellhop", text: "Are those ghosts screaming? Are they alright?? Is your room haunted???", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-     {type: "animation", id: "Malakai", img: "images/MalakaiSpriteDread.png", trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Malakai", text: "Oh God, do you think Davey would kick her out? She’s my only source of \rincome. Oh God, how am I gunna afford living here?", 
+     {type: "animation", id: "Jack", img: "images/JackSpriteSmile.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Jack", text: "I got my suite to connect to my home realm, making this a portal to Hell of sorts. Makes the suite feel like home.", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
+       {type: "text", speaker: "Jack", text: "I am the king of Hell’s right hand man after all!", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
      {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
-       {type: "text", speaker: "Narrator", text: "Malakai’s spiraling out of control. You should handle this, right? Mr. \rJonas told you to help the regulars with anything they needed, right?", style: italicTextStyle,
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-     {type: "text", speaker: "Bellhop", text: "Hey, it’s okay, I promise I won’t tell anyone. So, even if she’s not \rallowed, Mr. Jonas doesn’t need to know!", style: choice1TextStyle,loc: {x:250,y:800}, 
-            trigger: "choice", doNext: "MalakaiResponse3", hideAfter:2},
-     {type: "text", speaker: "Bellhop", text: "Shh. Calm down, pet. I won’t let anything bad happen to you, okay?", style: choice2TextStyle,loc: {x:250,y:900}, 
-            trigger: "lastchoice", doNext: "MalakaiResponse4"}]},
+     {type: "text", speaker: "Bellhop", text: "That explains why it's so cold in here.", style: choice1TextStyle,loc: {x:250,y:800}, 
+            trigger: "choice", doNext: "JackResponse3", hideAfter:2},
+     {type: "text", speaker: "Bellhop", text: "That’s sick! You must be a powerful sorcerer!", style: choice2TextStyle,loc: {x:250,y:900}, 
+            trigger: "lastchoice", doNext: "JackResponse4"}]},
   
      {id:"JackResponse3", 
     // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
     images: [
 
-     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "Malakai Laugh", img:"images/MalakaiSpriteLaughing.png", loc: {x:0, y:0}, clickable: false},
-     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Malakai Laugh", img:"images/JackSpriteHorny.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Malakai Text Box", img:"images/JackTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-      {type: "text", speaker: "Malakai", text: "Oh, thank GOD.", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle, hideAfter:1},
-     {type: "animation", id: "Malakai", img: "images/MalakaiSpriteBase.png", trigger: "auto", doNext: "nextAction"},
-       {type: "text", speaker: "Malakai", text: "Sorry about that, I got kinda a lot going on right now, but I \rreally appreciate your secrecy.", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 3", style: whiteTextStyle, hideAfter:1}]},
+      {type: "sound", src: "JackAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+       {type: "text", speaker: "Jack", text: "I have my ways of heating it up~", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Jack's Room Part 3", style: whiteTextStyle, hideAfter:1}]},
  
   
   
@@ -403,8 +399,8 @@ var scenes = [
   {id:"JackResponse4", 
     // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
     images: [
-     {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-    {id: "Malakai Base", img:"images/MalakaiSpriteFlustered.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+    {id: "Malakai Base", img:"images/JackSpriteSmile.png", loc: {x:0, y:0}, clickable: false},
      {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
