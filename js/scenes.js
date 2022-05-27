@@ -470,8 +470,6 @@ var scenes = [
      {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Narrator", text: "The lobby is quiet at this time of day… Not a lot of people checking in this afternoon.", style: italicTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-     {type: "text", speaker: "Davey", text: "Bellhop!", style: whiteTextStyle,
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
   {type: "animation", id: "Davey",
                   animation: {wait: 0,
                               startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
