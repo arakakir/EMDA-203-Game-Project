@@ -468,7 +468,7 @@ var scenes = [
      {type: "animation", id: "Background", img:"images/LobbyRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-     {type: "text", speaker: "Narrator", text: "The lobby is quiet at this time of day… Not a lot of people checking in this afternoon.", style: italicTextStyle,
+     {type: "text", speaker: "Narrator", text: "The lobby is quiet at this time of day… Not a lot of people checking \rin this afternoon.", style: italicTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
   {type: "animation", id: "Davey",
                   animation: {wait: 0,
@@ -508,29 +508,44 @@ var scenes = [
 
      {id: "Background", img:"images/LobbyRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
      {id: "Malakai Laugh", img:"images/DaveySprite.png", loc: {x:0, y:0}, clickable: false},
-     {id: "Malakai Text Box", img:"images/DaveyTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Textbox", img:"images/DaveyTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
       {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
       {type: "text", speaker: "Davey", text: "They what?", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle, hideAfter:1}]},
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle, hideAfter:1},
+    {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Bellhop", text: "I didn’t give them any answers, though! I know that’s probably not professional.", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+       {type: "animation", id: "Textbox", img: "images/DaveyTextBox.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Davey", text: "Screw professional, Bellhop! Who are you choosing?", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
+       {type: "text", speaker: "Bellhop", text: "Excuse me?", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+      {type: "animation", id: "Textbox", img: "images/DaveyTextBox.png", trigger: "auto", doNext: "nextAction"},
+     {type: "text", speaker: "Davey", text: "Who are you going out on a date with?", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
+             {type: "text", speaker: "Bellhop", text: "Uhhh, I guess...", style: whiteTextStyle,
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+         {type: "text", speaker: "Bellhop", text: "Malakai", style: choice1TextStyle,loc: {x:250,y:800}, 
+            trigger: "choice", doNext: "Malakai End Card", hideAfter:2},
+     {type: "text", speaker: "Bellhop", text: "Jack", style: choice2TextStyle,loc: {x:250,y:900}, 
+            trigger: "lastchoice", doNext: "Jack End Card"}
+    ]},
  
   
   
-  
-  //HERE
   {id:"DaveyResponse2", 
     // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
     images: [
      {id: "Background", img:"images/LobbyRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "Malakai Base", img:"images/DaveySprite.png", loc: {x:0, y:0}, clickable: false},
-    {id: "Malakai Base", img:"images/MalakaiSpriteFlustered.png", loc: {x:0, y:0}, clickable: false},
-     {id: "Malakai Text Box", img:"images/MalakaiTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Davey", img:"images/DaveySprite.png", loc: {x:0, y:0}, clickable: false},
+     {id: "Textbox", img:"images/DaveyTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-      {type: "text", speaker: "Malakai", text: "Well, hell. That’s awfully sweet of you, dalrin’. Glad I could make \ryour day a little better for ya’. Name’s Malakai Whitney.", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Malakai's Room Part 2", style: whiteTextStyle}]},
+      {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "text", speaker: "Davey", text: "WHAT?! Bellhop, get your ass back in that elevator this instant!", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Elevator", style: whiteTextStyle}]},
   
  
   
