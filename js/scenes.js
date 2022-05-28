@@ -546,6 +546,16 @@ var scenes = [
     actions: [
       {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
       {type: "text", speaker: "Davey", text: "WHAT?! Bellhop, get your ass back in that elevator this instant!", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Elevator", style: whiteTextStyle}]}
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Elevator", style: whiteTextStyle},
   
-  ]
+    {id:"Jack End Card", 
+    // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
+    images: [
+     {id: "Endcard", img:"images/JackEndCard.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     ],
+    actions: [
+      {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "text", speaker: "Davey", text: "WHAT?! Bellhop, get your ass back in that elevator this instant!", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Elevator", style: whiteTextStyle}
+      
+      
