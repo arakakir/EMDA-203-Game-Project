@@ -2,7 +2,7 @@
 //      DEFINE STYLES      //
 ////////////////////////////
 
-var defaultStyle = {style: "bold 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 50};
+var defaultStyle = {style: "bold 30px Courier", color: "#FFFFF", alpha: 1, lineWidth: 50, lineHeight: 50};
 var italicTextStyle = {style: "bold italic 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 50};
 var whiteTextStyle = {style: "bold 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 50};
 var choice1TextStyle = {style: "bold 30px Courier", color: "#55E8F0", alpha: 1, lineWidth: 50, lineHeight: 50};
@@ -14,9 +14,31 @@ var choice2TextStyle = {style: "bold 30px Courier", color: "#F055A5", alpha: 1, 
 ////////////////////////////
 
 
-//ASK DAVID ABOUT THE SOUND TRANSFERRING TO THE NEXT SCENES- SOUND DOESNT TURN OFF
+
 
 var scenes = [
+  
+  
+  {id:"Title Screen",
+
+   
+   images: [
+     {id: "Background", img:"images/Title.png", loc: {x:0, y:0}, animated: false, clickable: false},
+      {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:-600, y:200}, scale: 0.5, animated: true, clickable: false},
+     
+     
+     ],
+   
+   actions: [
+     {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "text", speaker: "Narrator", text: "Click anywhere to start! \rClick screen to progress \rthe story.", style: defaultStyle,
+            loc: {x:100,y:800}, trigger: "stageClick", duration: 2000, doNext: "Lobby Part 1", hideAfter:1}]},
+     
+     
+     
+     
+     
+     
   
   {id:"Lobby Part 1",
 
@@ -546,7 +568,7 @@ var scenes = [
     actions: [
       {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
       {type: "text", speaker: "Davey", text: "WHAT?! Bellhop, get your ass back in that elevator this instant!", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Elevator", style: whiteTextStyle},
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Elevator", style: whiteTextStyle}]},
   
       
       
@@ -557,9 +579,18 @@ var scenes = [
      {id: "Endcard", img:"images/JackEndCard.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-      {type: "sound", src: "JackEndcardAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "sound", src: "JackEndcardAmbience.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
     {type: "text", speaker: "Narrator", text: "", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Credits", style: whiteTextStyle},  
-    ]}
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Credits", style: whiteTextStyle}]},
+  
+      {id:"Malakai End Card", 
+    // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
+    images: [
+     {id: "Endcard", img:"images/MalakaiEndCard.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     ],
+    actions: [
+      {type: "sound", src: "MalakaiEndcardSong.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+    {type: "text", speaker: "Narrator", text: "", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Credits", style: whiteTextStyle}]}
     
   ]
