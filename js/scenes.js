@@ -79,7 +79,7 @@ var scenes = [
    
    images: [
      {id: "Background", img:"images/ElevatorRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+     {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
      {id: "MalakaiButton", img:"images/MalakaiButton.png", loc: {x:0, y:10}, animated: true, clickable: true},
      {id: "JackButton", img:"images/JackButton.png", loc: {x:0, y:500}, animated: true, clickable: true},
      {id: "LobbyButton", img:"images/LobbyButton.png", loc: {x:500, y:300}, animated: true, clickable: true},
@@ -88,11 +88,11 @@ var scenes = [
      ],
    
    actions: [
-{type: "animation", id: "MalakaiButton", img:"images/MalakaiButton.png",trigger: "auto", duration: 1000, doNext: "nextAction"},
+     {type: "animation", id: "MalakaiButton", img:"images/MalakaiButton.png",trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "JackButton", img:"images/JackButton.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "LobbyButton", img:"images/LobbyButton.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "ElevatorAmbience.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-       {type: "animation", id: "Bellhop",
+     {type: "animation", id: "Bellhop",
                   animation: {wait: 0,
                               startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
                               endPosition:{x:0, y:0, alpha:1, rotation:0, scale:1},

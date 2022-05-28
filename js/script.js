@@ -309,10 +309,12 @@ function handleSceneActions(){
             // and add an objectListener to each object
             if (thisAction.doNext=="nextAction"){
               object.addEventListener('click', nextAction, {once : true});
+              nextAction();
             }
             else {
               function buildNext(){buildScene(thisAction.doNext);}
               object.addEventListener('click', buildNext, {once : true});
+              nextAction();
             }
             break;
             
@@ -431,6 +433,10 @@ function makeText(txt,style,xPos,yPos) {
 function clearScene(){
   // stop sound
   //sceneSound = null;
+  for(let i=0;i<sceneSounds.length;i++){
+    sceneSounds[i].paused = true;
+    console.log(sceneSounds[i].paused);
+  }
   sceneSounds = [];
   
   // clear textArray
