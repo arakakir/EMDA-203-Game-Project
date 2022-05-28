@@ -50,7 +50,9 @@ function preload(){
     {id:"MalakaiAmbience", src:"sounds/MalakaiAmbience.mp3", data:2},
     {id:"LobbyAmbience", src:"sounds/LobbyAmbience.mp3", data:3},
      {id:"ElevatorAmbience", src:"sounds/ElevatorAmbience.mp3", data:4},
-     {id:"Elevator Ding", src:"sounds/ElevatorDing.mp3", data:3},
+     {id:"Elevator Ding", src:"sounds/ElevatorDing.mp3", data:5},
+    {id:"JackEndcardAmbience", src:"sounds/JackEndcardAmbience.mp3", data:6},
+    {id:"MalakaiEndcardSong", src:"sounds/MalakaiEndcardSong.mp3", data:7},
     {id:"MalakaiBase", src:"images/MalakaiSpriteBase.png"},
     {id:"MalakaiRoom", src:"images/MalakaiRoom.png"},
     {id:"MalakaiDread", src:"images/MalakaiSpriteDread.png"},
@@ -60,12 +62,12 @@ function preload(){
     {id:"DaveyTextBox", src:"images/DaveyTextBox.png"},
     {id:"BellhopTextBox", src:"images/BellhopTextBox.png"},
     {id:"JackRoom", src:"images/JackRoom.png"},
-    {id:"JackFrown", src:"images/JackSpriteFrown.png"},
+  {id:"JackBase", src:"images/JackSpriteBase.png"},
     {id:"JackHorny", src:"images/JackSpriteHorny.png"},
     {id:"JackSmile", src:"images/JackSpriteSmile.png"},
     {id:"JackTextBox", src:"images/JackTextBox.png"},
-    {id:"JackRoom", src:"images/JackRoom.png"}
-    {id:"JackRoom", src:"images/JackRoom.png"}
+    {id:"JackRoom", src:"images/JackRoom.png"},
+    {id:"JackEndcard", src:"images/JackEndcard.png"}
     ]);
 }
 

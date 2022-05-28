@@ -2,7 +2,7 @@
 //      DEFINE STYLES      //
 ////////////////////////////
 
-var defaultStyle = {style: "bold 30px Courier", color: "#FFFFF", alpha: 1, lineWidth: 50, lineHeight: 50};
+var defaultStyle = {style: "bold 30px Courier", color: "#FFF9F9", alpha: 1, lineWidth: 50, lineHeight: 50};
 var italicTextStyle = {style: "bold italic 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 50};
 var whiteTextStyle = {style: "bold 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 50};
 var choice1TextStyle = {style: "bold 30px Courier", color: "#55E8F0", alpha: 1, lineWidth: 50, lineHeight: 50};
@@ -110,7 +110,7 @@ var scenes = [
      ],
    
    actions: [
-     {type: "sound", src: "ElevatorAmbience.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+     {type: "sound", src: "ElevatorAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
      {type: "animation", id: "MalakaiButton", img:"images/MalakaiButton.png",trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "JackButton", img:"images/JackButton.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "LobbyButton", img:"images/LobbyButton.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
@@ -548,9 +548,9 @@ var scenes = [
       {type: "animation", id: "Textbox", img: "images/DaveyTextBox.png", trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Davey", text: "Who are you going out on a date with?", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
-             {type: "text", speaker: "Bellhop", text: "Uhhh, I guess...", style: whiteTextStyle,
+           {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},       
+      {type: "text", speaker: "Bellhop", text: "Uhhh, I guess...", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-      {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},  
       {type: "text", speaker: "Bellhop", text: "Malakai", style: choice1TextStyle,loc: {x:250,y:800}, 
             trigger: "choice", doNext: "Malakai End Card", hideAfter:2},
      {type: "text", speaker: "Bellhop", text: "Jack", style: choice2TextStyle,loc: {x:250,y:900}, 
