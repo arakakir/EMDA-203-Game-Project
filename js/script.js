@@ -49,6 +49,8 @@ function preload(){
     {id:"JackAmbience", src:"sounds/JackAmbience.mp3", data:1},
     {id:"MalakaiAmbience", src:"sounds/MalakaiAmbience.mp3", data:2},
     {id:"LobbyAmbience", src:"sounds/LobbyAmbience.mp3", data:3},
+     {id:"ElevatorAmbience", src:"sounds/ElevatorAmbience.mp3", data:4},
+     {id:"Elevator Ding", src:"sounds/ElevatorDing.mp3", data:3},
     {id:"MalakaiBase", src:"images/MalakaiSpriteBase.png"},
     {id:"MalakaiRoom", src:"images/MalakaiRoom.png"},
     {id:"MalakaiDread", src:"images/MalakaiSpriteDread.png"},
@@ -62,6 +64,7 @@ function preload(){
     {id:"JackHorny", src:"images/JackSpriteHorny.png"},
     {id:"JackSmile", src:"images/JackSpriteSmile.png"},
     {id:"JackTextBox", src:"images/JackTextBox.png"},
+    {id:"JackRoom", src:"images/JackRoom.png"}
     {id:"JackRoom", src:"images/JackRoom.png"}
     ]);
 }

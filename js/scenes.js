@@ -30,7 +30,7 @@ var scenes = [
      ],
    
    actions: [
-     {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+     {type: "sound", src: "ElevatorAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
       {type: "text", speaker: "Narrator", text: "Click anywhere to start! \rClick screen to progress \rthe story.", style: defaultStyle,
             loc: {x:100,y:800}, trigger: "stageClick", duration: 2000, doNext: "Lobby Part 1", hideAfter:1}]},
      
@@ -110,10 +110,10 @@ var scenes = [
      ],
    
    actions: [
+     {type: "sound", src: "ElevatorAmbience.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
      {type: "animation", id: "MalakaiButton", img:"images/MalakaiButton.png",trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "JackButton", img:"images/JackButton.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "LobbyButton", img:"images/LobbyButton.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
-     {type: "sound", src: "ElevatorAmbience.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
      {type: "animation", id: "Bellhop",
                   animation: {wait: 0,
                               startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
@@ -213,9 +213,9 @@ var scenes = [
     {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-       {type: "animation", id: "Background", img:"images/MalakaiRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
+      {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"}, 
+      {type: "animation", id: "Background", img:"images/MalakaiRoom.png", trigger: "timer", duration: 1000, doNext: "nextAction"},
      {type: "animation", id: "Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
-     {type: "sound", src: "MalakaiAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
      {type: "text", speaker: "Bellhop", text: "Good to meet you Malakai. I’m (y/n). Quick question: is that a cow? \rAre you allowed to have a cow here?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
         {type: "animation", id: "Textbox", img: "images/MalakaiTextBox.png", trigger: "auto", doNext: "nextAction"},
@@ -550,7 +550,8 @@ var scenes = [
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "nextAction", style: whiteTextStyle},
              {type: "text", speaker: "Bellhop", text: "Uhhh, I guess...", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-         {type: "text", speaker: "Bellhop", text: "Malakai", style: choice1TextStyle,loc: {x:250,y:800}, 
+      {type: "animation", id: "Textbox", img: "images/BellhopTextBox.png", trigger: "auto", doNext: "nextAction"},  
+      {type: "text", speaker: "Bellhop", text: "Malakai", style: choice1TextStyle,loc: {x:250,y:800}, 
             trigger: "choice", doNext: "Malakai End Card", hideAfter:2},
      {type: "text", speaker: "Bellhop", text: "Jack", style: choice2TextStyle,loc: {x:250,y:900}, 
             trigger: "lastchoice", doNext: "Jack End Card"}
@@ -559,7 +560,7 @@ var scenes = [
   
   
   {id:"DaveyResponse2", 
-    // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
+ 
     images: [
      {id: "Background", img:"images/LobbyRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
      {id: "Davey", img:"images/DaveySprite.png", loc: {x:0, y:0}, clickable: false},
@@ -574,7 +575,7 @@ var scenes = [
       
       
     {id:"Jack End Card", 
-    // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
+  
     images: [
      {id: "Endcard", img:"images/JackEndCard.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
@@ -583,8 +584,9 @@ var scenes = [
     {type: "text", speaker: "Narrator", text: "", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Credits", style: whiteTextStyle}]},
   
-      {id:"Malakai End Card", 
-    // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
+     
+  {id:"Malakai End Card", 
+  
     images: [
      {id: "Endcard", img:"images/MalakaiEndCard.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
