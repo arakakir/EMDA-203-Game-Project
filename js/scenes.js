@@ -301,7 +301,7 @@ var scenes = [
    
    images: [
      {id: "Background", img:"images/JackRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Jack", img:"images/JackSpriteBase.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+      {id: "Jack", img:"images/JackSpriteBase.png", loc: {x:0, y:2000}, scale: 1, animated: true, clickable: false},
          {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      
      
@@ -480,7 +480,7 @@ var scenes = [
    
    images: [
      {id: "Background", img:"images/LobbyRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-     {id: "Davey", img:"images/DaveySprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+     {id: "Davey", img:"images/DaveySprite.png", loc: {x:0, y:2000}, scale: 1, animated: true, clickable: false},
          {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      
      
@@ -577,10 +577,10 @@ var scenes = [
     {id:"Jack End Card", 
   
     images: [
-     {id: "Endcard", img:"images/JackEndCard.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Endcard", img:"images/JackEndCard", loc: {x:0, y:0}, scale: 1, animated: false, clickable: false},
      ],
     actions: [
-      {type: "sound", src: "JackEndcardAmbience.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "sound", src: "JackEndcardAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
     {type: "text", speaker: "Narrator", text: "", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Credits", style: whiteTextStyle}]},
   
