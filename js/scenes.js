@@ -207,6 +207,7 @@ var scenes = [
   
   
   {id:"Malakai's Room Part 2", 
+     // sound: {src: "MalakaiAmbience.mp3", volume: 1.0, loop: -1},
      images: [
      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
      {id: "Malakai", img:"images/MalakaiSpriteBase.png", loc: {x:0, y:0}, clickable: false},
@@ -605,6 +606,6 @@ var scenes = [
      ],
     actions: [
     {type: "text", speaker: "Narrator", text: "", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Title", style: whiteTextStyle}]}
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Title Screen", style: whiteTextStyle}]}
     
   ]
