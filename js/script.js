@@ -10,6 +10,9 @@
 // then you can have exit animations that then auto trigger next scene.
 
 
+// sceneSounds doesn't really get rid of play instances
+
+
 var myStage, stageWidth, stageHeight;
 var myFrameRate = 24;
 var character, background, scoreDisplay, theEnd, backgroundSound, endGoal;
@@ -46,9 +49,9 @@ function preload(){
   queue.installPlugin(createjs.Sound);
   queue.on("complete", init);
   queue.loadManifest([
-    {id:"JackAmbience", src:"sounds/JackAmbience.mp3", data:1},
-    {id:"MalakaiAmbience", src:"sounds/MalakaiAmbience.mp3", data:2},
-    {id:"LobbyAmbience", src:"sounds/LobbyAmbience.mp3", data:3},
+    {id:"JackAmbience", src:"sounds/JackAmbience.mp3", data:5},
+    {id:"MalakaiAmbience", src:"sounds/MalakaiAmbience.mp3", data:5},
+    {id:"LobbyAmbience", src:"sounds/LobbyAmbience.mp3", data:5},
      {id:"ElevatorAmbience", src:"sounds/ElevatorAmbience.mp3", data:4},
      {id:"Elevator Ding", src:"sounds/ElevatorDing.mp3", data:5},
     {id:"JackEndcardAmbience", src:"sounds/JackEndcardAmbience.mp3", data:6},
@@ -103,7 +106,7 @@ function init(){
   backgroundSound.volume = 0.3;
   backgroundSound.loop = -1;
   
-  buildScene("Malakai's Room Part 1");
+  buildScene("Title Screen");
   //buildScene("MalakaiResponse1");
 
   createjs.Ticker.addEventListener('tick', gameLoop);
