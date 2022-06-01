@@ -577,7 +577,7 @@ var scenes = [
     {id:"Jack End Card", 
   
     images: [
-     {id: "Endcard", img:"images/JackEndCard", loc: {x:0, y:0}, scale: 1, animated: false, clickable: false},
+     {id: "Endcard", img:"images/JackEndcard.png", loc: {x:0, y:0}, scale: 1, animated: false, clickable: false},
      ],
     actions: [
       {type: "sound", src: "JackEndcardAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
@@ -588,7 +588,7 @@ var scenes = [
   {id:"Malakai End Card", 
   
     images: [
-     {id: "Endcard", img:"images/MalakaiEndCard.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Endcard", img:"images/MalakaiEndcard.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
       {type: "sound", src: "MalakaiEndcardSong.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
