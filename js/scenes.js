@@ -593,6 +593,18 @@ var scenes = [
     actions: [
       {type: "sound", src: "MalakaiEndcardSong.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
     {type: "text", speaker: "Narrator", text: "", 
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Credits", style: whiteTextStyle}]}
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Credits", style: whiteTextStyle}]},
+  
+  
+  
+  
+      {id:"Credits", 
+  
+    images: [
+     {id: "Endcard", img:"images/Credits.png", loc: {x:0, y:0}, scale: 2, animated: false, clickable: false},
+     ],
+    actions: [
+    {type: "text", speaker: "Narrator", text: "", 
+            loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Title", style: whiteTextStyle}]}
     
   ]
