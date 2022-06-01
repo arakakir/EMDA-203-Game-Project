@@ -102,9 +102,9 @@ var scenes = [
    images: [
      {id: "Background", img:"images/ElevatorRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
      {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
-     {id: "MalakaiButton", img:"images/MalakaiButton.png", loc: {x:250, y:10}, scale: 0.2, animated: true, clickable: true},
-     {id: "JackButton", img:"images/JackButton.png", loc: {x:250, y:500}, scale: 0.2, animated: true, clickable: true},
-     {id: "LobbyButton", img:"images/LobbyButton.png", loc: {x:500, y:300}, scale: 0.2, animated: true, clickable: true},
+     {id: "MalakaiButton", img:"images/MalakaiButton.png", loc: {x:255, y:395}, scale: 0.2, animated: true, clickable: true},
+     {id: "JackButton", img:"images/JackButton.png", loc: {x:255, y:505}, scale: 0.2, animated: true, clickable: true},
+     {id: "LobbyButton", img:"images/LobbyButton.png", loc: {x:595, y:625}, scale: 0.2, animated: true, clickable: true},
    
      
      ],
@@ -136,7 +136,7 @@ var scenes = [
    
    images: [
      {id: "Background", img:"images/MalakaiRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Malakai", img:"images/MalakaiSpriteFlustered.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+      {id: "Malakai", img:"images/MalakaiSpriteFlustered.png", loc: {x:0, y:2000}, scale: 1, animated: true, clickable: false},
          {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      
      
