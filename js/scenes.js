@@ -592,7 +592,7 @@ var scenes = [
      {id: "Endcard", img:"images/MalakaiEndcard.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
     actions: [
-      {type: "sound", src: "MalakaiEndcardSong.mp3", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+      {type: "sound", src: "MalakaiEndcardSong", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
     {type: "text", speaker: "Narrator", text: "", 
             loc: {x:250,y:800}, trigger: "stageClick", duration: 3000, doNext: "Credits", style: whiteTextStyle}]},
   
