@@ -157,6 +157,7 @@ function buildScene(scene){
        var image = new createjs.Bitmap(scenes[i].images[j].img)
        image.x = scenes[i].images[j].loc.x;
        image.y = scenes[i].images[j].loc.y;
+       image.regX = 
        image.scaleX = image.scaleY = scenes[i].images[j].scale;
        image.id = scenes[i].images[j].id;
        image.animated = scenes[i].images[j].animated;
