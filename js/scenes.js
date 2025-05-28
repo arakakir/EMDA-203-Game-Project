@@ -24,7 +24,7 @@ var scenes = [
    
    images: [
      {id: "Background", img:"images/Title.png", reg: {x:0, y: 0}, loc: {x:0, y:0}, reg: {x:0, y: 0}, animated: false, clickable: false},
-      {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:-600, y:200}, scale: 1, animated: true, clickable: false},
+     
      
      ],
    
