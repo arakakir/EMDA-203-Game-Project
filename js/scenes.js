@@ -60,7 +60,7 @@ var scenes = [
                               endPosition:{x:0, y:-100, alpha:1, rotation:0, scale:1},
                               duration: 2000},
                   trigger: "timer", duration: 2000, doNext: "nextAction"},
-     {type: "text", speaker: "Bellhop", text: "Alright bellhop, you can do this! It’s your first day, gotta make a \rgood first impression!", style: whiteTextStyle,
+     {type: "text", speaker: "Bellhop", text: "Where am I?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
       {type: "animation", id: "Davey",
                   animation: {wait: 0,
