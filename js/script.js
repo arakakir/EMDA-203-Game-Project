@@ -12,7 +12,8 @@
 
 // sceneSounds doesn't really get rid of play instances
 
-
+var characterIndex=0;
+var characters = ["Character1"]
 var myStage, stageWidth, stageHeight;
 var myFrameRate = 24;
 var character, background, scoreDisplay, theEnd, backgroundSound, endGoal;

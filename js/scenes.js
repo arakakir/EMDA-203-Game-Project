@@ -20,27 +20,26 @@ var scenes = [
   
   
   {id:"Title Screen",
-
-   
    images: [
      {id: "Background", img:"images/Title.png", reg: {x:0, y: 0}, loc: {x:0, y:0}, reg: {x:0, y: 0}, animated: false, clickable: false},
-     
-     
-     ],
-   
+    ],
    actions: [
-     {type: "sound", src: "ElevatorAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-      {type: "text", speaker: "Narrator", text: "Click here to start! \rClick screen to progress \rthe story.", style: defaultStyle,
-            loc: {x:100,y:800}, trigger: "stageClick", duration: 2000, doNext: "Lobby Part 1", hideAfter:1}]},
+    {type: "sound", src: "ElevatorAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+    {type: "text", speaker: "Narrator", text: "Click here to start! \rClick screen to progress \rthe story.", style: defaultStyle,
+            loc: {x:100,y:800}, trigger: "stageClick", duration: 2000, doNext: "Choose Your Character", hideAfter:1}
+   ]
+  },        
      
-     
-     
-     {id: "Choose Your Character",
-  
-      images: [
-        {id: "CharOptions", img: "images/ChooseYourChar.png", loc: }
-      ]
-     }
+  {id: "Choose Your Character",
+    images: [
+      {id: "CharOptions", img: "images/ChooseYourChar.png", loc: {x:0, y:0}, animated: false, clickable: false},
+    ],
+    actions: [
+        {type: "text", speaker: "Narrator", text: "Choose Your \rCharacter!", style: defaultStyle,
+          loc: {x:500,y:25}, trigger: "stageClick", duration: 2000, doNext: "Lobby Part 1", hideAfter:1
+        }
+    ]
+  },
      
      
   
@@ -98,7 +97,7 @@ var scenes = [
                               duration: 2000}},
         {type: "text", speaker: "Bellhop", text: "First day and I’m already getting yelled at… Where's that damned elevator?", style: whiteTextStyle,
             loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "Elevator", hideAfter:1}]},
-  
+
   
    {id:"Elevator",
 
