@@ -30,12 +30,17 @@ var scenes = [
    
    actions: [
      {type: "sound", src: "ElevatorAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-      {type: "text", speaker: "Narrator", text: "Click anywhere to start! \rClick screen to progress \rthe story.", style: defaultStyle,
+      {type: "text", speaker: "Narrator", text: "Click here to start! \rClick screen to progress \rthe story.", style: defaultStyle,
             loc: {x:100,y:800}, trigger: "stageClick", duration: 2000, doNext: "Lobby Part 1", hideAfter:1}]},
      
      
      
-     
+     {id: "Choose Your Character",
+  
+      images: [
+        {id: "CharOptions", img: "images/ChooseYourChar.png", loc: }
+      ]
+     }
      
      
   
@@ -43,7 +48,7 @@ var scenes = [
 
    
    images: [
-     {id: "Background", img:"images/LobbyRoom.png", loc: {x:0, y:0}, animated: false, clickable: false},
+     {id: "Background", img:"images/Beach.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
       {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Davey", img:"images/WalkieTalkie.png", loc: {x:-500, y:2000}, scale: 0.8, animated: true, clickable: false},
