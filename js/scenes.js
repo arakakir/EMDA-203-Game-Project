@@ -52,7 +52,7 @@ var scenes = [
      {id: "Background", img:"images/Beach.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Confused", img:"images/JamieConfused.png", loc: {x:100, y:800}, animated: true, clickable: false},
       {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Davey", img:"images/WalkieTalkie.png", loc: {x:-500, y:2000}, scale: 0.8, animated: true, clickable: false},
+      {id: "Left", img: "images/JamieLeft.png", loc: {x:-500, y:-2000}, animated: true, clickable: false},
      
      
      ],
@@ -70,10 +70,24 @@ var scenes = [
             loc: {x:200,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "text", speaker: "Char", text: "Wait...", style: txtboxStyle,
             loc: {x:200,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-     
+     {type: "animation", id: "Confused",
+                  animation: {wait: 0,
+                              startPosition:{x:100, y:550, alpha:1, rotation:0, scale:1},
+                              endPosition:{x:100, y:2000, alpha:1, rotation:0, scale:1},
+                              duration: 2000},
+                  trigger: "timer", duration: 2000, doNext: "nextAction"},
+    {type: "animation", id: "Textbox", img:"images/CharTxtbox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
+    {type: "animation", id: "Left",
+                  animation: {wait: 0,
+                              startPosition:{x:100, y:550, alpha:1, rotation:0, scale:1},
+                              endPosition:{x:100, y:550, alpha:1, rotation:0, scale:1},
+                              duration: 2000},
+                  trigger: "timer", duration: 2000, doNext: "nextAction"},
      {type: "text", speaker: "Char", text: "I was...", style: txtboxStyle,
             loc: {x:200,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
-  
+    ],
+  },
+
 
   
    {id:"Elevator",
