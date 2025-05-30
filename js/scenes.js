@@ -51,8 +51,8 @@ var scenes = [
    images: [
      {id: "Background", img:"images/Beach.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Confused", img:"images/JamieConfused.png", loc: {x:100, y:2000}, animated: true, clickable: false},
-      {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Left", img: "images/JamieLeft.png", loc: {x:100, y:2000}, animated: true, clickable: false},
+      {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
      ],
    
    actions: [
@@ -61,7 +61,7 @@ var scenes = [
        {type: "animation", id: "Confused",
                   animation: {wait: 0,
                               startPosition:{x:100, y:2000, alpha:1, rotation:0, scale:1},
-                              endPosition:{x:100, y:543, alpha:1, rotation:0, scale:1},
+                              endPosition:{x:100, y:550, alpha:1, rotation:0, scale:1},
                               duration: 2000},
                   trigger: "timer", duration: 2000, doNext: "nextAction"},
      {type: "text", speaker: "Char", text: "Where am I?", style: txtboxStyle,
@@ -70,15 +70,14 @@ var scenes = [
             loc: {x:200,y:800}, trigger: "stageClick", duration: 0, doNext: "nextAction", hideAfter:1},
      {type: "animation", id: "Confused",
                   animation: {wait: 0,
-                              startPosition:{x:100, y:543, alpha:1, rotation:0, scale:1},
+                              startPosition:{x:100, y:550, alpha:1, rotation:0, scale:1},
                               endPosition:{x:100, y:2000, alpha:1, rotation:0, scale:1},
                               duration: 0},
                   trigger: "timer", duration: 0, doNext: "nextAction"},
-    {type: "animation", id: "Textbox", img:"images/CharTxtbox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
     {type: "animation", id: "Left",
                   animation: {wait: 0,
                               startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
-                              endPosition:{x:100, y:543, alpha:1, rotation:0, scale:1},
+                              endPosition:{x:100, y:550, alpha:1, rotation:0, scale:1},
                               duration: 0},
                   trigger: "timer", duration: 2000, doNext: "nextAction"},
      {type: "text", speaker: "Char", text: "I was...", style: txtboxStyle,
@@ -89,12 +88,12 @@ var scenes = [
   
   {id: "Suitcase",
     images: [      
-      {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Full", img: "FullSuitcase.png", reg: {x:0, y: 0}, loc: {x:0, y:0}, reg: {x:0, y: 0}, animated: false, clickable: false},
-      {id: "Pic", img: "PicSuitcase.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Bars", img: "BarsSuitcase.png", loc: {x:0, y:0}, animated: false, clickable: false},
+      {id: "Full", img: "images/FullSuitcase.png", reg: {x:0, y: 0}, loc: {x:0, y:0}, reg: {x:0, y: 0}, animated: false, clickable: false},
+      {id: "Pic", img: "images/PicSuitcase.png", loc: {x:0, y:0}, animated: false, clickable: false},
+      {id: "Bars", img: "images/BarsSuitcase.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Confused", img:"images/JamieConfused.png", loc: {x:100, y:800}, animated: true, clickable: false},
       {id: "Neutral", img: "images/JamieNeutral.png", loc: {x:100, y:800}, animated: true, clickable: false},
+      {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
       ] ,
    
    actions:[
