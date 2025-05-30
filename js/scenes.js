@@ -32,6 +32,7 @@ var scenes = [
      
   {id: "Choose Your Character",
     images: [
+      {id: "Background", img:"images/Title.png", reg: {x:0, y: 0}, loc: {x:0, y:0}, reg: {x:0, y: 0}, animated: false, clickable: false},     
       {id: "CharOptions", img: "images/ChooseYourChar.png", loc: {x:0, y:0}, animated: false, clickable: false},
     ],
     actions: [
@@ -48,15 +49,15 @@ var scenes = [
    
    images: [
      {id: "Background", img:"images/Beach.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Bellhop", img:"images/BellhopSprite.png", loc: {x:0, y:2000}, animated: true, clickable: false},
-      {id: "Textbox", img:"images/BellhopTextBox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+      {id: "Confused", img:"images/JamieConfused.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+      {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Davey", img:"images/WalkieTalkie.png", loc: {x:-500, y:2000}, scale: 0.8, animated: true, clickable: false},
      
      
      ],
    
    actions: [
-     {type: "animation", id: "Textbox", img:"images/BellhopTextBox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
+     {type: "animation", id: "Textbox", img:"images/CharTxtbox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
        {type: "animation", id: "Bellhop",
                   animation: {wait: 0,
