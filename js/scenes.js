@@ -67,7 +67,7 @@ var scenes = [
      {type: "text", speaker: "Char", text: "Where am I?", style: txtboxStyle,
             loc: {x:200,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
      {type: "text", speaker: "Char", text: "Wait...", style: txtboxStyle,
-            loc: {x:200,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+            loc: {x:200,y:800}, trigger: "stageClick", duration: 0, doNext: "nextAction", hideAfter:1},
      {type: "animation", id: "Confused",
                   animation: {wait: 0,
                               startPosition:{x:100, y:543, alpha:1, rotation:0, scale:1},
@@ -82,7 +82,7 @@ var scenes = [
                               duration: 0},
                   trigger: "timer", duration: 2000, doNext: "nextAction"},
      {type: "text", speaker: "Char", text: "I was...", style: txtboxStyle,
-            loc: {x:200,y:800}, trigger: "stageClick", duration: 2000, doNext: "Suitcase", hideAfter:1},
+            loc: {x:200,y:800}, trigger: "stageClick", duration: 0, doNext: "Suitcase", hideAfter:1},
     ],
   },
 
