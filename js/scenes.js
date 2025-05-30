@@ -7,6 +7,7 @@ var italicTextStyle = {style: "bold italic 30px Courier", color: "#cccccc", alph
 var whiteTextStyle = {style: "bold 30px Courier", color: "#cccccc", alpha: 1, lineWidth: 50, lineHeight: 50};
 var choice1TextStyle = {style: "bold 30px Courier", color: "#55E8F0", alpha: 1, lineWidth: 50, lineHeight: 50};
 var choice2TextStyle = {style: "bold 30px Courier", color: "#F055A5", alpha: 1, lineWidth: 50, lineHeight: 50};
+var txtboxStyle = {style: "bold 30px Courier", color: "#000000", alpha: 1, lineWidth: 50, lineHeight: 50};
 
 
 /////////////////////////////
@@ -32,11 +33,11 @@ var scenes = [
      
   {id: "Choose Your Character",
     images: [
-      {id: "Background", img:"images/Title.png", reg: {x:0, y: 0}, loc: {x:0, y:0}, reg: {x:0, y: 0}, animated: false, clickable: false},     
+      {id: "Background", img:"images/ChooseYourCharBackground.png", reg: {x:0, y: 0}, loc: {x:0, y:0}, reg: {x:0, y: 0}, animated: false, clickable: false},     
       {id: "CharOptions", img: "images/ChooseYourChar.png", loc: {x:0, y:0}, animated: false, clickable: false},
     ],
     actions: [
-        {type: "text", speaker: "Narrator", text: "Choose Your \rCharacter!", style: defaultStyle,
+        {type: "text", speaker: "Narrator", text: "", style: defaultStyle,
           loc: {x:500,y:25}, trigger: "stageClick", duration: 2000, doNext: "Lobby Part 1", hideAfter:1
         }
     ]
@@ -49,7 +50,7 @@ var scenes = [
    
    images: [
      {id: "Background", img:"images/Beach.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Confused", img:"images/JamieConfused.png", loc: {x:0, y:2000}, animated: true, clickable: false},
+      {id: "Confused", img:"images/JamieConfused.png", loc: {x:100, y:800}, animated: true, clickable: false},
       {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Davey", img:"images/WalkieTalkie.png", loc: {x:-500, y:2000}, scale: 0.8, animated: true, clickable: false},
      
@@ -59,14 +60,14 @@ var scenes = [
    actions: [
      {type: "animation", id: "Textbox", img:"images/CharTxtbox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
      {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-       {type: "animation", id: "Bellhop",
+       {type: "animation", id: "Confused",
                   animation: {wait: 0,
-                              startPosition:{x:0, y:2000, alpha:1, rotation:0, scale:1},
-                              endPosition:{x:0, y:-100, alpha:1, rotation:0, scale:1},
+                              startPosition:{x:100, y:2000, alpha:1, rotation:0, scale:1},
+                              endPosition:{x:100, y:800, alpha:1, rotation:0, scale:1},
                               duration: 2000},
                   trigger: "timer", duration: 2000, doNext: "nextAction"},
-     {type: "text", speaker: "Bellhop", text: "Where am I?", style: whiteTextStyle,
-            loc: {x:250,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
+     {type: "text", speaker: "Char", text: "Where am I?", style: txtboxStyle,
+            loc: {x:200,y:800}, trigger: "stageClick", duration: 2000, doNext: "nextAction", hideAfter:1},
       {type: "animation", id: "Davey",
                   animation: {wait: 0,
                               startPosition:{x:-400, y:2000, alpha:1, rotation:0, scale:0.8},
