@@ -50,11 +50,9 @@ var scenes = [
    
    images: [
      {id: "Background", img:"images/Beach.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Confused", img:"images/JamieConfused.png", loc: {x:0, y:1200}, animated: true, clickable: false},
+      {id: "Confused", img:"images/JamieConfused.png", loc: {x:100, y:2000}, animated: true, clickable: false},
       {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Left", img: "images/JamieLeft.png", loc: {x:0, y:1200}, animated: true, clickable: false},
-     
-     
+      {id: "Left", img: "images/JamieLeft.png", loc: {x:100, y:2000}, animated: true, clickable: false},
      ],
    
    actions: [
@@ -88,10 +86,11 @@ var scenes = [
     ],
   },
 
+  
   {id: "Suitcase",
     images: [      
       {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Background", img: "FullSuitcase.png", loc: {x:0, y:0}, animated: false, clickable: false},
+      {id: "Full", img: "FullSuitcase.png", reg: {x:0, y: 0}, loc: {x:0, y:0}, reg: {x:0, y: 0}, animated: false, clickable: false},
       {id: "Pic", img: "PicSuitcase.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Bars", img: "BarsSuitcase.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Confused", img:"images/JamieConfused.png", loc: {x:100, y:800}, animated: true, clickable: false},
@@ -100,7 +99,7 @@ var scenes = [
    
    actions:[
     {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
-    
+    {type: "animation", id: "Textbox", img:"images/CharTxtbox.png", trigger: "auto", duration: 1000, doNext: "nextAction"},
    ],
   },
   
