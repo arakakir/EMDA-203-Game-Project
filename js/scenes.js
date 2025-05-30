@@ -38,19 +38,19 @@ var scenes = [
     ],
     actions: [
         {type: "text", speaker: "Narrator", text: "", style: defaultStyle,
-          loc: {x:500,y:25}, trigger: "stageClick", duration: 2000, doNext: "Lobby Part 1", hideAfter:1
+          loc: {x:500,y:25}, trigger: "stageClick", duration: 2000, doNext: "Beach1", hideAfter:1
         }
     ]
   },
      
      
   
-  {id:"Lobby Part 1",
+  {id:"Beach1",
 
    
    images: [
      {id: "Background", img:"images/Beach.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      {id: "Confused", img:"images/JamieConfused.png", loc: {x:100, y:800}, animated: true, clickable: false},
+      {id: "Confused", img:"images/JamieConfused.png", loc: {x:0, y:1200}, animated: true, clickable: false},
       {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
       {id: "Left", img: "images/JamieLeft.png", loc: {x:0, y:1200}, animated: true, clickable: false},
      
@@ -88,8 +88,20 @@ var scenes = [
     ],
   },
 
-  {id: "suitcase",
-    images: 
+  {id: "Suitcase",
+    images: [      
+      {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
+      {id: "Background", img: "FullSuitcase.png", loc: {x:0, y:0}, animated: false, clickable: false},
+      {id: "Pic", img: "PicSuitcase.png", loc: {x:0, y:0}, animated: false, clickable: false},
+      {id: "Bars", img: "BarsSuitcase.png", loc: {x:0, y:0}, animated: false, clickable: false},
+      {id: "Confused", img:"images/JamieConfused.png", loc: {x:100, y:800}, animated: true, clickable: false},
+      {id: "Neutral", img: "images/JamieNeutral.png", loc: {x:100, y:800}, animated: true, clickable: false},
+      ] ,
+   
+   actions:[
+    {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
+    
+   ],
   },
   
    {id:"Elevator",
@@ -101,8 +113,6 @@ var scenes = [
      {id: "MalakaiButton", img:"images/MalakaiButton.png", loc: {x:255, y:395}, scale: 0.2, animated: true, clickable: true},
      {id: "JackButton", img:"images/JackButton.png", loc: {x:255, y:505}, scale: 0.2, animated: true, clickable: true},
      {id: "LobbyButton", img:"images/LobbyButton.png", loc: {x:595, y:625}, scale: 0.2, animated: true, clickable: true},
-   
-     
      ],
    
    actions: [
