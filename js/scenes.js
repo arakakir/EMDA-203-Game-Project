@@ -94,7 +94,7 @@ var scenes = [
       {id: "Confused", img:"images/JamieConfused.png", loc: {x:100, y:800}, animated: true, clickable: false},
       {id: "Neutral", img: "images/JamieNeutral.png", loc: {x:100, y:800}, animated: true, clickable: false},
       {id: "Textbox", img:"images/CharTxtbox.png", loc: {x:0, y:0}, animated: false, clickable: false},
-      ] ,
+      ],
    
    actions:[
     {type: "sound", src: "LobbyAmbience", volume: 1.0, loop: -1, trigger: "auto", doNext: "nextAction"},
